@@ -36,29 +36,113 @@
 	</div>
 	<div class="container pages-container">
 		<div class="pages row">
-			<div class="proposal-page proposal-page-Upgrade-1 col-xs-12 column anim-fade ng-scope">
-				<h1>Build Your Solar System</h1>
-				<div class="disclosure-footer col-xs-12 ng-scope"><span class="ng-binding ng-scope">
-        Copyright © 2015 Renovate America &nbsp; | &nbsp;
-        </span><a class="ng-scope" href="#">HERO Program</a><span class="ng-scope"> &nbsp; | &nbsp;
-        </span><a class="ng-scope" href="#">Privacy Policy</a><span class="ng-scope"> &nbsp; | &nbsp;
-        </span><a class="ng-scope" href="#">Disclosures</a>
 
+
+			<div class="proposal-page proposal-page-Upgrade-1 col-xs-12 column anim-fade ng-scope">
+
+				<h1>Build Your Solar System</h1>
+
+				<div class="col-xs-12 array-container">
+
+					<form class="ng-pristine ng-invalid ng-invalid-required" name="Upgrade1.form">
+						<div class="solar-array ng-scope current">
+
+							<div class="solar-array-header col-xs-12">
+								<div class="array-number pull-left ng-binding">Array 1</div>
+								<div class="advanced-options link pull-right">Advanced Options <span class="glyphicon glyphicon-cog"></span> </div>
+							</div>
+							<div class="solar-array-content">
+
+								<div class="box col-xs-3">
+									<div class="icon-container system-size">
+										<img src="css/images/solar-array-box-1.PNG">
+									</div>
+									<h3>System Size</h3>
+									<p>Enter the size of your solar system in kilowatts (kW-DC).</p>
+									<div class="input-container">
+										<input class="ng-pristine ng-untouched ng-invalid ng-invalid-required" name="array-0-system-size" numeric-min=".5" numeric-max="500000" placeholder="5" required="" type="text">
+										<span class="description">Kilowatt</span>
+									</div>
+								</div>
+
+
+								<div class="box col-xs-3">
+
+
+									<div class="icon-container type-roof" ng-hide="showme">
+										<img src="css/images/solar-array-box-2a.PNG" >
+									</div>
+
+									<div class="icon-container type-ground" ng-show="showme">
+										<img src="css/images/solar-array-box-2b.PNG ">
+									</div>
+
+									<h3>Mounting Type</h3>
+									<p>How your panels will be mounted.</p>
+
+									<div class="col-xs-12 mounting-type-container">
+
+										<div ng-click="showme=false" class="mounting-type col-xs-4 col-xs-offset-1 selected" ng-class="{ 'selected': showme==false }">
+											 Roof 
+										</div>
+
+										<div ng-click="showme=true" class="mounting-type col-xs-4 col-xs-offset-1 " ng-class="{ 'selected': showme==true }">
+											 Ground 
+										</div>
+									</div>
+								</div>
+								<div class="box col-xs-3 ">
+									<div class="icon-container tilt ">
+										<img src="css/images/solar-array-box-2.PNG ">
+									</div>
+									<h3>Tilt</h3>
+									<p>The angle your panels will be positioned.</p>
+									<div class="input-container ">
+										<input class="ng-pristine ng-untouched ng-invalid ng-invalid-required " name="array-0-tilt" placeholder="22.5" type="text ">
+										<span class="description ">Degrees</span>
+									</div>
+								</div>
+								<div class="box col-xs-3 ">
+									<div class="icon-container azimuth ">
+										<img src="css/images/solar-array-box-3.PNG ">
+									</div>
+									<h3>Orientation</h3>
+									<p>The direction your panels will be facing.</p>
+									<div class="input-container ">
+										<input class="ng-pristine ng-untouched ng-invalid ng-invalid-required " name="array-0-orientation " numeric-min="0 " numeric-max="359 " placeholder="180 " required=" " type="text ">
+										<span class="description ">Degrees</span>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="solar-array-footer col-xs-12 ">
+					<div class=" btn-proposal add-array " ng-click="anotherArray()">Add Another Array</div>
+				</div>
+
+				<div class="disclosure-footer col-xs-12 ng-scope "><span>
+        Copyright © 2015 Renovate America &nbsp; | &nbsp;
+        </span><a class="ng-scope " href="">HERO Program</a><span class="ng-scope "> &nbsp; | &nbsp;
+        </span><a class="ng-scope " href="">Privacy Policy</a><span class="ng-scope "> &nbsp; | &nbsp;
+        </span><a class="ng-scope " href="">Disclosures</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div id="proposal-page-nav">
-		<a href="#/solarSystemWork/id1">
-			<div class="nav-button prev">
-				<span class="icon ">&lt;</span> BACK
-			</div>
-		</a>
-		<a href="#/estimatedSolarSystemProduction/id1">
-			<div class="nav-button next ">
-				<span class="icon ">&gt;</span> NEXT
-			</div>
-		</a>
+		<div id="proposal-page-nav">
+			<a href="#/solarSystemWork/id1">
+				<div class="nav-button prev">
+					<span class="icon ">&lt;</span> BACK
+				</div>
+			</a>
+			<a href="#/estimatedSolarSystemProduction/id1">
+				<div class="nav-button next ">
+					<span class="icon ">&gt;</span> NEXT
+				</div>
+			</a>
+		</div>
 	</div>
-</div>

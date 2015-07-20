@@ -48,6 +48,25 @@ propTool.controller('heroSummaryController',['$scope', function($scope){
         };
 		
 	}]);
+propTool.controller('paymentOptionsController',['$scope', function($scope){
+        $scope.firstCol = true;
+        $scope.secondCol = true;
+        $scope.thirdCol = true;
+	
+        $scope.showHideFirstColumn = function() {
+            $scope.firstCol = $scope.firstCol === false ? true: false;           
+        };
+	$scope.showHideSecondColumn = function() {            
+            $scope.secondCol = $scope.secondCol === false ? true: false;           
+        };
+	$scope.showHideThirdColumn = function() {            
+            $scope.thirdCol = $scope.thirdCol === false ? true: false;
+        };
+		
+	}]);
+propTool.controller('buildSolarSystemController',['$scope', function($scope){
+       
+	}]);
 
 propTool.config(['$routeProvider',
 				 function($routeProvider){
@@ -102,7 +121,8 @@ propTool.config(['$routeProvider',
 					templateUrl: 'solarSystemWork.html'
 				    }).
 					 when('/buildSolarSystem/id1', {
-					templateUrl: 'buildSolarSystem.html'
+					templateUrl: 'buildSolarSystem.html',
+					controller:	'buildSolarSystemController'
 				    }).
 					 when('/estimatedSolarSystemProduction/id1', {
 					templateUrl: 'estimatedSolarSystemProduction.html'
@@ -111,7 +131,8 @@ propTool.config(['$routeProvider',
 					templateUrl: 'solarSystemSummary.html'
 				    }).	
 					 when('/paymentOptions/id1', {
-					templateUrl: 'paymentOptions.html'
+					templateUrl: 'paymentOptions.html',
+					controller:'paymentOptionsController'	
 				    }).
 					 when('/summary/id1', {
 					templateUrl: 'summary.html'
