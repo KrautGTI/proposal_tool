@@ -5676,6 +5676,7 @@ a.btn-proposal:active {
     opacity: .98;
 }
 }
+
 .proposal-page .overlay-content {
     position: absolute;
     top: 50%;
@@ -5687,6 +5688,7 @@ a.btn-proposal:active {
     margin-left: 10%;
     text-align: center;
 }
+
 .proposal-page .overlay-content p {
     font-size: 28px;
     margin-bottom: 40px;
