@@ -5,7 +5,9 @@
 			<img src="css/images/HERO_Logo.png" height="60">
 
 			<div class="proposal-toop-quick-nav">
-				<div class="nav-selection active visited"></div>
+				<a href="#/startProposal/id1">
+					<div class="nav-selection active visited"></div>
+				</a>
 				<div class="nav-selection-divider"></div>
 				<div class="nav-selection"></div>
 				<div class="nav-selection-divider"></div>
@@ -34,7 +36,7 @@
 			</ul>
 		</div>
 	</div>
-	                     <!-- **********Adjust Graph Before show************** -->
+	<!-- **********Adjust Graph Before show************** -->
 	<div class="container pages-container" style="width:80%" ng-show="showHide">
 		<div class="pages row">
 			<div class="proposal-page proposal-page-YEU-9 col-xs-12 column anim-fade ng-scope" style="text-align:center; ">
@@ -57,7 +59,7 @@
 				</div>
 
 
-				<div class="disclosure-footer col-xs-12 ng-scope"><span>
+				<div class="disclosure-footer col-xs-12 ng-scope" style="margin-top: 124px;"><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
         </span><a class="ng-scope" href="">HERO Program</a><span> &nbsp; | &nbsp;
         </span><a class="ng-scope" href="">Privacy Policy</a><span class="ng-scope"> &nbsp; | &nbsp;
@@ -66,12 +68,38 @@
 			</div>
 		</div>
 	</div>
-	                     <!-- **********Adjust Graph Before show************** -->
+	<!-- **********Adjust Graph Before show************** -->
 	<div class="container pages-container" ng-hide="showHide">
 		<div class="pages row">
-			<div class="proposal-page proposal-page-YEU-2b col-xs-6 col-md-offset-3 column anim-fade" style="height:400px">
-				<h1>Your Current Electric Bills with Pacific Gas & Electric </h1>
-				<h1><b>Bar Graph Here</b></h1>
+			<div class="proposal-page proposal-page-YEU-4 col-xs-12 column anim-fade ng-scope">
+				<div class="col-xs-12 graph-header">
+
+					<div class="sum-values">
+						<div >ANNUAL COST: $0</div>
+						<div class="ng-hide">ANNUAL USAGE: 0 kWh</div>
+					</div>
+
+
+					<h1>Your Current Electric Bills with <strong class="long-name ng-binding">Pacific Gas &amp; Electric</strong><strong class="short-name ng-binding">PG&amp;E</strong></h1>
+
+
+					<div class="energy-type-toggle">
+						<div style="width: 67px; height: 34px;" class="toggle btn btn-success" data-toggle="toggle">
+							<input class="energy-bill-toggle" checked="checked" data-toggle="toggle" data-on="$$" data-off="kWh" data-onstyle="success" data-offstyle="primary" type="checkbox">
+							<div class="toggle-group">
+								<label class="btn btn-success toggle-on">$$</label>
+								<label class="btn btn-primary active toggle-off">kWh</label><span class="toggle-handle btn btn-default"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+                         <div id="bars"> </div>
+				<div class="disclosure-footer col-xs-12 ng-scope" style="margin-top: 124px;"><span>
+        Copyright © 2015 Renovate America &nbsp; | &nbsp;
+        </span><a class="ng-scope" href="">HERO Program</a><span class="ng-scope"> &nbsp; | &nbsp;
+        </span><a class="ng-scope" href="">Privacy Policy</a><span class="ng-scope"> &nbsp; | &nbsp;
+        </span><a class="ng-scope" href="">Disclosures</a>
+				</div>
 			</div>
 		</div>
 

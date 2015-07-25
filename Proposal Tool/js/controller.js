@@ -31,11 +31,11 @@ propTool.config(['$routeProvider',
 				    }).
 					when('/oneBillBarGraph/id1', {
 					templateUrl: 'oneBillBarGraph.html',
-					controller:'oneBillBarGraphController'	
+					controller:'multipleBillBarGraphController'	
 				    }).
 					when('/noBillBarGraph/id1', {
 					templateUrl: 'noBillBarGraph.html',
-					controller:'noBillBarGraphController'	
+					controller:'multipleBillBarGraphController'	
 				    }).
 					 when('/annualElectricBill/id1', {
 					templateUrl: 'annualElectricBill.html'

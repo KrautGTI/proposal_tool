@@ -37,544 +37,676 @@
 	<div class="container pages-container">
 		<div class="pages row">
 			
-			
-			<div class="proposal-page proposal-page-Payments-6 col-xs-12 column anim-fade ng-scope">									
+			<!-- Set model strat-->
+				<div id="setModal" class="modal fade" role="dialog">
+					<div class="modal-content" style="max-height: 500px; max-width: 900px; margin-left:20%; margin-top:30px">
+						<div class="modal-header tax-selection-modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h3 class="modal-title">How do you file your taxes?</h3>
+						</div>
+						<div class="modal-body tax-selection-modal">
+
+							<div class="page-1">
+								<ul>
+									<li>
+										<div class="btn-proposal">Married Filing Jointly</div>
+									</li>
+									<li>
+										<div class="btn-proposal">Married Filing Separately</div>
+									</li>
+									<li>
+										<div class="btn-proposal">Qualified Widow(er)</div>
+									</li>
+									<li>
+										<div class="btn-proposal">Single</div>
+									</li>
+									<li>
+										<div class="btn-proposal">Head Of House </div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Set model end-->
 
 
-									<div ng-class="{'blur-content': PT.ProposalToolPageManager.currentPage.state == 'default'}">
-										<div class="background col-xs-10 col-xs-offset-1 hidden-lg  top-panel"></div>
+				<!-- Edit model start-->
+				<div id="editModal" class="modal fade" role="dialog">
+					<div class="modal-content" style="max-height: 500px; max-width: 300px; margin-left:40%; margin-top:30px">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+							</button>
+							<h3 class="modal-title">Electric Rate Change</h3>
+						</div>
+						<div class="modal-body electric-rate-selection-modal" style="overflow:auto;">
+							<div style="font-size:25px; text-align:center; margin:20px 0px 40px;">
+								<button style="width:58px; font-weight:bold;" class="btn-proposal" ng-click="count=count+1" ng-init="count=0.5">∧</button>
+								<input type="text" value="5.0" ng-model="count" style="width:60px; margin:10px auto; text-align:center;" class="form-control">
+								<button style="width:58px; font-weight:bold;" class="btn-proposal" ng-click="count=count-1">∨</button>
+							</div>
 
-										<div class="col-xs-10 col-xs-offset-1 hidden-lg  top-panel">
+							<div style="width:120px; margin:0px auto;" class="btn-proposal">Apply</div>
+						</div>
+					</div>
+				</div>
+				<!--Edit model end-->
 
-											<div class="col-content">
-												<div class="title">Total System Cost</div>
-												<div class="value link ng-binding" ng-click="SPT.openProductCostEditModal();" event-log="Edit Solar System Cost:Clicked"></div>
-											</div>
+				<!-- Second set model start-->
+				<div id="secondSetModal" class="modal fade" role="dialog">
+					<div class="modal-content" style="max-height: 700px; max-width: 900px; margin-left:20%; margin-top:30px">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+							</button>
+							<h3 class="modal-title">Additional Savings</h3>
+						</div>
 
-											<div class="col-content term-selection">
-												<div class="title">Payment Term</div>
-												<div class="value">
-
-													<div class="selected" ng-class="{'selected': PT.IC.Term.Text == 5}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setTerm(5)" event-log="Set Term 5:Clicked">5 Years</div>
-														<div class="selection-indicator"></div>
-													</div>
-
-													<div ng-class="{'selected': PT.IC.Term.Text == 10}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setTerm(10)" event-log="Set Term 10:Clicked">10 Years</div>
-														<div class="selection-indicator"></div>
-													</div>
-
-													<div ng-class="{'selected': PT.IC.Term.Text == 15}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setTerm(15)" event-log="Set Term 15:Clicked">15 Years</div>
-														<div class="selection-indicator"></div>
-													</div>
-
-													<div ng-class="{'selected': PT.IC.Term.Text == 20}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setTerm(20)" event-log="Set Term 20:Clicked">20 Years</div>
-														<div class="selection-indicator"></div>
-													</div>
-
-												</div>
-											</div>
-
-											<div class="col-content views">
-
-												<div class="title">Views</div>
-
-												<div class="group">
-													<div class="selected" ng-class="{'selected': Payment6.viewType == 'Yearly'}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setViewType('Yearly')" event-log="Toggle View:Yearly">Yearly</div>
-														<div class="selection-indicator"></div>
-													</div>
-
-													<div ng-class="{'selected': Payment6.viewType == 'Monthly'}">
-														<div class=" btn-proposal" ng-mousedown="Payment6.setViewType('Monthly')" event-log="Toggle View:Monthly">Monthly</div>
-														<div class="selection-indicator"></div>
-													</div>
-												</div>
-												<div class="group-spacer"></div>
-												<div class="group">
-													<div class="selected" ng-class="{'selected': Payment6.viewContent == 'Table'}">
-														<div class="btn-proposal" ng-mousedown="Payment6.viewContent = 'Table'" event-log="Toggle View:Table">Table</div>
-														<div class="selection-indicator"></div>
-													</div>
-
-													<div ng-class="{'selected': Payment6.viewContent == 'Chart'}">
-														<div class=" btn-proposal" ng-mousedown="Payment6.showChart()" event-log="Toggle View:Chart">Chart</div>
-														<div class="selection-indicator"></div>
-													</div>
-												</div>
+						<div class="modal-body additional-savings-modal" style="overflow:auto;">
 
 
+							<div class="col-xs-12">
+								<div class="col-xs-8">
+									<h3>Rebates</h3>
+									<p>
+										Manufacturer, municipal or utility rebates may be available in your area. Visit the <a href="">Database of State Incentives for Renewables & Efficiency</a> (DSIRE) for more information.
+									</p>
+								</div>
+								<div class="col-xs-3 col-xs-offset-1" style="margin-top:60px;">
+									<input class="pull-right form-control" type="text" style="text-align:right;" />
+								</div>
+							</div>
+							<div class="col-xs-12" style="margin-top:10px;">
+
+								<div class="col-xs-8" style="padding-bottom:0px; border-bottom:none; ">
+									<div class="col-xs-2" style="padding-left:0px;">
+										<div style="margin:10px 0px; text-align:left;" class="tax-credit-applied-toggle-container">
+											<input class="tax-credit-applied-toggle" type="checkbox" data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="default">
+										</div>
+									</div>
+									<div class="col-xs-10" style="padding-left:0px;">
+										<h3 style="margin-top:15px;">Solar Tax Credit</h3>
+									</div>
+								</div>
+
+
+								<div class="col-xs-8">
+									<p>
+										A taxpayer may claim a credit of 30% of qualified expenditures for a system that serves a dwelling unit located in the United States that is owned and used as a residence by the taxpayer. Visit the <a href="">Department of Energy Renewable Energy Tax Credit</a> for more information.
+									</p>
+								</div>
+								<div class="col-xs-3 col-xs-offset-1">
+
+									<input class="pull-right  form-control" type="text" style="text-align:right;" />
+								</div>
+							</div>
+							<div class="col-xs-12" style="margin-top:10px;">
+								<div class="col-xs-8">
+									<div class="col-xs-12" style="padding-bottom:0px; border-bottom:none; padding-left:0px;">
+										<div class="col-xs-2" style="padding-left:0px;">
+											<div class="solar-tax-credit-paydown-toggle-container">
+												<input class="solar-tax-credit-paydown-toggle" type="checkbox" data-toggle="toggle" disabled data-on="On" data-off="Off" data-onstyle="success" data-offstyle="default">
 											</div>
 										</div>
+										<div class="col-xs-10" style="padding-left:0px;">
+											<h3 style="margin-top:15px;">Solar Tax Credit Pay Down</h3>
+										</div>
+									</div>
 
-										<div class="background col-lg-2 hidden-md hidden-xs hidden-sm  side-panel"></div>
+									<p>
+										Enables users to calculate the impact of using the solar tax credit amount to pay down the HERO financed amount and reamortize the payment schedule. Assumed pay down date is May 15 the following year. Assumed pay down amount is 30% of total system cost (minimum $2,500).
+									</p>
 
-										<div class="col-lg-2 hidden-md hidden-xs hidden-sm  side-panel">
+								</div>
+								<div class="col-xs-3 col-xs-offset-1" style="margin-top:30px;">
 
-											<h2>Summary</h2>
+
+								</div>
+							</div>
+							<div class="col-xs-12 selection">
+								<div class="btn-proposal pull-right">Apply Savings</div>
+							</div>
 
 
-											<div class="col-content">
-												<div class="title">Total Solar
-													<br> System Cost</div>
-												<div class="value link ng-binding" ng-click="SPT.openProductCostEditModal();" event-log="Edit Solar System Cost:Clicked"><span class="glyphicon glyphicon-pencil"></span>
-												</div>
-											</div>
 
-											<div class="col-content term-selection">
-												<div class="title">Payment Term</div>
-												<div class="value">
-													<!--<select class="form-control input-md"
+						</div>
+
+					</div>
+				</div>
+				<!--Second set model end-->
+
+
+			<div class="proposal-page proposal-page-Payments-6 col-xs-12 column anim-fade ng-scope">
+
+
+				<div ng-class="{'blur-content': PT.ProposalToolPageManager.currentPage.state == 'default'}">
+					<div class="background col-xs-10 col-xs-offset-1 hidden-lg  top-panel"></div>
+
+					<div class="col-xs-10 col-xs-offset-1 hidden-lg  top-panel">
+
+						<div class="col-content">
+							<div class="title">Total System Cost</div>
+							<div class="value link ng-binding" ng-click="SPT.openProductCostEditModal();" event-log="Edit Solar System Cost:Clicked"></div>
+						</div>
+
+						<div class="col-content term-selection">
+							<div class="title">Payment Term</div>
+							<div class="value">
+
+								<div class="selected" ng-class="{'selected': PT.IC.Term.Text == 5}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setTerm(5)" event-log="Set Term 5:Clicked">5 Years</div>
+									<div class="selection-indicator"></div>
+								</div>
+
+								<div ng-class="{'selected': PT.IC.Term.Text == 10}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setTerm(10)" event-log="Set Term 10:Clicked">10 Years</div>
+									<div class="selection-indicator"></div>
+								</div>
+
+								<div ng-class="{'selected': PT.IC.Term.Text == 15}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setTerm(15)" event-log="Set Term 15:Clicked">15 Years</div>
+									<div class="selection-indicator"></div>
+								</div>
+
+								<div ng-class="{'selected': PT.IC.Term.Text == 20}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setTerm(20)" event-log="Set Term 20:Clicked">20 Years</div>
+									<div class="selection-indicator"></div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-content views">
+
+							<div class="title">Views</div>
+
+							<div class="group">
+								<div class="selected" ng-class="{'selected': Payment6.viewType == 'Yearly'}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setViewType('Yearly')" event-log="Toggle View:Yearly">Yearly</div>
+									<div class="selection-indicator"></div>
+								</div>
+
+								<div ng-class="{'selected': Payment6.viewType == 'Monthly'}">
+									<div class=" btn-proposal" ng-mousedown="Payment6.setViewType('Monthly')" event-log="Toggle View:Monthly">Monthly</div>
+									<div class="selection-indicator"></div>
+								</div>
+							</div>
+							<div class="group-spacer"></div>
+							<div class="group">
+								<div class="selected" ng-class="{'selected': Payment6.viewContent == 'Table'}">
+									<div class="btn-proposal" ng-mousedown="Payment6.viewContent = 'Table'" event-log="Toggle View:Table">Table</div>
+									<div class="selection-indicator"></div>
+								</div>
+
+								<div ng-class="{'selected': Payment6.viewContent == 'Chart'}">
+									<div class=" btn-proposal" ng-mousedown="Payment6.showChart()" event-log="Toggle View:Chart">Chart</div>
+									<div class="selection-indicator"></div>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="background col-lg-2 hidden-md hidden-xs hidden-sm  side-panel"></div>
+
+					<div class="col-lg-2 hidden-md hidden-xs hidden-sm  side-panel">
+
+						<h2>Summary</h2>
+
+
+						<div class="col-content">
+							<div class="title">Total Solar
+								<br> System Cost</div>
+							<div class="value link ng-binding" ng-click="SPT.openProductCostEditModal();" event-log="Edit Solar System Cost:Clicked"><span class="glyphicon glyphicon-pencil"></span>
+							</div>
+						</div>
+
+						<div class="col-content term-selection">
+							<div class="title">Payment Term</div>
+							<div class="value">
+								<!--<select class="form-control input-md"
                                 ng-model="PT.IC.Term"
                                 ng-options="Term.Text for Term in PT.SetupData.Terms"
                                 ng-change="PT.changeTerm()"
                                 name=" term"></select>-->
 
-													<div class="selected" ng-class="{'selected': PT.IC.Term.Text == 5}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setTerm(5)" event-log="Set Term 5:Clicked">5 Years</div>
-														<div class="term-selection-indicator"></div>
-													</div>
+								<div class="selected" ng-class="{'selected': PT.IC.Term.Text == 5}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setTerm(5)" event-log="Set Term 5:Clicked">5 Years</div>
+									<div class="term-selection-indicator"></div>
+								</div>
 
-													<div ng-class="{'selected': PT.IC.Term.Text == 10}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setTerm(10)" event-log="Set Term 10:Clicked">10 Years</div>
-														<div class="term-selection-indicator"></div>
-													</div>
+								<div ng-class="{'selected': PT.IC.Term.Text == 10}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setTerm(10)" event-log="Set Term 10:Clicked">10 Years</div>
+									<div class="term-selection-indicator"></div>
+								</div>
 
-													<div ng-class="{'selected': PT.IC.Term.Text == 15}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setTerm(15)" event-log="Set Term 15:Clicked">15 Years</div>
-														<div class="term-selection-indicator"></div>
-													</div>
+								<div ng-class="{'selected': PT.IC.Term.Text == 15}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setTerm(15)" event-log="Set Term 15:Clicked">15 Years</div>
+									<div class="term-selection-indicator"></div>
+								</div>
 
-													<div ng-class="{'selected': PT.IC.Term.Text == 20}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setTerm(20)" event-log="Set Term 20:Clicked">20 Years</div>
-														<div class="term-selection-indicator"></div>
-													</div>
+								<div ng-class="{'selected': PT.IC.Term.Text == 20}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setTerm(20)" event-log="Set Term 20:Clicked">20 Years</div>
+									<div class="term-selection-indicator"></div>
+								</div>
 
-												</div>
-											</div>
+							</div>
+						</div>
 
-											<div class="col-content views">
+						<div class="col-content views">
 
-												<div class="title">Views</div>
+							<div class="title">Views</div>
 
-												<div class="group">
-													<div class="selected" ng-class="{'selected': Payment6.viewType == 'Yearly'}">
-														<div class="btn-proposal" ng-mousedown="Payment6.setViewType('Yearly')" event-log="Toggle View:Yearly">Yearly</div>
-														<div class="view-selection-indicator"></div>
-													</div>
+							<div class="group">
+								<div class="selected" ng-class="{'selected': Payment6.viewType == 'Yearly'}">
+									<div class="btn-proposal" ng-mousedown="Payment6.setViewType('Yearly')" event-log="Toggle View:Yearly">Yearly</div>
+									<div class="view-selection-indicator"></div>
+								</div>
 
-													<div ng-class="{'selected': Payment6.viewType == 'Monthly'}">
-														<div class=" btn-proposal" ng-mousedown="Payment6.setViewType('Monthly')" event-log="Toggle View:Monthly">Monthly</div>
-														<div class="view-selection-indicator"></div>
-													</div>
-												</div>
+								<div ng-class="{'selected': Payment6.viewType == 'Monthly'}">
+									<div class=" btn-proposal" ng-mousedown="Payment6.setViewType('Monthly')" event-log="Toggle View:Monthly">Monthly</div>
+									<div class="view-selection-indicator"></div>
+								</div>
+							</div>
 
-												<div class="group">
-													<div class="selected" ng-class="{'selected': Payment6.viewContent == 'Table'}">
-														<div class="btn-proposal" ng-mousedown="Payment6.viewContent = 'Table'" event-log="Toggle View:Table">Table</div>
-														<div class="view-selection-indicator"></div>
-													</div>
+							<div class="group">
+								<div class="selected" ng-class="{'selected': Payment6.viewContent == 'Table'}">
+									<div class="btn-proposal" ng-mousedown="Payment6.viewContent = 'Table'" event-log="Toggle View:Table">Table</div>
+									<div class="view-selection-indicator"></div>
+								</div>
 
-													<div ng-class="{'selected': Payment6.viewContent == 'Chart'}">
-														<div class=" btn-proposal" ng-mousedown="Payment6.showChart()" event-log="Toggle View:Chart">Chart</div>
-														<div class="view-selection-indicator"></div>
-													</div>
-												</div>
+								<div ng-class="{'selected': Payment6.viewContent == 'Chart'}">
+									<div class=" btn-proposal" ng-mousedown="Payment6.showChart()" event-log="Toggle View:Chart">Chart</div>
+									<div class="view-selection-indicator"></div>
+								</div>
+							</div>
 
 
-											</div>
+						</div>
 
+					</div>
+
+					<div class="col-lg-9 col-lg-offset-1 col-xs-10 col-xs-offset-1 chart-container">
+
+						<table id="proposal-tool-amortization-schedule" class="table table-striped">
+							<thead>
+								<tr class="header-1">
+									<td></td>
+									<td>
+										<div>Payment</div>
+									</td>
+									<td class="payments-toggle">
+										<div class="btn-proposal" data-toggle="modal" data-target="#setModal">Set</div>
+										<div class="btn-proposal ng-hide">Edit</div>
+
+
+										<div class="enable-col link ">
+											<div>Tax
+												<br> Savings</div>
+											<span class="glyphicon glyphicon-plus"></span>
+											<span class="glyphicon glyphicon-minus"></span>
 										</div>
 
-										<div class="col-lg-9 col-lg-offset-1 col-xs-10 col-xs-offset-1 chart-container">
+										<!-- shows when not set -->
+										<div>
+											<div>Tax
+												<br> Savings</div>
+										</div>
 
-											<table id="proposal-tool-amortization-schedule" class="table table-striped">
-												<thead>
-													<tr class="header-1">
-														<td></td>
-														<td>
-															<div>Payment</div>
-														</td>
-														<td class="payments-toggle">
-															<div class="btn-proposal" >Set</div>
-															<div class="btn-proposal ng-hide" >Edit</div>
+									</td>
+									<td class="link payments-toggle">
+										<div class="btn-proposal" data-toggle="modal" data-target="#editModal">Edit</div>
+										<div class="enable-col">
+											<div>Energy
+												<br> Savings</div>
+											<span class="glyphicon glyphicon-plus"></span>
+											<span class="glyphicon glyphicon-minus ng-hide"></span>
+										</div>
+									</td>
+									<td class="payments-toggle">
+										<div data-target="#secondSetModal" data-toggle="modal" class="btn-proposal ng-binding">
+											Set
+										</div>
 
-															
-															<div class="enable-col link " >
-																<div>Tax
-																	<br> Savings</div>
-																<span class="glyphicon glyphicon-plus" ></span>
-																<span class="glyphicon glyphicon-minus" ></span>
-															</div>
+										<!-- shows when set -->
+										<div class="enable-col link ng-hide" ng-click="Payment6.toggleValue('showAdditionalSavings')" ng-hide="PT.IC.ProductRebate == 0 &amp;&amp; PT.IC.SolarTaxCreditApplied == 2">
+											<div>Additional
+												<br> Savings</div>
+											<span class="glyphicon glyphicon-plus" ng-show="!Payment6.showAdditionalSavings" event-log="Toggle Show Additional Savings:Clicked"></span>
+											<span class="glyphicon glyphicon-minus ng-hide" ng-show="Payment6.showAdditionalSavings" event-log="Toggle Hide Additional Savings:Clicked"></span>
+										</div>
 
-															<!-- shows when not set -->
-															<div>
-																<div>Tax
-																	<br> Savings</div>
-															</div>
+										<!-- shows when not set -->
+										<div ng-hide="PT.IC.ProductRebate != 0 || PT.IC.SolarTaxCreditApplied != 2">
+											<div>Additional
+												<br> Savings</div>
+										</div>
 
-														</td>
-														<td class="link payments-toggle">
-															<div id="payments-6-showEnergySavings" class="btn-proposal" >Edit</div>
-															<div class="enable-col">
-																<div>Energy
-																	<br> Savings</div>
-																<span class="glyphicon glyphicon-plus"></span>
-																<span class="glyphicon glyphicon-minus ng-hide"></span>
-															</div>
-														</td>
-														<td class="payments-toggle">
-															<div id="payments-6-showAdditionalSavings" class="btn-proposal ng-binding">
-																Set
-															</div>
+									</td>
+									<td>
+										<div ng-show="Payment6.viewContent == 'Table'">Net
+											<br> Impact</div>
+									</td>
+									<td>
+										<div ng-show="Payment6.viewType != 'Monthly' &amp;&amp; Payment6.viewContent == 'Table'">Running
+											<br> Total</div>
+									</td>
+								</tr>
+								<tr class="header-2" ng-hide="Payment6.viewType == 'Monthly' || Payment6.viewContent == 'Chart'">
+									<td ng-click="Payment6.showHeaderTotals = !Payment6.showHeaderTotals;" event-log="Toggle Totals:Off">
+										<span class="glyphicon glyphicon-plus" ng-show="!Payment6.showHeaderTotals"></span>
+										<span class="glyphicon glyphicon-minus ng-hide" ng-show="Payment6.showHeaderTotals"></span> Totals
+									</td>
+									<td><span class="ng-binding ng-hide" ng-show="Payment6.showHeaderTotals" ng-bind-html="PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;Payment&quot;|PTCurrency:true"><span class="negative"></span></span>
+									</td>
 
-															<!-- shows when set -->
-															<div class="enable-col link ng-hide" ng-click="Payment6.toggleValue('showAdditionalSavings')" ng-hide="PT.IC.ProductRebate == 0 &amp;&amp; PT.IC.SolarTaxCreditApplied == 2">
-																<div>Additional
-																	<br> Savings</div>
-																<span class="glyphicon glyphicon-plus" ng-show="!Payment6.showAdditionalSavings" event-log="Toggle Show Additional Savings:Clicked"></span>
-																<span class="glyphicon glyphicon-minus ng-hide" ng-show="Payment6.showAdditionalSavings" event-log="Toggle Hide Additional Savings:Clicked"></span>
-															</div>
-
-															<!-- shows when not set -->
-															<div ng-hide="PT.IC.ProductRebate != 0 || PT.IC.SolarTaxCreditApplied != 2">
-																<div>Additional
-																	<br> Savings</div>
-															</div>
-
-														</td>
-														<td>
-															<div ng-show="Payment6.viewContent == 'Table'">Net
-																<br> Impact</div>
-														</td>
-														<td>
-															<div ng-show="Payment6.viewType != 'Monthly' &amp;&amp; Payment6.viewContent == 'Table'">Running
-																<br> Total</div>
-														</td>
-													</tr>
-													<tr class="header-2" ng-hide="Payment6.viewType == 'Monthly' || Payment6.viewContent == 'Chart'">
-														<td ng-click="Payment6.showHeaderTotals = !Payment6.showHeaderTotals;" event-log="Toggle Totals:Off">
-															<span class="glyphicon glyphicon-plus" ng-show="!Payment6.showHeaderTotals"></span>
-															<span class="glyphicon glyphicon-minus ng-hide" ng-show="Payment6.showHeaderTotals"></span> Totals
-														</td>
-														<td><span class="ng-binding ng-hide" ng-show="Payment6.showHeaderTotals" ng-bind-html="PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;Payment&quot;|PTCurrency:true"><span class="negative"></span></span>
-														</td>
-
-														<!-- Handle Tax Savings Net -->
-														<td><span class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings &amp;&amp; Payment6.showHeaderTotals" ng-bind-html="PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;TaxSavings&quot;|PTCurrency:true"><span class="negative">$0</span></span>
-														</td>
+									<!-- Handle Tax Savings Net -->
+									<td><span class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings &amp;&amp; Payment6.showHeaderTotals" ng-bind-html="PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;TaxSavings&quot;|PTCurrency:true"><span class="negative">$0</span></span>
+									</td>
 
 
-														<!-- Handle Energy Savings Net -->
-														<td><span class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings &amp;&amp; Payment6.showHeaderTotals" ng-bind-html="PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;EnergySavings&quot;|PTCurrency:false"><span class="positive">$4,945</span></span>
-														</td>
+									<!-- Handle Energy Savings Net -->
+									<td><span class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings &amp;&amp; Payment6.showHeaderTotals" ng-bind-html="PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;EnergySavings&quot;|PTCurrency:false"><span class="positive">$4,945</span></span>
+									</td>
 
 
-														<!-- Handle Additional Savings Net -->
-														<!--<td>
+									<!-- Handle Additional Savings Net -->
+									<!--<td>
                                         <span ng-show="Payment6.showAdditionalSavings && Payment6.showHeaderTotals"
                                               ng-bind-html='(PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:"TaxCredits" + PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:"Rebates")|PTCurrency:true'></span>
                                     </td>-->
-														<td>
-															<span class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; Payment6.showHeaderTotals" ng-bind-html="((PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;Rebates&quot;)+(PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;TaxCredits&quot;))|PTCurrency:false"><span class="negative">$0</span></span>
-														</td>
+									<td>
+										<span class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; Payment6.showHeaderTotals" ng-bind-html="((PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;Rebates&quot;)+(PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule|sumByKey:&quot;TaxCredits&quot;))|PTCurrency:false"><span class="negative">$0</span></span>
+									</td>
 
-														<!-- Handle Net Impact -->
-														<td><span class="ng-binding ng-hide" ng-show="Payment6.showHeaderTotals" ng-bind-html="Payment6.calculateTotalNetPayment(row)|PTCurrency:true"><span class="negative"></span></span>
-														</td>
-														<td></td>
-													</tr>
-												</thead>
-												<tbody ng-show="Payment6.viewContent == 'Table'">
-													<!-- ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:0">
+									<!-- Handle Net Impact -->
+									<td><span class="ng-binding ng-hide" ng-show="Payment6.showHeaderTotals" ng-bind-html="Payment6.calculateTotalNetPayment(row)|PTCurrency:true"><span class="negative"></span></span>
+									</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody ng-show="Payment6.viewContent == 'Table'">
+								<!-- ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:0">
 
-														<td class="ng-binding">2016</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$895</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
-															</div>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:1">
+									<td class="ng-binding">2016</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$895</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
+										</div>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:1">
 
-														<td class="ng-binding">2017</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$940</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
-															</div>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:2">
+									<td class="ng-binding">2017</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$940</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
+										</div>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:2">
 
-														<td class="ng-binding">2018</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$987</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
-															</div>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:3">
+									<td class="ng-binding">2018</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$987</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
+										</div>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:3">
 
-														<td class="ng-binding">2019</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$1,036</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
-															</div>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:4">
+									<td class="ng-binding">2019</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$1,036</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
+										</div>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Yearly'" event-log="Select Row:4">
 
-														<td class="ng-binding">2020</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$1,088</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
-															</div>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+									<td class="ng-binding">2020</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest + row.Principal + row.AdminFee)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="row.TaxSavings|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="row.EnergySavings|PTCurrency:false"><span class="positive">$1,088</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; row.Rebates == 0 &amp;&amp; PT.IC.SolarTaxCreditPaydown == 1 &amp;&amp; $index == 0"><span class="positive">Applied</span>
+										</div>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings &amp;&amp; (row.Rebates || PT.IC.SolarTaxCreditPaydown == 2 || $index &gt; 0)" ng-bind-html="(row.Rebates + row.TaxCredits)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="Payment6.calculateNetPayment(row)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
 
-													<!-- ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:0">
+								<!-- ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:0">
 
-														<td class="ng-binding">2016</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$75</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:1">
+									<td class="ng-binding">2016</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$75</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:1">
 
-														<td class="ng-binding">2017</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$78</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:2">
+									<td class="ng-binding">2017</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$78</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:2">
 
-														<td class="ng-binding">2018</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$82</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:3">
+									<td class="ng-binding">2018</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$82</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:3">
 
-														<td class="ng-binding">2019</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$86</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-													<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:4">
+									<td class="ng-binding">2019</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$86</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+								<tr class="ng-scope ng-hide" ng-repeat="(key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule" ng-click="Payment6.setSelectedRowIndex($event, $index)" ng-class="{selected:Payment6.selectedRowIndex == $index}" ng-show="Payment6.viewType == 'Monthly'" event-log="Select Row:4">
 
-														<td class="ng-binding">2020</td>
-														<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$91</span>
-															</div>
-														</td>
-														<td>
-															<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
-															</div>
-														</td>
-														<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
-														</td>
-														<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
-														</td>
-													</tr>
-													<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
-												</tbody>
-												<tbody ng-show="Payment6.viewContent == 'Chart'" class="chart-container ng-hide" style="border:none;">
-													<tr>
-														<td colspan="7" style="padding-top: 0px;">
-															<div id="chart-payments-schedule"></div>
-														</td>
-													</tr>
-												</tbody>
-												<tbody class="ng-hide" ng-show="Payment6.showEnergySavings">
-													<tr ng-show="PT.IC.ProductExpectedLife != 25">
-														<td colspan="7">
-															<div class="link ng-binding" ng-click="PT.setProductExpectedLife(25)" event-log="Show LOS Energy Savings:Clicked">
-																Show 2021 - 2040 Energy Savings
-															</div>
-														</td>
-													</tr>
-													<tr class="ng-hide" ng-show="PT.IC.ProductExpectedLife == 25">
-														<td colspan="7">
-															<div class="link ng-binding" ng-click="PT.setProductExpectedLife(parseInt(PT.IC.Term.Text))" event-log="Hide LOS Energy Savings:Clicked">
-																Hide - 2020 Energy Savings
-															</div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
+									<td class="ng-binding">2020</td>
+									<td class="ng-binding" ng-bind-html="(row.Interest/12 + row.Principal/12 + row.AdminFee/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showTaxSavings" ng-bind-html="(row.TaxSavings/12)|PTCurrency:true"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showEnergySavings" ng-bind-html="(row.EnergySavings/12)|PTCurrency:false"><span class="positive">$91</span>
+										</div>
+									</td>
+									<td>
+										<div class="ng-binding ng-hide" ng-show="Payment6.showAdditionalSavings" ng-bind-html="((row.Rebates + row.TaxCredits)/12)|PTCurrency:false"><span class="negative">$0</span>
+										</div>
+									</td>
+									<td class="ng-binding" ng-bind-html="(Payment6.calculateNetPayment(row)/12)|PTCurrency:true"><span class="negative"></span>
+									</td>
+									<td class="ng-binding" ng-hide="Payment6.viewType == 'Monthly'" ng-bind-html="Payment6.runningTotal[$index]|PTCurrency:true"><span class="negative"></span>
+									</td>
+								</tr>
+								<!-- end ngRepeat: (key, row) in PT.Calculations.Terms[PT.IC.Term.Text].AmortizationSchedule.Schedule -->
+							</tbody>
+							<tbody ng-show="Payment6.viewContent == 'Chart'" class="chart-container ng-hide" style="border:none;">
+								<tr>
+									<td colspan="7" style="padding-top: 0px;">
+										<div id="chart-payments-schedule"></div>
+									</td>
+								</tr>
+							</tbody>
+							<tbody class="ng-hide" ng-show="Payment6.showEnergySavings">
+								<tr ng-show="PT.IC.ProductExpectedLife != 25">
+									<td colspan="7">
+										<div class="link ng-binding" ng-click="PT.setProductExpectedLife(25)" event-log="Show LOS Energy Savings:Clicked">
+											Show 2021 - 2040 Energy Savings
+										</div>
+									</td>
+								</tr>
+								<tr class="ng-hide" ng-show="PT.IC.ProductExpectedLife == 25">
+									<td colspan="7">
+										<div class="link ng-binding" ng-click="PT.setProductExpectedLife(parseInt(PT.IC.Term.Text))" event-log="Hide LOS Energy Savings:Clicked">
+											Hide - 2020 Energy Savings
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 
-											<!-- ngInclude: 'proposal-tool-footer' -->
-											<div class="disclosure-footer col-xs-12 ng-scope" ng-include="'proposal-tool-footer'"><span class="ng-binding ng-scope">
+						<!-- ngInclude: 'proposal-tool-footer' -->
+						<div class="disclosure-footer col-xs-12 ng-scope" ng-include="'proposal-tool-footer'"><span class="ng-binding ng-scope">
 
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
         </span><a class="ng-scope" href="http://www.heroprogram.com/" target="_blank" event-log="Footer - Open HERO Program:Clicked">HERO Program</a><span class="ng-scope"> &nbsp; | &nbsp;
         </span><a class="ng-scope" href="http://www.heroprogram.com/Privacy-Policy" target="_blank" event-log="Footer - Open Privacy Policy:Clicked">Privacy Policy</a><span class="ng-scope"> &nbsp; | &nbsp;
         </span><a class="ng-scope" href="https://e46c35b14ba172b610db-5bdc7e6ccbce2b667854e87f83bdb832.ssl.cf1.rackcdn.com/HERO_Proposal_Disclosures.pdf" target="_blank" event-log="Footer - Open Disclosures:Clicked">Disclosures</a>
 
-											</div>
-										</div>
-
-									</div>
-
-
-								</div>
-
-			
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
