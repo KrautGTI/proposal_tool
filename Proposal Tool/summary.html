@@ -5,11 +5,17 @@
 			<img src="css/images/HERO_Logo.png" height="60">
 
 			<div class="proposal-toop-quick-nav">
-				<div class="nav-selection active visited"></div>
+				<a href="#/startProposal/id1">
+					<div class="nav-selection visited"></div>
+				</a>
 				<div class="nav-selection-divider"></div>
-				<div class="nav-selection"></div>
+				<a href="#/yourOptions/id1">
+					<div class="nav-selection visited"></div>
+				</a>
 				<div class="nav-selection-divider"></div>
-				<div class="nav-selection"></div>
+				<a href="#/paymentOptions/id1">
+					<div class="nav-selection active visited"></div>
+				</a>
 			</div>
 			<ul class="nav nav-pills pull-right ng-scope">
 				<li role="presentation" class="dropdown">
@@ -36,143 +42,143 @@
 	</div>
 	<div class="container pages-container">
 		<div class="pages row">
-			
+
 			<!-- Set model strat-->
-				<div id="setModal" class="modal fade" role="dialog">
-					<div class="modal-content" style="max-height: 500px; max-width: 900px; margin-left:20%; margin-top:30px">
-						<div class="modal-header tax-selection-modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h3 class="modal-title">How do you file your taxes?</h3>
-						</div>
-						<div class="modal-body tax-selection-modal">
+			<div id="setModal" class="modal fade" role="dialog">
+				<div class="modal-content" style="max-height: 500px; max-width: 900px; margin-left:20%; margin-top:30px">
+					<div class="modal-header tax-selection-modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h3 class="modal-title">How do you file your taxes?</h3>
+					</div>
+					<div class="modal-body tax-selection-modal">
 
-							<div class="page-1">
-								<ul>
-									<li>
-										<div class="btn-proposal">Married Filing Jointly</div>
-									</li>
-									<li>
-										<div class="btn-proposal">Married Filing Separately</div>
-									</li>
-									<li>
-										<div class="btn-proposal">Qualified Widow(er)</div>
-									</li>
-									<li>
-										<div class="btn-proposal">Single</div>
-									</li>
-									<li>
-										<div class="btn-proposal">Head Of House </div>
-									</li>
-								</ul>
-							</div>
+						<div class="page-1">
+							<ul>
+								<li>
+									<div class="btn-proposal">Married Filing Jointly</div>
+								</li>
+								<li>
+									<div class="btn-proposal">Married Filing Separately</div>
+								</li>
+								<li>
+									<div class="btn-proposal">Qualified Widow(er)</div>
+								</li>
+								<li>
+									<div class="btn-proposal">Single</div>
+								</li>
+								<li>
+									<div class="btn-proposal">Head Of House </div>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<!-- Set model end-->
+			</div>
+			<!-- Set model end-->
 
 
-				<!-- Edit model start-->
-				<div id="editModal" class="modal fade" role="dialog">
-					<div class="modal-content" style="max-height: 500px; max-width: 300px; margin-left:40%; margin-top:30px">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
-							</button>
-							<h3 class="modal-title">Electric Rate Change</h3>
+			<!-- Edit model start-->
+			<div id="editModal" class="modal fade" role="dialog">
+				<div class="modal-content" style="max-height: 500px; max-width: 300px; margin-left:40%; margin-top:30px">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+						</button>
+						<h3 class="modal-title">Electric Rate Change</h3>
+					</div>
+					<div class="modal-body electric-rate-selection-modal" style="overflow:auto;">
+						<div style="font-size:25px; text-align:center; margin:20px 0px 40px;">
+							<button style="width:58px; font-weight:bold;" class="btn-proposal" ng-click="count=count+1" ng-init="count=0.5">∧</button>
+							<input type="text" value="5.0" ng-model="count" style="width:60px; margin:10px auto; text-align:center;" class="form-control">
+							<button style="width:58px; font-weight:bold;" class="btn-proposal" ng-click="count=count-1">∨</button>
 						</div>
-						<div class="modal-body electric-rate-selection-modal" style="overflow:auto;">
-							<div style="font-size:25px; text-align:center; margin:20px 0px 40px;">
-								<button style="width:58px; font-weight:bold;" class="btn-proposal" ng-click="count=count+1" ng-init="count=0.5">∧</button>
-								<input type="text" value="5.0" ng-model="count" style="width:60px; margin:10px auto; text-align:center;" class="form-control">
-								<button style="width:58px; font-weight:bold;" class="btn-proposal" ng-click="count=count-1">∨</button>
-							</div>
 
-							<div style="width:120px; margin:0px auto;" class="btn-proposal">Apply</div>
-						</div>
+						<div style="width:120px; margin:0px auto;" class="btn-proposal">Apply</div>
 					</div>
 				</div>
-				<!--Edit model end-->
+			</div>
+			<!--Edit model end-->
 
-				<!-- Second set model start-->
-				<div id="secondSetModal" class="modal fade" role="dialog">
-					<div class="modal-content" style="max-height: 700px; max-width: 900px; margin-left:20%; margin-top:30px">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
-							</button>
-							<h3 class="modal-title">Additional Savings</h3>
+			<!-- Second set model start-->
+			<div id="secondSetModal" class="modal fade" role="dialog">
+				<div class="modal-content" style="max-height: 700px; max-width: 900px; margin-left:20%; margin-top:30px">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+						</button>
+						<h3 class="modal-title">Additional Savings</h3>
+					</div>
+
+					<div class="modal-body additional-savings-modal" style="overflow:auto;">
+
+
+						<div class="col-xs-12">
+							<div class="col-xs-8">
+								<h3>Rebates</h3>
+								<p>
+									Manufacturer, municipal or utility rebates may be available in your area. Visit the <a href="">Database of State Incentives for Renewables & Efficiency</a> (DSIRE) for more information.
+								</p>
+							</div>
+							<div class="col-xs-3 col-xs-offset-1" style="margin-top:60px;">
+								<input class="pull-right form-control" type="text" style="text-align:right;" />
+							</div>
 						</div>
+						<div class="col-xs-12" style="margin-top:10px;">
 
-						<div class="modal-body additional-savings-modal" style="overflow:auto;">
-
-
-							<div class="col-xs-12">
-								<div class="col-xs-8">
-									<h3>Rebates</h3>
-									<p>
-										Manufacturer, municipal or utility rebates may be available in your area. Visit the <a href="">Database of State Incentives for Renewables & Efficiency</a> (DSIRE) for more information.
-									</p>
+							<div class="col-xs-8" style="padding-bottom:0px; border-bottom:none; ">
+								<div class="col-xs-2" style="padding-left:0px;">
+									<div style="margin:10px 0px; text-align:left;" class="tax-credit-applied-toggle-container">
+										<input class="tax-credit-applied-toggle" type="checkbox" data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="default">
+									</div>
 								</div>
-								<div class="col-xs-3 col-xs-offset-1" style="margin-top:60px;">
-									<input class="pull-right form-control" type="text" style="text-align:right;" />
+								<div class="col-xs-10" style="padding-left:0px;">
+									<h3 style="margin-top:15px;">Solar Tax Credit</h3>
 								</div>
 							</div>
-							<div class="col-xs-12" style="margin-top:10px;">
 
-								<div class="col-xs-8" style="padding-bottom:0px; border-bottom:none; ">
+
+							<div class="col-xs-8">
+								<p>
+									A taxpayer may claim a credit of 30% of qualified expenditures for a system that serves a dwelling unit located in the United States that is owned and used as a residence by the taxpayer. Visit the <a href="">Department of Energy Renewable Energy Tax Credit</a> for more information.
+								</p>
+							</div>
+							<div class="col-xs-3 col-xs-offset-1">
+
+								<input class="pull-right  form-control" type="text" style="text-align:right;" />
+							</div>
+						</div>
+						<div class="col-xs-12" style="margin-top:10px;">
+							<div class="col-xs-8">
+								<div class="col-xs-12" style="padding-bottom:0px; border-bottom:none; padding-left:0px;">
 									<div class="col-xs-2" style="padding-left:0px;">
-										<div style="margin:10px 0px; text-align:left;" class="tax-credit-applied-toggle-container">
-											<input class="tax-credit-applied-toggle" type="checkbox" data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="default">
+										<div class="solar-tax-credit-paydown-toggle-container">
+											<input class="solar-tax-credit-paydown-toggle" type="checkbox" data-toggle="toggle" disabled data-on="On" data-off="Off" data-onstyle="success" data-offstyle="default">
 										</div>
 									</div>
 									<div class="col-xs-10" style="padding-left:0px;">
-										<h3 style="margin-top:15px;">Solar Tax Credit</h3>
+										<h3 style="margin-top:15px;">Solar Tax Credit Pay Down</h3>
 									</div>
 								</div>
 
+								<p>
+									Enables users to calculate the impact of using the solar tax credit amount to pay down the HERO financed amount and reamortize the payment schedule. Assumed pay down date is May 15 the following year. Assumed pay down amount is 30% of total system cost (minimum $2,500).
+								</p>
 
-								<div class="col-xs-8">
-									<p>
-										A taxpayer may claim a credit of 30% of qualified expenditures for a system that serves a dwelling unit located in the United States that is owned and used as a residence by the taxpayer. Visit the <a href="">Department of Energy Renewable Energy Tax Credit</a> for more information.
-									</p>
-								</div>
-								<div class="col-xs-3 col-xs-offset-1">
-
-									<input class="pull-right  form-control" type="text" style="text-align:right;" />
-								</div>
 							</div>
-							<div class="col-xs-12" style="margin-top:10px;">
-								<div class="col-xs-8">
-									<div class="col-xs-12" style="padding-bottom:0px; border-bottom:none; padding-left:0px;">
-										<div class="col-xs-2" style="padding-left:0px;">
-											<div class="solar-tax-credit-paydown-toggle-container">
-												<input class="solar-tax-credit-paydown-toggle" type="checkbox" data-toggle="toggle" disabled data-on="On" data-off="Off" data-onstyle="success" data-offstyle="default">
-											</div>
-										</div>
-										<div class="col-xs-10" style="padding-left:0px;">
-											<h3 style="margin-top:15px;">Solar Tax Credit Pay Down</h3>
-										</div>
-									</div>
-
-									<p>
-										Enables users to calculate the impact of using the solar tax credit amount to pay down the HERO financed amount and reamortize the payment schedule. Assumed pay down date is May 15 the following year. Assumed pay down amount is 30% of total system cost (minimum $2,500).
-									</p>
-
-								</div>
-								<div class="col-xs-3 col-xs-offset-1" style="margin-top:30px;">
+							<div class="col-xs-3 col-xs-offset-1" style="margin-top:30px;">
 
 
-								</div>
 							</div>
-							<div class="col-xs-12 selection">
-								<div class="btn-proposal pull-right">Apply Savings</div>
-							</div>
-
-
-
+						</div>
+						<div class="col-xs-12 selection">
+							<div class="btn-proposal pull-right">Apply Savings</div>
 						</div>
 
+
+
 					</div>
+
 				</div>
-				<!--Second set model end-->
+			</div>
+			<!--Second set model end-->
 
 
 			<div class="proposal-page proposal-page-Payments-6 col-xs-12 column anim-fade ng-scope">
