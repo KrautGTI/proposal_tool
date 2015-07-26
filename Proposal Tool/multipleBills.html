@@ -57,83 +57,19 @@
 						</div>
 				</div>
 
-				<div class="col-xs-12" style="margin:20px auto 0px; ">
-					<div class="row">
+				<div class="col-xs-12" style="margin:20px auto 0px; " ng-init="months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']">
+					<div class="row" class="animate-repeat" ng-repeat="i in [0, 1, 2, 3, 4, 5]">
 						<div class="col-xs-6">
-							<span>January</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
+							<span>{{months[$index]}}</span>
+							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill[i].dollars">
+							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill[i+6].kWh" >
 						</div>
 						<div class="col-xs-6">
-							<span>July</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
+							<span>{{months[$index+6]}}</span>
+							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill[i+6].dollars">
+							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill[i+6].kWh">
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-xs-6">
-							<span>February</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
-						</div>
-						<div class="col-xs-6">
-							<span>August</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" kwh-input="" tabindex="8" event-log="August kWh" type="text">
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-xs-6">
-							<span>March</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
-						</div>
-						<div class="col-xs-6">
-							<span>September</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-xs-6">
-
-							<span>April</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
-						</div>
-						<div class="col-xs-6">
-							<span>October</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-xs-6">
-							<span>May</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
-						</div>
-						<div class="col-xs-6">
-							<span>November</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-xs-6">
-							<span>June</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
-						</div>
-						<div class="col-xs-6">
-							<span>December</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text">
-						</div>
 					</div>
 				</div>			
 				<div class="disclosure-footer col-xs-12 ng-scope"><span>

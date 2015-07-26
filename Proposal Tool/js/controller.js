@@ -1,5 +1,6 @@
 var propTool = angular.module('propTool', ['ngRoute', 'proposalControllers']);
 
+
 propTool.config(['$routeProvider',
 				 function($routeProvider){
 					$routeProvider.
@@ -38,17 +39,22 @@ propTool.config(['$routeProvider',
 					controller:'multipleBillBarGraphController'	
 				    }).
 					 when('/annualElectricBill/id1', {
-					templateUrl: 'annualElectricBill.html'
+					templateUrl: 'annualElectricBill.html',
+                    controller:'multipleBillBarGraphController'
 				    }).
 					when('/lineGraph/id1', {
 					templateUrl: 'lineGraph.html',
 					controller:'lineGraphController'	
 				    }).
 					 when('/percentageChange/id1', {
-					templateUrl: 'percentageChange.html'						
+					templateUrl: 'percentageChange.html',
+                    controller:'percentageChangeController'	
+                        
 				    }).	
 					 when('/futureElectricCost/id1', {
-					templateUrl: 'futureElectricCost.html'
+					templateUrl: 'futureElectricCost.html',
+                    controller: 'areaChartController'
+                    
 				    }).
 					 when('/yourOptions/id1', {
 					templateUrl: 'yourOptions.html'
@@ -61,7 +67,8 @@ propTool.config(['$routeProvider',
 					controller:	'buildSolarSystemController'
 				    }).
 					 when('/estimatedSolarSystemProduction/id1', {
-					templateUrl: 'estimatedSolarSystemProduction.html'
+					templateUrl: 'estimatedSolarSystemProduction.html',
+                    controller:'estimatedSolarSystemController'
 				    }).
 					 when('/solarSystemSummary/id1', {
 					templateUrl: 'solarSystemSummary.html'
