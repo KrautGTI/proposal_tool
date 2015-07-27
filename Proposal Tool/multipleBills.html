@@ -6,8 +6,8 @@
 
 			<div class="proposal-toop-quick-nav">
 				<a href="#/startProposal/id1">
-				<div class="nav-selection active visited"></div>
-				</a>	
+					<div class="nav-selection active visited"></div>
+				</a>
 				<div class="nav-selection-divider"></div>
 				<div class="nav-selection"></div>
 				<div class="nav-selection-divider"></div>
@@ -48,13 +48,13 @@
 					Pacific Gas &amp; Electric <span class="link ng-hide">(change)</span>
 
 					<div class="pull-right">
-							<div style="width: 67px; height: 34px;" class="toggle btn btn-success" data-toggle="toggle">
-								<div class="toggle-group" ng-click="toggleCustom()">
-									<label ng-show="custom" class="btn btn-success toggle-on">$$</label>
-									<label ng-hide="custom" class="btn btn-primary toggle-on">kWh</label><span class="toggle-handle btn btn-default"></span>
-								</div>
+						<div style="width: 67px; height: 34px;" class="toggle btn btn-success" data-toggle="toggle">
+							<div class="toggle-group" ng-click="toggleCustom()">
+								<label ng-show="custom" class="btn btn-success toggle-on">$$</label>
+								<label ng-hide="custom" class="btn btn-primary toggle-on">kWh</label><span class="toggle-handle btn btn-default"></span>
 							</div>
 						</div>
+					</div>
 				</div>
 
 				<div class="col-xs-12" style="margin:20px auto 0px; " ng-init="months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']">
@@ -62,7 +62,7 @@
 						<div class="col-xs-6">
 							<span>{{months[$index]}}</span>
 							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill[i].dollars">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill[i].kWh" >
+							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill[i].kWh">
 						</div>
 						<div class="col-xs-6">
 							<span>{{months[$index+6]}}</span>
@@ -70,8 +70,7 @@
 							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill[i+6].kWh">
 						</div>
 					</div>
-					</div>
-				</div>			
+				</div>
 				<div class="disclosure-footer col-xs-12 ng-scope"><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
         </span><a class="ng-scope" href="#">HERO Program</a><span class="ng-scope"> &nbsp; | &nbsp;
@@ -81,18 +80,19 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 
-	<div id="proposal-page-nav">
-		<a href="#/review/id1">
-			<div class="nav-button prev">
-				<span class="icon">&lt;</span> BACK
-			</div>
-		</a>
-		<a href="#/multipleBillBarGraph/id1">
-			<div class="nav-button next">
-				<span class="icon">&gt;</span> NEXT
-			</div>
-		</a>
-	</div>
+<div id="proposal-page-nav">
+	<a href="#/review/id1">
+		<div class="nav-button prev">
+			<span class="icon">&lt;</span> BACK
+		</div>
+	</a>
+	<a href="#/multipleBillBarGraph/id1">
+		<div class="nav-button next">
+			<span class="icon">&gt;</span> NEXT
+		</div>
+	</a>
+</div>
 </div>

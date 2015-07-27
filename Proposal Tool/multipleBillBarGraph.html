@@ -75,25 +75,26 @@
 				<div class="col-xs-12 graph-header">
 
 					<div class="sum-values">
-						<div >ANNUAL COST: {{energyBill.annualCost}}</div>
-						<div class="ng-hide">ANNUAL USAGE: 0 kWh</div>
+						<div ng-show="custom">ANNUAL COST: {{energyBill.annualCost}}</div>
+						<div ng-hide="custom">ANNUAL USAGE: 0 kWh</div>
 					</div>
 
 
 					<h1>Your Current Electric Bills with <strong class="long-name ng-binding">Pacific Gas &amp; Electric</strong><strong class="short-name ng-binding">PG&amp;E</strong></h1>
 
 
-					<div class="energy-type-toggle">
+					<div class="pull-right">
 						<div style="width: 67px; height: 34px;" class="toggle btn btn-success" data-toggle="toggle">
-							<input class="energy-bill-toggle" checked="checked" data-toggle="toggle" data-on="$$" data-off="kWh" data-onstyle="success" data-offstyle="primary" type="checkbox">
-							<div class="toggle-group">
-								<label class="btn btn-success toggle-on">$$</label>
-								<label class="btn btn-primary active toggle-off">kWh</label><span class="toggle-handle btn btn-default"></span>
+							<div class="toggle-group" ng-click="toggleCustomBar()">
+								<label ng-show="custom" class="btn btn-success toggle-on">$$</label>
+								<label ng-hide="custom" class="btn btn-primary toggle-on">kWh</label><span class="toggle-handle btn btn-default"></span>
 							</div>
 						</div>
 					</div>
+					
+					
 				</div>
-                         <div id="bars"> </div>
+                         <div id="bars" style="margin-top:40px"> </div>
 				<div class="disclosure-footer col-xs-12 ng-scope" style="margin-top: 124px;"><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
         </span><a class="ng-scope" href="">HERO Program</a><span class="ng-scope"> &nbsp; | &nbsp;

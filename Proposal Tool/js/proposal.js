@@ -111,6 +111,11 @@ proposalControllers.controller('percentageChangeController', ['$scope', 'dataSer
 	}]);
 
 proposalControllers.controller('multipleBillBarGraphController',['$scope', 'dataService' , function($scope, dataService){
+	    
+	    $scope.custom = true;
+        $scope.toggleCustomBar = function() {			
+            $scope.custom = $scope.custom === false ? true: false;
+        };
     
         $scope.energyBill = dataService.dataObj;
         $scope.showHide = true;
