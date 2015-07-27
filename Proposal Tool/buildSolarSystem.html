@@ -137,7 +137,65 @@
 										<span ng-if="item != itemList[itemList.length-1]" class="link" ng-click="removeArray(this)">remove</span>
 
 									</div>
-									<div class="advanced-options link pull-right">Advanced Options <span class="glyphicon glyphicon-cog"></span> </div>
+									<div class="advanced-options link pull-right" data-toggle="modal" data-target="#advancedOption">Advanced Options <span class="glyphicon glyphicon-cog"></span> </div>
+									
+									
+									<!--********Model On Setting***********-->
+									<div id="advancedOption" class="modal fade" role="dialog">
+										<div class="modal-content" style="max-height: 700px; max-width: 900px; margin-left:17%; margin-top:30px">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h3 class="modal-title">Advanced Options - Array {{$index+1}}</h3>
+											</div>
+
+											<div class="modal-body solar-system-designer-advanced-options">
+
+												<div class="col-xs-10 col-xs-offset-1">
+													<div class="row">
+														<h3 class="pull-left left">Module Type</h3>
+														<select class="form-control pull-right"></select>
+														<p class="col-xs-12">
+															The module type describes the photovoltaic modules in the array. Default is standard panels.
+														</p>
+													</div>
+
+													<div class="row">
+														<h3 class="pull-left left">Inverter Efficiency</h3>
+														<input class="form-control pull-right" type="text" />
+														<p class="col-xs-12">
+															The inverter's nominal rated DC-to-AC conversion efficiency. The default value is 96%.
+														</p>
+													</div>
+
+													<div class="row">
+														<h3 class="pull-left left">Shading Losses</h3>
+														<input class="form-control pull-right" type="text" />
+														<p class="col-xs-12">
+															Reduction in the incident solar radiation from shadows caused by objects near the array such as buildings or trees. Default is 3%.
+														</p>
+													</div>
+
+													<div class="row">
+														<h3 class="pull-left left">Annual Solar System Production Degradation</h3>
+														<input class="form-control pull-right" type="text" />
+														<p class="col-xs-12">
+															Solar panels degrade overtime depending on surrounding weather conditions, dust, etc. Typically this is covered in a manufacturer&rsquo;s warranty to be less than 20% degradation over 25 years. The degradation set in the first array will be applied to all arrays. Default is 0.65%.
+														</p>
+													</div>
+
+												</div>
+											</div>
+
+											<div class="modal-footer">
+												<button class="btn-proposal">Apply Options</button>
+											</div>
+										</div>
+									</div>
+									<!--********Model On Setting***********-->
+
+
+
+
 								</div>
 								<div class="solar-array-content">
 
@@ -215,11 +273,7 @@
 						</form>
 					</div>
 				</div>
-
-
-
-
-				<div class="solar-array-footer col-xs-12 ">
+				<div class="solar-array-footer col-xs-12 " style="margin-bottom: -26px;">
 					<div class=" btn-proposal add-array " ng-click="anotherArray()">Add Another Array</div>
 				</div>
 
