@@ -253,6 +253,9 @@ proposalControllers.controller('lineGraphController',['$scope','dataService', fu
                     lineWidth: 2,
                     lineColor: null // inherit from series
                 }
+            },
+            line:{
+                animation:true
             }
         },
         tooltip: {
@@ -388,17 +391,20 @@ proposalControllers.controller('estimatedSolarSystemController',['$scope', 'data
             categories:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         },
              series: [{
+            name: 'Your Electricity Usage',
             type: 'column',
-            
+            color:'#0000FF',
             data: kWhUsed
         }, {
             type: 'area',
-            name: 'Average',
+            name: 'Estimated Solar Production',
+            color:'#eefc6a',
             data: solarEstimate,
+            lineColor:'black',
             marker: {
-                lineWidth: 2,
-                lineColor: Highcharts.getOptions().colors[3],
-                fillColor: '#eefc6a'
+                lineWidth: 1,
+                lineColor: 'black',
+                fillColor: '#FFFFFF'
             }
         } 
         ]
