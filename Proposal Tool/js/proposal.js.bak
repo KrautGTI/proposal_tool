@@ -20,7 +20,6 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.percentChange = 5.0;
                                 energyBill.kWhRates= [0.08, 0.07, 0.08, 0.08, 0.09, 0.09, 0.09, 0.1, 0.11, 0.12, 0.12, 0.12, 0.12, 0.13, 0.13, 0.13, 0.11, 0.11, 0.12, 0.19, 0.19, 0.21, 0.18, 0.20, 0.28, 0.27, 0.28, 0.30, 0.28, 0.27, 0.26, 0.28, 0.29, 0.29];
 
-                                energyBill.numArray = [1];
                                 this.dataObj = energyBill;
             });
 
@@ -98,18 +97,7 @@ proposalControllers.controller('paymentOptionsController',['$scope', function($s
 		
 	}]);
 proposalControllers.controller('buildSolarSystemController',['$scope', 'dataService', function($scope, dataService){
-    $scope.energyBill = dataService.dataObj;
-    $scope.numArray = $scope.energyBill.numArray;
-    
-    $scope.anotherArray = function () {
-        var i = $scope.numArray.length;
-        i++;
-        $scope.numArray.push(i);
-    };
-    
-    
-    
-    
+       
 	}]);
 proposalControllers.controller('percentageChangeController', ['$scope', 'dataService', function($scope, dataService){
             $scope.energyBill = dataService.dataObj;
