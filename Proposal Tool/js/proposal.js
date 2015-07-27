@@ -106,8 +106,13 @@ proposalControllers.controller('buildSolarSystemController',['$scope', 'dataServ
         i++;
         $scope.numArray.push(i);
     };
-    
-    
+	
+	 $scope.removeArray = function(obj){
+		
+		 alert("Remove Array");
+		 console.log(obj);
+	
+	}     
     
     
 	}]);
