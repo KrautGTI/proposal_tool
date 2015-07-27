@@ -57,7 +57,8 @@ propTool.config(['$routeProvider',
                     
 				    }).
 					 when('/yourOptions/id1', {
-					templateUrl: 'yourOptions.html'
+					templateUrl: 'yourOptions.html',
+                    controller: 'yourOptionsController'
 				    }).	
 					 when('/solarSystemWork/id1', {
 					templateUrl: 'solarSystemWork.html'

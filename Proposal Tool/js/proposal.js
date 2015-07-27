@@ -18,6 +18,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 }   
                                 energyBill.percentChange = 5.0;
+                                energyBill.dollar = true;
                                 energyBill.kWhRates= [0.08, 0.07, 0.08, 0.08, 0.09, 0.09, 0.09, 0.1, 0.11, 0.12, 0.12, 0.12, 0.12, 0.13, 0.13, 0.13, 0.11, 0.11, 0.12, 0.19, 0.19, 0.21, 0.18, 0.20, 0.28, 0.27, 0.28, 0.30, 0.28, 0.27, 0.26, 0.28, 0.29, 0.29];
 
                                 energyBill.numArray = [1];
@@ -142,12 +143,23 @@ proposalControllers.controller('percentageChangeController', ['$scope', 'dataSer
     
     
 	}]);
+proposalControllers.controller('yourOptionsController', ['$scope', 'dataService', function($scope, dataService){
+            $scope.energyBill = dataService.dataObj;
+            
+            console.log($scope.energyBill);
+    
+        
+    
+    
+    
+	}]);
+
 
 proposalControllers.controller('multipleBillBarGraphController',['$scope', 'dataService' , function($scope, dataService){
-	    
-	    $scope.custom = true;
+	    $scope.energyBill.dollar = dataService.dataObj;
+	    $scope.dollar = $scope.energyBill.dollar;
         $scope.toggleCustomBar = function() {			
-            $scope.custom = $scope.custom === false ? true: false;
+            $scope.dollar = $scope.dollar === true ? false: true;
         };
     
         $scope.energyBill = dataService.dataObj;
