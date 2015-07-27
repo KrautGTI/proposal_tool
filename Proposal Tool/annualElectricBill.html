@@ -5,9 +5,7 @@
 			<img src="css/images/HERO_Logo.png" height="60">
 
 			<div class="proposal-toop-quick-nav">
-				<a href="#/startProposal/id1">
 				<div class="nav-selection active visited"></div>
-				</a>	
 				<div class="nav-selection-divider"></div>
 				<div class="nav-selection"></div>
 				<div class="nav-selection-divider"></div>
@@ -46,7 +44,7 @@
 						<div class="content">
 							Your Annual
 							<br>Electric Bill is
-							<h2>{{energyBill.annualCost}}</h2>
+							<h2 class="ng-binding">{{"$" + energyBill.annualCost}}</h2>
 						</div>
 						<div class="arc"></div>
 					</div>

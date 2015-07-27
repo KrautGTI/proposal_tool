@@ -47,9 +47,9 @@
                          </strong>
 					</p>
 					<div class="btn-proposal-group">
-						<button class=" btn-proposal" ng-click="count=count+1"  ng-init="count=0.5">∧</button>
+						<button class=" btn-proposal" ng-click="energyBill.percentChange=energyBill.percentChange + 0.5">∧</button>
 						<input  class="ng-pristine ng-untouched ng-valid" ng-model="energyBill.percentChange" style="width: 90px;" type="text">
-						<button class=" btn-proposal" ng-click="count=count-1" >∨</button>
+						<button class=" btn-proposal" ng-click="energyBill.percentChange=energyBill.percentChange - 0.5" >∨</button>
 					</div>
 				</div>
 				<div class="disclosure-footer col-xs-12 ng-scope"><span class="ng-binding ng-scope">
