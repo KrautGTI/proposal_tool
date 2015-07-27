@@ -1,11 +1,7 @@
-
-
 var proposalControllers = angular.module('proposalControllers', [])
                             .service('dataService', function() {
                               // private variable
-                              
-                              
-                                
+                               
                                 var energyBill = [];
 
                                 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
@@ -126,9 +122,12 @@ proposalControllers.controller('buildSolarSystemController',['$scope', 'dataServ
 	
 	 $scope.removeArray = function(obj){
 		
-		 alert("Remove Array");
-		 console.log(obj);
-	
+		 var index = obj.$parent.item;
+         var i = $scope.numArray.indexOf(index);
+         if(i > -1) {
+             $scope.numArray.splice(i, 1);
+         }
+         console.log($scope.numArray);
 	}     
     
     
@@ -156,16 +155,19 @@ proposalControllers.controller('yourOptionsController', ['$scope', 'dataService'
 
 
 proposalControllers.controller('multipleBillBarGraphController',['$scope', 'dataService' , function($scope, dataService){
-	    $scope.energyBill.dollar = dataService.dataObj;
-	    $scope.dollar = $scope.energyBill.dollar;
+
+        $scope.energyBill= dataService.dataObj;
+	       
         $scope.toggleCustomBar = function() {			
-            $scope.dollar = $scope.dollar === true ? false: true;
+                
+            $scope.energyBill.dollar = $scope.energyBill.dollar === true ? false: true;
+        
         };
     
         $scope.energyBill = dataService.dataObj;
         $scope.showHide = true;
-        dollarMonths = [];
-         $scope.energyBill.annualCost = 0;
+        var dataMonths = [];
+        $scope.energyBill.annualCost = 0;
         console.log($scope.energyBill);
        $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
@@ -173,11 +175,11 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
 	    $scope.calculateTotal = function () {
                 $scope.energyBill.annualCost = 0;
                 for(var i = 0; i< $scope.energyBill.length; i++) {
-                var tmp = $scope.energyBill[i];
-                $scope.energyBill[i].dollars = parseInt(tmp.dollars);
-                dollarMonths.push( parseInt(tmp.dollars));
-                $scope.energyBill.annualCost += parseInt(tmp.dollars);
-            }
+                    var tmp = $scope.energyBill[i];
+                    $scope.energyBill[i].dollars = parseInt(tmp.dollars);
+                    dataMonths.push( parseInt(tmp.dollars));
+                    $scope.energyBill.annualCost += parseInt(tmp.dollars);
+                }
         };
        
     $scope.calculateTotal();
@@ -247,7 +249,7 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
     },
 
     series: [{
-        data: dollarMonths,
+        data: dataMonths,
         //draggableX: true,
         draggableY: true,
         dragMinY: 0,
@@ -344,8 +346,7 @@ proposalControllers.controller('lineGraphController',['$scope','dataService', fu
 proposalControllers.controller('areaChartController',['$scope', 'dataService', function($scope, dataService){
     var fiveYearData = [];
     $scope.energyBill = dataService.dataObj;
-    console.log("in areachartController");
-    console.log($scope.energyBill);
+   
     $scope.energyBill.percentChange = parseInt($scope.energyBill.percentChange);
     var annualExpenses = [];
     for(var i = 0; i < 25; i++) {
@@ -354,7 +355,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
         if((i+1)%5 == 0)
             fiveYearData.push(annualExpenses[i]);
     }
-    console.log(annualExpenses);
+    
     
     
     $('#areaChart').highcharts({
@@ -391,7 +392,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
    
         
         tooltip: {
-            pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+            pointFormat: '{point.y}'
         },
         plotOptions: {
             area: {
