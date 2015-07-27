@@ -159,7 +159,7 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                  $scope.showHide = $scope.showHide === false ? true: false;
         };
 	    $scope.calculateTotal = function () {
-            
+                $scope.energyBill.annualCost = 0;
                 for(var i = 0; i< $scope.energyBill.length; i++) {
                 var tmp = $scope.energyBill[i];
                 $scope.energyBill[i].dollars = parseInt(tmp.dollars);
@@ -207,8 +207,10 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                     },
                     drop: function () {
                             
-                        console.log(this);
+                       
                         $scope.calculateTotal();
+                        this.update();
+                        $scope.energyBill[this.x].dollars = this.y;
                     //    $('#drop').html(
                     //        '</b> was set to <b>' + numberFormat(this.y, 2) + '</b>');
                     }
