@@ -21,6 +21,9 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.kWhRates= [0.08, 0.07, 0.08, 0.08, 0.09, 0.09, 0.09, 0.1, 0.11, 0.12, 0.12, 0.12, 0.12, 0.13, 0.13, 0.13, 0.11, 0.11, 0.12, 0.19, 0.19, 0.21, 0.18, 0.20, 0.28, 0.27, 0.28, 0.30, 0.28, 0.27, 0.26, 0.28, 0.29, 0.29];
 
                                 energyBill.numArray = [1];
+                                
+                                
+                                
                                 this.dataObj = energyBill;
             });
 
@@ -49,6 +52,7 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
 }]);
 proposalControllers.controller('justOneBillController',['$scope', function($scope){
         $scope.custom = true;
+        $scope.model = { id: 0 };
         $scope.toggleCustom = function() {
             $scope.custom = $scope.custom === false ? true: false;
         };
@@ -64,7 +68,19 @@ proposalControllers.controller('justOneBillController',['$scope', function($scop
 		}
 		
 		
-	}]);
+	}]).directive('convertToNumber', function() {
+    return {
+      require: 'ngModel',
+      link: function(scope, element, attrs, ngModel) {
+        ngModel.$parsers.push(function(val) {
+          return parseInt(val, 10);
+        });
+        ngModel.$formatters.push(function(val) {
+          return '' + val;
+        });
+      }
+    };
+  });
 
 proposalControllers.controller('multipleBillController',['$scope','dataService', function($scope, dataService){
         $scope.energyBill = dataService.dataObj;
@@ -142,14 +158,17 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
        $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
         };
-	    for(var i = 0; i< $scope.energyBill.length; i++) {
-            var tmp = $scope.energyBill[i];
-            $scope.energyBill[i].dollars = parseInt(tmp.dollars);
-            dollarMonths.push( parseInt(tmp.dollars));
-            $scope.energyBill.annualCost += parseInt(tmp.dollars);
-        }
+	    $scope.calculateTotal = function () {
+            
+                for(var i = 0; i< $scope.energyBill.length; i++) {
+                var tmp = $scope.energyBill[i];
+                $scope.energyBill[i].dollars = parseInt(tmp.dollars);
+                dollarMonths.push( parseInt(tmp.dollars));
+                $scope.energyBill.annualCost += parseInt(tmp.dollars);
+            }
+        };
        
-
+    $scope.calculateTotal();
     $('#bars').highcharts({
 
       title: {
@@ -188,7 +207,8 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                     },
                     drop: function () {
                             
-                        
+                        console.log(this);
+                        $scope.calculateTotal();
                     //    $('#drop').html(
                     //        '</b> was set to <b>' + numberFormat(this.y, 2) + '</b>');
                     }
@@ -206,7 +226,10 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
         legend: {enabled:false},
         
     tooltip: {
-        yDecimals: 2
+        yDecimals: 2,
+        formatter: function() {
+                return ''+ Highcharts.numberFormat(this.y, 2) ;
+        }
     },
 
     series: [{

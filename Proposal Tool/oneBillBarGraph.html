@@ -75,7 +75,7 @@
 				<div class="col-xs-12 graph-header">
 
 					<div class="sum-values">
-						<div ng-show="custom">ANNUAL COST: $0</div>
+						<div ng-show="custom">ANNUAL COST: {{"$" + energyBill.annualCost}}</div>
 						<div ng-hide="custom">ANNUAL USAGE: 0 kWh</div>
 					</div>
 
@@ -92,7 +92,7 @@
 						</div>
 					</div>
 				</div>
-                         <div id="bars" style="margin-top:40px"> </div>
+                <div id="bars" style="margin-top:40px"> </div>
 				<div class="disclosure-footer col-xs-12 ng-scope" style="margin-top: 124px;"><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
         </span><a class="ng-scope" href="">HERO Program</a><span class="ng-scope"> &nbsp; | &nbsp;
