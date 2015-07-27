@@ -400,7 +400,7 @@ proposalControllers.controller('estimatedSolarSystemController',['$scope', 'data
     console.log(kWhUsed);
     $('#lineAreaChart').highcharts({
         title: {
-            text: 'Combination chart'
+            /*text: 'Combination chart'*/
         },
         yAxis: {
                  labels: {
