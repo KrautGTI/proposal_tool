@@ -92,14 +92,14 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                 
                 $scope.energyBill.convert = false;
                 for(var i = 0; i < 12; i++){
-                    $scope.energyBill[i].kWh = (parseInt($scope.energyBill[i].dollars) / $scope.energyBill.kWhRates[lastYear]);
+                    $scope.energyBill[i].kWh = Math.ceil((parseInt($scope.energyBill[i].dollars) / $scope.energyBill.kWhRates[lastYear]));
                     $scope.energyBill.annualUsage += $scope.energyBill[i].kWh;
                     $scope.energyBill[i].kWh = $scope.energyBill[i].kWh;
                 }
             } else {
                 $scope.energyBill.convert = false;
                 for(var i = 0; i < 12; i++){
-                    $scope.energyBill[i].dollars =   (parseInt($scope.energyBill[i].kWh) * $scope.energyBill.kWhRates[lastYear]);
+                    $scope.energyBill[i].dollars =   Math.ceil((parseInt($scope.energyBill[i].kWh) * $scope.energyBill.kWhRates[lastYear]));
                     $scope.energyBill.annualCost += $scope.energyBill[i].dollars;
                     $scope.energyBill[i].dollars = $scope.energyBill[i].dollars;
 
@@ -107,7 +107,7 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
             }
         }
             $scope.energyBill.dollar = $scope.energyBill.dollar === false ? true: false;
-            $scope.energyBill.annualUsage = $scope.energyBill.annualUsage.toFixed(2);
+            $scope.energyBill.annualUsage = Math.ceil($scope.energyBill.annualUsage);
         };
 		
 	}]);
@@ -422,7 +422,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
     var fiveYearData = [];
     $scope.energyBill = dataService.dataObj;
    
-	 $scope.energyBill.cumulative25YearsExpense;
+	 $scope.energyBill.cumulative25YearsExpense = 0;
     $scope.energyBill.percentChange = parseInt($scope.energyBill.percentChange);
     var annualExpenses = [];
     for(var i = 0; i < 25; i++) {
@@ -434,7 +434,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
          
 		$scope.energyBill.cumulative25YearsExpense += annualExpenses[i];
     }
-    
+    $scope.energyBill.cumulative25YearsExpense = Math.ceil($scope.energyBill.cumulative25YearsExpense);
     
     
     $('#areaChart').highcharts({

@@ -58,7 +58,7 @@
 
 					<div class="row" style="margin-top:15px;">
 						<span class="title">Total Electric Costs Over 25 Years</span>
-						<span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span>$0</span>
+						<span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span>{{"$" energyBill.cumulative25YearsExpense}}</span>
 					</div>
 					<div class="row">
 						<span class="title">Your Annual Bill</span>
@@ -70,7 +70,7 @@
 					</div>
 					<div class="row">
 						<span class="title">Your Average Electric Price</span>
-						<span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span> / kWh</span>
+						<span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span> {{Math.ceil(energyBill.cumulative25YearsExpense/(25 * $scope.energyBill.cumulative25YearsExpense))+ "/ kWh"}}</span>
 					</div>
 
 				</div>
