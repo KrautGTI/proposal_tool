@@ -76,7 +76,7 @@
 
 					<div class="sum-values">
 						<div ng-show="energyBill.dollar">ANNUAL COST: {{"$" + energyBill.annualCost}}</div>
-						<div ng-hide="energyBill.dollar">ANNUAL USAGE: 0 kWh</div>
+						<div ng-hide="energyBill.dollar">ANNUAL USAGE: {{ energyBill.annualUsage + 'kWh'}} </div>
 					</div>
 
 

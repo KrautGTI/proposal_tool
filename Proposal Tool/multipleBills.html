@@ -50,8 +50,8 @@
 					<div class="pull-right">
 						<div style="width: 67px; height: 34px;" class="toggle btn btn-success" data-toggle="toggle">
 							<div class="toggle-group" ng-click="toggleCustom()">
-								<label ng-show="custom" class="btn btn-success toggle-on">$$</label>
-								<label ng-hide="custom" class="btn btn-primary toggle-on">kWh</label><span class="toggle-handle btn btn-default"></span>
+								<label ng-show="energyBill.dollar" class="btn btn-success toggle-on">$$</label>
+								<label ng-hide="energyBill.dollar" class="btn btn-primary toggle-on">kWh</label><span class="toggle-handle btn btn-default"></span>
 							</div>
 						</div>
 					</div>
@@ -61,13 +61,13 @@
 					<div class="row" class="animate-repeat" ng-repeat="i in [0, 1, 2, 3, 4, 5]">
 						<div class="col-xs-6">
 							<span>{{months[$index]}}</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill[i].dollars">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill[i].kWh">
+							<input ng-show="energyBill.dollar" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill[i].dollars">
+							<input ng-hide="energyBill.dollar" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill[i].kWh">
 						</div>
 						<div class="col-xs-6">
 							<span>{{months[$index+6]}}</span>
-							<input ng-show="custom" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill[i+6].dollars">
-							<input ng-hide="custom" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill[i+6].kWh">
+							<input ng-show="energyBill.dollar" value="$0" class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill[i+6].dollars">
+							<input ng-hide="energyBill.dollar" value="0 kWh" class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill[i+6].kWh">
 						</div>
 					</div>
 				</div>
