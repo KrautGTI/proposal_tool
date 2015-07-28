@@ -14,6 +14,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 }   
                                 energyBill.percentChange = 5.0;
+								energyBill.cumulative25YearsExpense = 1;
                                 energyBill.dollar = true;
                                 energyBill.convert = true;
                                 energyBill.kWhRates= [0.08, 0.07, 0.08, 0.08, 0.09, 0.09, 0.09, 0.1, 0.11, 0.12, 0.12, 0.12, 0.12, 0.13, 0.13, 0.13, 0.11, 0.11, 0.12, 0.19, 0.19, 0.21, 0.18, 0.20, 0.28, 0.27, 0.28, 0.30, 0.28, 0.27, 0.26, 0.28, 0.29, 0.29];
@@ -408,13 +409,17 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
     var fiveYearData = [];
     $scope.energyBill = dataService.dataObj;
    
+	 $scope.energyBill.cumulative25YearsExpense;
     $scope.energyBill.percentChange = parseInt($scope.energyBill.percentChange);
     var annualExpenses = [];
     for(var i = 0; i < 25; i++) {
         
-          annualExpenses[i] = $scope.energyBill.annualCost + $scope.energyBill.annualCost*$scope.energyBill.percentChange/100 +                   $scope.energyBill.annualCost*i;
-        if((i+1)%5 == 0 || i == 0)
-            fiveYearData.push(annualExpenses[i]);
+          annualExpenses[i] = $scope.energyBill.annualCost + $scope.energyBill.annualCost*$scope.energyBill.percentChange/100 + $scope.energyBill.annualCost*i;
+        if((i+1)%5 == 0 || i == 0){
+			   fiveYearData.push(annualExpenses[i]);
+		}
+         
+		$scope.energyBill.cumulative25YearsExpense += annualExpenses[i];
     }
     
     
