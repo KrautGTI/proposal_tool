@@ -399,6 +399,12 @@ proposalControllers.controller('lineGraphController',['$scope','dataService', fu
 
 
 proposalControllers.controller('areaChartController',['$scope', 'dataService', function($scope, dataService){
+	 
+	   $scope.showImage = true;             
+       $scope.ShowBluImage = function() {
+                 $scope.showImage = $scope.showImage === false ? true: false;
+        };
+	
     var fiveYearData = [];
     $scope.energyBill = dataService.dataObj;
    

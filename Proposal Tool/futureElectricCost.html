@@ -40,14 +40,16 @@
 		<div class="pages row">
 
 			<div class="proposal-page proposal-page-YEU-9 col-xs-12 column anim-fade ng-scope" style="min_height:300px;text-align:center">
-              <h3>Your Future Electric Costs</h3>
-                        <div id="areaChart"> </div>				
-					<img class="graph-button"  src="css/images/how-much-did-you-spend.png" event-log="How Much Did I Spend:Clicked">
-				<div class="circle ng-hide" ng-show="YEU9.GraphState == 6">
-						<img src="css/images/halo-circle.png">
-						<div class="content">You'll pay
-							<h2 class="ng-binding">$0</h2> over 25 years to your electric utility</div>
-					</div>
+				<h3>Your Future Electric Costs</h3>
+				<div id="areaChart"> </div>
+				<div ng-show="showImage">
+					<img class="graph-button" ng-click="ShowBluImage()" src="css/images/how-much-did-you-spend.png" event-log="How Much Did I Spend:Clicked">
+				</div>
+				<div class="circle" ng-hide="showImage">
+					<img src="css/images/halo-circle.png" style="margin-left: -150px;">
+					<div class="content">You'll pay
+						<h2 class="ng-binding">$0</h2> over 25 years to your electric utility</div>
+				</div>
 				<div class="disclosure-footer col-xs-12 ng-scope"><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
         </span><a class="ng-scope" href="">HERO Program</a><span> &nbsp; | &nbsp;
@@ -65,7 +67,7 @@
 				<span class="icon">&lt;</span> BACK
 			</div>
 		</a>
-		<a href="#/yourOptions/id1">
+		<a href="#/yourOptions/id1" ng-hide="showImage">
 			<div class="nav-button next">
 				<span class="icon">&gt;</span> NEXT
 			</div>
