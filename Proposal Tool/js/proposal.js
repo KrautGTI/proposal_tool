@@ -3,25 +3,25 @@ var proposalControllers = angular.module('proposalControllers', [])
                               // private variable
                                
                                 var energyBill = [];
+                                energyBill.Month = [];
+                                
 
                                 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                                                 'September', 'October', 'November', 'December'];
                                 for(var i = 0 ; i < months.length; i++)
                                 {
-                                    energyBill[i] = {};
-                                    energyBill[i].dollars = 0;
-                                    energyBill[i].kWh = 0;       
+                                    energyBill.Month[i] = {};
+                                    energyBill.Month[i].dollars = 0;
+                                    energyBill.Month[i].kWh = 0;       
 
                                 }   
-                                energyBill.percentChange = 5.0;
+                                energyBill.percentChange = 7.0;
 								energyBill.cumulative25YearsExpense = 1;
                                 energyBill.dollar = true;
                                 energyBill.convert = true;
                                 energyBill.kWhRates= [0.08, 0.07, 0.08, 0.08, 0.09, 0.09, 0.09, 0.1, 0.11, 0.12, 0.12, 0.12, 0.12, 0.13, 0.13, 0.13, 0.11, 0.11, 0.12, 0.19, 0.19, 0.21, 0.18, 0.20, 0.28, 0.27, 0.28, 0.30, 0.28, 0.27, 0.26, 0.28, 0.29, 0.29];
 
                                 energyBill.numArray = [1];
-                                
-                                
                                 
                                 this.dataObj = energyBill;
             });
@@ -49,10 +49,11 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
        
     }
 }]);
-proposalControllers.controller('justOneBillController',['$scope', function($scope){
+proposalControllers.controller('justOneBillController',['$scope', 'dataService', function($scope, dataService){
         $scope.custom = true;
         $scope.model = { id: 0 };
         $scope.toggleCustom = function() {
+            alert("toggled");
             $scope.custom = $scope.custom === false ? true: false;
         };
 	    $scope.onDollarChange = function () {	    	
@@ -83,34 +84,54 @@ proposalControllers.controller('justOneBillController',['$scope', function($scop
 
 proposalControllers.controller('multipleBillController',['$scope','dataService', function($scope, dataService){
         $scope.energyBill = dataService.dataObj;
-  
-        $scope.toggleCustom = function() {
-            var lastYear = $scope.energyBill.kWhRates.length - 1;
-        if($scope.energyBill.convert === true) {
+    
+        /*
+         * Create watch on the values work on conversions in realtime
+         * when this is done responsibility of toggle would just be to show the value/alter mode
+         * Ideally these must be exported via service calls. 
+         */
+        
+        $scope.propagateEnergyBillFromDollar = function (i) {    
             
-            if($scope.energyBill.dollar === true) {
+                    //Start validation
+                    var input = $scope.energyBill.Month[i].dollars;
+                    var num = input.replace(/[^0-9]/g, '');
+                    $scope.energyBill.Month[i].dollars = "$" + num;
+            
+            /*
+                    findkWhFromDollars = function (dollar) {
+                            var totalKwh = 0;
+                            for(var i = 0; i < $scope.energyBill.baseDollars.length; i++) {
+                                
+                                if(dollar  > $scope.energyBill.baseDollars[i].limitDollar){
+                                    totalKwH += $scope.energyBill.baseDollars[i].limitkWh;
+                                    dollar -= $scope.energyBill.baseDollars[i].limitDollar;
+                                    
+                                } else {
+                                    totalKwH += dollar/$scope.energyBill.baseDollars[i].ratePerkWh;
+                                    
+                                }
+  
+                            }
+                                             
+                    };
+            
                 
-                $scope.energyBill.convert = false;
-                for(var i = 0; i < 12; i++){
-                    $scope.energyBill[i].kWh = Math.ceil((parseInt($scope.energyBill[i].dollars) / $scope.energyBill.kWhRates[lastYear]));
-                    $scope.energyBill.annualUsage += $scope.energyBill[i].kWh;
-                    $scope.energyBill[i].kWh = $scope.energyBill[i].kWh;
-                }
-            } else {
-                $scope.energyBill.convert = false;
-                for(var i = 0; i < 12; i++){
-                    $scope.energyBill[i].dollars =   Math.ceil((parseInt($scope.energyBill[i].kWh) * $scope.energyBill.kWhRates[lastYear]));
-                    $scope.energyBill.annualCost += $scope.energyBill[i].dollars;
-                    $scope.energyBill[i].dollars = $scope.energyBill[i].dollars;
-
-                }
-            }
-        }
+                    $scope.energyBill.Month[i].kWh = findkWhFromDollars(num);
+            */
+            
+        };
+    
+    
+    
+        $scope.toggleCustom = function() {
+      
             $scope.energyBill.dollar = $scope.energyBill.dollar === false ? true: false;
             $scope.energyBill.annualUsage = Math.ceil($scope.energyBill.annualUsage);
         };
 		
 	}]);
+
 proposalControllers.controller('heroSummaryController',['$scope', function($scope){
         $scope.showHide = true;
         $scope.showHideDetail = function() {
@@ -159,7 +180,6 @@ proposalControllers.controller('buildSolarSystemController',['$scope', 'dataServ
 proposalControllers.controller('percentageChangeController', ['$scope', 'dataService', function($scope, dataService){
             $scope.energyBill = dataService.dataObj;
             
-            console.log($scope.energyBill);
     
         
     
@@ -211,22 +231,26 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
 	    $scope.calculateTotalDollars = function () {
                 $scope.dataMonths = [];
                 $scope.energyBill.annualCost = 0;
-                for(var i = 0; i< $scope.energyBill.length; i++) {
-                    var tmp = $scope.energyBill[i];
-                    $scope.energyBill[i].dollars = parseInt(tmp.dollars);
-                    $scope.dataMonths.push( parseInt(tmp.dollars));
-                    $scope.energyBill.annualCost += parseInt(tmp.dollars);
+                for(var i = 0; i< $scope.energyBill.Month.length; i++) {
+                    var tmp = $scope.energyBill.Month[i];
+                    var num = parseInt(tmp.dollars.replace(/[^0-9]/g, ''));
+                    
+                    $scope.dataMonths.push(num);
+                    $scope.energyBill.annualCost += num;
                 }
         };
     
     $scope.calculateTotalkWh = function () {
                 $scope.dataMonths = [];
                 $scope.energyBill.annualUsage = 0;
-                for(var i = 0; i< $scope.energyBill.length; i++) {
-                    var tmp = $scope.energyBill[i];
-                    $scope.energyBill[i].kWh = parseInt(tmp.kWh);
-                    $scope.dataMonths.push( parseInt(tmp.kWh));
-                    $scope.energyBill.annualUsage += parseInt(tmp.kWh);
+                for(var i = 0; i< $scope.energyBill.Month.length; i++) {
+                    var tmp = $scope.energyBill.Month[i];
+
+                    var num = parseInt(tmp.kWh.replace(/[^0-9]/g, ''));
+                    
+
+                    $scope.dataMonths.push(num);
+                    $scope.energyBill.annualUsage += num;
                 }      
         
     };
@@ -236,6 +260,9 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
         $scope.calculateTotalkWh();
     
     $('#bars').highcharts({
+        chart: {
+            animation: false
+        },
 
       title: {
         /*text: 'Draggable Charts'*/
@@ -251,7 +278,7 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                 if($scope.energyBill.dollar === true)
                     return '$' + this.value;
                 else 
-                    return 'kWh' + this.value;
+                    return this.value + ' kWh';
             }
         },
   
@@ -259,6 +286,7 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
     },
     plotOptions: {
         series: {
+            
             point: {
                 events: {
 
@@ -277,12 +305,12 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                     drop: function () {
                             if($scope.energyBill.dollar === true){
                                  $scope.calculateTotalDollars();
-                                $scope.energyBill[this.x].dollars = this.y;
+                                $scope.energyBill.Month[this.x].dollars = this.y;
                             }
                                
                             else {
                                 $scope.calculateTotalkWh();
-                                 $scope.energyBill[this.x].kWh = this.y;
+                                 $scope.energyBill.Month[this.x].kWh = this.y;
                             }
                                 
 
@@ -423,7 +451,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
     $scope.energyBill = dataService.dataObj;
    
 	 $scope.energyBill.cumulative25YearsExpense = 0;
-    $scope.energyBill.percentChange = parseInt($scope.energyBill.percentChange);
+    $scope.energyBill.percentChange = parseFloat($scope.energyBill.percentChange);
     var annualExpenses = [];
     for(var i = 0; i < 25; i++) {
         
@@ -502,15 +530,16 @@ proposalControllers.controller('estimatedSolarSystemController',['$scope', 'data
     $scope.energyBill = dataService.dataObj;
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                         'September', 'October', 'November', 'December'];
-    var kWhUsed = [];
+    var dataMonths = [];
     var dollars = [];
                                
     //Populate the kWh if not fetched check from a global toggle
                                                         
     for (var i = 0; i < months.length; i++ ) {
-            kWhUsed[i] = parseInt($scope.energyBill[i] .dollars)/$scope.energyBill.kWhRates[$scope.energyBill.kWhRates.length - 1];
-            dollars[i] = parseInt($scope.energyBill[i] .dollars);
-            
+                    var tmp = $scope.energyBill.Month[i];
+
+                    var num = parseInt(tmp.kWh.replace(/[^0-9]/g, ''));
+                    $scope.dataMonths.push(num);        
     }
    
     solarEstimate = [356, 428, 666, 780, 906, 894, 878, 857, 736, 557, 405, 300];
@@ -533,7 +562,7 @@ proposalControllers.controller('estimatedSolarSystemController',['$scope', 'data
             name: 'Your Electricity Usage',
             type: 'column',
             color:'#0000FF',
-            data: kWhUsed
+            data: dataMonths
         }, {
             type: 'area',
             name: 'Estimated Solar Production',
