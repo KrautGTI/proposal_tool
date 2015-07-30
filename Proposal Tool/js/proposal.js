@@ -46,6 +46,18 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
                                 
                                 this.dataObj = energyBill;
+            }).directive('convertToNumber', function() {
+                    return {
+                      require: 'ngModel',
+                      link: function(scope, element, attrs, ngModel) {
+                        ngModel.$parsers.push(function(val) {
+                          return parseInt(val, 10);
+                        });
+                        ngModel.$formatters.push(function(val) {
+                          return '' + val;
+                        });
+                      }
+                    };
             });
 
 
@@ -90,19 +102,7 @@ proposalControllers.controller('justOneBillController',['$scope', 'dataService',
 		}
 		
 		
-	}]).directive('convertToNumber', function() {
-    return {
-      require: 'ngModel',
-      link: function(scope, element, attrs, ngModel) {
-        ngModel.$parsers.push(function(val) {
-          return parseInt(val, 10);
-        });
-        ngModel.$formatters.push(function(val) {
-          return '' + val;
-        });
-      }
-    };
-  });
+	}]);
 
 proposalControllers.controller('multipleBillController',['$scope','dataService', function($scope, dataService){
         $scope.energyBill = dataService.dataObj;
