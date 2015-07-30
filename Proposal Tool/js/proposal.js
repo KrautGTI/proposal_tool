@@ -289,6 +289,13 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
             $scope.energyBill.Month[6].dollars = "$158";$scope.energyBill.Month[7].dollars = "$176";
             $scope.energyBill.Month[8].dollars = "$138";$scope.energyBill.Month[9].dollars = "$102";
             $scope.energyBill.Month[10].dollars = "$100";$scope.energyBill.Month[11].dollars = "$120";
+			
+            $scope.energyBill.Month[0].kWh = "117 kWh";$scope.energyBill.Month[1].kWh = "103 kWh";
+            $scope.energyBill.Month[2].kWh = "90 kWh";$scope.energyBill.Month[3].kWh = "92 kWh";
+            $scope.energyBill.Month[4].kWh = "100 kWh";$scope.energyBill.Month[5].kWh = "132 kWh";
+            $scope.energyBill.Month[6].kWh = "158 kWh";$scope.energyBill.Month[7].kWh = "176 kWh";
+            $scope.energyBill.Month[8].kWh = "138 kWh";$scope.energyBill.Month[9].kWh = "102 kWh";
+            $scope.energyBill.Month[10].kWh = "100 kWh";$scope.energyBill.Month[11].kWh = "120 kWh";
             
             
         }
