@@ -329,10 +329,25 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                 }      
         
     };
-    if($scope.energyBill.dollar === true)
+    convertToComma = function (yourNumber) {
+        var components = yourNumber.toString().split(".");
+    //Comma-fies the first part
+    components [0] = components [0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //Combines the two sections
+    return components.join(".");  
+        
+    };
+    if($scope.energyBill.dollar === true){
+        
         $scope.calculateTotalDollars();
-    else 
+        $scope.energyBill.annualCostDisplay = convertToComma($scope.energyBill.annualCost);
+    }
+        
+    else {
         $scope.calculateTotalkWh();
+        $scope.energyBill.annualUsageDisplay = convertToComma($scope.energyBill.annualUsage);
+    }
+        
     
     $('#bars').highcharts({
         chart: {
