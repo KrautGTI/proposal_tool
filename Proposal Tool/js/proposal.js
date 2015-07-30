@@ -123,7 +123,7 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
             
                     findkWhFromDollars = function (dollar) {
                             var totalKwh = 0;
-                            for(var i = 0; i < $scope.energyBill.slabs.length; i++) {
+                            for(var i = 0; i < $scope.energyBill.slabs.length && (dollar > 0) ; i++) {
                                 
                                 if(dollar  > $scope.energyBill.slabs[i].limitDollar){
                                     totalKwh += $scope.energyBill.slabs[i].limitkWh;
@@ -131,6 +131,7 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                                     
                                 } else {
                                     totalKwh += dollar/$scope.energyBill.slabs[i].ratePerkWh;
+                                    break;
                                     
                                 }
   
@@ -140,7 +141,7 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                     };
             
                 
-                    $scope.energyBill.Month[i].kWh = findkWhFromDollars(num);
+                    $scope.energyBill.Month[i].kWh = Math.ceil(findkWhFromDollars(parseInt(num))) + " kWh";
             
             
         };
