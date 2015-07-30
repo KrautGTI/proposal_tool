@@ -34,7 +34,14 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.slabs.push({limitDollar:1000000, limitkWh:100000000, rate:0.525});//50+80+100                                                       
                                 //Default values of energyBill.Monthly Bill
        
-                                
+                                 energyBill.convertToComma = function (yourNumber) {
+                                        var components = yourNumber.toString().split(".");
+                                        //Comma-fies the first part
+                                        components [0] = components [0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                        //Combines the two sections
+                                        return components.join(".");  
+
+                                };
                                 
                                 
                                 
@@ -329,23 +336,16 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                 }      
         
     };
-    convertToComma = function (yourNumber) {
-        var components = yourNumber.toString().split(".");
-    //Comma-fies the first part
-    components [0] = components [0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    //Combines the two sections
-    return components.join(".");  
-        
-    };
+   
     if($scope.energyBill.dollar === true){
         
         $scope.calculateTotalDollars();
-        $scope.energyBill.annualCostDisplay = convertToComma($scope.energyBill.annualCost);
+        $scope.energyBill.annualCostDisplay =  $scope.energyBill.convertToComma($scope.energyBill.annualCost);
     }
         
     else {
         $scope.calculateTotalkWh();
-        $scope.energyBill.annualUsageDisplay = convertToComma($scope.energyBill.annualUsage);
+        $scope.energyBill.annualUsageDisplay =  $scope.energyBill.convertToComma($scope.energyBill.annualUsage);
     }
         
     
