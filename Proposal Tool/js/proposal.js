@@ -553,7 +553,8 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 		$scope.energyBill.cumulative25YearsExpense += annualExpenses[i];
     }
     $scope.energyBill.cumulative25YearsExpense = Math.ceil($scope.energyBill.cumulative25YearsExpense);
-    
+	        
+    $scope.energyBill.cumulative25YearsExpenseDisplay =  $scope.energyBill.convertToComma($scope.energyBill.cumulative25YearsExpense);
     
     $('#areaChart').highcharts({
         chart: {
