@@ -75,7 +75,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                     var input = $scope.energyBill.Month[i].kWh;
 
 
-
+                                    //Use slab logic here ToDo
 
                                     findkWhFromkWh = function (kWhUsed) {
                                             var totalDollar = 0;
@@ -102,6 +102,8 @@ var proposalControllers = angular.module('proposalControllers', [])
                             energyBill.calculateTotalDollars = function () {
                                         var dataMonths = [];
                                         energyBill.annualCost = 0;
+                                        
+                                        //Use slab logic here ToDo
                                         for(var i = 0; i< energyBill.Month.length; i++) {
                                             var tmp = energyBill.Month[i];
 
@@ -165,7 +167,7 @@ proposalControllers.controller('justOneBillController',['$scope', 'dataService',
         $scope.model = { id: 0 };
         $scope.energyBill = dataService.dataObj;
         $scope.toggleCustom = function() {
-            alert("toggled");
+            
             $scope.custom = $scope.custom === false ? true: false;
         };
 		
@@ -268,12 +270,26 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
 
                                 res = inputVal.replace(/[^0-9]/g, '');
                                 value = parseInt(res);
-                                res =   res + ' kWh';
+                                
 
-                                ctrl.$setViewValue(res);
+                               
 
-                                ctrl.$render();
-                                return value;
+                                if(!isNaN(value)) {
+                                    ctrl.$setViewValue(res + ' kWh');
+
+                                    ctrl.$render();
+                                    return value;
+                                } else {
+                                    ctrl.$setViewValue("kWh");
+
+                                    ctrl.$render();
+                                    return 0;
+
+                                }
+           
+                             
+                             
+                               
                         });
                   
                        ctrl.$formatters.push(function(value) {
@@ -392,6 +408,7 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
             
             
         }
+    
  
     $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
@@ -618,21 +635,21 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
     var fiveYearData = [];
     $scope.energyBill = dataService.dataObj;
    
-	 $scope.energyBill.cumulative25YearsExpense = 0;
+	 $scope.energyBill.cumulative30YearsExpense = 0;
     $scope.energyBill.percentChange = parseFloat($scope.energyBill.percentChange);
     var annualExpenses = [];
-    for(var i = 0; i < 25; i++) {
+    for(var i = 0; i < 30; i++) {
         
           annualExpenses[i] = $scope.energyBill.annualCost + $scope.energyBill.annualCost*$scope.energyBill.percentChange/100 + $scope.energyBill.annualCost*i;
         if((i+1)%5 == 0 || i == 0){
 			   fiveYearData.push(annualExpenses[i]);
 		}
          
-		$scope.energyBill.cumulative25YearsExpense += annualExpenses[i];
+		$scope.energyBill.cumulative30YearsExpense += annualExpenses[i];
     }
-    $scope.energyBill.cumulative25YearsExpense = Math.ceil($scope.energyBill.cumulative25YearsExpense);
+    $scope.energyBill.cumulative30YearsExpense = Math.ceil($scope.energyBill.cumulative30YearsExpense);
 	        
-    $scope.energyBill.cumulative25YearsExpenseDisplay =  $scope.energyBill.convertToComma($scope.energyBill.cumulative25YearsExpense);
+    $scope.energyBill.cumulative30YearsExpenseDisplay =  $scope.energyBill.convertToComma($scope.energyBill.cumulative30YearsExpense);
     
     $('#areaChart').highcharts({
         chart: {
@@ -644,7 +661,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
          legend: {enabled:false},
         xAxis: {
             allowDecimals: false,
-            categories: [0, 5, 10, 15, 20, 25],
+            categories: [0, 5, 10, 15, 20, 25, 30],
             labels: {
                 formatter: function () {
                     if(this.value == 0)
