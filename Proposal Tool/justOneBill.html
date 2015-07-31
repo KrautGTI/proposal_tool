@@ -62,9 +62,8 @@
  					</li>
                         
 					<li>
-
 					   	<span ng-show="custom">
-					       <input value="$0" class="form-control disable-animations pull-left ng-pristine ng-untouched ng-valid" type="text"   ng-model="energyBill[model['id'] ].dollar">
+					       <input value="$0" class="form-control disable-animations pull-left ng-pristine ng-untouched ng-valid" type="text"   ng-model="energyBill[model['id'] ].dollar" ng-change = onDollarChange()>
 						</span>
 						<span ng-hide="custom">
 						   <input value="0 kWh" class="form-control disable-animations pull-left ng-pristine ng-untouched ng-valid"  type="text" ng-model="valueKwh">
