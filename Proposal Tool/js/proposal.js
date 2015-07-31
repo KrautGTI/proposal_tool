@@ -219,12 +219,13 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
             $scope.energyBill.annualUsage = Math.ceil($scope.energyBill.annualUsage);
         };
 		
-	}]).directive('currencyInput', function() {
+	}]).directive('currencyInput', function (){
                 return {
                     restrict: 'A',
                     require: 'ngModel', 
                     link: function(scope, element, attrs, ctrl) {
      
+                        
                          ctrl.$parsers.push(function(inputValue) {
                             var inputVal = element.val();
 
@@ -237,14 +238,21 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                             
                             res = inputVal.replace(/[^0-9]/g, '');
                             value = parseInt(res);
-                            res =  "$" + res ;
-                            
-                            ctrl.$setViewValue(res);
+                
+                            if(!isNaN(value)) {
+                                ctrl.$setViewValue('$'+res);
 
-                            ctrl.$render();
+                                ctrl.$render();
+                                return value;
+                            } else {
+                                ctrl.$setViewValue("$");
+
+                                ctrl.$render();
+                                return 0;
+
+                            }
+                                
                             
-                                 
-                            return value;
                             
 
                         });
@@ -480,13 +488,13 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                             if($scope.energyBill.dollar === true){
                                  
                                 $scope.energyBill.Month[this.x].dollars =  Math.ceil(this.y);
-                                energyBill.calculateTotalDollars();
+                                $scope.energyBill.calculateTotalDollars();
                             }
                                
                             else {
                                 
                                  $scope.energyBill.Month[this.x].kWh =  Math.ceil(this.y);
-                                energyBill.calculateTotalkWh();
+                                 $scope.energyBill.calculateTotalkWh();
                             }
                                 
 
@@ -715,7 +723,7 @@ proposalControllers.controller('estimatedSolarSystemController',['$scope', 'data
     for (var i = 0; i < months.length; i++ ) {
                     var tmp = $scope.energyBill.Month[i];
 
-                    var num = parseInt(tmp.kWh.replace(/[^0-9]/g, ''));
+                    var num = tmp.kWh  ;
                     $scope.dataMonths.push(num);        
     }
    
