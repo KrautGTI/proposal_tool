@@ -132,7 +132,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                     return dataMonths;
 
-                            };                                    
+                            };  
 
                                 this.dataObj = energyBill;
             });
@@ -168,16 +168,6 @@ proposalControllers.controller('justOneBillController',['$scope', 'dataService',
             alert("toggled");
             $scope.custom = $scope.custom === false ? true: false;
         };
-	    $scope.onDollarChange = function () {	    	
-			
-			$scope.valueKwh = $scope.dollar* 10;	
-	    	
-		}
-	    $scope.onKwhChange = function () { 		
-	    	
-			$scope.dollar = $scope.valueKwh/10;
-	    	
-		}
 		
 		
 	}]).directive('convertToNumber', function() {
@@ -185,15 +175,11 @@ proposalControllers.controller('justOneBillController',['$scope', 'dataService',
                       require: 'ngModel',
                       link: function(scope, element, attrs, ngModel) {
                         ngModel.$parsers.push(function(val) {
-                            console.log("parser");
-                            console.log(ngModel);
-                            console.log(scope);
+                   
                           return parseInt(val, 10);
                         });
                         ngModel.$formatters.push(function(val) {
-                            console.log("formatter");
-                            console.log(ngModel);
-                            console.log(scope);
+                            
                           
                           return '' + val;
                         });
@@ -251,9 +237,7 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                                 return 0;
 
                             }
-                                
-                            
-                            
+           
 
                         });
                         
