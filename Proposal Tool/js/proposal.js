@@ -27,11 +27,11 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
                                 //Static definition of slabs
                                 energyBill.slabs = [];
-                                
+                                //Initialize slabs used for computation of kWh and dollars
                                 energyBill.slabs.push({limitDollar:50*0.225, limitkWh:50, ratePerkWh:0.225});
                                 energyBill.slabs.push({limitDollar:80*0.325, limitkWh:130, ratePerkWh:0.325});//50+80
                                 energyBill.slabs.push({limitDollar:100*0.425, limitkWh:230, ratePerkWh:0.425});//50+80+100
-                                energyBill.slabs.push({limitDollar:1000000, limitkWh:100000000, rate:0.525});//50+80+100                                                       
+                                energyBill.slabs.push({limitDollar:1000000, limitkWh:100000000, ratePerkWh:0.525});//50+80+100                                                       
                                 //Default values of energyBill.Monthly Bill
        
                                  energyBill.convertToComma = function (yourNumber) {
@@ -72,21 +72,20 @@ var proposalControllers = angular.module('proposalControllers', [])
                             energyBill.propagateEnergyBillFromkWh = function (i) {    
 
                                     //Start validation
-                                    var input = $scope.energyBill.Month[i].kWh;
-
+                                    var input = energyBill.Month[i].kWh;
 
                                     //Use slab logic here ToDo
 
                                     findkWhFromkWh = function (kWhUsed) {
                                             var totalDollar = 0;
-                                            for(var i = 0; i < $scope.energyBill.slabs.length; i++) {
+                                            for(var i = 0; i < energyBill.slabs.length; i++) {
 
                                                 if(kWhUsed  > energyBill.slabs[i].limitDollar){
                                                     totalDollar += energyBill.slabs[i].limitDollar;
                                                     kWhUsed -= energyBill.slabs[i].limitDollar;
 
                                                 } else {
-                                                    totalDollar += kWhUsed * $scope.energyBill.slabs[i].ratePerkWh;
+                                                    totalDollar += kWhUsed * energyBill.slabs[i].ratePerkWh;
                                                     break;
                                                 }
 
@@ -286,9 +285,6 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                                     return 0;
 
                                 }
-           
-                             
-                             
                                
                         });
                   
@@ -296,7 +292,6 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                                 return value + ' kWh';
                         });                        
                                        
-                    
                         return;
                 }
             };
@@ -308,7 +303,7 @@ proposalControllers.controller('heroSummaryController',['$scope', function($scop
             $scope.showHide = $scope.showHide === false ? true: false;
         };
 		
-	}]);
+}]);
 proposalControllers.controller('paymentOptionsController',['$scope', function($scope){
         $scope.firstCol = true;
         $scope.secondCol = true;
@@ -324,7 +319,7 @@ proposalControllers.controller('paymentOptionsController',['$scope', function($s
                      $scope.thirdCol = $scope.thirdCol === false ? true: false;
         };
 		
-	}]);
+}]);
 proposalControllers.controller('buildSolarSystemController',['$scope', 'dataService', function($scope, dataService){
     $scope.energyBill = dataService.dataObj;
     $scope.numArray = $scope.energyBill.numArray;
@@ -346,7 +341,7 @@ proposalControllers.controller('buildSolarSystemController',['$scope', 'dataServ
 	}     
     
     
-	}]);
+}]);
 proposalControllers.controller('percentageChangeController', ['$scope', 'dataService', function($scope, dataService){
             $scope.energyBill = dataService.dataObj;
             
@@ -355,17 +350,13 @@ proposalControllers.controller('percentageChangeController', ['$scope', 'dataSer
     
     
     
-	}]);
+}]);
+
+
 proposalControllers.controller('yourOptionsController', ['$scope', 'dataService', function($scope, dataService){
             $scope.energyBill = dataService.dataObj;
             
-            console.log($scope.energyBill);
-    
-        
-    
-    
-    
-	}]);
+}]);
 
 
 proposalControllers.controller('multipleBillBarGraphController',['$scope', 'dataService' , function($scope, dataService){
@@ -489,12 +480,15 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                             if($scope.energyBill.dollar === true){
                                  
                                 $scope.energyBill.Month[this.x].dollars =  Math.ceil(this.y);
+                                $scope.energyBill.propagateEnergyBillFromDollar(this.x);
                                 $scope.energyBill.calculateTotalDollars();
+                                
                             }
                                
                             else {
                                 
                                  $scope.energyBill.Month[this.x].kWh =  Math.ceil(this.y);
+                                 $scope.energyBill.propagateEnergyBillFromkWh(this.x);
                                  $scope.energyBill.calculateTotalkWh();
                             }
                                 
@@ -763,8 +757,5 @@ proposalControllers.controller('estimatedSolarSystemController',['$scope', 'data
         } 
         ]
     });   
-    
-    
-    
     
 }]);
