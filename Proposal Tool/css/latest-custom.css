@@ -933,7 +933,7 @@ blockquote footer, blockquote small, blockquote .small {
     color: #777;
 }
 blockquote footer:before, blockquote small:before, blockquote .small:before {
-    content: '— '}
+    content: '— '}
 .blockquote-reverse, blockquote.pull-right {
     padding-right: 15px;
     padding-left: 0;
@@ -944,7 +944,7 @@ blockquote footer:before, blockquote small:before, blockquote .small:before {
 .blockquote-reverse footer:before, blockquote.pull-right footer:before, .blockquote-reverse small:before, blockquote.pull-right small:before, .blockquote-reverse .small:before, blockquote.pull-right .small:before {
     content: ''}
 .blockquote-reverse footer:after, blockquote.pull-right footer:after, .blockquote-reverse small:after, blockquote.pull-right small:after, .blockquote-reverse .small:after, blockquote.pull-right .small:after {
-    content: ' —'}
+    content: ' —'}
 address {
     margin-bottom: 20px;
     font-style: normal;
@@ -3230,7 +3230,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 .breadcrumb>li+li:before {
     padding: 0 5px;
     color: #ccc;
-    content: "/ "}
+    content: "/ "}
 .breadcrumb>.active {
     color: #777;
 }
@@ -5294,14 +5294,14 @@ th.visible-print, td.visible-print {
 }
 @font-face {
     font-family: 'Museo 500';
-    src: url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.eot');
-    src: url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.eot?#iefix') format('embedded-opentype'), url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.woff') format('woff'), url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.ttf') format('truetype'), url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.otf') format('opentype');
+    src: url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.eot");
+    src: url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.eot?#iefix") format("embedded-opentype"), url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.woff") format("woff"), url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.ttf") format("truetype"), url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-500.otf") format("opentype");
     font-style: normal;
 }
 @font-face {
     font-family: 'Museo900';
-    src: url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.eot');
-    src: url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.eot?#iefix') format('embedded-opentype'), url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.woff') format('woff'), url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.ttf') format('truetype'), url('https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.otf') format('opentype');
+    src: url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.eot");
+    src: url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.eot?#iefix") format("embedded-opentype"), url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.woff") format("woff"), url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.ttf") format("truetype"), url("https://5240e61fe753984391c5-ecc02ad49047bf9e3105e819e005f5ff.ssl.cf2.rackcdn.com/MuseoSans-900.otf") format("opentype");
     font-weight: 900;
     font-style: normal;
 }
@@ -5339,7 +5339,7 @@ form.ng-submitted input.ng-invalid {
     background-color: #fee8e8!important;
     border-width: 1px!important;
 }
-.proposal-toop-quick-nav {
+.proposal-tool-quick-nav {
     position: absolute;
     margin-left: -237px;
     top: 15px;
@@ -5348,56 +5348,55 @@ form.ng-submitted input.ng-invalid {
     height: 84px;
 }
 @media screen and (min-width:1200px) {
-    .proposal-toop-quick-nav {
+    .proposal-tool-quick-nav {
     width: 604px;
     margin-left: -302px;
 }
-}.proposal-toop-quick-nav .nav-selection {
+}.proposal-tool-quick-nav .nav-selection {
     float: left;
     width: 81px;
     height: 54px;
     background-color: blue;
 }
-.proposal-toop-quick-nav .nav-selection:nth-child(1) {
-    background: url(images/spritesheet.png) no-repeat -283px -343px;
+.proposal-tool-quick-nav .nav-selection:nth-child(1) {
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -283px -343px;
 }
-.proposal-toop-quick-nav .nav-selection:nth-child(3) {
-    background: url(images/spritesheet.png) no-repeat -283px -411px;
+.proposal-tool-quick-nav .nav-selection:nth-child(3) {
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -283px -411px;
 }
-.proposal-toop-quick-nav .nav-selection:nth-child(5) {
-    background: url(images/spritesheet.png) no-repeat -283px -476px;
+.proposal-tool-quick-nav .nav-selection:nth-child(5) {
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -283px -476px;
 }
-.proposal-toop-quick-nav .nav-selection.visited:nth-child(1) {
-    background: url(images/spritesheet.png) no-repeat -105px -343px;
+.proposal-tool-quick-nav .nav-selection.visited:nth-child(1) {
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -105px -343px;
     cursor: pointer;
 }
-.proposal-toop-quick-nav .nav-selection.visited:nth-child(3) {
-    background: url(images/spritesheet.png) no-repeat -105px -411px;
+.proposal-tool-quick-nav .nav-selection.visited:nth-child(3) {
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -105px -411px;
     cursor: pointer;
 }
-.proposal-toop-quick-nav .nav-selection.visited:nth-child(5) {
-    background: url(images/spritesheet.png) no-repeat -105px -476px;
+.proposal-tool-quick-nav .nav-selection.visited:nth-child(5) {
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -105px -476px;
     cursor: pointer;
 }
-
-.proposal-toop-quick-nav .nav-selection.active:nth-child(1) {
-    background: url(images/spritesheet.png) no-repeat -14px -343px;
+.proposal-tool-quick-nav .nav-selection.active:nth-child(1) {
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -14px -343px;
 }
-.proposal-toop-quick-nav .nav-selection.active:nth-child(3) {
-    background: url(images/spritesheet.png) no-repeat -15px -411px;
+.proposal-tool-quick-nav .nav-selection.active:nth-child(3) {
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -15px -411px;
 }
-.proposal-toop-quick-nav .nav-selection.active:nth-child(5) {
-    background: url(images/spritesheet.png) no-repeat -15px -476px;
+.proposal-tool-quick-nav .nav-selection.active:nth-child(5) {
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -15px -476px;
 }
-.proposal-toop-quick-nav .nav-selection-divider {
+.proposal-tool-quick-nav .nav-selection-divider {
     float: left;
     width: 135px;
     height: 20px;
-    background: url(images/spritesheet.png) no-repeat -15px -316px;
+    background: url(/Content/Images/ProposalTool/spritesheet.png) no-repeat -15px -316px;
     margin: 0 -10px 0;
 }
 @media screen and (min-width:1200px) {
-    .proposal-toop-quick-nav .nav-selection-divider {
+    .proposal-tool-quick-nav .nav-selection-divider {
     width: 200px;
 }
 }body {
@@ -5420,19 +5419,19 @@ body .link {
     z-index: -1;
 }
 .bg-image1 {
-    background: url(images/bg1.jpg)top center no-repeat;	
+    background: url("/Content/Images/ProposalTool/Backgrounds/bg1.jpg") top center no-repeat;
 }
 .bg-image2 {
-    background: url("images/bg2.jpg") top center no-repeat;
+    background: url("/Content/Images/ProposalTool/Backgrounds/bg2.jpg") top center no-repeat;
 }
 .bg-image3 {
-    background: url("images/bg3.jpg") top center no-repeat;
+    background: url("/Content/Images/ProposalTool/Backgrounds/bg3.jpg") top center no-repeat;
 }
 .bg-image4 {
-    background: url("images/bg4.jpg") top center no-repeat;
+    background: url("/Content/Images/ProposalTool/Backgrounds/bg4.jpg") top center no-repeat;
 }
 .bg-image5 {
-    background: url("images/bg5.jpg") top center no-repeat;
+    background: url("/Content/Images/ProposalTool/Backgrounds/bg5.jpg") top center no-repeat;
 }
 .clickable {
     cursor: pointer;
@@ -5457,7 +5456,7 @@ body .link {
     margin-top: 7px;
 }
 .btn-proposal.icon-right .btn-text {
-    float: right;
+    float: left;
     text-align: center;
     width: 192px;
 }
@@ -5537,7 +5536,7 @@ a.btn-proposal:active {
     margin: 0 120px;
 }
 #proposal-tool-container .header {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, .9);
     color: red;
     padding: 12px 0;
     font-size: 20px;
@@ -5545,9 +5544,8 @@ a.btn-proposal:active {
     font-weight: bold;
     border-top: 1px solid #999;
     border-bottom: 1px solid #999;
-    opacity: .9;
     position: relative;
-    z-index: 11;
+    z-index: 12;
 }
 #proposal-tool-container .header .adv-options {
     float: right;
@@ -5614,6 +5612,138 @@ a.btn-proposal:active {
 #proposal-page-nav .next {
     right: 20px;
 }
+.header .dropdown-menu {
+    padding-bottom: 0;
+}
+
+/*pankaj*/
+.nav .quick-navigation {
+    width: 800px;
+    height: 520px;
+    background-color: #efefef;
+}
+.nav .quick-navigation .quicknav-header {
+    list-style-type: none;
+    background-color: #fff;
+    border-bottom: 2px solid #d8d8d8;
+    float: left;
+    width: 100%;
+    height: 80px;
+    padding-left: 0;
+}
+.nav .quick-navigation .quicknav-header li {
+    float: left;
+    color: #4b92b2;
+}
+.nav .quick-navigation .quicknav-header li h1 {
+    color: #55636a;
+    font-weight: normal;
+    font-size: 26px;
+}
+.nav .quick-navigation .quicknav-header li:first-child {
+    margin-left: 20px;
+}
+.nav .quick-navigation .quicknav-header li:not(:first-child) {
+    margin-top: 25px;
+    margin-left: 65px;
+    padding-left: 30px;
+    position: relative;
+    font-weight: normal;
+    cursor: pointer;
+}
+.nav .quick-navigation .quicknav-header li a {
+    text-decoration: none;
+}
+.nav .quick-navigation .quicknav-header .icon {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 0;
+    top: 0;
+    background: transparent url(/Content/Images/ProposalTool/spritesheet.png) no-repeat 0 0;
+}
+.nav .quick-navigation .quicknav-header .icon.icon-hero-map {
+    background-position: -76px -632px;
+    left: 10px;
+}
+.nav .quick-navigation .quicknav-header .icon.icon-hero-video {
+    background-position: -111px -632px;
+}
+.nav .quick-navigation .quicknav-header .icon.icon-get-approved {
+    background-position: -35px -632px;
+}
+.nav .quick-navigation .quicknav-body {
+    padding-left: 5px;
+}
+.nav .quick-navigation .quicknav-body ul {
+    list-style-type: none;
+    float: left;
+    margin: 20px 20px 0 15px;
+    border-right: 1px solid #999;
+    padding-left: 0;
+    width: 250px;
+    margin-right: 0;
+    padding-right: 15px;
+    min-height: 400px;
+}
+.nav .quick-navigation .quicknav-body ul:last-child {
+    border-right: none;
+}
+.nav .quick-navigation .quicknav-body ul li {
+    color: #666;
+    float: left;
+    width: 100%;
+    clear: both;
+    padding: 10px 6px;
+    margin-bottom: 5px;
+}
+.nav .quick-navigation .quicknav-body ul li:first-child {
+    font-weight: bold;
+}
+.nav .quick-navigation .quicknav-body ul li div {
+    float: left;
+}
+.nav .quick-navigation .quicknav-body ul li div:first-child {
+    background-color: #999;
+    border-radius: 50%;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    color: #fff;
+    line-height: 30px;
+}
+.nav .quick-navigation .quicknav-body ul li div:last-child {
+    color: #999;
+    margin-left: 15px;
+    margin-top: 5px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+.nav .quick-navigation .quicknav-body ul li.visited {
+    cursor: pointer;
+}
+.nav .quick-navigation .quicknav-body ul li.visited:hover {
+    background-color: #d0d0d0;
+}
+.nav .quick-navigation .quicknav-body ul li.visited div {
+    float: left;
+}
+.nav .quick-navigation .quicknav-body ul li.visited div:first-child {
+    background-color: red;
+}
+.nav .quick-navigation .quicknav-body ul li.visited div:last-child {
+    color: #666;
+}
+.nav .quick-navigation .quicknav-body ul li.active {
+    background-color: #4b92b2;
+    cursor: pointer;
+}
+.nav .quick-navigation .quicknav-body ul li.active:hover {
+    background-color: #4b92b2;
+}
+.nav .quick-navigation .quicknav-body ul li.active div:last-child {
+    color: #fff;
+}
 .smarty-autocomplete .smarty-suggestion {
     padding: 8px 4px;
     font-size: 14px;
@@ -5632,13 +5762,12 @@ a.btn-proposal:active {
 .proposal-page .disclosure-footer {
     background-color: #5f5f5f;
     opacity: .7;
-    /*position: absolute;*/
+    position: absolute;
     bottom: -25px;
     text-align: center;
     padding: 4px 0;
     color: #fff;
     font-size: 12px;
-	
 }
 .proposal-page .disclosure-footer a {
     color: #fff;
@@ -5676,7 +5805,6 @@ a.btn-proposal:active {
     opacity: .98;
 }
 }
-
 .proposal-page .overlay-content {
     position: absolute;
     top: 50%;
@@ -5688,7 +5816,6 @@ a.btn-proposal:active {
     margin-left: 10%;
     text-align: center;
 }
-
 .proposal-page .overlay-content p {
     font-size: 28px;
     margin-bottom: 40px;
@@ -5886,6 +6013,24 @@ a.btn-proposal:active {
 }
 .proposal-page-KBYG-1 .side-panel img {
     float: right;
+}
+.proposal-page-Load-1 ul {
+    margin: 20px 0 40px;
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+.proposal-page-Load-1 ul li {
+    margin-bottom: 20px;
+}
+.proposal-page-Load-1 ul li:first-child {
+    margin-bottom: 10px;
+}
+.proposal-page-Load-1 ul li button {
+    width: 200px;
+}
+.proposal-page-Load-1 ul li.actions {
+    margin-top: 40px;
 }
 .proposal-page-YEU-1 .row {
     margin-bottom: 30px;
@@ -6450,19 +6595,19 @@ a.btn-proposal:active {
     display: none;
 }
 .proposal-page-Upgrade-1 .solar-array .solar-array-content .box .system-size {
-    background: url("images/spritesheet.png") no-repeat -16px 0;
+    background: url("/Content/Images/ProposalTool/spritesheet.png") no-repeat -16px 0;
 }
 .proposal-page-Upgrade-1 .solar-array .solar-array-content .box .type-roof {
-    background: url("images/spritesheet.png") no-repeat -237px 0;
+    background: url("/Content/Images/ProposalTool/spritesheet.png") no-repeat -237px 0;
 }
 .proposal-page-Upgrade-1 .solar-array .solar-array-content .box .type-ground {
-    background: url("images/spritesheet.png") no-repeat -127px 0;
+    background: url("/Content/Images/ProposalTool/spritesheet.png") no-repeat -127px 0;
 }
 .proposal-page-Upgrade-1 .solar-array .solar-array-content .box .tilt {
-    background: url("images/spritesheet.png") no-repeat -346px 0;
+    background: url("/Content/Images/ProposalTool/spritesheet.png") no-repeat -346px 0;
 }
 .proposal-page-Upgrade-1 .solar-array .solar-array-content .box .azimuth {
-    background: url("images/spritesheet.png") no-repeat -457px 0;
+    background: url("/Content/Images/ProposalTool/spritesheet.png") no-repeat -457px 0;
 }
 .proposal-page-Upgrade-1 .solar-array .solar-array-content .box h3 {
     text-align: center;
@@ -6677,7 +6822,7 @@ a.btn-proposal:active {
     padding-top: 0;
 }
 .proposal-page-Payments-2 .column .row.row-header .graphic {
-    background-image: url("images/spritesheet.png");
+    background-image: url("/Content/Images/ProposalTool/spritesheet.png");
     width: 94px;
     height: 62px;
     margin: 30px auto 10px;
@@ -6732,7 +6877,7 @@ a.btn-proposal:active {
     width: 100%;
     clear: both;
     position: relative;
-    bottom: 0;	
+    bottom: 0;
 }
 .proposal-page-Payments-3 .content p {
     font-size: 22px;
@@ -7196,6 +7341,7 @@ a.btn-proposal:active {
     margin-top: 12px;
     position: absolute;
     z-index: 6;
+    left: 5px;
 }
 .proposal-page-Payments-8 .row div {
     width: 365px;
@@ -7236,7 +7382,7 @@ a.btn-proposal:active {
     margin-top: 15px;
 }
 .modal-title .icon {
-    background-image: url("images/spritesheet.png");
+    background-image: url("/Content/Images/ProposalTool/spritesheet.png");
     background-repeat: no-repeat;
     height: 40px;
     width: 60px;
@@ -7409,6 +7555,75 @@ a.btn-proposal:active {
 #map-canvas {
     height: 500px;
 }
+.load-proposals-container {
+    display: inline-block;
+    width: 100%}
+.load-proposals-container .load-proposals-header {
+    padding: 20px 0;
+    border-bottom: 1px solid #999;
+    float: left;
+    width: 100%}
+.load-proposals-container .load-proposals-header input {
+    width: 400px;
+}
+.load-proposals-container .load-proposals-header select {
+    width: 150px;
+}
+.load-proposals-container .load-proposals-body {
+    margin-top: 10px;
+    float: left;
+    width: 100%}
+.load-proposals-container .load-proposals-body .proposal-address-row {
+    margin-bottom: 20px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #efefef;
+}
+.load-proposals-container .load-proposals-body .open .glyphicon-play {
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.load-proposals-container .load-proposals-body .open .proposal-address-proposal-row {
+    display: block;
+}
+.load-proposals-container .load-proposals-body .proposal-address-proposals-container {
+    padding: 0;
+}
+.load-proposals-container .load-proposals-body .proposal-address-proposal-row {
+    padding: 3px 0 2px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    display: none;
+}
+.load-proposals-container .load-proposals-body .proposal-address-proposal-row:last-child .border {
+    display: none;
+}
+.load-proposals-container .load-proposals-body .proposal-address-proposal-row .glyphicon-pencil {
+    color: #999;
+}
+.load-proposals-container .load-proposals-body .proposal-address-proposal-row div:first-child {
+    padding-left: 33px;
+}
+.load-proposals-container .load-proposals-body .proposal-address-proposal-row .border {
+    height: 1px;
+    width: 792px;
+    background-color: #ddd;
+    position: absolute;
+    bottom: -5px;
+    left: 33px;
+}
+.load-proposals-container .load-proposals-body .proposal-address-proposal-row input {
+    position: absolute;
+    top: -5px;
+    padding: 2px 12px;
+    width: 345px;
+    height: 30px;
+}
+.load-proposals-container .load-proposals-body .col-md-2 {
+    text-align: center;
+    padding: 0;
+    white-space: nowrap;
+}
 .page-debug .panel {
     padding: 20px;
     float: left;
@@ -7425,133 +7640,4 @@ a.btn-proposal:active {
     background-color: #efefef;
     padding: 10px;
     font-size: 16px;
-}
-         /* menu css start*/
-
-.nav .quick-navigation {
-    width: 800px;
-    height: 520px;
-    background-color: #efefef;
-}
-.nav .quick-navigation .quicknav-header {
-    list-style-type: none;
-    background-color: #fff;
-    border-bottom: 2px solid #d8d8d8;
-    float: left;
-    width: 100%;
-    height: 80px;
-    padding-left: 0;
-}
-.nav .quick-navigation .quicknav-header li {
-    float: left;
-    color: #4b92b2;
-}
-.nav .quick-navigation .quicknav-header li h1 {
-    color: #55636a;
-    font-weight: normal;
-    font-size: 26px;
-}
-.nav .quick-navigation .quicknav-header li:first-child {
-    margin-left: 20px;
-}
-.nav .quick-navigation .quicknav-header li:not(:first-child) {
-    margin-top: 25px;
-    margin-left: 65px;
-    padding-left: 30px;
-    position: relative;
-    font-weight: normal;
-    cursor: pointer;
-}
-.nav .quick-navigation .quicknav-header li a {
-    text-decoration: none;
-}
-.nav .quick-navigation .quicknav-header .icon {
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 0;
-    top: 0;
-    background: transparent url(images/menu.png) no-repeat 0 0;
-}
-.nav .quick-navigation .quicknav-header .icon.icon-hero-map {
-    background-position: -76px -632px;
-    left: 10px;
-}
-.nav .quick-navigation .quicknav-header .icon.icon-hero-video {
-    background-position: -111px -632px;
-}
-.nav .quick-navigation .quicknav-header .icon.icon-get-approved {
-    background-position: -35px -632px;
-}
-.nav .quick-navigation .quicknav-body {
-    padding-left: 5px;
-}
-.nav .quick-navigation .quicknav-body ul {
-    list-style-type: none;
-    float: left;
-    margin: 20px 20px 0 15px;
-    border-right: 1px solid #999;
-    padding-left: 0;
-    width: 250px;
-    margin-right: 0;
-    padding-right: 15px;
-    min-height: 400px;
-}
-.nav .quick-navigation .quicknav-body ul:last-child {
-    border-right: none;
-}
-.nav .quick-navigation .quicknav-body ul li {
-    color: #666;
-    float: left;
-    width: 100%;
-    clear: both;
-    padding: 10px 6px;
-    margin-bottom: 5px;
-}
-.nav .quick-navigation .quicknav-body ul li:first-child {
-    font-weight: bold;
-}
-.nav .quick-navigation .quicknav-body ul li div {
-    float: left;
-}
-.nav .quick-navigation .quicknav-body ul li div:first-child {
-    background-color: #999;
-    border-radius: 50%;
-    text-align: center;
-    height: 30px;
-    width: 30px;
-    color: #fff;
-    line-height: 30px;
-}
-.nav .quick-navigation .quicknav-body ul li div:last-child {
-    color: #999;
-    margin-left: 15px;
-    margin-top: 5px;
-    font-weight: normal;
-    white-space: nowrap;
-}
-.nav .quick-navigation .quicknav-body ul li.visited {
-    cursor: pointer;
-}
-.nav .quick-navigation .quicknav-body ul li.visited:hover {
-    background-color: #d0d0d0;
-}
-.nav .quick-navigation .quicknav-body ul li.visited div {
-    float: left;
-}
-.nav .quick-navigation .quicknav-body ul li.visited div:first-child {
-    background-color: red;
-}
-.nav .quick-navigation .quicknav-body ul li.visited div:last-child {
-    color: #666;
-}
-.nav .quick-navigation .quicknav-body ul li.active {
-    background-color: #4b92b2;
-    cursor: pointer;
-}
-.nav .quick-navigation .quicknav-body ul li.active:hover {
-    background-color: #4b92b2;
-}
-.nav .quick-navigation .quicknav-body ul li.active div:last-child {
-    color: #fff;
 }

@@ -13,7 +13,8 @@ propTool.config(['$routeProvider',
 					controller:'proposalTool'	
 				    }).
 					when('/startProposal/id1', {
-					templateUrl: 'startProposal.html'
+					templateUrl: 'startProposal.html',
+					controller:'startProposalController'	
 				    }).
 					 when('/review/id1', {
 					templateUrl: 'review.html'

@@ -11,7 +11,60 @@
 				<div class="nav-selection-divider"></div>
 				<div class="nav-selection"></div>
 			</div>
-			<ul class="nav nav-pills pull-right ng-scope">
+		<!--************ list and setting start ********-->
+
+
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+						<span class="glyphicon glyphicon-th-list"></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right" role="menu" style="width:800px; height:500px">
+						<li class="quick-navigation">
+							<ul class="quicknav-header">
+								<li>
+									<h1>Quick Navigation</h1>
+								</li>
+								<li>
+									<div class="icon icon-hero-map"></div>HERO Map
+								</li>
+								<li>
+									<div class="icon icon-hero-video"></div>HERO Video
+								</li>
+								<li>
+									<a>
+										<div class="icon icon-get-approved"></div>Get Approved
+									</a>
+								</li>
+							</ul>
+							<div class="quicknav-body">
+								<ul>
+									<li>Energy Use</li>
+									<li ng-repeat=" eu in energyUses">
+										<div>{{$index + 1}}</div>
+										<div>{{eu}}</div>
+									</li>
+								</ul>
+								<ul>
+									<li>Upgrades</li>
+									<li ng-repeat=" upg in upgrades">
+										<div>{{$index + 7}}</div>
+										<div>{{upg}}</div>
+									</li>
+								</ul>
+								<ul>
+									<li>Payments</li>
+									<li ng-repeat=" pay in payments">
+										<div>{{$index + 12}}</div>
+										<div>{{pay}}</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</li>
+
+				<!--******** setting start ********-->
 				<li role="presentation" class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 						<span class="glyphicon glyphicon-cog"></span>
@@ -19,20 +72,25 @@
 					<ul class="dropdown-menu dropdown-menu-right" role="menu">
 						<li><a class="clickable">Home</a>
 						</li>
-						<li><a href="#">Quick Reference Guide</a>
+						<li><a href="">Quick Reference Guide</a>
 						</li>
-						<li><a href="#">Pro Pitch Demo Videos</a>
+						<li><a href="">Pro Pitch Demo Videos</a>
 						</li>
-						<li><a class="ignore-leave-proposal-message" href="#">Feedback</a>
+						<li><a class="ignore-leave-proposal-message" href="">Feedback</a>
 						</li>
-						<li><a href="#">FAQs</a>
+						<li><a href="">FAQs</a>
 						</li>
-						<li><a class="ignore-leave-proposal-message" href="#">Logout</a>
+						<li><a class="ignore-leave-proposal-message" href="">Logout</a>
 						</li>
-
 					</ul>
 				</li>
+				<!--******** setting End ********-->
+
 			</ul>
+
+
+
+			<!--************ list and setting End ********-->
 		</div>
 	</div>
 
@@ -44,7 +102,7 @@
 
 				<h1>Review Your Energy Costs</h1>
 
-				<div class="col-xs-12" style="padding:10px 40px 0px;">
+				<div class="col-xs-12" style="padding:10px 40px 0px; color:#55636A; font-size:22px; font-family:'Museo 500',Arial,Verdana">
 
 					<div class="col-xs-12" style="margin:20px 0px 0px;">
 						<div class="row">

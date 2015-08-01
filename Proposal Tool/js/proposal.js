@@ -4,7 +4,8 @@ var proposalControllers = angular.module('proposalControllers', [])
                                
                                 var energyBill = [];
                                 energyBill.Month = [];
-                                
+                                energyBill.showHide = true;
+                                energyBill.showHideLineGraph = true;
 
                                 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                                                 'September', 'October', 'November', 'December'];
@@ -137,8 +138,8 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                             };
                             energyBill.noInputGiven = function () {
-                                for(var i = 0; i < $scope.energyBill.Month.length; i++) {
-                                    var tmp = $scope.energyBill.Month[i];
+                                for(var i = 0; i < energyBill.Month.length; i++) {
+                                    var tmp = energyBill.Month[i];
                                     if(tmp.dollars != 0)
                                         return false;
                                 }
@@ -148,38 +149,38 @@ var proposalControllers = angular.module('proposalControllers', [])
                             };
                             energyBill.setDefault = function ()    
                             {
-                                    $scope.energyBill.Month[0].dollars = 117;  $scope.energyBill.Month[1].dollars = 103;
-                                    $scope.energyBill.Month[2].dollars = 90;   $scope.energyBill.Month[3].dollars = 92;
-                                    $scope.energyBill.Month[4].dollars = 100;  $scope.energyBill.Month[5].dollars = 132;
-                                    $scope.energyBill.Month[6].dollars = 158;  $scope.energyBill.Month[7].dollars = 176;
-                                    $scope.energyBill.Month[8].dollars = 138;  $scope.energyBill.Month[9].dollars = 102;
-                                    $scope.energyBill.Month[10].dollars = 100; $scope.energyBill.Month[11].dollars = 120;
+							energyBill.Month[0].dollars = 117;  energyBill.Month[1].dollars = 103;
+							energyBill.Month[2].dollars = 90;   energyBill.Month[3].dollars = 92;
+							energyBill.Month[4].dollars = 100;  energyBill.Month[5].dollars = 132;
+							energyBill.Month[6].dollars = 158;  energyBill.Month[7].dollars = 176;
+							energyBill.Month[8].dollars = 138;  energyBill.Month[9].dollars = 102;
+							energyBill.Month[10].dollars = 100; energyBill.Month[11].dollars = 120;
 
-                                    $scope.energyBill.Month[0].kWh = 117;  $scope.energyBill.Month[1].kWh = 103;
-                                    $scope.energyBill.Month[2].kWh = 90;   $scope.energyBill.Month[3].kWh = 92;
-                                    $scope.energyBill.Month[4].kWh = 100;  $scope.energyBill.Month[5].kWh = 132;
-                                    $scope.energyBill.Month[6].kWh = 158;  $scope.energyBill.Month[7].kWh = 176 ;
-                                    $scope.energyBill.Month[8].kWh = 138;  $scope.energyBill.Month[9].kWh = 102;
-                                    $scope.energyBill.Month[10].kWh = 100; $scope.energyBill.Month[11].kWh = 120;
+                            energyBill.Month[0].kWh = 117;  energyBill.Month[1].kWh = 103;
+                            energyBill.Month[2].kWh = 90;   energyBill.Month[3].kWh = 92;
+                            energyBill.Month[4].kWh = 100;  energyBill.Month[5].kWh = 132;
+                            energyBill.Month[6].kWh = 158;  energyBill.Month[7].kWh = 176 ;
+                            energyBill.Month[8].kWh = 138;  energyBill.Month[9].kWh = 102;
+                            energyBill.Month[10].kWh = 100; energyBill.Month[11].kWh = 120;
 
                             };
                             energyBill.anyInputMissed = function () {
                                 var i = 0, num = 0;
-                               for(i = 0; i < $scope.energyBill.Month.length; i++) {
-                                    var tmp = $scope.energyBill.Month[i];
+                               for(i = 0; i < energyBill.Month.length; i++) {
+                                    var tmp = energyBill.Month[i];
                                     if(tmp.dollars != 0)
                                         num++;
                                 }           
                                 if(num == 0)
                                     return true;//Should not come here as noInputGiven must have been used once
-                                else if (num < $scope.energyBill.Month.length - 1)
+                                else if (num < energyBill.Month.length - 1)
                                     return true; //Atleast one input has not been given
                                 else 
                                     return false; //All inputs provided
                                 
 
                             };
-                            energyBill.setEstimatedValues() {
+                            energyBill.setEstimatedValues = function(){
 
                             };
                                 
@@ -212,6 +213,28 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
     $scope.submitCall = function(){
        
     }
+}]);
+
+proposalControllers.controller('startProposalController', ['$scope', function($scope){
+	       $scope.energyUses = ['Review Your Energy Costs', 
+								'Your Billing History',
+								'Your Current Electric Bills',
+								'Electric Price History',
+								'Electric Price Changs',
+								'Your Future Electric Costs'								
+							   ];
+	       $scope.upgrades =   ['What Your Options', 
+								'How Solar Work',
+								'Bild Your Solar System',
+								'Your Solar Production',
+								'Solar System Sumary'																
+							   ];
+	       $scope.payments =   ['Payments options', 
+								'Explore Payments',
+								'HERO Summary',
+								'Whats Next?'																
+							   ];
+	      
 }]);
 proposalControllers.controller('justOneBillController',['$scope', 'dataService', function($scope, dataService){
         $scope.custom = true;
@@ -414,7 +437,7 @@ proposalControllers.controller('yourOptionsController', ['$scope', 'dataService'
 proposalControllers.controller('multipleBillBarGraphController',['$scope', 'dataService' , function($scope, dataService){
 
         $scope.energyBill = dataService.dataObj;
-        $scope.showHide = true;
+        $scope.showHide = $scope.energyBill.showHide;
         $scope.dataMonths = [];
 	       
     
@@ -431,6 +454,7 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
     
     $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
+		          $scope.energyBill.showHide = false;
         };
 
     $scope.energyBill.calculateTotalDollars();   
@@ -579,10 +603,11 @@ proposalControllers.controller('noBillBarGraphController',['$scope', function($s
 proposalControllers.controller('lineGraphController',['$scope','dataService', function($scope, dataService){	
 
         $scope.energyBill = dataService.dataObj;                                              
-        $scope.showHide = true;
+        $scope.showHide = $scope.energyBill.showHideLineGraph;
         var rates  = $scope.energyBill.kWhRates;
            $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
+			     $scope.energyBill.showHideLineGraph = false;
         };
    $('#lineGraph').highcharts({
         title: {
