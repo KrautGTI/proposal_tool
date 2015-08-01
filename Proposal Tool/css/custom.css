@@ -7555,3 +7555,13 @@ a.btn-proposal:active {
 .nav .quick-navigation .quicknav-body ul li.active div:last-child {
     color: #fff;
 }
+       /*circle logo*/
+.circle-text {
+    width:300px;
+  border-radius: 50%;
+  border: 10px solid #d3dfe1;
+  background: #D80000; 	
+}
+.logo-display {
+	display: inline-block;
+}

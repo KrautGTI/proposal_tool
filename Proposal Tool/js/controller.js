@@ -17,7 +17,8 @@ propTool.config(['$routeProvider',
 					controller:'startProposalController'	
 				    }).
 					 when('/review/id1', {
-					templateUrl: 'review.html'
+					templateUrl: 'review.html',
+					controller:'reviewController'		
 				    }).
 					when('/multipleBills/id1', {
 					templateUrl: 'multipleBills.html',

@@ -42,10 +42,22 @@
 			<div class="proposal-page proposal-page-YEU-9 col-xs-12 column anim-fade ng-scope" style="min_height:300px;text-align:center">
 				<h3>Your Future Electric Costs</h3>
 				<div id="areaChart"> </div>
-				<div ng-show="showImage">
-					<img class="graph-button" ng-click="ShowBluImage()" src="css/images/how-much-did-you-spend.png" event-log="How Much Did I Spend:Clicked">
+				<div class="circle" ng-show="showImage" style="position:absolute; top:-32px">
+					<div class="circle-text graph-button" ng-click="ShowBluImage()" style="height: 300px; width: 301px;">
+						<div class="glyphicon glyphicon-question-sign" style="font-size: 65px; margin-top: 18px"></div>
+						<div style="font-weight: bold; font-size:27px">
+							How much
+							<br> will you spend
+							<br> over 30 years?
+						</div>
+						<div style="display: inline-block;">
+							<pp style="font-size:10px; margin-top:23px;">FIND OUT</pp>
+							<div class="glyphicon glyphicon-chevron-right" style="font-size: 15px;margin-top:20px; vertical-align:bottom"></div>
+
+						</div>
+					</div>
 				</div>
-				<div class="circle" ng-hide="showImage">
+			<div class="circle" ng-hide="showImage" style="position:absolute; top:108px">
 					<img src="css/images/halo-circle.png" style="margin-left: -150px;">
 					<div class="content">You'll pay
 						<h2>{{"$" + energyBill.cumulative30YearsExpenseDisplay}}</h2> over 30 years to your electric utility</div>

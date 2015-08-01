@@ -231,6 +231,53 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 return estimates;
 
                             };
+				energyBill.menuPageArrayeu =[{'title': 'Review Your Energy Costs',
+											'visited':false
+										   },
+										   {'title': 'Your Billing History',
+											'visited':false
+										   },
+										   {'title': 'Your Current Electric Bills',
+											'visited':false
+										   },
+										   {'title': 'Electric Price History',
+											'visited':false
+										   },
+										   {'title': 'Electric Price Changs',
+											'visited':false
+										   },
+										   {'title': 'Your Future Electric Costs',
+											'visited':false
+										   }];
+										   
+			   energyBill.menuPageArrayup =[{'title': 'What Your Options',
+											'visited':false
+										   },
+										   {'title': 'How Solar Work',
+											'visited':false
+										   },
+										   {'title': 'Bild Your Solar System',
+											'visited':false
+										   },
+										   {'title': 'Your Solar Production',
+											'visited':false
+										   },
+										   {'title': 'Solar System Sumary',
+											'visited':false
+										   }];
+								
+			  energyBill.menuPageArraypay =[{'title': 'Payments options',
+											'visited':false
+										   },
+										   {'title': 'Explore Payments',
+											'visited':false
+										   },
+										   {'title': 'HERO Summary',
+											'visited':false
+										   },
+										   {'title': 'Whats Next?',
+											'visited':false
+										   }];
                                 
                                 
                                 
@@ -284,6 +331,15 @@ proposalControllers.controller('startProposalController', ['$scope', function($s
 							   ];
 	      
 }]);
+proposalControllers.controller('reviewController', ['$scope', 'dataService', function($scope, dataService){
+            $scope.energyBill = dataService.dataObj;
+            $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+            $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+            $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay; 
+            console.log($scope.navMenuPageArray);
+}]);
+
+
 proposalControllers.controller('justOneBillController',['$scope', 'dataService', function($scope, dataService){
         $scope.custom = true;
         $scope.model = { id: 0 };
