@@ -66,7 +66,8 @@ var proposalControllers = angular.module('proposalControllers', [])
                                                 return totalKwh;
 
                                         };
-                                        energyBill.Month[i].kWh = Math.ceil(findkWhFromDollars(input));           
+                                        
+                                            energyBill.Month[i].kWh = Math.ceil(findkWhFromDollars(input));           
             
                             };
                             energyBill.propagateEnergyBillFromkWh = function (i) {    
@@ -93,8 +94,9 @@ var proposalControllers = angular.module('proposalControllers', [])
                                             return totalDollar;
 
                                     };
-
-                                    energyBill.Month[i].dollars =  Math.ceil(findkWhFromkWh(input)) ;
+                                    if(energyBill.Month[i].dollars == 0)
+                                        energyBill.Month[i].dollars =  Math.ceil(findkWhFromkWh(input)) ;
+                                
 
                             };
                             //Calculate total annual cost and return fills the array with monthly expenditure
@@ -167,7 +169,7 @@ proposalControllers.controller('justOneBillController',['$scope', 'dataService',
         $scope.energyBill = dataService.dataObj;
         $scope.toggleCustom = function() {
             
-            $scope.custom = $scope.custom === false ? true: false;
+            $scope.energyBill.dollar = $scope.energyBill.dollar === false ? true: false;
         };
 		
 		
