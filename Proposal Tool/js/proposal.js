@@ -6,9 +6,24 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.Month = [];
                                 energyBill.showHide = true;
                                 energyBill.showHideLineGraph = true;
+                                energyBill.address = [];
+                                energyBill.address.zipcode = 94591;
+                                
+                                energyBill.RegionkWh = [];
+                                
+                                energyBill.RegionkWh[94591] = [ 100, 52, 30, 29, 46, 123, 185, 223, 137, 52,
+                                                                    52, 107 ];
+                                                       
 
                                 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                                                 'September', 'October', 'November', 'December'];
+                                
+                                //Make it under energyBill if required by any Controller/User to change it
+                                var solarRadiationFactor = [0.586626139817629, 0.729483282674772, 0.966565349544072,             
+                                                            1.142857142857140, 1.294832826747720, 1.316109422492400,
+                                                            1.370820668693000, 1.264437689969600, 1.136778115501520,
+                                                            0.954407294832826, 0.674772036474164, 0.556231003039513
+                                                            ];
                                 
                                 for(var i = 0 ; i < months.length; i++)
                                 {
@@ -19,10 +34,13 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 }   
                                 
                                 energyBill.percentChange = 7.0;
-								energyBill.cumulative25YearsExpense = 1;
+								energyBill.cumulative30YearsExpenseDisplay = 1;
                                 energyBill.dollar = true;
                                 energyBill.convert = true;
-                                energyBill.kWhRates= [0.08, 0.07, 0.08, 0.08, 0.09, 0.09, 0.09, 0.1, 0.11, 0.12, 0.12, 0.12, 0.12, 0.13, 0.13, 0.13, 0.11, 0.11, 0.12, 0.19, 0.19, 0.21, 0.18, 0.20, 0.28, 0.27, 0.28, 0.30, 0.28, 0.27, 0.26, 0.28, 0.29, 0.29];
+                                //The kWhRates used to show in when drawing lineCharts
+                                energyBill.kWhRates= [0.08, 0.07, 0.08, 0.08, 0.09, 0.09, 0.09, 0.1, 0.11, 0.12, 0.12, 0.12, 0.12,
+                                                      0.13, 0.13, 0.13, 0.11, 0.11, 0.12, 0.19, 0.19, 0.21, 0.18, 0.20, 0.28, 0.27,
+                                                      0.28, 0.30, 0.28, 0.27, 0.26, 0.28, 0.29, 0.29];
 
                                 energyBill.numArray = [1];
                                 
@@ -60,14 +78,10 @@ var proposalControllers = angular.module('proposalControllers', [])
                                                     } else {
                                                         totalKwh += dollar/energyBill.slabs[i].ratePerkWh;
                                                         break;
-
                                                     }
-
                                                 }
                                                 return totalKwh;
-
                                         };
-                                        
                                             energyBill.Month[i].kWh = Math.ceil(findkWhFromDollars(input));           
             
                             };
@@ -149,19 +163,19 @@ var proposalControllers = angular.module('proposalControllers', [])
                             };
                             energyBill.setDefault = function ()    
                             {
-							energyBill.Month[0].dollars = 117;  energyBill.Month[1].dollars = 103;
-							energyBill.Month[2].dollars = 90;   energyBill.Month[3].dollars = 92;
-							energyBill.Month[4].dollars = 100;  energyBill.Month[5].dollars = 132;
-							energyBill.Month[6].dollars = 158;  energyBill.Month[7].dollars = 176;
-							energyBill.Month[8].dollars = 138;  energyBill.Month[9].dollars = 102;
-							energyBill.Month[10].dollars = 100; energyBill.Month[11].dollars = 120;
+                                energyBill.Month[0].dollars = 117;  energyBill.Month[1].dollars = 103;
+                                energyBill.Month[2].dollars = 90;   energyBill.Month[3].dollars = 92;
+                                energyBill.Month[4].dollars = 100;  energyBill.Month[5].dollars = 132;
+                                energyBill.Month[6].dollars = 158;  energyBill.Month[7].dollars = 176;
+                                energyBill.Month[8].dollars = 138;  energyBill.Month[9].dollars = 102;
+                                energyBill.Month[10].dollars = 100; energyBill.Month[11].dollars = 120;
 
-                            energyBill.Month[0].kWh = 117;  energyBill.Month[1].kWh = 103;
-                            energyBill.Month[2].kWh = 90;   energyBill.Month[3].kWh = 92;
-                            energyBill.Month[4].kWh = 100;  energyBill.Month[5].kWh = 132;
-                            energyBill.Month[6].kWh = 158;  energyBill.Month[7].kWh = 176 ;
-                            energyBill.Month[8].kWh = 138;  energyBill.Month[9].kWh = 102;
-                            energyBill.Month[10].kWh = 100; energyBill.Month[11].kWh = 120;
+                                energyBill.Month[0].kWh = 117;  energyBill.Month[1].kWh = 103;
+                                energyBill.Month[2].kWh = 90;   energyBill.Month[3].kWh = 92;
+                                energyBill.Month[4].kWh = 100;  energyBill.Month[5].kWh = 132;
+                                energyBill.Month[6].kWh = 158;  energyBill.Month[7].kWh = 176 ;
+                                energyBill.Month[8].kWh = 138;  energyBill.Month[9].kWh = 102;
+                                energyBill.Month[10].kWh = 100; energyBill.Month[11].kWh = 120;
 
                             };
                             energyBill.anyInputMissed = function () {
@@ -180,7 +194,41 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
 
                             };
-                            energyBill.setEstimatedValues = function(){
+                            energyBill.firstFilledMonth = function () {
+                                
+                                for(i = 0; i < energyBill.Month.length; i++) {
+                                    var tmp = energyBill.Month[i];
+                                    if(tmp.dollars != 0)
+                                        return i;
+                                }
+                                return -1; //No such month exists
+                                
+                            };
+                            energyBill.setEstimatedValues = function () {
+                                var zip = energyBill.address.zipcode;
+                                zip = 94591;//hardcoded value do away with it once updated from user
+                                var estimateSampleUsage = energyBill.RegionkWh[zip];
+                                var sampleMonthIndex = energyBill.firstFilledMonth(); //Month Index starts with zero as Jan
+                                for(i = 0; i < energyBill.Month.length; i++) {
+                                    if(i == sampleMonthIndex)
+                                        continue;
+                                    if(energyBill.Month[i].dollars == 0 || energyBill.Month[i].kWh == 0) {
+                                        energyBill.Month[i].kWh = energyBill.Month[sampleMonthIndex].kWh *
+                                                                    estimateSampleUsage[i]/
+                                                                    estimateSampleUsage[sampleMonthIndex] ;
+                                        //Propagate the dollar for kWh estimated
+                                        energyBill.propagateEnergyBillFromkWh(i);
+                                    }
+                                }
+                                
+                                
+                            };
+                            energyBill.setEstimatedSolarProduction = function(){
+                                var estimates = [356, 428, 666, 780, 906, 894, 878, 857, 736, 557, 405, 300];
+                                
+                                
+                                    
+                                return estimates;
 
                             };
                                 
@@ -660,7 +708,7 @@ proposalControllers.controller('lineGraphController',['$scope','dataService', fu
 	   plotOptions: {
             series: {
                 animation: {
-                    duration: 2000
+                    duration: 4000
                 }
             }
         },
@@ -758,6 +806,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
     
     
 }]);
+
 proposalControllers.controller('estimatedSolarSystemController',['$scope', 'dataService', function($scope, dataService){
        
     $scope.energyBill = dataService.dataObj;
@@ -775,7 +824,7 @@ proposalControllers.controller('estimatedSolarSystemController',['$scope', 'data
                     $scope.dataMonths.push(num);        
     }
    
-    solarEstimate = [356, 428, 666, 780, 906, 894, 878, 857, 736, 557, 405, 300];
+    solarEstimate = $scope.energyBill.setEstimatedSolarProduction();
     
     $('#lineAreaChart').highcharts({
         title: {
