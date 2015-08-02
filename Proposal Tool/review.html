@@ -40,23 +40,29 @@
 							<div class="quicknav-body">
 								<ul>
 									<li>Energy Use</li>									
-									<li ng-repeat="mpaeu in navMenuPageArrayEnerUses">
+									<li ng-repeat="mpaeu in navMenuPageArrayEnerUses" class="visited">
+										<a id="link-6" ng-href="{{mpaeu.url}}">
 										<div>{{$index + 1}}</div>
 										<div>{{mpaeu.title}}</div>
+										</a>	
 									</li>								
 								</ul>
 								<ul>
 									<li>Upgrades</li>
-									<li ng-repeat="mpau in navMenuPageArrayUpgrad">
+									<li ng-repeat="mpau in navMenuPageArrayUpgrad" class="visited">
+										<a id="link-6" ng-href="{{mpau.url}}">
 										<div>{{$index + 7}}</div>
 										<div>{{mpau.title}}</div>
+										</a>	
 									</li>									
 								</ul>
 								<ul>
 									<li>Payments</li>
-                                    <li ng-repeat="mpap in navMenuPageArrayPayment">
+                                    <li ng-repeat="mpap in navMenuPageArrayPayment" class="visited">
+										<a id="link-6" ng-href="{{mpap.url}}">
 										<div>{{$index + 12}}</div>
 										<div>{{mpap.title}}</div>
+										</a>	
 									</li>																		
 								</ul>
 							</div>

@@ -232,51 +232,66 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                             };
 				energyBill.menuPageArrayeu =[{'title': 'Review Your Energy Costs',
-											'visited':false
+											  'visited':false,
+											  'url':'#/startProposal/id1'
 										   },
 										   {'title': 'Your Billing History',
-											'visited':false
+											'visited':false,
+											'url':'#/review/id1'
 										   },
 										   {'title': 'Your Current Electric Bills',
-											'visited':false
+											'visited':false,
+											'url':'#/multipleBillBarGraph/id1'
 										   },
 										   {'title': 'Electric Price History',
-											'visited':false
+											'visited':false,
+											'url':'#/lineGraph/id1'
 										   },
 										   {'title': 'Electric Price Changs',
-											'visited':false
+											'visited':false,
+											'url':'#/percentageChange/id1'
 										   },
 										   {'title': 'Your Future Electric Costs',
-											'visited':false
+											'visited':false,
+											'url':'#/futureElectricCost/id1'
 										   }];
 										   
 			   energyBill.menuPageArrayup =[{'title': 'What Your Options',
-											'visited':false
+											'visited':false,
+											 'url':'#/yourOptions/id1'
 										   },
 										   {'title': 'How Solar Work',
-											'visited':false
+											'visited':false,
+											'url':'#/solarSystemWork/id1'
 										   },
 										   {'title': 'Bild Your Solar System',
-											'visited':false
+											'visited':false,
+											'url':'#/buildSolarSystem/id1'
 										   },
 										   {'title': 'Your Solar Production',
-											'visited':false
+											'visited':false,
+											'url':'#/estimatedSolarSystemProduction/id1'
 										   },
 										   {'title': 'Solar System Sumary',
-											'visited':false
+											'visited':false,
+											'url':'#/solarSystemSummary/id1'
 										   }];
 								
 			  energyBill.menuPageArraypay =[{'title': 'Payments options',
-											'visited':false
+											'visited':false,
+											 'url':'#/paymentOptions/id1'
 										   },
 										   {'title': 'Explore Payments',
-											'visited':false
+											'visited':false,
+											'url':'#/summary/id1'
 										   },
 										   {'title': 'HERO Summary',
-											'visited':false
+											'visited':false,
+											'url':'#/heroSummary/id1'
 										   },
 										   {'title': 'Whats Next?',
-											'visited':false
+											'visited':false,
+											'url':'#/finishApplication/id1'
 										   }];
                                 
                                 
@@ -310,25 +325,11 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
     }
 }]);
 
-proposalControllers.controller('startProposalController', ['$scope', function($scope){
-	       $scope.energyUses = ['Review Your Energy Costs', 
-								'Your Billing History',
-								'Your Current Electric Bills',
-								'Electric Price History',
-								'Electric Price Changs',
-								'Your Future Electric Costs'								
-							   ];
-	       $scope.upgrades =   ['What Your Options', 
-								'How Solar Work',
-								'Bild Your Solar System',
-								'Your Solar Production',
-								'Solar System Sumary'																
-							   ];
-	       $scope.payments =   ['Payments options', 
-								'Explore Payments',
-								'HERO Summary',
-								'Whats Next?'																
-							   ];
+proposalControllers.controller('startProposalController', ['$scope', 'dataService', function($scope, dataService){
+	        $scope.energyBill = dataService.dataObj;
+	        $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+            $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+            $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay; 
 	      
 }]);
 proposalControllers.controller('reviewController', ['$scope', 'dataService', function($scope, dataService){
@@ -336,7 +337,7 @@ proposalControllers.controller('reviewController', ['$scope', 'dataService', fun
             $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
             $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
             $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay; 
-            console.log($scope.navMenuPageArray);
+           
 }]);
 
 
@@ -344,6 +345,9 @@ proposalControllers.controller('justOneBillController',['$scope', 'dataService',
         $scope.custom = true;
         $scope.model = { id: 0 };
         $scope.energyBill = dataService.dataObj;
+	    $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
         $scope.toggleCustom = function() {
             
             $scope.energyBill.dollar = $scope.energyBill.dollar === false ? true: false;
@@ -372,6 +376,9 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
     
     
     $scope.energyBill = dataService.dataObj;
+	$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+	$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+	$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
     
         /*
          * Create watch on the values work on conversions in realtime
@@ -476,14 +483,22 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
             };
     });
 
-proposalControllers.controller('heroSummaryController',['$scope', function($scope){
+proposalControllers.controller('heroSummaryController',['$scope','dataService', function($scope,dataService){
+	    $scope.energyBill = dataService.dataObj;
+		$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay; 
         $scope.showHide = true;
         $scope.showHideDetail = function() {
             $scope.showHide = $scope.showHide === false ? true: false;
         };
 		
 }]);
-proposalControllers.controller('paymentOptionsController',['$scope', function($scope){
+proposalControllers.controller('paymentOptionsController',['$scope','dataService', function($scope,dataService){
+	    $scope.energyBill = dataService.dataObj;
+		$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay; 
         $scope.firstCol = true;
         $scope.secondCol = true;
         $scope.thirdCol = true;
@@ -501,6 +516,9 @@ proposalControllers.controller('paymentOptionsController',['$scope', function($s
 }]);
 proposalControllers.controller('buildSolarSystemController',['$scope', 'dataService', function($scope, dataService){
     $scope.energyBill = dataService.dataObj;
+	$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+	$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+	$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
     $scope.numArray = $scope.energyBill.numArray;
     
     $scope.anotherArray = function () {
@@ -523,7 +541,9 @@ proposalControllers.controller('buildSolarSystemController',['$scope', 'dataServ
 }]);
 proposalControllers.controller('percentageChangeController', ['$scope', 'dataService', function($scope, dataService){
             $scope.energyBill = dataService.dataObj;
-            
+            $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+            $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+            $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
     
         
     
@@ -534,6 +554,9 @@ proposalControllers.controller('percentageChangeController', ['$scope', 'dataSer
 
 proposalControllers.controller('yourOptionsController', ['$scope', 'dataService', function($scope, dataService){
             $scope.energyBill = dataService.dataObj;
+	        $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+            $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+            $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
             
 }]);
 
@@ -541,6 +564,9 @@ proposalControllers.controller('yourOptionsController', ['$scope', 'dataService'
 proposalControllers.controller('multipleBillBarGraphController',['$scope', 'dataService' , function($scope, dataService){
 
         $scope.energyBill = dataService.dataObj;
+		$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
         $scope.showHide = $scope.energyBill.showHide;
         $scope.dataMonths = [];
 	       
@@ -690,14 +716,51 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
 
        
 	}]);
-proposalControllers.controller('oneBillBarGraphController',['$scope', function($scope){
+proposalControllers.controller('oneBillBarGraphController',['$scope','dataService', function($scope,dataService){
+		$scope.energyBill = dataService.dataObj;
+		$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay; 
 	    $scope.showHide = true;
            $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
         };
        
 	}]);
-proposalControllers.controller('noBillBarGraphController',['$scope', function($scope){	
+
+proposalControllers.controller('solarSystemWorkController',['$scope','dataService', function($scope,dataService){
+		$scope.energyBill = dataService.dataObj;
+		$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;	
+       
+	}]);
+proposalControllers.controller('solarSystemSummaryController',['$scope','dataService', function($scope,dataService){
+		$scope.energyBill = dataService.dataObj;
+		$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;	
+       
+	}]);
+proposalControllers.controller('summaryController',['$scope','dataService', function($scope,dataService){
+		$scope.energyBill = dataService.dataObj;
+		$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;	
+       
+	}]);
+proposalControllers.controller('finishApplicationController',['$scope','dataService', function($scope,dataService){
+		$scope.energyBill = dataService.dataObj;
+		$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;	
+       
+	}]);
+proposalControllers.controller('noBillBarGraphController',['$scope','dataService', function($scope,dataService){
+	  $scope.energyBill = dataService.dataObj;
+	  $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+	  $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+	  $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay; 
 	  $scope.showHide = true;
            $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
@@ -706,7 +769,10 @@ proposalControllers.controller('noBillBarGraphController',['$scope', function($s
 	}]);
 proposalControllers.controller('lineGraphController',['$scope','dataService', function($scope, dataService){	
 
-        $scope.energyBill = dataService.dataObj;                                              
+        $scope.energyBill = dataService.dataObj; 
+	    $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
         $scope.showHide = $scope.energyBill.showHideLineGraph;
         var rates  = $scope.energyBill.kWhRates;
            $scope.ShowGraph = function() {
@@ -785,6 +851,9 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 	
     var fiveYearData = [];
     $scope.energyBill = dataService.dataObj;
+	$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+	$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+	$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
    
 	 $scope.energyBill.cumulative30YearsExpense = 0;
     $scope.energyBill.percentChange = parseFloat($scope.energyBill.percentChange);
@@ -866,6 +935,9 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 proposalControllers.controller('estimatedSolarSystemController',['$scope', 'dataService', function($scope, dataService){
        
     $scope.energyBill = dataService.dataObj;
+	$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
+	$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
+	$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                         'September', 'October', 'November', 'December'];
     $scope.dataMonths = [];

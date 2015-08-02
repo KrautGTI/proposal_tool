@@ -63,7 +63,8 @@ propTool.config(['$routeProvider',
                     controller: 'yourOptionsController'
 				    }).	
 					 when('/solarSystemWork/id1', {
-					templateUrl: 'solarSystemWork.html'
+					templateUrl: 'solarSystemWork.html',
+					controller:	'solarSystemWorkController'	
 				    }).
 					 when('/buildSolarSystem/id1', {
 					templateUrl: 'buildSolarSystem.html',
@@ -74,21 +75,24 @@ propTool.config(['$routeProvider',
                     controller:'estimatedSolarSystemController'
 				    }).
 					 when('/solarSystemSummary/id1', {
-					templateUrl: 'solarSystemSummary.html'
+					templateUrl: 'solarSystemSummary.html',
+					controller:'solarSystemSummaryController'	
 				    }).	
 					 when('/paymentOptions/id1', {
 					templateUrl: 'paymentOptions.html',
 					controller:'paymentOptionsController'	
 				    }).
 					 when('/summary/id1', {
-					templateUrl: 'summary.html'
+					templateUrl: 'summary.html',
+					controller:'summaryController'	
 				    }).	
 					 when('/heroSummary/id1', {
 					templateUrl: 'heroSummary.html',
 					controller:'heroSummaryController'	
 				    }).
 					 when('/finishApplication/id1', {
-					templateUrl: 'finishApplication.html'
+					templateUrl: 'finishApplication.html',
+					controller:'finishApplicationController'		
 				    });				 
 				 }]);	
 				
