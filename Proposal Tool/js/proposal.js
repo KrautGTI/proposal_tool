@@ -648,7 +648,10 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
     },
     
     yAxis: {    
-
+            title: {
+                
+                text: ''
+            },
       labels: {
             formatter: function () {
                 if($scope.energyBill.dollar === true)
@@ -912,6 +915,9 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
             }
         },
         yAxis: {
+            title: {
+                text: ''
+            },
             
             labels: {
                 formatter: function () {
