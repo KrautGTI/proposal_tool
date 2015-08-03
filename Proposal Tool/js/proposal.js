@@ -625,8 +625,28 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
     },
 
     xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: {
+           formatter: function () {
+               var index = this.axis.categories.indexOf(this.value);
+               if($scope.energyBill.dollar === true) {
+                   if($scope.dataMonths[index].y !== undefined)
+                       return ' <a>' +  this.value + '<br>' + '$' + Math.ceil($scope.dataMonths[index].y) + '</a>';
+                   else 
+                       return ' <a>' +  this.value + '<br>' + '$' + Math.ceil($scope.dataMonths[index]) + '</a>';
+                } 
+               else {
+                   if($scope.dataMonths[index].y !== undefined)
+                       return ' <a>' +  this.value + '<br>'  + Math.ceil($scope.dataMonths[index].y) + ' kWh' + '</a>';
+                   else 
+                       return ' <a>' +  this.value + '<br>'  + Math.ceil($scope.dataMonths[index]) +  ' kWh' + '</a>';
+                    
+                }
+               
+            }
+        }
     },
+    
     yAxis: {    
 
       labels: {
@@ -697,9 +717,9 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
         yDecimals: 2,
         formatter: function() {
                 if($scope.energyBill.dollar === true)
-                    return this.x + '\n' + '$'+ Highcharts.numberFormat(this.y, 2) ;
+                    return this.x + '<br>' + '$'+ Highcharts.numberFormat(this.y, 2) ;
                 else 
-                    return this.x + '\n' + 'kWh'+ Highcharts.numberFormat(this.y, 2) ;
+                    return this.x + '<br>' + 'kWh'+ Highcharts.numberFormat(this.y, 2) ;
         }
     },
 
