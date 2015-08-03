@@ -803,8 +803,7 @@ proposalControllers.controller('lineGraphController',['$scope','dataService', fu
         var rates                        = $scope.energyBill.kWhRates;	       
            $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
-			     $scope.energyBill.showHideLineGraph = false;
-			   
+			     $scope.energyBill.showHideLineGraph = false;			   
 			     $scope.lineGraphNotice = $scope.lineGraphNotice === false ? true: false;
 
         };
