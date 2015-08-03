@@ -8,9 +8,16 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.showHideLineGraph = true;
                                 energyBill.lineGraphShowNotice = true;
                                 energyBill.address = [];
+                                // Variable for building and estimating solar Production
+                                energyBill.solarSystem = {};
+                                energyBill.solarSystem.systemSize = 0;
+                                energyBill.solarSystem.electricalWork = 0;
+                                energyBill.solarSystem.miscWork = 0;
                                 energyBill.address.zipcode = 94591;
-                                
+                                // Sample estimated usage per region/zipcode
                                 energyBill.RegionkWh = [];
+                                energyBill.category = [];
+                                energyBill.category[94591] = 'x';
                                 
                                 energyBill.RegionkWh[94591] = [ 100, 52, 30, 29, 46, 123, 185, 223, 137, 52,
                                                                     52, 107 ];
@@ -46,12 +53,28 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.numArray = [1];
                                 
                                 //Static definition of slabs
-                                energyBill.slabs = [];
+                                energyBill.region = [];
+                                //Create an object for each zip code : ToDo
+                                energyBill.region['x'] = new Object();
+                                energyBill.region['x'].slabs = {};
+                                energyBill.region['x'].slabs.summer = []; //May-Oct index 4-9
+                                energyBill.region['x'].slabs.winter = [];//Nov-Apr index 0-3 and 10-11
                                 //Initialize slabs used for computation of kWh and dollars
-                                energyBill.slabs.push({limitDollar:50*0.225, limitkWh:50, ratePerkWh:0.225});
-                                energyBill.slabs.push({limitDollar:80*0.325, limitkWh:130, ratePerkWh:0.325});//50+80
-                                energyBill.slabs.push({limitDollar:100*0.425, limitkWh:230, ratePerkWh:0.425});//50+80+100
-                                energyBill.slabs.push({limitDollar:1000000, limitkWh:100000000, ratePerkWh:0.525});//50+80+100                                                       
+                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.16352, perDay: 9.3});
+                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.18673, perDay: 12.09});
+                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.27504, perDay:18.6});
+                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.33504, perDay:27.9});//50+80+100     
+                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.33504, perDay: 10000});//50+80+100                                     
+                                /*
+                                 * LimitkWh = 20B of excel ResElecBaseline i.e X territory 16.7 per day winter usage
+                                 * Setting up Tier from Tier 0 - 4
+                                 */
+                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.16352, perDay: 16.7});
+                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.18673, perDay: 21.71});
+                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.27504, perDay: 33.2  });
+                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.33504, perDay: 50.1 });
+                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.33504, perDay: 100000 });
+                                
                                 //Default values of energyBill.Monthly Bill
        
                                  energyBill.convertToComma = function (yourNumber) {
@@ -62,47 +85,82 @@ var proposalControllers = angular.module('proposalControllers', [])
                                         return components.join(".");  
 
                                 };
+                                isSummer = function (month) {
+                                        if(month > 3 && month < 10)
+                                            return true;
+                                        else 
+                                            return false;
+
+
+                                };
+
                                 energyBill.propagateEnergyBillFromDollar = function (i) {    
 
                                         //Start validation
                                         var input = energyBill.Month[i].dollars;
+                                        
+                                        isSummer = function (month) {
+                                                            if(month > 3 && month < 10)
+                                                                return true;
+                                                            return false;
+                                            
+                                            
+                                                    };
 
-
-                                        findkWhFromDollars = function (dollar) {
+                                        findkWhFromDollars = function (dollar, i) {
                                                 var totalKwh = 0;
-                                                for(var i = 0; i < energyBill.slabs.length && (dollar > 0) ; i++) {
+                                                var slabs = [];
+                                                var zip = energyBill.address.zipcode ;
+                                                var category = energyBill.category[zip];
+                                                var numDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                                            
+                                                if( isSummer(i) )
+                                                    slabs = energyBill.region[category].slabs.summer;
+                                                else 
+                                                    slabs = energyBill.region[category].slabs.winter;
+                                                
+                                                for(var i = 0; i < slabs.length && (dollar > 0) ; i++) {
 
-                                                    if(dollar  > energyBill.slabs[i].limitDollar){
-                                                        totalKwh += energyBill.slabs[i].limitkWh;
-                                                        dollar -= energyBill.slabs[i].limitDollar;
+                                                    if(dollar  > slabs[i].ratePerkWh* numDays[i] * slabs[i].perDay){
+                                                        totalKwh += slabs[i].perDay * numDays[i];
+                                                        dollar -= slabs[i].ratePerkWh* numDays[i] * slabs[i].perDay;
 
                                                     } else {
-                                                        totalKwh += dollar/energyBill.slabs[i].ratePerkWh;
+                                                        totalKwh += dollar/slabs[i].ratePerkWh;
                                                         break;
                                                     }
                                                 }
                                                 return totalKwh;
                                         };
-                                            energyBill.Month[i].kWh = Math.ceil(findkWhFromDollars(input));           
+                                            energyBill.Month[i].kWh = Math.ceil(findkWhFromDollars(input, i));           
             
                             };
+                                
                             energyBill.propagateEnergyBillFromkWh = function (i) {    
 
                                     //Start validation
                                     var input = energyBill.Month[i].kWh;
-
+                                    var numDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
                                     //Use slab logic here ToDo
 
-                                    findkWhFromkWh = function (kWhUsed) {
+                                    findDollarFromkWh = function (kWhUsed) {
                                             var totalDollar = 0;
-                                            for(var i = 0; i < energyBill.slabs.length; i++) {
+                                                var zip = energyBill.address.zipcode ;
+                                                var category = energyBill.category[zip];
+                                            if( isSummer(i) )
+                                                slabs = energyBill.region[category].slabs.summer;
+                                            else 
+                                                slabs = energyBill.region[category].slabs.winter;
 
-                                                if(kWhUsed  > energyBill.slabs[i].limitDollar){
-                                                    totalDollar += energyBill.slabs[i].limitDollar;
-                                                    kWhUsed -= energyBill.slabs[i].limitDollar;
+                                            
+                                            for(var i = 0; i < slabs.length; i++) {
+
+                                                if(kWhUsed  > numDays[i] * slabs[i].perDay){
+                                                    totalDollar += numDays[i] * slabs[i].perDay* slabs[i].ratePerkWh;
+                                                    kWhUsed -= numDays[i] * slabs[i].perDay;
 
                                                 } else {
-                                                    totalDollar += kWhUsed * energyBill.slabs[i].ratePerkWh;
+                                                    totalDollar += numDays[i] * slabs[i].perDay*slabs[i].ratePerkWh;
                                                     break;
                                                 }
 
@@ -111,7 +169,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                     };
                                     if(energyBill.Month[i].dollars == 0)
-                                        energyBill.Month[i].dollars =  Math.ceil(findkWhFromkWh(input)) ;
+                                        energyBill.Month[i].dollars =  Math.ceil(findDollarFromkWh(input, i)) ;
                                 
 
                             };
@@ -205,6 +263,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 return -1; //No such month exists
                                 
                             };
+                                
                             energyBill.setEstimatedValues = function () {
                                 var zip = energyBill.address.zipcode;
                                 zip = 94591;//hardcoded value do away with it once updated from user
@@ -224,6 +283,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
                                 
                             };
+                                
                             energyBill.setEstimatedSolarProduction = function(){
                                 var estimates = [356, 428, 666, 780, 906, 894, 878, 857, 736, 557, 405, 300];
                                 
@@ -393,13 +453,13 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
 	$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
 	$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
     
-        /*
-         * Create watch on the values work on conversions in realtime
-         * when this is done responsibility of toggle would just be to show the value/alter mode
-         * Ideally these must be exported via service calls. 
-         */
+    /*
+    * Create watch on the values work on conversions in realtime
+    * when this is done responsibility of toggle would just be to show the value/alter mode
+    * Ideally these must be exported via service calls. 
+    */
 
-        $scope.toggleCustom = function() {
+    $scope.toggleCustom = function() {
       
             $scope.energyBill.dollar = $scope.energyBill.dollar === false ? true: false;
             $scope.energyBill.annualUsage = Math.ceil($scope.energyBill.annualUsage);
