@@ -6,6 +6,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.Month = [];
                                 energyBill.showHide = true;
                                 energyBill.showHideLineGraph = true;
+                                energyBill.lineGraphShowNotice = true;
                                 energyBill.address = [];
                                 energyBill.address.zipcode = 94591;
                                 
@@ -795,12 +796,17 @@ proposalControllers.controller('lineGraphController',['$scope','dataService', fu
         $scope.energyBill = dataService.dataObj; 
 	    $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
 		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
-		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
-        $scope.showHide = $scope.energyBill.showHideLineGraph;
-        var rates  = $scope.energyBill.kWhRates;
+		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;	
+	
+		$scope.lineGraphNotice           = $scope.energyBill.lineGraphShowNotice;
+        $scope.showHide                  = $scope.energyBill.showHideLineGraph;
+        var rates                        = $scope.energyBill.kWhRates;	       
            $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
 			     $scope.energyBill.showHideLineGraph = false;
+			   
+			     $scope.lineGraphNotice = $scope.lineGraphNotice === false ? true: false;
+
         };
    $('#lineGraph').highcharts({
         title: {
