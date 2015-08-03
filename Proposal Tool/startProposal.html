@@ -38,7 +38,7 @@
 							<div class="quicknav-body">
 								<ul>
 									<li>Energy Use</li>									
-									<li ng-repeat="mpaeu in navMenuPageArrayEnerUses" class="visited">
+									<li ng-repeat="mpaeu in navMenuPageArrayEnerUses" ng-class="{visited: EnergyUsesMenu($index)}">
 										<a id="link-6" ng-href="{{mpaeu.url}}">
 										<div>{{$index + 1}}</div>
 										<div>{{mpaeu.title}}</div>

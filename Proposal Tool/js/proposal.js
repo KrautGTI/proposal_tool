@@ -328,9 +328,21 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
 
 proposalControllers.controller('startProposalController', ['$scope', 'dataService', function($scope, dataService){
 	        $scope.energyBill = dataService.dataObj;
+		
+	
 	        $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
             $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
             $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay; 
+	
+			for(var i = 0; i < $scope.energyBill.menuPageArrayeu.length; i++)
+			{
+				var tmp = $scope.energyBill.menuPageArrayeu[i];
+				if(tmp.url == '#/startProposal/id1')
+					tmp.visited = true;
+			}
+	        $scope.EnergyUsesMenu = function(i){
+			return	$scope.energyBill.menuPageArrayeu[i].visited == true;		
+			};
 	      
 }]);
 proposalControllers.controller('reviewController', ['$scope', 'dataService', function($scope, dataService){
