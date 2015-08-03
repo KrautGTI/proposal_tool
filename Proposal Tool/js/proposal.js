@@ -54,7 +54,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
                                 //Static definition of slabs
                                 energyBill.region = [];
-                                //Create an object for each zip code : ToDo
+                                //Create an object for each Region category code : ToDo
                                 energyBill.region['x'] = new Object();
                                 energyBill.region['x'].slabs = {};
                                 energyBill.region['x'].slabs.summer = []; //May-Oct index 4-9
@@ -63,12 +63,14 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.region['x'].slabs.summer.push({ratePerkWh:0.16352, perDay: 9.3});
                                 energyBill.region['x'].slabs.summer.push({ratePerkWh:0.18673, perDay: 12.09});
                                 energyBill.region['x'].slabs.summer.push({ratePerkWh:0.27504, perDay:18.6});
-                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.33504, perDay:27.9});//50+80+100     
-                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.33504, perDay: 10000});//50+80+100                                     
+                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.33504, perDay:27.9});
+                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.33504, perDay: 10000});
+                                
                                 /*
                                  * LimitkWh = 20B of excel ResElecBaseline i.e X territory 16.7 per day winter usage
                                  * Setting up Tier from Tier 0 - 4
                                  */
+                                
                                 energyBill.region['x'].slabs.winter.push({ratePerkWh:0.16352, perDay: 16.7});
                                 energyBill.region['x'].slabs.winter.push({ratePerkWh:0.18673, perDay: 21.71});
                                 energyBill.region['x'].slabs.winter.push({ratePerkWh:0.27504, perDay: 33.2  });
@@ -1062,11 +1064,14 @@ proposalControllers.controller('estimatedSolarSystemController',['$scope', 'data
             /*text: 'Combination chart'*/
         },
         yAxis: {
-                 labels: {
-                formatter: function () {
-                        return this.value + ' kWh';
-                    }  
-                 }
+            title: {
+                text: ''
+             },
+             labels: {
+            formatter: function () {
+                    return this.value + ' kWh';
+                }  
+             }
         },
         xAxis: {
             categories:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
