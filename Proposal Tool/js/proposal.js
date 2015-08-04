@@ -9,6 +9,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.lineGraphShowNotice = true;
                                 energyBill.address = {};
                                 energyBill.zipcode = 0;
+                                energyBill.solarCost = 0;
                                 // Variable for building and estimating solar Production
                                 energyBill.solarSystem = [];
                                
@@ -121,7 +122,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                         findkWhFromDollars = function (dollar, k) {
                                                 var totalKwh = 0;
                                                 var slabs = [];
-                                                var zip = energyBill.zipcode ;
+                                                var zip = parseInt(energyBill.zipcode );
                                                 var category = energyBill.category[zip];
                                                 var numDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
                                             
@@ -156,7 +157,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                     findDollarFromkWh = function (kWhUsed, k) {
                                             var totalDollar = 0;
-                                            var zip = energyBill.zipcode ;
+                                            var zip = parseInt(energyBill.zipcode) ;
                                             var category = energyBill.category[zip];
                                         
                                             if( isSummer(k) )
@@ -329,7 +330,12 @@ var proposalControllers = angular.module('proposalControllers', [])
                                     
                                 }
                                 for(var j = 0; j < energyBill.solarSystem.length; j++) {
-                                    miscCost += energyBill.solarSystem[j].electricalWork + energyBill.solarSystem[j].miscWork;
+                                    miscCost += parseInt(energyBill.solarSystem[j].electricalWork) +
+                                                    parseInt(energyBill.solarSystem[j].miscWork);
+                                    if(energyBill.solarSystem[j].type260 == 1)
+                                        energyBill.solarCost += 1000 * parseInt(energyBill.solarSystem[j].systemSize);
+                                    else 
+                                       energyBill.solarCost += 1200 * parseInt(energyBill.solarSystem[j].systemSize);
                                 }
                                 
                                 

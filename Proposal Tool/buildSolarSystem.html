@@ -126,7 +126,7 @@
 										<div class="modal-content" style="max-height: 700px; max-width: 900px; margin-left:17%; margin-top:30px">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h3 class="modal-title">Advanced Options - Array {{$index+1}}</h3>
+												<h3 class="modal-title">Advanced Options - Panel {{$index+1}}</h3>
 											</div>
 
 											<div class="modal-body solar-system-designer-advanced-options">
@@ -188,7 +188,7 @@
 										<div class="input-container">
 											<input class="ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                    name="array-0-system-size" numeric-min=".5" numeric-max="500000" 
-                                                   placeholder="5" required="" ng-model="energyBill.solarSystem[$index].systemSize" type="number">
+                                                   placeholder="5" required="" ng-model="energyBill.solarSystem[$index].systemSize" type="text">
 											<span class="description">Number</span>
 										</div>
 									</div>
@@ -234,7 +234,7 @@
 										<div class="input-container ">
 											<input class="ng-pristine ng-untouched ng-invalid ng-invalid-required "
                                                    ng-model="energyBill.solarSystem[$index].electricalWork"
-                                                   name="array-0-tilt" placeholder="22.5" type="number ">
+                                                   name="array-0-tilt" placeholder="22.5" type="text ">
 											<span class="description ">USD </span>
 										</div>
 									</div>
@@ -249,7 +249,7 @@
 										<div class="input-container ">
 											<input class="ng-pristine ng-untouched ng-invalid ng-invalid-required "
                                                    name="array-0-orientation " numeric-min="0 " numeric-max="359 "
-                                                   placeholder="180 " required=" " type="number "
+                                                   placeholder="180 " required=" " type="text"
                                                    ng-model="energyBill.solarSystem[$index].miscWork">
 											<span class="description ">USD</span>
 										</div>
