@@ -117,23 +117,23 @@ var proposalControllers = angular.module('proposalControllers', [])
                                             
                                                     };
 
-                                        findkWhFromDollars = function (dollar, i) {
+                                        findkWhFromDollars = function (dollar, k) {
                                                 var totalKwh = 0;
                                                 var slabs = [];
                                                 var zip = energyBill.address.zipcode ;
                                                 var category = energyBill.category[zip];
                                                 var numDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
                                             
-                                                if( isSummer(i) )
+                                                if( isSummer(k) )
                                                     slabs = energyBill.region[category].slabs.summer;
                                                 else 
                                                     slabs = energyBill.region[category].slabs.winter;
                                                 
                                                 for(var i = 0; i < slabs.length && (dollar > 0) ; i++) {
 
-                                                    if(dollar  > slabs[i].ratePerkWh* numDays[i] * slabs[i].perDay){
-                                                        totalKwh += slabs[i].perDay * numDays[i];
-                                                        dollar -= slabs[i].ratePerkWh* numDays[i] * slabs[i].perDay;
+                                                    if(dollar  > slabs[i].ratePerkWh* numDays[k] * slabs[i].perDay){
+                                                        totalKwh += slabs[i].perDay * numDays[k];
+                                                        dollar -= slabs[i].ratePerkWh* numDays[k] * slabs[i].perDay;
 
                                                     } else {
                                                         totalKwh += dollar/slabs[i].ratePerkWh;
@@ -153,12 +153,12 @@ var proposalControllers = angular.module('proposalControllers', [])
                                     var numDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
                                     //Use slab logic here ToDo
 
-                                    findDollarFromkWh = function (kWhUsed) {
+                                    findDollarFromkWh = function (kWhUsed, k) {
                                             var totalDollar = 0;
                                             var zip = energyBill.address.zipcode ;
                                             var category = energyBill.category[zip];
                                         
-                                            if( isSummer(i) )
+                                            if( isSummer(k) )
                                                 slabs = energyBill.region[category].slabs.summer;
                                             else 
                                                 slabs = energyBill.region[category].slabs.winter;
@@ -166,12 +166,12 @@ var proposalControllers = angular.module('proposalControllers', [])
                                             
                                             for(var i = 0; i < slabs.length; i++) {
 
-                                                if(kWhUsed  > numDays[i] * slabs[i].perDay){
-                                                    totalDollar += numDays[i] * slabs[i].perDay* slabs[i].ratePerkWh;
-                                                    kWhUsed -= numDays[i] * slabs[i].perDay;
+                                                if(kWhUsed  > numDays[k] * slabs[i].perDay){
+                                                    totalDollar += numDays[k] * slabs[i].perDay* slabs[i].ratePerkWh;
+                                                    kWhUsed -= numDays[k] * slabs[i].perDay;
 
                                                 } else {
-                                                    totalDollar += numDays[i] * slabs[i].perDay*slabs[i].ratePerkWh;
+                                                    totalDollar += kWhUsed *slabs[i].ratePerkWh;
                                                     break;
                                                 }
 
@@ -179,8 +179,8 @@ var proposalControllers = angular.module('proposalControllers', [])
                                             return totalDollar;
 
                                     };
-                                    if(energyBill.Month[i].dollars == 0)
-                                        energyBill.Month[i].dollars =  Math.ceil(findDollarFromkWh(input, i)) ;
+                                    
+                                    energyBill.Month[i].dollars =  Math.ceil(findDollarFromkWh(input, i)) ;
                                 
 
                             };
@@ -240,12 +240,12 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.Month[8].dollars = 138;  energyBill.Month[9].dollars = 102;
                                 energyBill.Month[10].dollars = 100; energyBill.Month[11].dollars = 120;
 
-                                energyBill.Month[0].kWh = 117;  energyBill.Month[1].kWh = 103;
-                                energyBill.Month[2].kWh = 90;   energyBill.Month[3].kWh = 92;
-                                energyBill.Month[4].kWh = 100;  energyBill.Month[5].kWh = 132;
-                                energyBill.Month[6].kWh = 158;  energyBill.Month[7].kWh = 176 ;
-                                energyBill.Month[8].kWh = 138;  energyBill.Month[9].kWh = 102;
-                                energyBill.Month[10].kWh = 100; energyBill.Month[11].kWh = 120;
+                                energyBill.Month[0].kWh = 595;  energyBill.Month[1].kWh = 528;
+                                energyBill.Month[2].kWh = 498;   energyBill.Month[3].kWh = 497;
+                                energyBill.Month[4].kWh = 520;  energyBill.Month[5].kWh = 627;
+                                energyBill.Month[6].kWh = 713;  energyBill.Month[7].kWh = 766 ;
+                                energyBill.Month[8].kWh = 646;  energyBill.Month[9].kWh = 528;
+                                energyBill.Month[10].kWh = 528; energyBill.Month[11].kWh = 605;
 
                             };
                             energyBill.anyInputMissed = function () {
@@ -303,32 +303,47 @@ var proposalControllers = angular.module('proposalControllers', [])
                                  energyBill.solarEstimatedProduction = 0;
                                 var type = 260;
                                 var energyProduction = 0;
+                                var miscCost = 0;
                                 for(var i = 0; i < energyBill.Month.length ; i++)
                                 {
-                                    /* Assuming 5 hour of sun everyday should multiply by 3600 but values are too big ~50000 kWh
-                                     *
+                                    /* Assuming 2.79 hours of sun everyday should multiply by 3600 but values are too big ~50000 kWh
+                                     *Primarily to match values
                                      * Small issue: systemSize is representing number of panels 
                                      * ToDo: panel type to be fixed when the type is clicked while creating scenario
                                      */
                                     
-                                    energyMultiplier =  5 * 3600 * numDays[i]*solarRadiationFactor[i]/1000 ;
+                                    energyMultiplier =  2.79 * numDays[i]*solarRadiationFactor[i] ;
                                     for(var j = 0; j < energyBill.solarSystem.length; j++) {
                                         if(energyBill.solarSystem[j].type260 == 1)
                                             energyProduction += 260 * energyMultiplier * energyBill.solarSystem[j].systemSize;
                                         else 
                                             energyProduction += 280 * energyMultiplier * energyBill.solarSystem[j].systemSize;
+                                        
                                     
                                     }
-                                    estimates.push(energyProduction);
+                                    estimates.push(Math.ceil(energyProduction));
                                     energyBill.solarEstimatedProduction += energyProduction;
                                     energyProduction = 0;
                                     
                                 }
+                                for(var j = 0; j < energyBill.solarSystem.length; j++) {
+                                    miscCost += energyBill.solarSystem[j].electricalWork + energyBill.solarSystem[j].miscWork;
+                                }
+                                
+                                
                                 energyBill.solarEstimatedProductionDisplay = energyBill.convertToComma("" +
                                                                                Math.ceil(energyBill.solarEstimatedProduction));
                                 
                                 energyBill.solarEstimated30YearProductionDisplay = energyBill.convertToComma("" +
                                                                                     Math.ceil( energyBill.solarEstimatedProduction*30));
+                                energyBill.solarSystemOffset =  energyBill.annualCost *
+                                                                energyBill.solarEstimatedProduction/energyBill.annualUsage ;
+                                energyBill.solarSystemOffset +=  miscCost;
+                                energyBill.solarSystemOffsetDisplay = energyBill.convertToComma("" +
+                                                                                Math.ceil(energyBill.solarSystemOffset));
+                                
+                                energyBill.annualTrueUpDisplay = energyBill.convertToComma("" + Math.ceil(energyBill.solarSystemOffset -
+                                                                                                   energyBill.annualCost ));
                                 return estimates;
 
                             };

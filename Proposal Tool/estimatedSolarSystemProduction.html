@@ -111,19 +111,19 @@
 						</div>
 						<div class="col-xs-2 ">
 							<h2>Annual Electric Bill</h2>
-							<div class="value ng-binding ">{{energyBill.annualCostDisplay}}</div>
+							<div class="value ng-binding ">{{"$" + energyBill.annualCostDisplay}}</div>
 							<div>
 								<div style="margin-top:20px; text-align:center; ">
 									<div class="minus glyphicon glyphicon-minus "></div>
 								</div>
 								<div style="margin-top:20px; ">
 									<h2>Solar System Offset</h2>
-									<div class="value solar-value ng-binding ">$1,931</div>
+									<div class="value solar-value ng-binding ">{{"$" + energyBill.solarSystemOffsetDisplay}}</div>
 								</div>
 
 								<div style="margin-top:20px; border-top:1px solid #999; ">
 									<h2>Annual Bill True-up</h2>
-									<div class="value value-result ng-binding ">0</div>
+									<div class="value value-result ng-binding ">{{"$" + energyBill.annualTrueUpDisplay}}</div>
 								</div>
 								
 							</div>

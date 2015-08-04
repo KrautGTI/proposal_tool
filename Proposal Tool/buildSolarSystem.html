@@ -113,7 +113,7 @@
 							<div class="solar-array ng-scope current">
 
 								<div class="solar-array-header col-xs-12">
-									<div class="array-number pull-left ng-binding">Array {{$index+1}}
+									<div class="array-number pull-left ng-binding">Panel {{$index+1}}
 
 										<span ng-if="item != itemList[itemList.length-1]" class="link" ng-click="removeArray(this)">remove</span>
 
@@ -132,13 +132,13 @@
 											<div class="modal-body solar-system-designer-advanced-options">
 
 												<div class="col-xs-10 col-xs-offset-1">
-													<div class="row">
+													<!--<div class="row">
 														<h3 class="pull-left left">Module Type</h3>
 														<select class="form-control pull-right"></select>
 														<p class="col-xs-12">
 															The module type describes the photovoltaic modules in the array. Default is standard panels.
 														</p>
-													</div>
+													</div>-->
 
 													<div class="row">
 														<h3 class="pull-left left">Inverter Efficiency</h3>
@@ -148,13 +148,13 @@
 														</p>
 													</div>
 
-													<div class="row">
+<!--													<div class="row">
 														<h3 class="pull-left left">Shading Losses</h3>
 														<input class="form-control pull-right" type="text" />
 														<p class="col-xs-12">
 															Reduction in the incident solar radiation from shadows caused by objects near the array such as buildings or trees. Default is 3%.
 														</p>
-													</div>
+													</div>-->
 
 													<div class="row">
 														<h3 class="pull-left left">Annual Solar System Production Degradation</h3>
@@ -260,9 +260,9 @@
 						</form>
 					</div>
 				</div>
-				<div class="solar-array-footer col-xs-12 " style="margin-bottom: -26px;">
+<!--				<div class="solar-array-footer col-xs-12 " style="margin-bottom: -26px;">
 					<div class=" btn-proposal add-array " ng-click="anotherArray()">Add Another Array</div>
-				</div>
+				</div>-->
 
 				<div class="disclosure-footer col-xs-12 ng-scope "><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
