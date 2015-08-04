@@ -313,7 +313,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                     
                                     energyMultiplier =  5 * 3600 * numDays[i]*solarRadiationFactor[i]/1000 ;
                                     for(var j = 0; j < energyBill.solarSystem.length; j++) {
-                                        if(type == 260)
+                                        if(energyBill.solarSystem[j].type260 == 1)
                                             energyProduction += 260 * energyMultiplier * energyBill.solarSystem[j].systemSize;
                                         else 
                                             energyProduction += 280 * energyMultiplier * energyBill.solarSystem[j].systemSize;
@@ -633,6 +633,9 @@ proposalControllers.controller('buildSolarSystemController',['$scope', 'dataServ
 	$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
 	$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
     $scope.numArray = $scope.energyBill.numArray;
+	$scope.mounting = function(index, type){
+	  $scope.energyBill.solarSystem[index].type260 = type;
+	}
     
     $scope.anotherArray = function () {
         var i = $scope.numArray.length;
