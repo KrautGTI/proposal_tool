@@ -7,11 +7,12 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.showHide = true;
                                 energyBill.showHideLineGraph = true;
                                 energyBill.lineGraphShowNotice = true;
-                                energyBill.address = [];
+                                energyBill.address = {};
+                                energyBill.zipcode = 0;
                                 // Variable for building and estimating solar Production
                                 energyBill.solarSystem = [];
                                
-                                energyBill.address.zipcode = 94591;
+                              //  energyBill.address.zipcode = 94591;
       
                                 
                                 //Create a zipcode to category mapping --Begin
@@ -120,7 +121,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                         findkWhFromDollars = function (dollar, k) {
                                                 var totalKwh = 0;
                                                 var slabs = [];
-                                                var zip = energyBill.address.zipcode ;
+                                                var zip = energyBill.zipcode ;
                                                 var category = energyBill.category[zip];
                                                 var numDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
                                             
@@ -155,7 +156,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                     findDollarFromkWh = function (kWhUsed, k) {
                                             var totalDollar = 0;
-                                            var zip = energyBill.address.zipcode ;
+                                            var zip = energyBill.zipcode ;
                                             var category = energyBill.category[zip];
                                         
                                             if( isSummer(k) )
