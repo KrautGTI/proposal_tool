@@ -305,18 +305,19 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 var type = 260;
                                 var energyProduction = 0;
                                 var miscCost = 0;
+                                var variation = [2.77, 3.13, 3.78, 4.21,4.48, 4.61, 4.14, 4.12, 3.75, 2.94, 2.85, 2.39];
                                 for(var i = 0; i < energyBill.Month.length ; i++)
                                 {
-                                    /* Assuming 2.79 hours of sun everyday should multiply by 3600 but values are too big ~50000 kWh
+                                    /* Assuming 3.79 hours of sun everyday should multiply by 3600 but values are too big ~50000 kWh
                                      *Primarily to match values
                                      * Small issue: systemSize is representing number of panels 
                                      * ToDo: panel type to be fixed when the type is clicked while creating scenario
                                      */
                                     
-                                    energyMultiplier =  2.79 * numDays[i]*solarRadiationFactor[i] ;
+                                    energyMultiplier =  variation[i] * 1 * numDays[i]*solarRadiationFactor[i]/1000;
                                     for(var j = 0; j < energyBill.solarSystem.length; j++) {
                                         if(energyBill.solarSystem[j].type260 == 1)
-                                            energyProduction += 260 * energyMultiplier * energyBill.solarSystem[j].systemSize;
+                                            energyProduction += 260 *  energyMultiplier * energyBill.solarSystem[j].systemSize;
                                         else 
                                             energyProduction += 280 * energyMultiplier * energyBill.solarSystem[j].systemSize;
                                         
