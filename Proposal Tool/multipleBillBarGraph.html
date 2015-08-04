@@ -135,7 +135,7 @@
 				<div class="col-xs-12 graph-header">
 
 					<div class="sum-values">
-						<div ng-show="energyBill.dollar">ANNUAL COST: {{"$" + energyBill.annualCostDisplay}}</div>
+						<div ng-show="energyBill.dollar">ANNUAL COST: $<span ng-model "energyBill.annualCostDisplay"> </span></div>
 						<div ng-hide="energyBill.dollar">ANNUAL USAGE: {{ energyBill.annualUsageDisplay + ' kWh'}} </div>
 					</div>
 

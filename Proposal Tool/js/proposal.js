@@ -688,7 +688,16 @@ proposalControllers.controller('percentageChangeController', ['$scope', 'dataSer
     
     
     
-}]);
+}]).directive('percModelFormatter', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, controller) {
+     controller.$formatters.push(function(value) {
+        return value + " %";
+      });
+    }
+  }
+});
 
 
 proposalControllers.controller('yourOptionsController', ['$scope', 'dataService', function($scope, dataService){
