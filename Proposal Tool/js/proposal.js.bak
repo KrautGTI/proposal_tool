@@ -226,6 +226,18 @@ var proposalControllers = angular.module('proposalControllers', [])
                             energyBill.setEstimatedSolarProduction = function(){
                                 var estimates = [356, 428, 666, 780, 906, 894, 878, 857, 736, 557, 405, 300];
                                 
+                                //Assuming 5 hour day when sun is bright. On an average for a year
+                                
+                                for(var i = 0; i < energyBill.solarSystem.length; i++) {
+                                    if(energyBill.solarSystem[i].type1 == true)
+                                        energyBill.solarSystemEnergyProduced = 280 * 5 * 3600 *
+                                    
+                                
+                                }
+                                
+                                
+                                
+                                
                                 
                                     
                                 return estimates;

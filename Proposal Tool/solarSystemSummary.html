@@ -107,7 +107,7 @@
 				<div class="col-xs-12 ">
 
 					<div class="col-xs-6 column ">
-						<h2 class="ng-binding ">NaN kW Solar System</h2>
+						<h2 class="ng-binding ">{{energyBill.solarEstimatedProductionDisplay + ' kW Solar System'}}</h2>
 
 						<img src="css/images/solar-system.jpg " alt="Solar Panel ">
 
@@ -119,7 +119,7 @@
 								<h3>First Year Estimated Production</h3>
 							</div>
 							<div class="col-xs-6 ng-binding ">$1,931</div>
-							<div class="col-xs-6 ng-binding ">6,704 kWh</div>
+							<div class="col-xs-6 ng-binding ">{{energyBill.solarEstimatedProductionDisplay  + ' kWh'}}</div>
 						</div>
 						<div class="row ">
 							<div class="col-xs-12 ">
@@ -137,7 +137,7 @@
 								<h3>30 Year Estimated Production</h3>
 							</div>
 							<div class="col-xs-6 ng-binding ">$45,481</div>
-							<div class="col-xs-6 ng-binding ">157,919 kWh</div>
+							<div class="col-xs-6 ng-binding ">{{energyBill.solarEstimated30YearProductionDisplay + ' kWh' }} </div>
 						</div>
 						<div class="row ">
 							<div class="col-xs-12 ">

@@ -174,9 +174,6 @@
 									</div>
 									<!--********Model On Setting***********-->
 
-
-
-
 								</div>
 								<div class="solar-array-content">
 
@@ -186,13 +183,13 @@
 												<img src="css/images/solar-array-box-1.PNG">
 											</div>
 										</div>
-										<h3>System Size</h3>
-										<p>Enter the size of your solar system in kilowatts (kW-DC).</p>
+										<h3>Panel Count</h3>
+										<p>Enter the number of solar Panels</p>
 										<div class="input-container">
 											<input class="ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                    name="array-0-system-size" numeric-min=".5" numeric-max="500000" 
-                                                   placeholder="5" required="" ng-model="energyBill.solarSystem.systemSize" type="text">
-											<span class="description">Kilowatt</span>
+                                                   placeholder="5" required="" ng-model="energyBill.solarSystem[$index].systemSize" type="number">
+											<span class="description">Number</span>
 										</div>
 									</div>
 
@@ -209,19 +206,19 @@
                                                 <img src="css/images/solar-array-box-2b.PNG ">
                                             </div>
                                         </div>
-										<h3>Mounting Type</h3>
-										<p>How your panels will be mounted.</p>
+										<h3>Mounting Panel Type</h3>
+										<p>What is the type of your panels that will be mounted.</p>
 
 										
 											
 												<div ng-click="showme=false" class="mounting-type col-xs-4 col-xs-offset-1 selected" 
                                                      ng-class="{ 'selected': showme==false }">
-													Type 1
+													260 W
 												</div>
 
 												<div ng-click="showme=true" class="mounting-type col-xs-4 col-xs-offset-1 " 
                                                      ng-class="{ 'selected': showme==true }">
-													Type 2
+													280 W
 												</div>
 											
 										
@@ -236,8 +233,8 @@
 										<p>The electrical work required to Install the System</p>
 										<div class="input-container ">
 											<input class="ng-pristine ng-untouched ng-invalid ng-invalid-required "
-                                                   ng-model="energyBill.solarSystem.electricalWork"
-                                                   name="array-0-tilt" placeholder="22.5" type="text ">
+                                                   ng-model="energyBill.solarSystem[$index].electricalWork"
+                                                   name="array-0-tilt" placeholder="22.5" type="number ">
 											<span class="description ">USD </span>
 										</div>
 									</div>
@@ -252,8 +249,8 @@
 										<div class="input-container ">
 											<input class="ng-pristine ng-untouched ng-invalid ng-invalid-required "
                                                    name="array-0-orientation " numeric-min="0 " numeric-max="359 "
-                                                   placeholder="180 " required=" " type="text "
-                                                   ng-model="energyBill.solarSystem.miscWork">
+                                                   placeholder="180 " required=" " type="number "
+                                                   ng-model="energyBill.solarSystem[$index].miscWork">
 											<span class="description ">USD</span>
 										</div>
 									</div>
@@ -263,9 +260,9 @@
 						</form>
 					</div>
 				</div>
-			<!--	<div class="solar-array-footer col-xs-12 " style="margin-bottom: -26px;">
+				<div class="solar-array-footer col-xs-12 " style="margin-bottom: -26px;">
 					<div class=" btn-proposal add-array " ng-click="anotherArray()">Add Another Array</div>
-				</div>-->
+				</div>
 
 				<div class="disclosure-footer col-xs-12 ng-scope "><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;

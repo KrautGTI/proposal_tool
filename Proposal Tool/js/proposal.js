@@ -9,16 +9,19 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.lineGraphShowNotice = true;
                                 energyBill.address = [];
                                 // Variable for building and estimating solar Production
-                                energyBill.solarSystem = {};
-                                energyBill.solarSystem.systemSize = 0;
-                                energyBill.solarSystem.electricalWork = 0;
-                                energyBill.solarSystem.miscWork = 0;
+                                energyBill.solarSystem = [];
+                               
                                 energyBill.address.zipcode = 94591;
-                                // Sample estimated usage per region/zipcode
-                                energyBill.RegionkWh = [];
+      
+                                
+                                //Create a zipcode to category mapping --Begin
                                 energyBill.category = [];
                                 energyBill.category[94591] = 'x';
                                 
+                                //Create a zipcode to category mapping --End
+                                
+                                // Sample estimated usage per region/zipcode
+                                energyBill.RegionkWh = [];                                
                                 energyBill.RegionkWh[94591] = [ 100, 52, 30, 29, 46, 123, 185, 223, 137, 52,
                                                                     52, 107 ];
                                                        
@@ -54,7 +57,8 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
                                 //Static definition of slabs
                                 energyBill.region = [];
-                                //Create an object for each Region category code : ToDo
+                                //Create an object for each Region category code : ToDo Categories are p,q,r,s,t,u,v,w,x,y and z
+                                
                                 energyBill.region['x'] = new Object();
                                 energyBill.region['x'].slabs = {};
                                 energyBill.region['x'].slabs.summer = []; //May-Oct index 4-9
@@ -68,7 +72,11 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
                                 /*
                                  * LimitkWh = 20B of excel ResElecBaseline i.e X territory 16.7 per day winter usage
-                                 * Setting up Tier from Tier 0 - 4
+                                 * Setting up Tier from Tier 0 = 16.7 (per day limits)
+                                 *                      Tier 1 = 130% of base Tier 0 (21.71)
+                                 *                      Tier 2 = 200% of baseline (33.2)
+                                 *                      Tier 3 = 300% of baseline (50.1)
+                                 *                      Tier 4 = more than 300% (whatever)
                                  */
                                 
                                 energyBill.region['x'].slabs.winter.push({ratePerkWh:0.16352, perDay: 16.7});
@@ -147,8 +155,9 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                     findDollarFromkWh = function (kWhUsed) {
                                             var totalDollar = 0;
-                                                var zip = energyBill.address.zipcode ;
-                                                var category = energyBill.category[zip];
+                                            var zip = energyBill.address.zipcode ;
+                                            var category = energyBill.category[zip];
+                                        
                                             if( isSummer(i) )
                                                 slabs = energyBill.region[category].slabs.summer;
                                             else 
@@ -287,10 +296,39 @@ var proposalControllers = angular.module('proposalControllers', [])
                             };
                                 
                             energyBill.setEstimatedSolarProduction = function(){
-                                var estimates = [356, 428, 666, 780, 906, 894, 878, 857, 736, 557, 405, 300];
                                 
-                                
+                                var estimates = [] ;//[356, 428, 666, 780, 906, 894, 878, 857, 736, 557, 405, 300];
+                                var numDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+                                var energyMultiplier;
+                                 energyBill.solarEstimatedProduction = 0;
+                                var type = 260;
+                                var energyProduction = 0;
+                                for(var i = 0; i < energyBill.Month.length ; i++)
+                                {
+                                    /* Assuming 5 hour of sun everyday should multiply by 3600 but values are too big ~50000 kWh
+                                     *
+                                     * Small issue: systemSize is representing number of panels 
+                                     * ToDo: panel type to be fixed when the type is clicked while creating scenario
+                                     */
                                     
+                                    energyMultiplier =  5 * 3600 * numDays[i]*solarRadiationFactor[i]/1000 ;
+                                    for(var j = 0; j < energyBill.solarSystem.length; j++) {
+                                        if(type == 260)
+                                            energyProduction += 260 * energyMultiplier * energyBill.solarSystem[j].systemSize;
+                                        else 
+                                            energyProduction += 280 * energyMultiplier * energyBill.solarSystem[j].systemSize;
+                                    
+                                    }
+                                    estimates.push(energyProduction);
+                                    energyBill.solarEstimatedProduction += energyProduction;
+                                    energyProduction = 0;
+                                    
+                                }
+                                energyBill.solarEstimatedProductionDisplay = energyBill.convertToComma("" +
+                                                                               Math.ceil(energyBill.solarEstimatedProduction));
+                                
+                                energyBill.solarEstimated30YearProductionDisplay = energyBill.convertToComma("" +
+                                                                                    Math.ceil( energyBill.solarEstimatedProduction*30));
                                 return estimates;
 
                             };
@@ -1051,14 +1089,15 @@ proposalControllers.controller('estimatedSolarSystemController',['$scope', 'data
     //Populate the kWh if not fetched check from a global toggle
                                                         
     for (var i = 0; i < months.length; i++ ) {
-                    var tmp = $scope.energyBill.Month[i];
-
-                    var num = tmp.kWh  ;
-                    $scope.dataMonths.push(num);        
+        var tmp = $scope.energyBill.Month[i];
+        var num = tmp.kWh  ;
+        
+        $scope.dataMonths.push(num);        
     }
    
     solarEstimate = $scope.energyBill.setEstimatedSolarProduction();
     
+        
     $('#lineAreaChart').highcharts({
         title: {
             /*text: 'Combination chart'*/
