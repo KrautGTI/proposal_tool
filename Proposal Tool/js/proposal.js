@@ -8,7 +8,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.showHideLineGraph = true;
                                 energyBill.lineGraphShowNotice = true;
                                 energyBill.address = {};
-                                energyBill.zipcode = 0;
+                                energyBill.zipcode = 94591;
                                 energyBill.solarCost = 0;
                                 // Variable for building and estimating solar Production
                                 energyBill.solarSystem = [];
@@ -1023,7 +1023,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
        $scope.ShowBluImage = function() {
                  $scope.showImage = $scope.showImage === false ? true: false;
         };
-	
+	var workData = [];
     var fiveYearData = [];
     $scope.energyBill = dataService.dataObj;
 	$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
@@ -1046,9 +1046,38 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 	        
     $scope.energyBill.cumulative30YearsExpenseDisplay =  $scope.energyBill.convertToComma($scope.energyBill.cumulative30YearsExpense);
     
+    for(var i = 0; i < fiveYearData.length; i++) {
+        if(i < 2)
+            workData[i] = fiveYearData[i];
+     
+    }
+    
     $('#areaChart').highcharts({
         chart: {
-            type: 'area'
+            type: 'area',
+            animation: false,
+            events: {
+               click: function (e) {
+                    // find the clicked values and the series
+                   
+                    var i = workData.length;
+                    var series = this.series[0];
+                    // Add it
+                    if(i < fiveYearData.length)
+                    {
+                        //workData[i] = fiveYearData[i];
+                        series.addPoint(fiveYearData[i]);
+     
+ 
+                        this.renderer.rect(90, 150, 100, 100, 5).attr({
+                            fill: '#C5FFC5',
+                            stroke: 'black',
+                            'stroke-width': 1
+                        }).add();
+    
+                    }  
+                }
+            }
         },
         title: {
           //  text: 'Your Future Electric Costs'
@@ -1070,6 +1099,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
             title: {
                 text: ''
             },
+           
             
             labels: {
                 formatter: function () {
@@ -1102,12 +1132,15 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
         },
         series: [{
             
-            data: fiveYearData
+            data: workData
+            
+        
+            
         }]
+            
+            
+        
     });
-
-    
-    
 }]);
 
 proposalControllers.controller('estimatedSolarSystemController',['$scope', 'dataService', function($scope, dataService){
