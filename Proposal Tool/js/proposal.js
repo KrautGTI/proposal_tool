@@ -75,7 +75,9 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 };                                       
                                 
                                 var rArray = 
-                                    
+
+                                                     
+
                                 [92304, 92365, 93062, 93210, 93224, 93234, 93242, 93243, 93245, 93251, 93252, 93254, 93265, 93286, 93287,
                                  93291, 93292, 93453, 93516, 93523, 93526, 93527, 93555, 93558, 93561, 93562, 93601, 93602, 93603, 93604,
                                  93606, 93607, 93608, 93609, 93610, 93611, 93612, 93614, 93616, 93618, 93619, 93620, 93621, 93622, 93624,
@@ -87,6 +89,11 @@ var proposalControllers = angular.module('proposalControllers', [])
                                  95348, 95353, 95360, 95365, 95369, 95374, 95388, 95527, 95563, 95963, 96001, 96002, 96003, 96007, 96008,
                                  96011, 96019, 96021, 96022, 96029, 96033, 96035, 96047, 96051, 96055, 96059, 96062, 96069, 96073, 96074, 
                                  96075, 96078, 96080, 96084, 96087, 96088, 96089, 96090, 96092, 96095, 96096 ];
+                                
+                                assignCategoryR = function (element, index, array) {
+                                        energyBill.category[element] = 'r';
+                                }; 
+                                
                                 
                                  rArray.forEach(assignCategoryR);
                                 
@@ -150,7 +157,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 var zArray =
                                 [93633,93664,95221,95223,95375,95389,95721,95724,95728,95735,95942,95971,95981,96061,96063,96071,96125,96137];
                                 
-                              assignCategoryY = function (element, index, array) {
+                              assignCategoryZ = function (element, index, array) {
                                         energyBill.category[element] = 'z';
                                 };                                                
                                 zArray.forEach(assignCategoryZ);
@@ -198,16 +205,6 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.region = [];
                                 //Create an object for each Region category code : ToDo Categories are p,q,r,s,t,u,v,w,x,y and z
                                 
-                                energyBill.region['x'] = new Object();
-                                energyBill.region['x'].slabs = {};
-                                energyBill.region['x'].slabs.summer = []; //May-Oct index 4-9
-                                energyBill.region['x'].slabs.winter = [];//Nov-Apr index 0-3 and 10-11
-                                //Initialize slabs used for computation of kWh and dollars
-                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.16352, perDay: 9.3});
-                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.18673, perDay: 12.09});
-                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.27504, perDay:18.6});
-                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.33504, perDay:27.9});
-                                energyBill.region['x'].slabs.summer.push({ratePerkWh:0.33504, perDay: 10000});
                                 
                                 /*
                                  * LimitkWh = 20B of excel ResElecBaseline i.e X territory 16.7 per day winter usage
@@ -218,11 +215,43 @@ var proposalControllers = angular.module('proposalControllers', [])
                                  *                      Tier 4 = more than 300% (whatever)
                                  */
                                 
-                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.16352, perDay: 16.7});
-                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.18673, perDay: 21.71});
-                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.27504, perDay: 33.2  });
-                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.33504, perDay: 50.1 });
-                                energyBill.region['x'].slabs.winter.push({ratePerkWh:0.33504, perDay: 100000 });
+                                var categories = [];
+                                categories.push({region:'p', perSummerDayLimit: 16.4, perWinterDay: 29.6});
+                                categories.push({region:'q', perSummerDayLimit: 29.6, perWinterDay: 8.3});
+                                categories.push({region:'r', perSummerDayLimit: 29.8, perWinterDay: 18.8});                          
+                                categories.push({region:'s', perSummerDayLimit: 27.1, perWinterDay: 16.4});
+                                categories.push({region:'t', perSummerDayLimit: 14.9, perWinterDay: 8.3});
+                                categories.push({region:'v', perSummerDayLimit: 26.6, perWinterDay: 13.6});
+                                categories.push({region:'w', perSummerDayLimit: 20.6, perWinterDay: 20.8});
+                                categories.push({region:'x', perSummerDayLimit: 9.3, perWinterDay: 16.7}); 
+                                categories.push({region:'y', perSummerDayLimit: 13.0, perWinterDay: 27.1});                                                               categories.push({region:'z', perSummerDayLimit: 7.7, perWinterDay: 18.7});                                  
+
+
+                                                 
+                                for(var i = 0; i < categories.length; i++)
+                                {
+                                    var tmp = categories[i];
+                                    var cat = tmp.region;
+                                    var tiers = [0.16352, 0.18673, 0.27504, 0.33504, 0.33504 ];
+                                    var multipliers = [1, 1.3, 2 , 3, 100];             
+                                                 
+                                    energyBill.region[cat] = new Object();
+                                    energyBill.region[cat].slabs = {};
+                                    energyBill.region[cat].slabs.summer = []; //May-Oct index 4-9
+                                    energyBill.region[cat].slabs.winter = [];
+                                    for(var j = 0; j < tiers.length; j++) {
+                                        energyBill.region[cat].slabs.summer.push({ratePerkWh:tiers[j],
+                                                                                  perDay: tmp.perSummerDayLimit * multipliers[j]});
+                                        energyBill.region[cat].slabs.winter.push({ratePerkWh:tiers[j],
+                                                                                  perDay: tmp.perWinterDay* multipliers[j]});
+
+                                    
+                                    }
+                                    
+                                }
+                                
+                                
+                                
                                 
                                 //Default values of energyBill.Monthly Bill
        
