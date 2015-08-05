@@ -5438,7 +5438,7 @@ body .link {
     cursor: pointer;
 }
 .btn-proposal {
-    background-color: #ed1f34!important;
+    background-color: #33AD5C!important;
     color: #fff!important;
     -webkit-font-smoothing: antialiased;
     padding: 10px 12px;
@@ -5599,7 +5599,7 @@ a.btn-proposal:active {
     opacity: .9;
 }
 #proposal-page-nav .nav-button:hover {
-    background-color: red;
+    background-color: #33AD5C;
     color: #fff;
 }
 #proposal-page-nav .nav-button .icon {
@@ -5736,7 +5736,7 @@ a.btn-proposal:active {
     left: 20px;
     bottom: 0;
     font-size: 16px;
-    color: red;
+    color: #33AD5C;
 }
 .proposal-page-KBYG-1 .kbyg-header .logo {
     width: 150px;
@@ -5858,7 +5858,7 @@ a.btn-proposal:active {
 }
 .proposal-page-KBYG-1 .main-panel.completed .range-holder {
     font-size: 30px;
-    color: red;
+    color: #33AD5C;
     text-align: center;
     margin: 20px 0 5px;
     font-weight: bold;
@@ -5899,7 +5899,7 @@ a.btn-proposal:active {
     padding-top: .5em;
 }
 .proposal-page-YEU-1 .row div:first-child div {
-    background-color: red;
+    background-color: #33AD5C;
     color: #fff;
     display: inline-block;
     border-radius: 50%;
@@ -6356,7 +6356,7 @@ a.btn-proposal:active {
     margin-right: 10px;
     font-size: 18px;
     vertical-align: super;
-    color: red;
+    color: #33AD5C;
     display: none;
 }
 .proposal-page-HSW-1 .col1 .title {
@@ -6403,7 +6403,7 @@ a.btn-proposal:active {
     left: -60px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: red;
+    background-color: #33AD5C;
     color: #fff;
     display: inline-block;
     border-radius: 50%}
@@ -7540,7 +7540,7 @@ a.btn-proposal:active {
     float: left;
 }
 .nav .quick-navigation .quicknav-body ul li.visited div:first-child {
-    background-color: red;
+    background-color: #33AD5C;
 }
 .nav .quick-navigation .quicknav-body ul li.visited div:last-child {
     color: #666;
