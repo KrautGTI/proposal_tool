@@ -8,7 +8,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.showHideLineGraph = true;
                                 energyBill.lineGraphShowNotice = true;
                                 energyBill.address = {};
-                                energyBill.zipcode = 94591;
+                               // energyBill.zipcode = 94591;
                                 energyBill.solarCost = 0;
                                 // Variable for building and estimating solar Production
                                 energyBill.solarSystem = [];
@@ -18,7 +18,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
                                 //Create a zipcode to category mapping --Begin
                                 energyBill.category = [];
-                                energyBill.category[94591] = 'x';
+                            //    energyBill.category[94591] = 'x';
                                 assignCategoryX = function (element, index, array) {
                                         energyBill.category[element] = 'x';
                                 };
@@ -169,7 +169,8 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
                                 // Sample estimated usage per region/zipcode
                                 energyBill.RegionkWh = [];                                
-                                energyBill.RegionkWh[94591] = [ 100, 52, 30, 29, 46, 123, 185, 223, 137, 52, 52, 107 ];
+                 //               energyBill.RegionkWh[94591] = [ 100, 52, 30, 29, 46, 123, 185, 223, 137, 52, 52, 107 ];   
+                                energyBill.RegionkWh = [ 100, 52, 30, 29, 46, 123, 185, 223, 137, 52, 52, 107 ];
                                                        
 
                                 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
@@ -365,7 +366,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                             dataMonths.push(num);
                                             energyBill.annualCost += num;
                                         }
-                                        energyBill.annualCostDisplay = energyBill.convertToComma("" + energyBill.annualCost);
+                                        energyBill.annualCostDisplay = energyBill.convertToComma("" + Math.ceil(energyBill.annualCost));
 
                                         return dataMonths;
 
@@ -384,7 +385,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                             energyBill.annualUsage += num;
                                         }   
                                     energyBill.annualUsageDisplay =  energyBill.convertToComma("" + 
-                                                                                            energyBill.annualUsage);
+                                                                                            Math.ceil(energyBill.annualUsage));
 
                                     return dataMonths;
 
@@ -445,8 +446,9 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 
                             energyBill.setEstimatedValues = function () {
                                 var zip = energyBill.address.zipcode;
-                                zip = 94591;//hardcoded value do away with it once updated from user
-                                var estimateSampleUsage = energyBill.RegionkWh[zip];
+                             //   zip = 94591;//hardcoded value do away with it once updated from user
+                            //    var estimateSampleUsage = energyBill.RegionkWh[zip];
+                                    var estimateSampleUsage = energyBill.RegionkWh;
                                 var sampleMonthIndex = energyBill.firstFilledMonth(); //Month Index starts with zero as Jan
                                 for(i = 0; i < energyBill.Month.length; i++) {
                                     if(i == sampleMonthIndex)
@@ -1217,31 +1219,60 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
             workData[i] = fiveYearData[i];
      
     }
-    
+    $scope.loop = 0;
     $('#areaChart').highcharts({
         chart: {
             type: 'area',
-            animation: false,
+            animation: true,
             events: {
+                load: function () {
+                    //Label Approach
+                        var point = this.series[0].points[1];
+                        $scope.label = this.renderer.label('<strong> Next Five Years </strong>', point.plotX  + 10, 250, 'square', 
+                                                            point.plotX + this.plotLeft, point.plotY + this.plotTop, true)
+                                        .css({
+                                            color: '#FFFFFF'
+                                            })
+                                        .attr({
+                                            fill: 'rgba(255, 0, 0, 0.55)',
+                                            padding: 8,
+                                            r: 5,
+                                            zIndex: 6
+                                        })
+                                        .add();
+                    
+                },    
                click: function (e) {
                     // find the clicked values and the series
-                   
+                    $scope.loop++;
                     var i = workData.length;
                     var series = this.series[0];
                     // Add it
-                    if(i < fiveYearData.length)
-                    {
-                        //workData[i] = fiveYearData[i];
-                        series.addPoint(fiveYearData[i]);
-     
- 
-                        this.renderer.rect(90, 150, 100, 100, 5).attr({
-                            fill: '#C5FFC5',
-                            stroke: 'black',
-                            'stroke-width': 1
-                        }).add();
-    
-                    }  
+                   var target = $( event.target );
+                    if(target.is( "strong" ))
+                        if(i < fiveYearData.length)
+                        {
+                            //workData[i] = fiveYearData[i];
+                            series.addPoint(fiveYearData[i]);
+                            //Label Approach
+                            $scope.label.destroy();
+                            if(i < fiveYearData.length - 1) {
+                                var point = this.series[0].points[i];
+                                $scope.label = this.renderer.label('<strong> Next Five Years </strong>', point.plotX + 10, 250, 'square', 
+                                                                point.plotX + this.plotLeft, point.plotY + this.plotTop, true)
+                                                        .css({
+                                                            color: '#FFFFFF'
+                                                            })
+                                                        .attr({
+                                                            fill: 'rgba(255, 0, 0, 0.55)',
+                                                            padding: 8,
+                                                            r: 5,
+                                                            zIndex: 6
+                                                        })
+                                                        .add();
+                            }
+
+                        }  
                 }
             }
         },
@@ -1254,10 +1285,17 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
             categories: [0, 5, 10, 15, 20, 25, 30],
             labels: {
                 formatter: function () {
+                    var index = this.axis.categories.indexOf(this.value);
                     if(this.value == 0)
-                        return 'Today';
+                        return 'Today'+ '<br> $' + workData[index];
                     else 
-                        return this.value + ' years'; // clean, unformatted number for year
+                        return this.value + ' years' + '<br> $' + workData[index]; // clean, unformatted number for year
+                    
+                    
+                    
+      
+                    
+                    
                 }
             }
         },
@@ -1266,7 +1304,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                 text: ''
             },
            
-            
+             
             labels: {
                 formatter: function () {
                     return '$' + this.value ;
@@ -1275,9 +1313,6 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
             tickAmount: 7,
             tickInterval: 500
         },
-        
-   
-        
         tooltip: {
             pointFormat: '{point.y}'
         },
@@ -1298,14 +1333,16 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
         },
         series: [{
             
-            data: workData
-            
-        
+            data: workData,
+            animation: false
             
         }]
             
             
         
+    },function (chart) {
+
+ 
     });
 }]);
 
