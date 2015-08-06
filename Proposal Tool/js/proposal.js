@@ -617,7 +617,43 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
     $scope.submitCall = function(){
        
     }
-}]);
+}]).directive('zipValidator', function(dataService) {
+                    return {
+                      require: 'ngModel',
+                      
+                      link: function(scope, element, attrs, ctrl) {
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                            ctrl.$parsers.unshift(function(value) {
+                                // test and set the validity after update.
+                                var energyBill = dataService.dataObj;
+                                var valid = $.isNumeric(value);
+                                valid = energyBill.category[parseInt(value)] == undefined ? false : true;
+                                ctrl.$setValidity('regexValidate', valid);
+
+                                // if it's valid, return the value to the model, 
+                                // otherwise return undefined.
+                                return valid ? value : undefined;
+                            });
+
+                            // add a formatter that will process each time the value 
+                            // is updated on the DOM element.
+                            ctrl.$formatters.unshift(function(value) {
+                                // validate.
+                                ctrl.$setValidity('regexValidate', $.isNumeric(value));
+
+                                // return the value or nothing will be written to the DOM.
+                                return value;
+                            });
+                      
+                      }
+                    };
+            });    
 
 proposalControllers.controller('startProposalController', ['$scope', 'dataService', function($scope, dataService){
 	        $scope.energyBill = dataService.dataObj;
