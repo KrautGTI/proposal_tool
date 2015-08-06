@@ -1086,6 +1086,51 @@ proposalControllers.controller('summaryController',['$scope','dataService', func
 		$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
 		$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
 		$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;	
+    
+    
+
+    $('#columnChart').highcharts({
+        chart: {
+            type: 'column'
+            
+        },
+       
+        xAxis: {
+            type: 'datetime',
+            labels : {
+                rotation: -45,
+ 
+                
+            },
+            dateTimeLabelFormats: {
+            day: '%y'
+            }
+        },
+        yAxis: {
+            title: '' ,
+            labels : {
+                formatter: function () {
+                            if(this.value > 0)
+                                return "$" + $scope.energyBill.convertToComma(this.value);
+                            else if(this.value == 0)
+                                return "$0";
+                            else 
+                                return "-" + "$" + $scope.energyBill.convertToComma(-this.value); 
+
+                }        
+            }
+        },
+        legend : {
+            enabled: false
+        },
+        series: [ {
+    
+            data: [2000, -2500, -3456, 2456, 1145, 5432 , 6432, 5234, -4234, 6423, 5423, 4243 , -4423, 5243, 6423, 1243,-1044, 1323, 1323, 1323, 1423, 1523, 1654, 1064, 8423, 1923],
+            pointStart: Date.UTC(2016, 0, 1),
+            color: '#717171',
+            pointInterval: 365 * 24 * 3600 * 1000 // one year
+        }]
+    });
        
 	}]);
 proposalControllers.controller('finishApplicationController',['$scope','dataService', function($scope,dataService){
@@ -1290,12 +1335,6 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                         return 'Today'+ '<br> $' + workData[index];
                     else 
                         return this.value + ' years' + '<br> $' + workData[index]; // clean, unformatted number for year
-                    
-                    
-                    
-      
-                    
-                    
                 }
             }
         },
