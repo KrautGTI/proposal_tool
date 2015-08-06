@@ -3,6 +3,8 @@ var proposalControllers = angular.module('proposalControllers', [])
                               // private variable
                                
                                 var energyBill = [];
+								energyBill.lastIteration = false;
+								energyBill.lastIteration2 = false;
                                 energyBill.Month = [];
                                 energyBill.showHide = true;
                                 energyBill.showHideLineGraph = true;
@@ -1232,10 +1234,7 @@ proposalControllers.controller('lineGraphController',['$scope','dataService', fu
 
 proposalControllers.controller('areaChartController',['$scope', 'dataService', function($scope, dataService){
 	 
-	   $scope.showImage = true;             
-       $scope.ShowBluImage = function() {
-                 $scope.showImage = $scope.showImage === false ? true: false;
-        };
+	   
 	var workData = [];
     var fiveYearData = [];
     $scope.energyBill = dataService.dataObj;
@@ -1244,6 +1243,14 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 	$scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
    
 	 $scope.energyBill.cumulative30YearsExpense = 0;
+	 $scope.ShowBluImage = function() {
+			$scope.energyBill.lastIteration = false;
+			/*$scope.energyBill.lastIteration == true;*/
+			$scope.energyBill.lastIteration2 = $scope.energyBill.lastIteration2 === false ? true: false;
+
+
+		};
+	
     $scope.energyBill.percentChange = parseFloat($scope.energyBill.percentChange);
     var annualExpenses = [];
     for(var i = 0; i < 30; i++) {
@@ -1265,6 +1272,8 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
      
     }
     $scope.loop = 0;
+	$scope.energyBill.lastIteration = false;
+	$scope.energyBill.lastIteration2 = false;
     $('#areaChart').highcharts({
         chart: {
             type: 'area',
@@ -1287,7 +1296,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                                         .add();
                     
                 },    
-               click: function (e) {
+               click: function (event) {
                     // find the clicked values and the series
                     $scope.loop++;
                     var i = workData.length;
@@ -1315,7 +1324,14 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                                                             zIndex: 6
                                                         })
                                                         .add();
-                            }
+                            } else {
+								//The last time the box no longer needed							
+								
+								$scope.energyBill.lastIteration = true;
+								$scope.energyBill.lastIteration2 = false;
+								 $scope.$apply() ;
+       
+							}
 
                         }  
                 }

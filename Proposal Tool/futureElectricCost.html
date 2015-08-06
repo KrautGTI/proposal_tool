@@ -103,7 +103,7 @@
 			<div class="proposal-page proposal-page-YEU-9 col-xs-12 column anim-fade ng-scope" style="min_height:300px;text-align:center">
 				<h3>Your Future Electric Costs</h3>
 				<div id="areaChart"> </div>
-				<div class="circle" ng-show="showImage" style="position:absolute; top:-32px">
+				<div class="circle" ng-show ="energyBill.lastIteration" style="position:absolute; top:-56px">
 					<div class="circle-text graph-button" ng-click="ShowBluImage()" style="height: 300px; width: 301px;">
 						<div class="glyphicon glyphicon-question-sign" style="font-size: 65px; margin-top: 18px"></div>
 						<div style="font-weight: bold; font-size:27px">
@@ -118,18 +118,18 @@
 						</div>
 					</div>
 				</div>
-			<div class="circle" ng-hide="showImage" style="position:absolute; top:108px">
+			<div class="circle" ng-show="energyBill.lastIteration2" style="position:absolute; top:85px">
 					<img src="css/images/halo-circle.png" style="margin-left: -150px;">
 					<div class="content">You'll pay
 						<h2>{{"$" + energyBill.cumulative30YearsExpenseDisplay}}</h2> over 30 years to your electric utility</div>
 				</div>
-				<div class="disclosure-footer col-xs-12 ng-scope"><span>
+				<!--<div class="disclosure-footer col-xs-12 ng-scope"><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
         </span><a class="ng-scope" href="">HERO Program</a><span> &nbsp; | &nbsp;
         </span><a class="ng-scope" href="">Privacy Policy</a><span class="ng-scope"> &nbsp; | &nbsp;
         </span><a class="ng-scope" href="">Disclosures</a>
 
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</div>
@@ -140,7 +140,7 @@
 				<span class="icon">&lt;</span> BACK
 			</div>
 		</a>
-		<a href="#/yourOptions/id1" ng-hide="showImage" style="text-decoration:none">
+		<a href="#/yourOptions/id1" ng-show="energyBill.lastIteration2" style="text-decoration:none">
 			<div class="nav-button next">
 				<span class="icon">&gt;</span> NEXT
 			</div>
