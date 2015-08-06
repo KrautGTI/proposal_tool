@@ -7,12 +7,15 @@
 						<img class="logo" style="width:100%" src="css/images/Fidelity-Home-Energy-Logo.png">
 					</div>
 					<div class="col-xs-8">
-						<form class="form-inline ng-pristine ng-valid ng-submitted">
+                        
+						<form name="myForm" class="form-inline ng-pristine ng-valid ng-submitted">
 							<div class="form-group">
-								<input type="text" ng-model="energyBill.zipcode" class="smarty-target form-control col-xs-10" placeholder="Enter the zip code of your address to get started" zip-validator>
+								<input name="input" type="text" ng-model="energyBill.zipcode" class="smarty-target form-control col-xs-10" placeholder="Enter the zip code of your address to get started" ng-required="true" zip-validator>
+                                
 								<a href="#/proposalSecondPage/id1" style="text-decoration:none">
+                                
 									<input class="btn-proposal check-eligibility col-xs-2" value="submit">
-								</a>
+                                </a>
 							</div>
 						</form>
 					</div>
@@ -23,7 +26,8 @@
 						Cities and counties across California offer an easy way to benefit from affordable home improvements.
 					</p>
 					<p>
-						The HERO Program is available to help you invest in energy efficient, water efficient, and renewable energy upgrades.
+						The HERO Program is available to help you invest in energy efficient, water efficient, and
+                        renewable energy upgrades.
 					</p>					
 				</div>
 

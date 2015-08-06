@@ -107,11 +107,25 @@
                                 How much do you think they will change each year?
                          </strong>
 					</p>
+                    <table>
+                    <tr>
+                        <td>
 					<div class="btn-proposal-group">
 						<button class=" btn-proposal" ng-click="energyBill.percentChange=energyBill.percentChange + 0.5">∧</button>
 						<input  class="ng-pristine ng-untouched ng-valid" ng-model="energyBill.percentChange" style="width: 90px;" type="text" perc-model-formatter>
 						<button class=" btn-proposal" ng-click="energyBill.percentChange=energyBill.percentChange - 0.5" >∨</button>
 					</div>
+                            </td>
+                        <td>
+                            <span></span>
+					<div class="btn-proposal-group">
+						<button class=" btn-proposal" ng-click="energyBill.yearChange=energyBill.yearChange + 5">∧</button>
+						<input  class="ng-pristine ng-untouched ng-valid" ng-model="energyBill.yearChange" style="width: 90px;" type="text" year-model-formatter>
+						<button class=" btn-proposal" ng-click="energyBill.yearChange=energyBill.yearChange - 5" >∨</button>
+					</div>
+                            </td>
+                        </tr>
+                    </table>
 				</div>
 				<!--<div class="disclosure-footer col-xs-12 ng-scope"><span class="ng-binding ng-scope">
         Copyright © 2015 Renovate America &nbsp; | &nbsp;

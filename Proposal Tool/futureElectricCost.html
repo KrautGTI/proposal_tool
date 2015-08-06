@@ -109,7 +109,7 @@
 						<div style="font-weight: bold; font-size:27px">
 							How much
 							<br> will you spend
-							<br> over 30 years?
+							<br> over {{energyBill.yearChange}} years?
 						</div>
 						<div style="display: inline-block;">
 							<pp style="font-size:10px; margin-top:23px;">FIND OUT</pp>
@@ -121,7 +121,7 @@
 			<div class="circle" ng-show="energyBill.lastIteration2" style="position:absolute; top:85px">
 					<img src="css/images/halo-circle.png" style="margin-left: -150px;">
 					<div class="content">You'll pay
-						<h2>{{"$" + energyBill.cumulative30YearsExpenseDisplay}}</h2> over 30 years to your electric utility</div>
+						<h2>{{"$" + energyBill.cumulative30YearsExpenseDisplay}}</h2> over {{energyBill.yearChange}} years to your electric utility</div>
 				</div>
 				<!--<div class="disclosure-footer col-xs-12 ng-scope"><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;

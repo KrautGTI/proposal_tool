@@ -194,6 +194,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 }   
                                 
                                 energyBill.percentChange = 7.0;
+                                energyBill.yearChange = 30;
 								energyBill.cumulative30YearsExpenseDisplay = 1;
                                 energyBill.dollar = true;
                                 energyBill.convert = true;
@@ -587,10 +588,6 @@ var proposalControllers = angular.module('proposalControllers', [])
 											'visited':false,
 											'url':'#/finishApplication/id1'
 										   }];
-                                
-                                
-                                
-                                
 
                                 this.dataObj = energyBill;
             });
@@ -622,13 +619,7 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
                       require: 'ngModel',
                       
                       link: function(scope, element, attrs, ctrl) {
-                          
-                          
-                          
-                          
-                          
-                          
-                          
+                                        
                             ctrl.$parsers.unshift(function(value) {
                                 // test and set the validity after update.
                                 var energyBill = dataService.dataObj;
@@ -946,8 +937,6 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
   
     $scope.toggleCustomBar = function() {			
             var barChart = $('#bars').highcharts();   
-  
-            
             $scope.energyBill.dollar = $scope.energyBill.dollar === true ? false: true;
         
             if($scope.energyBill.dollar === true) {
@@ -1041,6 +1030,7 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                                 $scope.energyBill.Month[this.x].dollars =  Math.ceil(this.y);
                                 $scope.energyBill.propagateEnergyBillFromDollar(this.x);
                                 $scope.energyBill.calculateTotalDollars();
+                                $scope.$apply();
                                 
                             }
                                
@@ -1049,6 +1039,7 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                                  $scope.energyBill.Month[this.x].kWh =  Math.ceil(this.y);
                                  $scope.energyBill.propagateEnergyBillFromkWh(this.x);
                                  $scope.energyBill.calculateTotalkWh();
+                                 $scope.$apply();
                             }
                                 
 
@@ -1272,7 +1263,8 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 	 
 	   
 	var workData = [];
-    var fiveYearData = [];
+    var years = [];
+    var totalYearData = [];
     $scope.energyBill = dataService.dataObj;
 	$scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu; 
 	$scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup; 
@@ -1289,11 +1281,15 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 	
     $scope.energyBill.percentChange = parseFloat($scope.energyBill.percentChange);
     var annualExpenses = [];
-    for(var i = 0; i < 30; i++) {
+    annualExpenses[0] = $scope.energyBill.annualCost;
+    years.push(0);
+    for(var i = 1; i < $scope.energyBill.yearChange; i++) {
         
-          annualExpenses[i] = $scope.energyBill.annualCost + $scope.energyBill.annualCost*$scope.energyBill.percentChange/100 + $scope.energyBill.annualCost*i;
-        if((i+1)%5 == 0 || i == 0){
-			   fiveYearData.push(annualExpenses[i]);
+          annualExpenses[i] = annualExpenses[i-1] + annualExpenses[i-1]*$scope.energyBill.percentChange/100 ;
+                                
+        if((i+1)%5 == 0 ){
+			   totalYearData.push(annualExpenses[i]);
+                years.push(i+1);
 		}
          
 		$scope.energyBill.cumulative30YearsExpense += annualExpenses[i];
@@ -1302,9 +1298,9 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 	        
     $scope.energyBill.cumulative30YearsExpenseDisplay =  $scope.energyBill.convertToComma($scope.energyBill.cumulative30YearsExpense);
     
-    for(var i = 0; i < fiveYearData.length; i++) {
+    for(var i = 0; i < totalYearData.length; i++) {
         if(i < 2)
-            workData[i] = fiveYearData[i];
+            workData[i] = totalYearData[i];
      
     }
     $scope.loop = 0;
@@ -1321,13 +1317,16 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                         $scope.label = this.renderer.label('<strong> Next Five Years </strong>', point.plotX  + 10, 250, 'square', 
                                                             point.plotX + this.plotLeft, point.plotY + this.plotTop, true)
                                         .css({
-                                            color: '#FFFFFF'
+                                            color: '#FFFFFF',
+                                            
                                             })
                                         .attr({
                                             fill: 'rgba(255, 0, 0, 0.55)',
                                             padding: 8,
                                             r: 5,
-                                            zIndex: 6
+                                            zIndex: 6,
+                                            cursor:'pointer',
+                                            id: 'chartLabel'
                                         })
                                         .add();
                     
@@ -1339,25 +1338,29 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                     var series = this.series[0];
                     // Add it
                    var target = $( event.target );
-                    if(target.is( "strong" ))
-                        if(i < fiveYearData.length)
+                   if(event.target.parentElement.id == "chartLabel")                    
+                        if(i < totalYearData.length)
                         {
                             //workData[i] = fiveYearData[i];
-                            series.addPoint(fiveYearData[i]);
+                            series.addPoint(totalYearData[i]);
                             //Label Approach
                             $scope.label.destroy();
-                            if(i < fiveYearData.length - 1) {
+                            if(i < totalYearData.length - 1) {
                                 var point = this.series[0].points[i];
                                 $scope.label = this.renderer.label('<strong> Next Five Years </strong>', point.plotX + 10, 250, 'square', 
                                                                 point.plotX + this.plotLeft, point.plotY + this.plotTop, true)
                                                         .css({
-                                                            color: '#FFFFFF'
+                                                            color: '#FFFFFF',
+                                                            
                                                             })
                                                         .attr({
                                                             fill: 'rgba(255, 0, 0, 0.55)',
                                                             padding: 8,
                                                             r: 5,
-                                                            zIndex: 6
+                                                           cursor:'pointer',
+                                                            zIndex: 6,
+                                                            id: 'chartLabel'
+                                                            
                                                         })
                                                         .add();
                             } else {
@@ -1365,7 +1368,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 								
 								$scope.energyBill.lastIteration = true;
 								$scope.energyBill.lastIteration2 = false;
-								 $scope.$apply() ;
+								$scope.$apply() ;
        
 							}
 
@@ -1379,14 +1382,14 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
          legend: {enabled:false},
         xAxis: {
             allowDecimals: false,
-            categories: [0, 5, 10, 15, 20, 25, 30],
+            categories: years,
             labels: {
                 formatter: function () {
                     var index = this.axis.categories.indexOf(this.value);
                     if(this.value == 0)
-                        return 'Today'+ '<br> $' + workData[index];
+                        return 'Today'+ '<br> $' + Math.ceil(workData[index]);
                     else 
-                        return this.value + ' years' + '<br> $' + workData[index]; // clean, unformatted number for year
+                        return this.value + ' years' + '<br> $' + Math.ceil(workData[index]); // clean, unformatted number for year
                 }
             }
         },
@@ -1420,7 +1423,8 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                         }
                     }
                 }
-            }
+            },
+        cursor: 'ns-resize'
         },
         series: [{
             
