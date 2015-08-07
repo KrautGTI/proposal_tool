@@ -1271,8 +1271,82 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
     $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup;
     $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
 
-     $scope.energyBill.cumulative30YearsExpense = 0;
-     $scope.ShowBluImage = function() {
+    $scope.energyBill.cumulative30YearsExpense = 0;
+
+    $scope.clickButton = function () {
+            var i = workData.length;
+            var areaChart = $('#areaChart').highcharts();
+            var series = areaChart.series[0];
+            var x = 20;
+            // Add it
+
+
+                if(i < totalYearData.length)
+                {
+                    //workData[i] = fiveYearData[i];
+                    series.addPoint(totalYearData[i]);
+                    //Label Approach
+                    $scope.label.destroy();
+                    if(i < totalYearData.length - 1) {
+                        var point = series.points[i];
+                        if(areaChart.plotSizeX - point.plotX > 100){
+                            $scope.label = areaChart.renderer.label(
+                                                        '<div class="btn-proposal" display: block;><div class="btn-text"> \
+                                                                Next 5 Years</div></div>', point.plotX , 200,
+                                                        'square', point.plotX , point.plotY, true)
+                                                    .css({
+
+                                    //                    color: '#FFFFFF',
+                                    //                    className: "glyphicon glyphicon-chevron-right"
+
+                                                        })
+                                                    .attr({
+                                     //                   fill: 'rgba(255, 0, 0, 0.55)',
+                                     //                   padding: 8,
+                                     //                   r: 5,
+                                     //                  cursor:'pointer',
+                                                        zIndex: 6,
+
+
+                                                    }).add();
+                        }
+
+                        else {
+                            $scope.label = areaChart.renderer.label(
+                                                    '<div class="btn-proposal" display: block;><div class="btn-text"> \
+                                                            Next 5 Years</div></div>', point.plotX - 50 , 200,
+                                                    'square', point.plotX , point.plotY, true)
+                                                .css({
+
+                                //                    color: '#FFFFFF',
+                                //                    className: "glyphicon glyphicon-chevron-right"
+
+                                                    })
+                                                .attr({
+                                 //                   fill: 'rgba(255, 0, 0, 0.55)',
+                                 //                   padding: 8,
+                                 //                   r: 5,
+                                 //                  cursor:'pointer',
+                                                    zIndex: 6,
+
+
+                                                }).add();
+
+                        }
+
+                        $( ".btn-proposal" ).click($scope.clickButton);
+                    } else {
+                        //The last time the box no longer needed
+
+                        $scope.energyBill.lastIteration = true;
+                        $scope.energyBill.lastIteration2 = false;
+                        $scope.$apply() ;
+
+                    }
+                }
+    } ;
+
+    $scope.ShowBluImage = function() {
             $scope.energyBill.lastIteration = false;
             /*$scope.energyBill.lastIteration == true;*/
             $scope.energyBill.lastIteration2 = $scope.energyBill.lastIteration2 === false ? true: false;
@@ -1316,66 +1390,17 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                 load: function () {
                     //Label Approach
                         var point = this.series[0].points[1];
-                        $scope.label = this.renderer.label('<strong> Next Five Years </strong>', point.plotX  + 10, 250, 'square',
-                                                            point.plotX + this.plotLeft, point.plotY + this.plotTop, true)
-                                        .css({
-                                            color: '#FFFFFF',
-
-                                            })
-                                        .attr({
-                                            fill: 'rgba(255, 0, 0, 0.55)',
-                                            padding: 8,
-                                            r: 5,
-                                            zIndex: 6,
-                                            cursor:'pointer',
-                                            id: 'chartLabel'
-                                        })
-                                        .add();
-
-                },
-               click: function (event) {
-                    // find the clicked values and the series
-                    $scope.loop++;
-                    var i = workData.length;
-                    var series = this.series[0];
-                    // Add it
-                   var target = $( event.target );
-                   if(event.target.parentElement.id == "chartLabel")
-                        if(i < totalYearData.length)
-                        {
-                            //workData[i] = fiveYearData[i];
-                            series.addPoint(totalYearData[i]);
-                            //Label Approach
-                            $scope.label.destroy();
-                            if(i < totalYearData.length - 1) {
-                                var point = this.series[0].points[i];
-                                $scope.label = this.renderer.label('<strong > Next Five Years </strong>', point.plotX + 10, 250,
-                                                            'square', point.plotX + this.plotLeft, point.plotY + this.plotTop, true)
-                                                        .css({
-                                                            color: '#FFFFFF',
-                                                            className: "glyphicon glyphicon-chevron-right"
-                                                            })
-                                                        .attr({
-                                                            fill: 'rgba(255, 0, 0, 0.55)',
-                                                            padding: 8,
-                                                            r: 5,
-                                                           cursor:'pointer',
-                                                            zIndex: 6,
-                                                            id: 'chartLabel'
-
-                                                        })
+                                $scope.label = this.renderer.label('<div class="btn-proposal" display: block;>\
+                                                                    <div class="btn-text">Next 5 Years</div></div>',
+                                                                   point.plotX , 200,
+                                                                   'square', point.plotX , point.plotY
+                                                                   + this.plotTop,
+                                                                   true)
                                                         .add();
-                            } else {
-                                //The last time the box no longer needed
+                                $( ".btn-proposal" ).click($scope.clickButton);
 
-                                $scope.energyBill.lastIteration = true;
-                                $scope.energyBill.lastIteration2 = false;
-                                $scope.$apply() ;
-
-                            }
-
-                        }
                 }
+
             }
         },
         title: {
@@ -1442,9 +1467,6 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 
         }]
 
-
-
-    },function (chart) {
 
 
     });
