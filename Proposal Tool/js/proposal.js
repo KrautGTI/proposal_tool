@@ -895,7 +895,16 @@ proposalControllers.controller('percentageChangeController', ['$scope', 'dataSer
       });
     }
   }
-});
+}).directive('yrsModelFormatter', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, controller) {
+     controller.$formatters.push(function(value) {
+        return value + " yrs";
+      });
+    }
+  }
+});;
 
 
 proposalControllers.controller('yourOptionsController', ['$scope', 'dataService', function($scope, dataService){
