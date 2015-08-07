@@ -1300,8 +1300,14 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                         var point = series.points[i];
                         if(areaChart.plotSizeX - point.plotX > 100){
                             $scope.label = areaChart.renderer.label(
-                                                        '<div class="btn-proposal" display: block;><div class="btn-text"> \
-                                                                Next 5 Years</div></div>', point.plotX , 200,
+                                                        '<div class="btn-proposal row" display: block;>\
+                                                            <div class="btn-text col-sm-6"> Next 5 Years</div> \
+                                                            <div class="btn-graphic col-sm-6">\
+                                                                <div style="margin-top: 12px; width:40px; font-size:25px" \
+                                                                    class="glyphicon glyphicon-chevron-right"> \
+                                                                </div>\
+                                                            </div>\
+                                                        </div>', point.plotX , 200,
                                                         'square', point.plotX , point.plotY, true)
                                                     .css({
 
