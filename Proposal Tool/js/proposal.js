@@ -1349,11 +1349,11 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                             $scope.label.destroy();
                             if(i < totalYearData.length - 1) {
                                 var point = this.series[0].points[i];
-                                $scope.label = this.renderer.label('<strong> Next Five Years </strong>', point.plotX + 10, 250,
+                                $scope.label = this.renderer.label('<strong > Next Five Years </strong>', point.plotX + 10, 250,
                                                             'square', point.plotX + this.plotLeft, point.plotY + this.plotTop, true)
                                                         .css({
                                                             color: '#FFFFFF',
-
+                                                            className: "glyphicon glyphicon-chevron-right"
                                                             })
                                                         .attr({
                                                             fill: 'rgba(255, 0, 0, 0.55)',
@@ -1389,9 +1389,10 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                 formatter: function () {
                     var index = this.axis.categories.indexOf(this.value);
                     if(this.value == 0)
-                        return 'Today'+ '<br> $' + Math.ceil(workData[index]);
+                        return '<strong> Today'+ '</strong><br> $' + Math.ceil(workData[index]) + '/yr';
                     else
-                        return this.value + ' years' + '<br> $' + Math.ceil(workData[index]); // clean, unformatted number for year
+                        return '<strong>' + this.value + ' years' + '<strong> <br> $' + Math.ceil(workData[index]) + '/yr';
+                    // clean, unformatted number for year
                 }
             }
         },
@@ -1410,7 +1411,13 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
             tickInterval: 500
         },
         tooltip: {
-            pointFormat: '{point.y}'
+            pointFormat: '{point.y}',
+            formatter: function () {
+
+
+                return ' $' + Math.ceil(this.y) + '/yr';
+
+            }
         },
         plotOptions: {
             area: {
