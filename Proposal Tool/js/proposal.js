@@ -772,13 +772,13 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
 
                     }
                 };
-    }).directive('kwhInput', function() {
+    }).directive('kwhInput', [ '$parse', function($parse) {
                 return {
                     restrict: 'A',
                     require: 'ngModel',
                     link: function(scope, element, attrs, ctrl) {
 
-                         ctrl.$parsers.push(function(inputValue) {
+                      ctrl.$parsers.push(function(inputValue) {
                                 var inputVal = element.val();
 
                                 //clearing left side zeros
@@ -792,15 +792,13 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                                 value = parseInt(res);
 
 
-
-
                                 if(!isNaN(value)) {
-                                    ctrl.$setViewValue(res + ' kWh');
+                                   // ctrl.$setViewValue(res + ' kWh');
 
                                     ctrl.$render();
                                     return value;
                                 } else {
-                                    ctrl.$setViewValue("kWh");
+                                  //  ctrl.$setViewValue("kWh");
 
                                     ctrl.$render();
                                     return 0;
@@ -810,13 +808,26 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                         });
 
                        ctrl.$formatters.push(function(value) {
-                                return value + ' kWh';
+                                return value+ ' kWh';
+                        });
+                        element.bind('blur', function() {
+                            if(!ctrl.$valid) {
+                                return;
+                            }
+                            var viewValue = ctrl.$modelValue;
+                            var formatters = ctrl.$formatters;
+                            for (var i = formatters.length - 1; i >= 0; --i) {
+                                viewValue = formatters[i](viewValue);
+                            }
+                            viewValue = viewValue.replace(/[^0-9]/g, '');
+                            ctrl.$viewValue = viewValue + " kWh" ;
+                            ctrl.$render();
                         });
 
                         return;
                 }
             };
-    });
+    }]);
 
 proposalControllers.controller('heroSummaryController',['$scope','dataService', function($scope,dataService){
         $scope.energyBill = dataService.dataObj;

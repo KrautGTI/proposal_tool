@@ -127,7 +127,7 @@
                         <div class="col-xs-6">
                             <span>{{months[$index+6]}}</span>
                             <input ng-show="energyBill.dollar"  class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill.Month[i+6].dollars" ng-change=energyBill.propagateEnergyBillFromDollar(i+6) currency-input>
-                            <input ng-hide="energyBill.dollar"  class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill.Month[i+6].kWh" ng-change=energyBill.propagateEnergyBillFromkWh(i+6) kwh-input>
+                            <input ng-hide="energyBill.dollar"  class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill.Month[i+6].kWh" placeholder="0 kWh" ng-change=energyBill.propagateEnergyBillFromkWh(i+6) kwh-input>
                         </div>
                     </div>
                 </div>
