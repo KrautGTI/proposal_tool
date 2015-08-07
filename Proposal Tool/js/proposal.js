@@ -737,8 +737,8 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                             var inputVal = element.val();
 
                             //clearing left side zeros
-                            while (inputVal.charAt(0) == '0') {
-                                inputVal = inputVal.substr(1);
+                            while (inputVal.charAt(1) == '0') {
+                                inputVal = inputVal.substr(2);
                             }
                             var res;
                             var value;
@@ -752,7 +752,8 @@ proposalControllers.controller('multipleBillController',['$scope','dataService',
                                 ctrl.$render();
                                 return value;
                             } else {
-                                ctrl.$setViewValue("$");
+
+                                ctrl.$setViewValue("$" + 0);
 
                                 ctrl.$render();
                                 return 0;
@@ -984,15 +985,15 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                var index = this.axis.categories.indexOf(this.value);
                if($scope.energyBill.dollar === true) {
                    if($scope.dataMonths[index].y !== undefined)
-                       return ' <a>' +  this.value + '<br>' + '$' + Math.ceil($scope.dataMonths[index].y) + '</a>';
+                       return ' <a> <strong>' +  this.value + ' </strong><br>' + '$' + Math.ceil($scope.dataMonths[index].y) + '</a>';
                    else
-                       return ' <a>' +  this.value + '<br>' + '$' + Math.ceil($scope.dataMonths[index]) + '</a>';
+                       return ' <a><strong>' +  this.value + '</strong><br>' + '$' + Math.ceil($scope.dataMonths[index]) + '</a>';
                 }
                else {
                    if($scope.dataMonths[index].y !== undefined)
-                       return ' <a>' +  this.value + '<br>'  + Math.ceil($scope.dataMonths[index].y) + ' kWh' + '</a>';
+                       return ' <a><strong>' +  this.value + '</strong><br>'  + Math.ceil($scope.dataMonths[index].y) + ' kWh' + '</a>';
                    else
-                       return ' <a>' +  this.value + '<br>'  + Math.ceil($scope.dataMonths[index]) +  ' kWh' + '</a>';
+                       return ' <a><strong>' +  this.value + '</strong><br>'  + Math.ceil($scope.dataMonths[index]) +  ' kWh' + '</a>';
 
                 }
 
@@ -1180,14 +1181,24 @@ proposalControllers.controller('finishApplicationController',['$scope','dataServ
 
     }]);
 proposalControllers.controller('noBillBarGraphController',['$scope','dataService', function($scope,dataService){
-      $scope.energyBill = dataService.dataObj;
-      $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu;
-      $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup;
-      $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
-      $scope.showHide = true;
-           $scope.ShowGraph = function() {
+        $scope.energyBill = dataService.dataObj;
+        $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu;
+        $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup;
+        $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
+        $scope.showHide = true;
+        $scope.ShowGraph = function() {
                  $scope.showHide = $scope.showHide === false ? true: false;
         };
+        if($scope.energyBill.dollar === true) {
+
+                 $scope.energyBill.calculateTotalDollars();
+
+
+        } else {
+                $scope.energyBill.calculateTotalkWh();
+
+        }
+
 
     }]);
 proposalControllers.controller('lineGraphController',['$scope','dataService', function($scope, dataService){
