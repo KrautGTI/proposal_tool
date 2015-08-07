@@ -1283,6 +1283,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
     $scope.energyBill.percentChange = parseFloat($scope.energyBill.percentChange);
     var annualExpenses = [];
     annualExpenses[0] = $scope.energyBill.annualCost;
+    totalYearData.push($scope.energyBill.annualCost);
     years.push(0);
     for(var i = 1; i < $scope.energyBill.yearChange; i++) {
 
@@ -1348,8 +1349,8 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                             $scope.label.destroy();
                             if(i < totalYearData.length - 1) {
                                 var point = this.series[0].points[i];
-                                $scope.label = this.renderer.label('<strong> Next Five Years </strong>', point.plotX + 10, 250, 'square',
-                                                                point.plotX + this.plotLeft, point.plotY + this.plotTop, true)
+                                $scope.label = this.renderer.label('<strong> Next Five Years </strong>', point.plotX + 10, 250,
+                                                            'square', point.plotX + this.plotLeft, point.plotY + this.plotTop, true)
                                                         .css({
                                                             color: '#FFFFFF',
 
