@@ -1087,9 +1087,9 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
         yDecimals: 2,
         formatter: function() {
                 if($scope.energyBill.dollar === true)
-                    return this.x + '<br>' + '$'+ Highcharts.numberFormat(this.y, 2) ;
+                    return '$'+ Highcharts.numberFormat(this.y, 2) ;
                 else
-                    return this.x + '<br>' + 'kWh'+ Highcharts.numberFormat(this.y, 2) ;
+                    return   Highcharts.numberFormat(this.y, 2) + ' kWh';
         }
     },
 
@@ -1451,9 +1451,11 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                 formatter: function () {
                     var index = this.axis.categories.indexOf(this.value);
                     if(this.value == 0)
-                        return '<strong> Today'+ '</strong><br> $' + Math.ceil(workData[index]) + '/yr';
+                        return '<strong> Today'+ '</strong><br> $' + $scope.energyBill.convertToComma(Math.ceil(workData[index]))
+                            + '/yr';
                     else
-                        return '<strong>' + this.value + ' years' + '<strong> <br> $' + Math.ceil(workData[index]) + '/yr';
+                        return '<strong>' + this.value + ' years' + '<strong> <br> $' +
+                            $scope.energyBill.convertToComma(Math.ceil(workData[index])) + '/yr';
                     // clean, unformatted number for year
                 }
             }
@@ -1466,7 +1468,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 
             labels: {
                 formatter: function () {
-                    return '$' + this.value ;
+                    return "$" + $scope.energyBill.convertToComma(this.value) ;
                 }
             },
             tickAmount: 7,
@@ -1477,7 +1479,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
             formatter: function () {
 
 
-                return ' $' + Math.ceil(this.y) + '/yr';
+                return ' $' + $scope.energyBill.convertToComma(Math.ceil(this.y)) + '/yr';
 
             }
         },
