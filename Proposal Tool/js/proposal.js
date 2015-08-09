@@ -875,7 +875,7 @@ proposalControllers.controller('buildSolarSystemController',['$scope', 'dataServ
         i++;
         $scope.numArray.push(i);
     };
-
+     $scope.showme=false;
      $scope.removeArray = function(obj){
 
          var index = obj.$parent.item;
