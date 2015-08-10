@@ -1,144 +1,144 @@
 <!--<div class="bg-image bg-image3"></div>-->
 <img src="css/images/bus.png" style="position: fixed; height: 100%;  width: 100%;z-index: -1;">
 <div class="container-fluid" id="proposal-tool-container">
-	<div class="header row container-fluid ng-scope">
-		<div class="container">			
+    <div class="header row container-fluid ng-scope">
+        <div class="container">
            <img class="logo" style="height:80px" src="css/images/Fidelity-Home-Energy-Logo.png">
-			<div class="proposal-toop-quick-nav">
-				<div class="nav-selection active visited"></div>
-				<div class="nav-selection-divider"></div>
-				<div class="nav-selection"></div>
-				<div class="nav-selection-divider"></div>
-				<div class="nav-selection"></div>
-			</div>
-									<!--************ list and setting start ********-->
-			<ul class="nav nav-pills pull-right">
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-						<span class="glyphicon glyphicon-th-list"></span>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-right" role="menu" style="width:800px; height:500px">
-						<li class="quick-navigation">
-							<ul class="quicknav-header">
-								<li>
-									<h1>Quick Navigation</h1>
-								</li>
-								<li>
-									<div class="icon icon-hero-map"></div>HERO Map
-								</li>
-								<li>
-									<div class="icon icon-hero-video"></div>HERO Video
-								</li>
-								<li>
-									<a>
-										<div class="icon icon-get-approved"></div>Get Approved
-									</a>
-								</li>
-							</ul>
-							<div class="quicknav-body">
-								<ul>
-									<li>Energy Use</li>									
-									<li ng-repeat="mpaeu in navMenuPageArrayEnerUses" class="visited">
-										<a id="link-6" ng-href="{{mpaeu.url}}">
-										<div>{{$index + 1}}</div>
-										<div>{{mpaeu.title}}</div>
-										</a>	
-									</li>								
-								</ul>
-								<ul>
-									<li>Upgrades</li>
-									<li ng-repeat="mpau in navMenuPageArrayUpgrad" class="visited">
-										<a id="link-6" ng-href="{{mpau.url}}">
-										<div>{{$index + 7}}</div>
-										<div>{{mpau.title}}</div>
-										</a>	
-									</li>									
-								</ul>
-								<ul>
-									<li>Payments</li>
+            <div class="proposal-toop-quick-nav">
+                <div class="nav-selection active visited"></div>
+                <div class="nav-selection-divider"></div>
+                <div class="nav-selection"></div>
+                <div class="nav-selection-divider"></div>
+                <div class="nav-selection"></div>
+            </div>
+                                    <!--************ list and setting start ********-->
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" style="width:800px; height:500px">
+                        <li class="quick-navigation">
+                            <ul class="quicknav-header">
+                                <li>
+                                    <h1>Quick Navigation</h1>
+                                </li>
+                                <li>
+                                    <div class="icon icon-hero-map"></div>HERO Map
+                                </li>
+                                <li>
+                                    <div class="icon icon-hero-video"></div>HERO Video
+                                </li>
+                                <li>
+                                    <a>
+                                        <div class="icon icon-get-approved"></div>Get Approved
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="quicknav-body">
+                                <ul>
+                                    <li>Energy Use</li>
+                                    <li ng-repeat="mpaeu in navMenuPageArrayEnerUses" class="visited">
+                                        <a id="link-6" ng-href="{{mpaeu.url}}">
+                                        <div>{{$index + 1}}</div>
+                                        <div>{{mpaeu.title}}</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>Upgrades</li>
+                                    <li ng-repeat="mpau in navMenuPageArrayUpgrad" class="visited">
+                                        <a id="link-6" ng-href="{{mpau.url}}">
+                                        <div>{{$index + 7}}</div>
+                                        <div>{{mpau.title}}</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>Payments</li>
                                     <li ng-repeat="mpap in navMenuPageArrayPayment" class="visited">
-										<a id="link-6" ng-href="{{mpap.url}}">
-										<div>{{$index + 12}}</div>
-										<div>{{mpap.title}}</div>
-										</a>	
-									</li>																		
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</li>
+                                        <a id="link-6" ng-href="{{mpap.url}}">
+                                        <div>{{$index + 12}}</div>
+                                        <div>{{mpap.title}}</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
 
-				<!--******** setting start ********-->
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-						<span class="glyphicon glyphicon-cog"></span>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-right" role="menu">
-						<li><a class="clickable">Home</a>
-						</li>
-						<li><a href="">Quick Reference Guide</a>
-						</li>
-						<li><a href="">Pro Pitch Demo Videos</a>
-						</li>
-						<li><a class="ignore-leave-proposal-message" href="">Feedback</a>
-						</li>
-						<li><a href="">FAQs</a>
-						</li>
-						<li><a class="ignore-leave-proposal-message" href="">Logout</a>
-						</li>
-					</ul>
-				</li>
-				<!--******** setting End ********-->
+                <!--******** setting start ********-->
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li><a class="clickable">Home</a>
+                        </li>
+                        <li><a href="">Quick Reference Guide</a>
+                        </li>
+                        <li><a href="">Pro Pitch Demo Videos</a>
+                        </li>
+                        <li><a class="ignore-leave-proposal-message" href="">Feedback</a>
+                        </li>
+                        <li><a href="">FAQs</a>
+                        </li>
+                        <li><a class="ignore-leave-proposal-message" href="">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--******** setting End ********-->
 
-			</ul>
-			<!--************ list and setting End ********-->
-		</div>
-	</div>
-	<div class="container pages-container">
-		<div class="pages row">
+            </ul>
+            <!--************ list and setting End ********-->
+        </div>
+    </div>
+    <div class="container pages-container">
+        <div class="pages row">
 
 
-			<div class="proposal-page proposal-page-YEU-5 col-lg-8 col-lg-offset-2   col-md-10 col-md-offset-1  col-sm-12  col-xs-12 column anim-fade">
-				<div class="circle-container col-xs-6 col-xs-offset-1 yeu5-content" style="text-align: center;">
-					<div class="circle" style="top: 24px; left: 54px;">
-						<div class="content">
-							Your Annual
-							<br>Electric Bill is
-							<h2 class="ng-binding">{{"$" + energyBill.annualCostDisplay}}</h2>
-						</div>
-						<div class="arc"></div>
-					</div>
+            <div class="proposal-page proposal-page-YEU-5 col-lg-8 col-lg-offset-2   col-md-10 col-md-offset-1  col-sm-12  col-xs-12 column anim-fade">
+                <div class="circle-container col-xs-6 col-xs-offset-1 yeu5-content" style="text-align: center;">
+                    <div class="circle" style="top: 160px; left: 180px;">
+                        <div class="content">
+                            Your Annual
+                            <br>Electric Bill is
+                            <h2 class="ng-binding">{{"$" + energyBill.annualCostDisplay}}</h2>
+                        </div>
+                        <div class="arc"></div>
+                    </div>
 
-				</div>
-				<div class="col-xs-5 col-xs-offset-6 yeu5-content ">
-					<p>
-						We’ve reviewed how much you currently spend on electricity.
-					</p>
-					<p>
-						Now, let’s look at what electric prices have done over the past {{energyBill.yearChange}} years and what that means for you.
-					</p>
-				</div>
-				<!-- ngInclude: 'proposal-tool-footer' -->
-				<!--<div class="disclosure-footer col-xs-12 ng-scope"><span>
+                </div>
+                <div class="col-xs-5 col-xs-offset-6 yeu5-content ">
+                    <p>
+                        We’ve reviewed how much you currently spend on electricity.
+                    </p>
+                    <p>
+                        Now, let’s look at what electric prices have done over the past {{energyBill.yearChange}} years and what that means for you.
+                    </p>
+                </div>
+                <!-- ngInclude: 'proposal-tool-footer' -->
+                <!--<div class="disclosure-footer col-xs-12 ng-scope"><span>
 
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
         </span><a class="ng-scope" href="#">HERO Program</a><span class="ng-scope"> &nbsp; | &nbsp;
         </span><a class="ng-scope" href="#">Privacy Policy</a><span class="ng-scope"> &nbsp; | &nbsp;
         </span><a class="ng-scope" href="#">Disclosures</a>
-				</div>-->
-			</div>
-		</div>
-	</div>
-	<div id="proposal-page-nav">
-		<a href="#/review/id1" style="text-decoration:none">
-			<div class="nav-button prev">
-				<span class="icon">&lt;</span> BACK
-			</div>
-		</a>
-		<a href="#/lineGraph/id1" style="text-decoration:none">
-			<div class="nav-button next">
-				<span class="icon">&gt;</span> NEXT
-			</div>
-		</a>
-	</div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div id="proposal-page-nav">
+        <a href="#/review/id1" style="text-decoration:none">
+            <div class="nav-button prev">
+                <span class="icon">&lt;</span> BACK
+            </div>
+        </a>
+        <a href="#/lineGraph/id1" style="text-decoration:none">
+            <div class="nav-button next">
+                <span class="icon">&gt;</span> NEXT
+            </div>
+        </a>
+    </div>
 </div>
