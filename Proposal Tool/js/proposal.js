@@ -490,9 +490,11 @@ var proposalControllers = angular.module('proposalControllers', [])
                                     energyMultiplier =  variation[i] * 1 * numDays[i]*solarRadiationFactor[i]/1000;
                                     for(var j = 0; j < energyBill.solarSystem.length; j++) {
                                         if(energyBill.solarSystem[j].type260 == 1)
-                                            energyProduction += 260 *  energyMultiplier * energyBill.solarSystem[j].systemSize;
+                                            energyProduction += 260 *  energyMultiplier * energyBill.solarSystem[j].systemSize
+                                                                    *energyBill.solarSystem[j].convEfficiency/100;
                                         else
-                                            energyProduction += 280 * energyMultiplier * energyBill.solarSystem[j].systemSize;
+                                            energyProduction += 280 * energyMultiplier * energyBill.solarSystem[j].systemSize
+                                                                        *energyBill.solarSystem[j].convEfficiency/100;
 
 
                                     }

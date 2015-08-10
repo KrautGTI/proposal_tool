@@ -234,9 +234,9 @@
                                         <p>The inverter's nominal rated DC-to-AC conversion efficiency.</p>
                                         <div class="input-container ">
                                             <input class="ng-pristine ng-untouched ng-invalid ng-invalid-required "
-                                                   ng-model="energyBill.solarSystem[$index].electricalWork"
-                                                   name="array-0-tilt" placeholder="225" type="text ">
-                                            <span class="description ">USD </span>
+                                                   ng-model="energyBill.solarSystem[$index].convEfficiency"
+                                                   name="array-0-tilt" placeholder="96%" type="text ">
+                                            <span class="description ">Percent </span>
                                         </div>
                                     </div>
                                     <div class="box col-xs-3 ">
@@ -250,9 +250,9 @@
                                         <div class="input-container ">
                                             <input class="ng-pristine ng-untouched ng-invalid ng-invalid-required "
                                                    name="array-0-orientation " numeric-min="0 " numeric-max="359 "
-                                                   placeholder="200 " required=" " type="text"
-                                                   ng-model="energyBill.solarSystem[$index].miscWork">
-                                            <span class="description ">USD</span>
+                                                   placeholder="0.65% " required=" " type="text"
+                                                   ng-model="energyBill.solarSystem[$index].sysDegrade">
+                                            <span class="description ">Percent</span>
                                         </div>
                                     </div>
 
