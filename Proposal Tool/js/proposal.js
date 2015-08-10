@@ -1466,6 +1466,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
             title: {
                 text: ''
             },
+            max: totalYearData[totalYearData.length - 1],
 
 
             labels: {
