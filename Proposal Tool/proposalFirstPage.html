@@ -1,4 +1,4 @@
-<div class="container-fluid" id="proposal-tool-container">
+<div class="container-fluid" id="proposal-tool-container" style="margin-bottom:50px">
 	<div class="container pages-container">
 		<div class="proposal-page proposal-page-KBYG-1 col-xs-10 col-xs-offset-1  column anim-fade ng-scope">
 			<div class="col-xs-12 main-panel default" style="padding:0px;">
@@ -6,9 +6,10 @@
 					<div class="col-xs-4">
 						<img class="logo" style="width:100%" src="css/images/Fidelity-Home-Energy-Logo.png">
 					</div>
-					<div class="col-xs-8">
-                        
-						<form name="myForm" class="form-inline ng-pristine ng-valid ng-submitted">
+
+				<!--	<div class="col-xs-8">
+						<form class="form-inline ng-pristine ng-valid ng-submitted">
+
 							<div class="form-group">
 								<input name="input" type="text" ng-model="energyBill.zipcode" class="smarty-target form-control col-xs-10" placeholder="Enter the zip code of your address to get started" ng-required="true" zip-validator>
                                 
@@ -18,21 +19,108 @@
                                 </a>
 							</div>
 						</form>
-					</div>
+					</div>-->
 				</div>
 
 				<div class="col-xs-12">
-					<p class="clear">
+					<!--<p class="clear">
 						Cities and counties across California offer an easy way to benefit from affordable home improvements.
 					</p>
 					<p>
-						The HERO Program is available to help you invest in energy efficient, water efficient, and
-                        renewable energy upgrades.
-					</p>					
+
+						The HERO Program is available to help you invest in energy efficient, water efficient, and renewable energy upgrades.
+					</p>	-->
+					<!--****************** User Information start *****************-->
+
+					<div class="row" id="userInfo">
+						<form class="form-horizontal ng-pristine ng-valid ng-submitted" role="form" id="myform">
+
+
+							<div class="form-group required" style="margin-bottom: 0px;">
+                                   <div style="position: relative; left: 117px; font-size: 50px; color: #1975A3" class="glyphicon glyphicon-check col-sm-2"></div>
+								<label class="control-label col-sm-3" style="font-size:17px; color:#6C6C6C">Zip Code</label>
+								<div class="col-sm-7">
+									<input type="text" style="width:300px; margin-bottom: 15px;" ng-model="energyBill.zipcode" class="smarty-target form-control col-xs-10" placeholder="Enter the zip code of your address" zip-validator>
+									<div class="glyphicon glyphicon-calendar" style="font-size: 50px; color: rgb(25, 117, 163); margin-top: -73px; margin-left: 406px; margin-bottom: 23px;"></div>
+
+								</div>
+							</div>
+
+
+
+							<div class="form-group required" style="margin-bottom: 0px;">
+								<div class="col-sm-3" style="padding-left: 113px; padding-top: 6px; font-size:16px; color:#6C6C6C">Easy to Qualify</div>
+
+								<label class="control-label col-sm-2" style="font-size:17px; color:#6C6C6C">First Name</label>
+								<div class="col-sm-4">
+									<input id="firstName" name="firstName" type="text" data-bind="value: firstName" class="form-control" placeholder="Enter First Name" style="font-size:1em; width:300px;" required />						
+								</div>
+								<div class="col-sm-3" style="padding-left: 72px; padding-top: 14px; font-size: 16px; color: rgb(108, 108, 108); margin-top: -9px;">No Payments for
+									<br> up to 10 months </div>
+							</div>
+							<div class="form-group required" style="margin-bottom: 0px;">
+								
+								<label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Last Name</label>
+
+								<div class="col-sm-4">
+									<input id="lastName" name="lastName" type="text" data-bind="value: lastName" class="form-control" placeholder="Enter Last Name" style="font-size:1em; width:300px; margin-bottom:15px" required />
+
+								</div>
+								
+							</div>
+							<div class="form-group required">
+								<label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Phone No</label>
+								<div class="col-sm-7">
+									<input id="phoneNo" name="phoneNo" type="number" class="form-control" placeholder="Enter number" style="font-size:1em; width:300px;" required />
+
+								</div>
+							</div>
+							<div class="form-group required">
+
+								<label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Address</label>
+
+								<div class="col-sm-7">
+									<input id="address" name="address" type="text" class="form-control" placeholder="Enter address" style="font-size:1em; width:300px;" required />
+
+								</div>
+							</div>
+							<div class="form-group required">
+								<div style="position: relative; left: 117px; font-size: 50px; color: #1975A3" class="glyphicon glyphicon-list-alt col-sm-2"></div>
+
+								<label class="control-label col-sm-3" style="font-size:17px; color:#6C6C6C">Email</label>
+
+								<div class="col-sm-7">
+									<input id="email" type="email" name="email" class="form-control" placeholder="Enter email" style="font-size:1em; width:300px;" required />
+									<div style="font-size: 50px; color: #1975A3; margin-top: -63px; margin-left: 406px;" class="glyphicon glyphicon-adjust"></div>
+								</div>
+							</div>
+							<div class="form-group required">
+								<div style="padding-left: 113px; padding-top: 0px; margin-top: -6px; font-size:16px; color:#6C6C6C" class="col-sm-6">Tax Benefits</div>
+
+								<div style="padding-left: 313px; padding-top: 6px; margin-top: -15px; margin-left: 0px; font-size:16px; color:#6C6C6C" class="col-sm-6">Affordable Payment
+									<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Options</div>
+							</div>
+
+						</form>
+					</div>
+
+
+					<!--****************** User Information end *****************-->
+
+
+
 				</div>
 
-				<div class="col-xs-12 icons">
-					<img src="css/images/kbyg-graphic.png" alt="">
+				<div class="col-xs-4 icons">
+					<!--<img src="css/images/kbyg-graphic.png" alt="">-->
+					<a class="btn-proposal btn-large icon-left" style="text-decoration: none; height: 50px; margin-left: 315px; margin-bottom: 50px; border-bottom-width: 46px;" href="#/startProposal/id1">
+
+						<div class="btn-text">Start A Proposal</div>
+						<div class="btn-graphic">
+							<div style="margin-top: 14px; width:40px" class="glyphicon glyphicon-calendar"></div>
+						</div>
+
+					</a>
 				</div>
 				<!--<div class="kbyg-footer col-xs-12" style="positionn:relative; top:25px">
 					<div class="col-xs-4 clickable size-450">
@@ -73,7 +161,7 @@
 
 					</ul>
 				</li>
-			</ul>			
+			</ul>
 		</div>
 	</div>
 </div>
