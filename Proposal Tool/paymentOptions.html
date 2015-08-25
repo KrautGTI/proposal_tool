@@ -1,164 +1,176 @@
 <!--<div class="bg-image bg-image5"></div>-->
 <!--<div class="bg-image bg-image5"></div>-->
-    
+
 <img src="css/images/bus.png" style="position: fixed; height: 100%;  width: 100%;z-index: -1;">
 
 <div class="container-fluid" id="proposal-tool-container">
-	<div class="header row container-fluid ng-scope">
-		<div class="container">
-			<img class="logo" style="height:80px" src="css/images/Fidelity-Home-Energy-Logo.png">
+    <div class="header row container-fluid ng-scope">
+        <div class="container">
+            <img class="logo" style="height:80px" src="css/images/Fidelity-Home-Energy-Logo.png">
 
-			<div class="proposal-toop-quick-nav">
-				<a href="#/startProposal/id1">
-				<div class="nav-selection visited"></div>
-				</a>
-				<div class="nav-selection-divider"></div>
-				<a href="#/yourOptions/id1">
-				<div class="nav-selection visited"></div>
-				</a>
-				<div class="nav-selection-divider"></div>
-				<div class="nav-selection active visited"></div>
-			</div>
-									<!--************ list and setting start ********-->
-			<ul class="nav nav-pills pull-right">
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-						<span class="glyphicon glyphicon-th-list"></span>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-right" role="menu" style="width:800px; height:500px">
-						<li class="quick-navigation">
-							<ul class="quicknav-header">
-								<li>
-									<h1>Quick Navigation</h1>
-								</li>
-								<li>
-									<div class="icon icon-hero-map"></div>HERO Map
-								</li>
-								<li>
-									<div class="icon icon-hero-video"></div>HERO Video
-								</li>
-								<li>
-									<a>
-										<div class="icon icon-get-approved"></div>Get Approved
-									</a>
-								</li>
-							</ul>
-							<div class="quicknav-body">
-								<ul>
-									<li>Energy Use</li>									
-									<li ng-repeat="mpaeu in navMenuPageArrayEnerUses" class="visited">
-										<a id="link-6" ng-href="{{mpaeu.url}}">
-										<div>{{$index + 1}}</div>
-										<div>{{mpaeu.title}}</div>
-										</a>	
-									</li>								
-								</ul>
-								<ul>
-									<li>Upgrades</li>
-									<li ng-repeat="mpau in navMenuPageArrayUpgrad" class="visited">
-										<a id="link-6" ng-href="{{mpau.url}}">
-										<div>{{$index + 7}}</div>
-										<div>{{mpau.title}}</div>
-										</a>	
-									</li>									
-								</ul>
-								<ul>
-									<li>Payments</li>
+            <div class="proposal-toop-quick-nav">
+                <a href="#/startProposal/id1">
+                <div class="nav-selection visited"></div>
+                </a>
+                <div class="nav-selection-divider"></div>
+                <a href="#/yourOptions/id1">
+                <div class="nav-selection visited"></div>
+                </a>
+                <div class="nav-selection-divider"></div>
+                <div class="nav-selection active visited"></div>
+            </div>
+                                    <!--************ list and setting start ********-->
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" style="width:800px; height:500px">
+                        <li class="quick-navigation">
+                            <ul class="quicknav-header">
+                                <li>
+                                    <h1>Quick Navigation</h1>
+                                </li>
+                                <li>
+                                    <div class="icon icon-hero-map"></div>HERO Map
+                                </li>
+                                <li>
+                                    <div class="icon icon-hero-video"></div>HERO Video
+                                </li>
+                                <li>
+                                    <a>
+                                        <div class="icon icon-get-approved"></div>Get Approved
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="quicknav-body">
+                                <ul>
+                                    <li>Energy Use</li>
+                                    <li ng-repeat="mpaeu in navMenuPageArrayEnerUses" class="visited">
+                                        <a id="link-6" ng-href="{{mpaeu.url}}">
+                                        <div>{{$index + 1}}</div>
+                                        <div>{{mpaeu.title}}</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>Upgrades</li>
+                                    <li ng-repeat="mpau in navMenuPageArrayUpgrad" class="visited">
+                                        <a id="link-6" ng-href="{{mpau.url}}">
+                                        <div>{{$index + 7}}</div>
+                                        <div>{{mpau.title}}</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>Payments</li>
                                     <li ng-repeat="mpap in navMenuPageArrayPayment" class="visited">
-										<a id="link-6" ng-href="{{mpap.url}}">
-										<div>{{$index + 12}}</div>
-										<div>{{mpap.title}}</div>
-										</a>	
-									</li>																		
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</li>
+                                        <a id="link-6" ng-href="{{mpap.url}}">
+                                        <div>{{$index + 12}}</div>
+                                        <div>{{mpap.title}}</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
 
-				<!--******** setting start ********-->
-				<li role="presentation" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-						<span class="glyphicon glyphicon-cog"></span>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-right" role="menu">
-						<li><a class="clickable">Home</a>
-						</li>
-						<li><a href="">Quick Reference Guide</a>
-						</li>
-						<li><a href="">Pro Pitch Demo Videos</a>
-						</li>
-						<li><a class="ignore-leave-proposal-message" href="">Feedback</a>
-						</li>
-						<li><a href="">FAQs</a>
-						</li>
-						<li><a class="ignore-leave-proposal-message" href="">Logout</a>
-						</li>
-					</ul>
-				</li>
-				<!--******** setting End ********-->
+                <!--******** setting start ********-->
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li><a class="clickable">Home</a>
+                        </li>
+                        <li><a href="">Quick Reference Guide</a>
+                        </li>
+                        <li><a href="">Pro Pitch Demo Videos</a>
+                        </li>
+                        <li><a class="ignore-leave-proposal-message" href="">Feedback</a>
+                        </li>
+                        <li><a href="">FAQs</a>
+                        </li>
+                        <li><a class="ignore-leave-proposal-message" href="">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--******** setting End ********-->
 
-			</ul>
-			<!--************ list and setting End ********-->
-		</div>
-	</div>
-    
-	<div class="container pages-container">
-		<div class="pages row">
-			<div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column anim-fade" style="height:1000px">
+            </ul>
+            <!--************ list and setting End ********-->
+        </div>
+    </div>
+
+    <div class="container pages-container">
+        <div class="pages row">
+            <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column anim-fade" style="height:1000px">
           <div class="row">
                 <div class="col-sm-8" style="margin-top: 20px;">
             <center>  <h3><b style="margin-left: 350px;">INVESTMENT REVIEW</b></h3></center>
               </div>
                 <div class="col-sm-4 " style="margin-top: 20px;">
               <h4><b>Name&nbsp;:&nbsp;{{energyBill.firstName}}</b></h4>
-                <h4><b>Date&nbsp;&nbsp;&nbsp;:&nbsp;{{energyBill.date}}</b></h4>  
+                <h4><b>Date&nbsp;&nbsp;&nbsp;:&nbsp;{{energyBill.date}}</b></h4>
               </div>
-                </div> 
+                </div>
                 <div style="border: 2px solid black; margin:30px;padding-top: 20px; padding-bottom: 10px;">
                   <div class="row">
                     <div class="col-sm-6" style="border-right: 1px solid black;">
                       <p style="padding-top: 15px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>
-                        &nbsp;&nbsp;&nbsp;&nbsp;  ___________ High Efficiency Panels ______Watts</p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom Engineering, All Drawings & Permits</p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom Wiring</p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom Anodized Aluminum Racking</p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30 Year System Warranty</b></p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roof Warranty</b></p>
-                      <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Money Back System Production Guarantee</b></p>
+                          &nbsp;&nbsp;&nbsp;&nbsp;
+                          <b> {{energyBill.numPanels}} High Efficiency Panels {{energyBill.panelType}} Watts </b></p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <b>Custom Engineering, All Drawings & Permits </b></p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <b>Custom Wiring </b></p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-star-empty">
+                          </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <b>Custom Anodized Aluminum Racking  </b></p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-star-empty"></span>
+                          <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30 Year System Warranty</b></p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-asterisk"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roof Warranty</b></p>
+                      <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-asterisk"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Money Back System Production Guarantee</b></p>
                       </div>
-                      
+
                      <div class="col-sm-6">
-                      <p style="padding-top: 15px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High Efficiency Micro Inverters</p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monitoring Station</p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom Conduit</p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Labor and Clean Up By <br>
+                      <p style="padding-top: 15px;margin-left:70px;"><span class="glyphicon glyphicon-circle-arrow-right"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <b>High Efficiency Micro Inverters</b></p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-circle-arrow-right">
+
+                      </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <b>Monitoring Station</b></p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-info-sign">
+
+                      </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Custom Conduit</b></p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-info-sign"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Labor and Clean Up By <br>
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FHE Employed Installers</b></p>
-                         <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Damage Warranty</b></p>
-                         <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relocation Guarantee</b></p>
-                                          
+                         <p style="margin-left:70px;"><span class="glyphicon glyphicon-list"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Damage Warranty</b></p>
+                         <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-list"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relocation Guarantee</b></p>
+
                       </div>
-                      
+
                     </div>
                     <br>
                     <div style="border: 2px solid black; margin:00px">
-                           
-                 
+
+
                     <div class="row">
                         <div class="col-sm-6" style="border-right: 2px solid black">
-                        
+
                         <h3><b><center>COMPETITIVE ESTIMATE<br>
 GOOD FOR 6 MONTHS</center></b></h3>
                         </div>
                          <div class="col-sm-6">
-                        
+
                         <h3><b><center>INITIAL VISIT DISCOUNT<br>
 GOOD ON FIRST VISIT
 </center></b></h3>
                         </div>
-                         </div>     
-                  </div>   <br> 
-                	
+                         </div>
+                  </div>   <br>
+
                     <div class="row">
                     <div class="col-sm-6" style="border-right: 1px solid black; padding-top:20px;">
                         <p>
@@ -175,13 +187,13 @@ GOOD ON FIRST VISIT
                             <p >
                             <center><b>CASH</b></center>
                             </p>
-                            
+
                             </div>
                             <div class="col-sm-6">
                             <p>
                             <center><b>EZ PAY</b></center>
                             </p>
-                            
+
                             </div>
                         </div> <div class="row" style="margin-left:0px;">
                     <div class="col-sm-6" style="border-right: 1px solid black;">
@@ -189,10 +201,10 @@ GOOD ON FIRST VISIT
                         $ _______________<br><br>
                         Balance Due<br><br>
                         Upon Completion<br><br>
-                        
+
                         </p>
-                        
-                        
+
+
                         </div>
                         <div class="col-sm-6">
                         <p>
@@ -204,27 +216,27 @@ GOOD ON FIRST VISIT
                         </div>
                     </div>
                         </div>
-                    
+
                     </div>
-                   
-			</div>			
-		</div>			
-	</div>
-		
-	
+
+            </div>
+        </div>
+    </div>
 
 
 
-	<div id="proposal-page-nav">
-		<a href="#/solarSystemSummary/id1" style="text-decoration:none">
-			<div class="nav-button prev">
-				<span class="icon">&lt;</span> BACK
-			</div>
-		</a>
-		<a href="#/summary/id1"  style="text-decoration:none">
-			<div class="nav-button next">
-				<span class="icon">&gt;</span> NEXT
-			</div>
-		</a>
-	</div>
+
+
+    <div id="proposal-page-nav">
+        <a href="#/solarSystemSummary/id1" style="text-decoration:none">
+            <div class="nav-button prev">
+                <span class="icon">&lt;</span> BACK
+            </div>
+        </a>
+        <a href="#/summary/id1"  style="text-decoration:none">
+            <div class="nav-button next">
+                <span class="icon">&gt;</span> NEXT
+            </div>
+        </a>
+    </div>
 </div>

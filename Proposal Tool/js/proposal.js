@@ -14,24 +14,24 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.showHideLineGraph = true;
                                 energyBill.lineGraphShowNotice = true;
                                 energyBill.address = {};
-                                
-                                 
+
+
                                 var today = new Date();
                                 var dd = today.getDate();
                                 var mmmm = months[today.getMonth()]; //January is 0!
                                 var yyyy = today.getFullYear();
 
-if(dd<10) {
-    dd='0'+dd
-} 
+                                if(dd<10) {
+                                    dd='0'+dd
+                                }
 
-if(mmmm<10) {
-    mmmm='0'+mmmm
-} 
-                                
-                                today = dd+','+mmmm+','+yyyy;
+                                if(mmmm<10) {
+                                    mmmm='0'+mmmm
+                                }
+
+                                today = dd+' '+mmmm+', '+yyyy;
                                 energyBill.date =today;
-                                
+
                                // energyBill.zipcode = 94591;
                                 energyBill.solarCost = 0;
                                 // Variable for building and estimating solar Production
@@ -510,12 +510,28 @@ if(mmmm<10) {
                                     energyMultiplier =  variation[i] * 1 * numDays[i]*solarRadiationFactor[i]/1000;
                                     for(var j = 0; j < energyBill.solarSystem.length; j++) {
                                         if(energyBill.solarSystem[j].type260 == 1)
-                                            energyProduction += 260 *  energyMultiplier * energyBill.solarSystem[j].systemSize
-                                                                    *energyBill.solarSystem[j].convEfficiency/100;
+                                            energyProduction += 260 *  energyMultiplier * parseInt(energyBill.solarSystem[j].systemSize)
+                                                                    *parseInt(energyBill.solarSystem[j].convEfficiency)/100;
                                         else
-                                            energyProduction += 280 * energyMultiplier * energyBill.solarSystem[j].systemSize
-                                                                        *energyBill.solarSystem[j].convEfficiency/100;
+                                            energyProduction += 280 * energyMultiplier * parseInt(energyBill.solarSystem[j].systemSize)
+                                                                        *parseInt(energyBill.solarSystem[j].convEfficiency)/100;
 
+
+
+                                    }
+                                    energyBill.numPanels = 0;
+                                    for(var j = 0; j < energyBill.solarSystem.length; j++) {
+                                        if(energyBill.solarSystem[j].type260 == 1){
+
+                                            energyBill.numPanels += parseInt(energyBill.solarSystem[j].systemSize);
+                                            energyBill.panelType = 260;
+
+                                        }
+
+                                        else {
+                                            energyBill.numPanels  += parseInt(energyBill.solarSystem[j].systemSize);
+                                            energyBill.panelType = 280;
+                                        }
 
                                     }
                                     estimates.push(Math.ceil(energyProduction));
@@ -867,8 +883,8 @@ proposalControllers.controller('paymentOptionsController',['$scope','dataService
         $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu;
         $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup;
         $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
-        
-        
+
+
         $scope.firstCol = true;
         $scope.secondCol = true;
         $scope.thirdCol = true;
@@ -1346,6 +1362,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                         var point = series.points[i];
                         if(areaChart.plotSizeX - point.plotX > 100){
                             $scope.label = areaChart.renderer.label(
+                                /*
                                                         '<div class="btn-proposal row" display: block;>\
                                                             <div class="btn-text col-sm-6"> Next 5 Years</div> \
                                                             <div class="btn-graphic col-sm-6">\
@@ -1353,7 +1370,13 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                                                                     class="glyphicon glyphicon-chevron-right"> \
                                                                 </div>\
                                                             </div>\
-                                                        </div>', point.plotX , 200,
+                                                        </div>',
+                                */
+                                                    '<div class="btn-proposal" display: block;><div class="btn-text"> \
+                                                            Next 5 Years</div></div>', point.plotX - 50 , 200,
+                                                    'square',
+
+                                                        point.plotX , 200,
                                                         'square', point.plotX , point.plotY, true)
                                                     .css({
 
