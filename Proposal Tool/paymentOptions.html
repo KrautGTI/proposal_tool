@@ -1,5 +1,8 @@
 <!--<div class="bg-image bg-image5"></div>-->
+<!--<div class="bg-image bg-image5"></div>-->
+    
 <img src="css/images/bus.png" style="position: fixed; height: 100%;  width: 100%;z-index: -1;">
+
 <div class="container-fluid" id="proposal-tool-container">
 	<div class="header row container-fluid ng-scope">
 		<div class="container">
@@ -99,118 +102,116 @@
 			<!--************ list and setting End ********-->
 		</div>
 	</div>
+    
 	<div class="container pages-container">
 		<div class="pages row">
-			<div class="proposal-page proposal-page-Payments-2 col-xs-12 column anim-fade ng-scope">
-				<div class="col-xs-12 col-xs-offset-0">
-
-					<div class="column-container">
-
-						<div class="column first-column wide">
-							<div class="row chart-header row-header">
-								<h2>Payment <br>Options</h2>
-							</div>
-
-							<div class="row"><span class="align-right">Payment Due</span>
-							</div>
-							<div class="row"><span class="align-right">Balance Transferable</span>
-							</div>
-							<div class="row"><span class="align-right">Based on Credit Score</span>
-							</div>
-							<div class="row"><span class="align-right">Tax Benefits</span>
-							</div>
-						</div>
-
-						<div class="column">
-							<div class="row row-header">
-								<div class="graphic cash-graphic"></div>
-								<div class="graphic-subtitle">Cash</div>
-							</div>
-
-							<div class="row">Now</div>
-							<div class="row">Not Transferable</div>
-							<div class="row">No</div>
-							<div class="row">None</div>
-						</div>
-
-						<div class="column">
-							<div class="row row-header">
-								<div class="graphic loan-graphic"></div>
-								<div class="graphic-subtitle">Standard Loan</div>
-							</div>
-
-							<div ng-show="firstCol">
-								<div style="height:300px; padding-top:110px;">
-									<div class="btn-proposal" ng-click="showHideFirstColumn()">Show Loan</div>
-								</div>
-							</div>
-							<div ng-hide="firstCol">
-								<div style="border-bottom:none;" class="row">Monthly</div>
-								<div class="row">Not Transferable</div>
-								<div class="row">Yes</div>
-								<div class="row">None</div>
-							</div>
-
-
-						</div>
-
-						<div class="column" ng-hide="firstCol">
-
-							<div class="row row-header">
-								<div class="graphic home-equity-graphic"></div>
-								<div class="graphic-subtitle">Home Equity
-									<br> Loan</div>
-							</div>
-
-							<div ng-show="secondCol">
-
-								<div style="height:300px; padding-top:110px;">
-									<div ng-click="showHideSecondColumn()" class=" btn-proposal">Show Loan</div>
-								</div>
-
-							</div>
-
-							<div ng-hide="secondCol">
-								<div class="row" style="border-bottom:none;">Monthly</div>
-								<div class="row">Not Transferable</div>
-								<div class="row">Yes</div>
-								<div class="row">Some</div>
-							</div>
-						</div>
-
-						<div class="column wide" ng-hide="secondCol">
-							<div class="col-container">
-								<div class="row row-header">
-									<!--<img src="css/images/HERO_Logo.png" class="HERO-graphic">-->
-									<img class="logo" style="height:90px; margin-top:30px" src="css/images/Fidelity-Home-Energy-Logo.png">
-								</div>
-
-								<div ng-show="thirdCol">
-									<div style="height:300px; float:left; width:100%">
-										<div ng-click="showHideThirdColumn()" class="btn-proposal" style="margin-top:40px">Show HERO</div>
-									</div>
-								</div>
-								<div ng-hide="thirdCol">
-									<div class="row" style="padding-top:15px; border-bottom:none;">No Annual Payment Until 11/1/2016</div>
-									<div class="row" style="padding-top:0px;">Can be Transferred to New Owners</div>
-									<div class="row" style="padding-top:10px;">Not Based on Credit Score</div>
-									<div class="row" style="padding-top:26px; padding-bottom:0px;">Multiple Tax Benefits</div>
-
-								</div>
-							</div>
-
-						</div>
-						<!--<div class="disclosure-footer ng-scope full"><span>
-        Copyright &copy; 2015 Renovate America &nbsp; | &nbsp;
-        </span><a  href="" class="ng-scope">HERO Program</a><span class="ng-scope"> &nbsp; | &nbsp;
-        </span><a  href="" class="ng-scope">Privacy Policy</a><span class="ng-scope"> &nbsp; | &nbsp;
-        </span><a  href="" class="ng-scope">Disclosures</a>
-						</div>-->
-					</div>
-				</div>
-			</div>
-		</div>
+			<div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column anim-fade" style="height:1000px">
+          <div class="row">
+                <div class="col-sm-8" style="margin-top: 20px;">
+            <center>  <h3><b style="margin-left: 350px;">INVESTMENT REVIEW</b></h3></center>
+              </div>
+                <div class="col-sm-4 " style="margin-top: 20px;">
+              <h4><b>Name&nbsp;:&nbsp;{{energyBill.firstName}}</b></h4>
+                <h4><b>Date&nbsp;&nbsp;&nbsp;:&nbsp;{{energyBill.date}}</b></h4>  
+              </div>
+                </div> 
+                <div style="border: 2px solid black; margin:30px;padding-top: 20px; padding-bottom: 10px;">
+                  <div class="row">
+                    <div class="col-sm-6" style="border-right: 1px solid black;">
+                      <p style="padding-top: 15px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  ___________ High Efficiency Panels ______Watts</p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom Engineering, All Drawings & Permits</p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom Wiring</p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom Anodized Aluminum Racking</p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30 Year System Warranty</b></p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roof Warranty</b></p>
+                      <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Money Back System Production Guarantee</b></p>
+                      </div>
+                      
+                     <div class="col-sm-6">
+                      <p style="padding-top: 15px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High Efficiency Micro Inverters</p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monitoring Station</p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom Conduit</p>
+                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Labor and Clean Up By <br>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FHE Employed Installers</b></p>
+                         <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Damage Warranty</b></p>
+                         <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relocation Guarantee</b></p>
+                                          
+                      </div>
+                      
+                    </div>
+                    <br>
+                    <div style="border: 2px solid black; margin:00px">
+                           
+                 
+                    <div class="row">
+                        <div class="col-sm-6" style="border-right: 2px solid black">
+                        
+                        <h3><b><center>COMPETITIVE ESTIMATE<br>
+GOOD FOR 6 MONTHS</center></b></h3>
+                        </div>
+                         <div class="col-sm-6">
+                        
+                        <h3><b><center>INITIAL VISIT DISCOUNT<br>
+GOOD ON FIRST VISIT
+</center></b></h3>
+                        </div>
+                         </div>     
+                  </div>   <br> 
+                	
+                    <div class="row">
+                    <div class="col-sm-6" style="border-right: 1px solid black; padding-top:20px;">
+                        <p>
+                        <br>
+                        <br>
+                        Total Investment: $ ______________
+                        </p>
+                    <br><br>
+                        <p>
+                        Out of Pocket: $ _____________
+                        </p><br><br>
+                        <div class="row" style="border: 1px solid black; margin-left:0px;">
+                        <div class="col-sm-6" style="border-right: 1px solid black;">
+                            <p >
+                            <center><b>CASH</b></center>
+                            </p>
+                            
+                            </div>
+                            <div class="col-sm-6">
+                            <p>
+                            <center><b>EZ PAY</b></center>
+                            </p>
+                            
+                            </div>
+                        </div> <div class="row" style="margin-left:0px;">
+                    <div class="col-sm-6" style="border-right: 1px solid black;">
+                        <p><br>
+                        $ _______________<br><br>
+                        Balance Due<br><br>
+                        Upon Completion<br><br>
+                        
+                        </p>
+                        
+                        
+                        </div>
+                        <div class="col-sm-6">
+                        <p>
+                            <br>
+                            $_______________<br><br>
+                            Monthly Investment<br><br>
+                            @ 15.9% APR<br><br>
+                            for 144 months (12 yrs.)<br><br>
+                        </div>
+                    </div>
+                        </div>
+                    
+                    </div>
+                   
+			</div>			
+		</div>			
 	</div>
+		
+	
 
 
 
@@ -220,7 +221,7 @@
 				<span class="icon">&lt;</span> BACK
 			</div>
 		</a>
-		<a href="#/summary/id1" ng-hide="thirdCol" style="text-decoration:none">
+		<a href="#/summary/id1"  style="text-decoration:none">
 			<div class="nav-button next">
 				<span class="icon">&gt;</span> NEXT
 			</div>

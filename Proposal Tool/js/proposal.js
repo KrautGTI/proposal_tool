@@ -6,10 +6,32 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.lastIteration = false;
                                 energyBill.lastIteration2 = false;
                                 energyBill.Month = [];
+                                var months = ['January', 'February', 'March', 'April', 'May',
+                                              'June', 'July', 'August','September', 'October',
+                                              'November', 'December'];
+
                                 energyBill.showHide = true;
                                 energyBill.showHideLineGraph = true;
                                 energyBill.lineGraphShowNotice = true;
                                 energyBill.address = {};
+                                
+                                 
+                                var today = new Date();
+                                var dd = today.getDate();
+                                var mmmm = months[today.getMonth()]; //January is 0!
+                                var yyyy = today.getFullYear();
+
+if(dd<10) {
+    dd='0'+dd
+} 
+
+if(mmmm<10) {
+    mmmm='0'+mmmm
+} 
+                                
+                                today = dd+','+mmmm+','+yyyy;
+                                energyBill.date =today;
+                                
                                // energyBill.zipcode = 94591;
                                 energyBill.solarCost = 0;
                                 // Variable for building and estimating solar Production
@@ -176,8 +198,6 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.RegionkWh = [ 100, 52, 30, 29, 46, 123, 185, 223, 137, 52, 52, 107 ];
 
 
-                                var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-                                                'September', 'October', 'November', 'December'];
 
                                 //Make it under energyBill if required by any Controller/User to change it
                                 var solarRadiationFactor = [0.586626139817629, 0.729483282674772, 0.966565349544072,
@@ -847,6 +867,8 @@ proposalControllers.controller('paymentOptionsController',['$scope','dataService
         $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu;
         $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup;
         $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
+        
+        
         $scope.firstCol = true;
         $scope.secondCol = true;
         $scope.thirdCol = true;

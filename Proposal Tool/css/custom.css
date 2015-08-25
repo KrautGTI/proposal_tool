@@ -7565,3 +7565,11 @@ a.btn-proposal:active {
 .logo-display {
 	display: inline-block;
 }
+   
+/*********   payment option css **********/
+#proposal-tool-container .payment_option .row .col-sm-6 p{
+margin-left: 100px;
+
+
+}
+
