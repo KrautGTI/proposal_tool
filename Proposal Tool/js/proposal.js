@@ -1469,7 +1469,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
     $('#areaChart').highcharts({
         chart: {
             type: 'area',
-            animation: true,
+            animation: false,
             events: {
                 load: function () {
                     //Label Approach
