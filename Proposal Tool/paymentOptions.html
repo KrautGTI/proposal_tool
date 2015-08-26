@@ -189,13 +189,17 @@ GOOD ON FIRST VISIT
                     <div class="row" style="background:transparent;">
                     <div class="col-lg-6" style="border-right: 1px solid black; padding-top:20px;">
                         <p style="padding-left: 80px;">
+                        <b>
                         <br>
                         <br>
-                        Total Investment: $ ______________
+                        Total Investment: {{ "$" + energyBill.solarCostDisplay}}
+                            </b>
                         </p>
                     <br><br>
                         <p style="padding-left: 80px;">
-                        Out of Pocket: $ _____________
+                              <b>
+                        Out of Pocket: {{"$" + energyBill.outOfPocket}}
+                            </b>
                         </p><br><br>
                         <div class="row" style="border: 1px solid black; margin-left:0px;">
                         <div class="col-lg-6" style="border-right: 1px solid black;">
@@ -213,7 +217,7 @@ GOOD ON FIRST VISIT
                         </div> <div class="row" style="margin-left:0px;">
                     <div class="col-lg-6" style="border-right: 1px solid black;">
                         <p style="padding-left: 80px;"><br>
-                        $ _______________<br><br>
+                        {{"$" + energyBill.cashDisplay}}<br><br>
                         Balance Due<br><br>
                         Upon Completion<br><br>
 

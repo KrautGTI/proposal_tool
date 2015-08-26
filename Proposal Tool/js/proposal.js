@@ -546,6 +546,21 @@ var proposalControllers = angular.module('proposalControllers', [])
                                        energyBill.solarCost += 1200 * parseInt(energyBill.solarSystem[j].systemSize);
                                 }
 
+                                energyBill.outOfPocket = 0.1*energyBill.solarCost;
+                                if(energyBill.outOfPocket > 1000) {
+                                    energyBill.outOfPocket = 1000;
+                                }
+
+                                energyBill.cash = energyBill.solarCost - energyBill.outOfPocket;
+                                energyBill.ezPay = Math.ceil(energyBill.cash * 0.016);
+
+                                energyBill.solarCostDisplay = energyBill.convertToComma("" + energyBill.solarCost);
+                                energyBill.cashDisplay = energyBill.convertToComma("" + energyBill.cash);
+                                energyBill.ezPayDisplay = energyBill.convertToComma("" + energyBill.ezPay);
+
+
+
+
 
                                 energyBill.solarEstimatedProductionDisplay = energyBill.convertToComma("" +
                                                                                Math.ceil(energyBill.solarEstimatedProduction));
