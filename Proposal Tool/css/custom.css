@@ -5609,7 +5609,7 @@ a.btn-proposal:active {
     border: 1px solid #dadad8;
     position: fixed;
     bottom: 2%;
-    font-size: 12px;
+    font-size: 30px;
     cursor: pointer;
     z-index: 100;
     opacity: .9;
