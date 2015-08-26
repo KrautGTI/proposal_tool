@@ -540,8 +540,6 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 }
                                 for(var j = 0; j < energyBill.solarSystem.length; j++) {
-                                    miscCost += parseInt(energyBill.solarSystem[j].electricalWork) +
-                                                    parseInt(energyBill.solarSystem[j].miscWork);
                                     if(energyBill.solarSystem[j].type260 == 1)
                                         energyBill.solarCost += 1000 * parseInt(energyBill.solarSystem[j].systemSize);
                                     else
@@ -559,13 +557,21 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.solarSystemOffset +=  miscCost;
                                 energyBill.solarSystemOffsetDisplay = energyBill.convertToComma("" +
                                                                                 Math.ceil(energyBill.solarSystemOffset));
+                                if((energyBill.solarSystemOffset - energyBill.annualCost )> 0) {
 
-                                energyBill.annualTrueUpDisplay = energyBill.convertToComma("" + Math.ceil(energyBill.solarSystemOffset -
-                                                                                                   energyBill.annualCost ));
+                                    energyBill.annualTrueUpDisplay = energyBill.convertToComma("" + Math.ceil(
+                                                                        energyBill.solarSystemOffset - energyBill.annualCost ));
+                                 energyBill.annualTrueUpDisplay = "$" + energyBill.annualTrueUpDisplay;
+                                } else {
+                                    energyBill.annualTrueUpDisplay = energyBill.convertToComma("" + Math.ceil(
+                                                                (energyBill.annualCost - energyBill.solarSystemOffset )));
+                                    energyBill.annualTrueUpDisplay = "-$" + energyBill.annualTrueUpDisplay;
+                                }
                                 return estimates;
 
                             };
-                energyBill.menuPageArrayeu =[{'title': 'Review Your Energy Costs',
+
+                            energyBill.menuPageArrayeu =[{'title': 'Review Your Energy Costs',
                                               'visited':false,
                                               'url':'#/startProposal/id1'
                                            },
