@@ -1372,8 +1372,8 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                                                             </div>\
                                                         </div>',
                                 */
-                                                    '<div class="btn-proposal" display: block;><div class="btn-text"> \
-                                                            Next 5 Years</div></div>', point.plotX - 50 , 200,
+                                                    '<div class="btn-label" display: block;><div class="btn-text"> \
+                    <b style="padding-right:5px;">  Next 5 Year</b><span class="glyphicon glyphicon-arrow-right" style="border-left: 2px solid #fff; padding-left:8px;"> </div></div>', point.plotX - 50 , 200,
                                                     'square',
 
                                                         point.plotX , 200,
@@ -1388,7 +1388,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                                      //                   fill: 'rgba(255, 0, 0, 0.55)',
                                      //                   padding: 8,
                                      //                   r: 5,
-                                     //                  cursor:'pointer',
+                                //                  cursor:'pointer',
                                                         zIndex: 6,
 
 
@@ -1397,8 +1397,8 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 
                         else {
                             $scope.label = areaChart.renderer.label(
-                                                    '<div class="btn-proposal" display: block;><div class="btn-text"> \
-                                                            Next 5 Years</div></div>', point.plotX - 50 , 200,
+                                                    '<div class="btn-label" display: block;><div class="btn-text"> \
+                     <b style="padding-right:8px; border-right: 2px solid; "> Next 5 Years</b><span class="glyphicon glyphicon-chevron-right" style="padding-left:8px;"></div></div>', point.plotX - 50 , 200,
                                                     'square', point.plotX , point.plotY, true)
                                                 .css({
 
@@ -1418,7 +1418,7 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
 
                         }
 
-                        $( ".btn-proposal" ).click($scope.clickButton);
+                        $( ".btn-label" ).click($scope.clickButton);
                     } else {
                         //The last time the box no longer needed
 
@@ -1474,14 +1474,15 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                 load: function () {
                     //Label Approach
                         var point = this.series[0].points[1];
-                                $scope.label = this.renderer.label('<div class="btn-proposal" display: block;>\
-                                                                    <div class="btn-text">Next 5 Years</div></div>',
+                                $scope.label = this.renderer.label('<div class="btn-label icon-right" \
+                                                                    display: block;>\
+                                                                    <div class="btn-text"><b style="padding-right:5px;">Next 5 Years </b><span class="glyphicon glyphicon-circle-arrow-right" style="border-left: 2px solid #fff; padding-left:8px;"> </div></div>',
                                                                    point.plotX , 200,
                                                                    'square', point.plotX , point.plotY
                                                                    + this.plotTop,
                                                                    true)
                                                         .add();
-                                $( ".btn-proposal" ).click($scope.clickButton);
+                                $( ".btn-label" ).click($scope.clickButton);
 
                 }
 
@@ -1498,7 +1499,8 @@ proposalControllers.controller('areaChartController',['$scope', 'dataService', f
                 formatter: function () {
                     var index = this.axis.categories.indexOf(this.value);
                     if(this.value == 0)
-                        return '<strong> Today'+ '</strong><br> $' + $scope.energyBill.convertToComma(Math.ceil(workData[index]))
+                        return '<strong> Today'+ '</strong><br> $' +
+                                 $scope.energyBill.convertToComma(Math.ceil(workData[index]))
                             + '/yr';
                     else
                         return '<strong>' + this.value + ' years' + '<strong> <br> $' +
