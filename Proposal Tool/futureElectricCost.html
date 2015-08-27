@@ -104,25 +104,41 @@
                 <h3>Your Future Electric Costs</h3>
                 <div id="areaChart" style="width:1168px; height:380px;border-bottom-left-radius: 25px;"> </div>
                 <div class="circle" ng-show ="energyBill.lastIteration" style="position:absolute; top:-56px">
-                    <div class="circle-text graph-button" ng-click="ShowBluImage()" style="height: 300px; width: 301px;">
-                        <div class="glyphicon glyphicon-question-sign" style="font-size: 65px; margin-top: 18px"></div>
-                        <div style="font-weight: bold; font-size:27px">
+                  <div style="height: 310px; width: 301px; top: 106px;" ng-click="ShowBluImage()" class="rect-text graph-button">
+                        <div style="font-size: 65px; margin-top: 16px" class="glyphicon glyphicon-question-sign"></div>
+                        <div style="font-weight: bold; font-size:27px" class="ng-binding">
                             How much
                             <br> will you spend
-                            <br> over {{energyBill.yearChange}} years?
+                            <br> over 30 years?
                         </div>
                         <div style="display: inline-block;">
                             <pp style="font-size:10px; margin-top:30px;vertical-align:center;">FIND OUT</pp>
-                            <div class="glyphicon glyphicon-chevron-right" style="font-size: 10px;margin-top:20px; vertical-align:center;"></div>
+                            <div style="font-size: 10px;margin-top:20px; vertical-align:center;" class="glyphicon glyphicon-chevron-right"></div>
 
                         </div>
                     </div>
                 </div>
-            <div class="circle" ng-show="energyBill.lastIteration2" style="position:absolute; top:85px">
+				<div class="circle" ng-show ="energyBill.lastIteration2" style="position:absolute; top:-56px; backgrond-color:blue">
+                  <div style="height: 310px; width: 301px; top: 106px;" ng-click="ShowBluImage()" class="rect-text-after-click graph-button">
+                        <div style="font-size: 65px; margin-top: 16px" class="glyphicon glyphicon-question-sign"></div>
+                        <div style="font-weight: bold; font-size:27px" class="ng-binding">
+                            You'll pay <br>
+                       {{"$" + energyBill.cumulative30YearsExpenseDisplay}} <br> over {{energyBill.yearChange}} years to your electric utility
+                        </div>
+                        <div style="display: inline-block;">
+                            <pp style="font-size:10px; margin-top:30px;vertical-align:center;">FIND OUT</pp>
+                            <div style="font-size: 10px;margin-top:20px; vertical-align:center;" class="glyphicon glyphicon-chevron-right"></div>
+
+                        </div>
+                    </div>
+                </div>
+				
+				
+            <!--<div class="circle" ng-show="energyBill.lastIteration2" style="position:absolute; top:85px">
                     <img src="css/images/halo-circle.png" style="margin-left: -150px;">
                     <div class="content">You'll pay
                         <h2>{{"$" + energyBill.cumulative30YearsExpenseDisplay}}</h2> over {{energyBill.yearChange}} years to your electric utility</div>
-                </div>
+                </div>-->
                 <!--<div class="disclosure-footer col-xs-12 ng-scope"><span>
         Copyright © 2015 Renovate America &nbsp; | &nbsp;
         </span><a class="ng-scope" href="">HERO Program</a><span> &nbsp; | &nbsp;

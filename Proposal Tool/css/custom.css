@@ -7572,11 +7572,22 @@ a.btn-proposal:active {
     color: #fff;
 }
        /*circle logo*/
-.circle-text {
+.rect-text {
     width:300px;
-  border-radius: 50%;
+    height:300px;
+ /* border-radius: 50%;*/
   border: 10px solid #d3dfe1;
   background: #33AD5C; 	
+}
+.logo-display {
+	display: inline-block;
+}
+.rect-text-after-click {
+    width:300px;
+    height:300px;
+ /* border-radius: 50%;*/
+  border: 10px solid #d3dfe1;
+   background:  #003666;	
 }
 .logo-display {
 	display: inline-block;
