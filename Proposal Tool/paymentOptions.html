@@ -10,16 +10,16 @@
 
             <div class="proposal-toop-quick-nav">
                 <a href="#/startProposal/id1">
-                <div class="nav-selection visited"></div>
+                    <div class="nav-selection visited"></div>
                 </a>
                 <div class="nav-selection-divider"></div>
                 <a href="#/yourOptions/id1">
-                <div class="nav-selection visited"></div>
+                    <div class="nav-selection visited"></div>
                 </a>
                 <div class="nav-selection-divider"></div>
                 <div class="nav-selection active visited"></div>
             </div>
-                                    <!--************ list and setting start ********-->
+            <!--************ list and setting start ********-->
             <ul class="nav nav-pills pull-right">
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -48,8 +48,8 @@
                                     <li>Energy Use</li>
                                     <li ng-repeat="mpaeu in navMenuPageArrayEnerUses" class="visited">
                                         <a id="link-6" ng-href="{{mpaeu.url}}">
-                                        <div>{{$index + 1}}</div>
-                                        <div>{{mpaeu.title}}</div>
+                                            <div>{{$index + 1}}</div>
+                                            <div>{{mpaeu.title}}</div>
                                         </a>
                                     </li>
                                 </ul>
@@ -57,8 +57,8 @@
                                     <li>Upgrades</li>
                                     <li ng-repeat="mpau in navMenuPageArrayUpgrad" class="visited">
                                         <a id="link-6" ng-href="{{mpau.url}}">
-                                        <div>{{$index + 7}}</div>
-                                        <div>{{mpau.title}}</div>
+                                            <div>{{$index + 7}}</div>
+                                            <div>{{mpau.title}}</div>
                                         </a>
                                     </li>
                                 </ul>
@@ -66,8 +66,8 @@
                                     <li>Payments</li>
                                     <li ng-repeat="mpap in navMenuPageArrayPayment" class="visited">
                                         <a id="link-6" ng-href="{{mpap.url}}">
-                                        <div>{{$index + 12}}</div>
-                                        <div>{{mpap.title}}</div>
+                                            <div>{{$index + 12}}</div>
+                                            <div>{{mpap.title}}</div>
                                         </a>
                                     </li>
                                 </ul>
@@ -104,164 +104,252 @@
     </div>
 
     <div class="container pages-container">
-        <div class="pages row"  style="border-radius: 25px;">
-            <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column anim-fade" style="height:1000px ; border-radius: 25px;">
-          <div class="row" style="border-radius: 25px;">
-                <div class="col-sm-8" style="margin-top: 20px;">
-            <center>  <h3><b style="margin-left: 350px;">INVESTMENT REVIEW</b></h3></center>
-              </div>
-                <div class="col-sm-4 " style="margin-top: 20px; ">
-              <h4 ><b>Name&nbsp;:&nbsp;{{energyBill.firstName}} {{ " " + energyBill.lastName}}</b></h4>
-                <h4 ><b>Date&nbsp; : &nbsp;{{energyBill.date}}</b></h4>
-              </div>
+        <div class="pages row" style="border-radius: 25px;">
+            <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column anim-fade" style="height:550px ; border-radius: 25px;" ng-show="showHide">
+                <div class="row" style="border-radius: 25px;">
+                    <div class="col-sm-8" style="margin-top: 20px;">
+                        <center>
+                            <h3><b style="margin-left: 350px;">INVESTMENT REVIEW</b></h3></center>
+                    </div>
+                    <div class="col-sm-4 " style="margin-top: 20px; ">
+                        <h4><b>Name&nbsp;:&nbsp;{{energyBill.firstName}} {{ " " + energyBill.lastName}}</b></h4>
+                        <h4><b>Date&nbsp; : &nbsp;{{energyBill.date}}</b></h4>
+                    </div>
                 </div>
                 <div style="border: 2px solid black; margin:30px;padding-top: 20px; padding-bottom: 10px;">
-                  <div class="row">
-                    <div class="col-sm-6" style="border-right: 1px solid black;">
+                    <div class="row">
+                        <div class="col-sm-6" style="border-right: 1px solid black;">
 
-                      <p style="padding-top: 15px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span></p>
-                        <p style="padding-top: 15px;margin-left:105px;margin-top: -40px;">
-                          <b> {{energyBill.numPanels}} High Efficiency Panels {{energyBill.panelType}} Watts </b>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span></p> 
-               <p style="margin-left:105px; margin-top:-25px;">          <b>Custom Engineering, All Drawings & Permits </b></p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>
-                        </p>
-                        <p style="margin-left:105px;margin-top:-25px;">  <b>Custom Wiring </b></p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-star-empty">
+                            <p style="padding-top: 15px;margin-left:70px;"><span class="glyphicon glyphicon-cog"></span></p>
+                            <p style="padding-top: 15px;margin-left:105px;margin-top: -40px;">
+                                <b> {{energyBill.numPanels}} High Efficiency Panels {{energyBill.panelType}} Watts </b>
+                                <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span></p>
+                                <p style="margin-left:105px; margin-top:-25px;"> <b>Custom Engineering, All Drawings & Permits </b></p>
+                                <p style="margin-left:70px;"><span class="glyphicon glyphicon-cog"></span>
+                                </p>
+                                <p style="margin-left:105px;margin-top:-25px;"> <b>Custom Wiring </b></p>
+                                <p style="margin-left:70px;"><span class="glyphicon glyphicon-star-empty">
                           </span></p>
-             <p style="margin-left:105px;margin-top:-25px;">             <b>Custom Anodized Aluminum Racking  </b></p>
-                        <p style="margin-left:70px;"><span class="glyphicon glyphicon-star-empty"></span></p>
-       <p style="margin-left:105px;margin-top:-25px;">                   <b>30 Year System Warranty</b></p>
-                        <p style="margin-left:70px;"><span class="glyphicon glyphicon-asterisk"></span></p>
-             <p style="margin-left:105px;margin-top:-25px;">             
-                          <b>Roof Warranty</b></p>
-                      <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-asterisk"></span></p>
-                          
-            <p style="margin-left:105px;margin-top:-45px;"> <b>Money Back System Production Guarantee</b></p>
-                      </div>
+                                <p style="margin-left:105px;margin-top:-25px;"> <b>Custom Anodized Aluminum Racking  </b></p>
+                                <p style="margin-left:70px;"><span class="glyphicon glyphicon-star-empty"></span></p>
+                                <p style="margin-left:105px;margin-top:-25px;"> <b>30 Year System Warranty</b></p>
+                                <p style="margin-left:70px;"><span class="glyphicon glyphicon-asterisk"></span></p>
+                                <p style="margin-left:105px;margin-top:-25px;">
+                                    <b>Roof Warranty</b></p>
+                                <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-asterisk"></span></p>
 
-                     <div class="col-sm-6">
-                         <p style="padding-top: 15px;margin-left:70px;"><span class="glyphicon glyphicon-circle-arrow-right"></span></p>
-              <p style="margin-left:105px;margin-top:-25px;">            <b>High Efficiency Micro Inverters</b></p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-circle-arrow-right">
+                                <p style="margin-left:105px;margin-top:-45px;"> <b>Money Back System Production Guarantee</b></p>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <p style="padding-top: 15px;margin-left:70px;"><span class="glyphicon glyphicon-circle-arrow-right"></span></p>
+                            <p style="margin-left:105px;margin-top:-25px;"> <b>High Efficiency Micro Inverters</b></p>
+                            <p style="margin-left:70px;"><span class="glyphicon glyphicon-circle-arrow-right">
 
                           </span></p>
-    <p style="margin-left:105px;margin-top:-25px;">                      <b>Monitoring Station</b></p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-info-sign">
+                            <p style="margin-left:105px;margin-top:-25px;"> <b>Monitoring Station</b></p>
+                            <p style="margin-left:70px;"><span class="glyphicon glyphicon-info-sign">
 
                       </span>
-                         </p>
-                          <p style="margin-left:105px;margin-top:-25px;">
-                              <b>Custom Conduit</b></p>
-                      <p style="margin-left:70px;"><span class="glyphicon glyphicon-info-sign"></span></p>
-                          <p style="margin-left:105px;margin-top:-25px;"><b>
-                              Labor and Clean Up By </b></p><br>
-                              <p style="margin-left:105px;margin-top:-25px;">
-                        <b>  FHE Employed Installers</b></p>
-                         <p style="margin-left:70px;"><span class="glyphicon glyphicon-list"></span></p>
-                             
-                <p style="margin-left:105px;margin-top:-25px;">              <b>Damage Warranty</b></p>
-                         <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-list"></span></p>
-                              <p style="margin-left:105px;margin-top:-45px;"><b>Relocation Guarantee</b></p>
+                            </p>
+                            <p style="margin-left:105px;margin-top:-25px;">
+                                <b>Custom Conduit</b></p>
+                            <p style="margin-left:70px;"><span class="glyphicon glyphicon-info-sign"></span></p>
+                            <p style="margin-left:105px;margin-top:-25px;"><b>
+                              Labor and Clean Up By </b></p>
+                            <br>
+                            <p style="margin-left:105px;margin-top:-25px;">
+                                <b>  FHE Employed Installers</b></p>
+                            <p style="margin-left:70px;"><span class="glyphicon glyphicon-list"></span></p>
 
-                      </div>
+                            <p style="margin-left:105px;margin-top:-25px;"> <b>Damage Warranty</b></p>
+                            <p style="padding-bottom: 20px;margin-left:70px;"><span class="glyphicon glyphicon-list"></span></p>
+                            <p style="margin-left:105px;margin-top:-45px;"><b>Relocation Guarantee</b></p>
 
-                    </div>
-                    <br>
-                    <div style="border: 2px solid black; margin:00px">
-
-
-                    <div class="row">
-                        <div class="col-lg-6" style="border-right: 2px solid black">
-
-                        <h3><b><center>COMPETITIVE ESTIMATE<br>
-GOOD FOR 6 MONTHS</center></b></h3>
                         </div>
-                         <div class="col-lg-6">
+                    </div>
+                </div>
+                <center>
+                    <button class="btn btn-primary" ng-click="showHideDetail()" style=" margin-top: 10px; font-size:30px;">Show Estimate</button>
+                </center>
+            </div>
+            <br>
+            <!--competative and INITIAL start here-->
+            <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column anim-fade" style="height:800px ; border-radius: 25px;" ng-hide="showHide">
+                <div class="row" style="border-radius: 25px;">
+                    <div class="col-sm-8" style="margin-top: 20px;">
+                        <center>
+                            <h3><b style="margin-left: 350px;">INVESTMENT REVIEW</b></h3></center>
+                    </div>
+                    <div class="col-sm-4 " style="margin-top: 20px; ">
+                        <h4><b>Name&nbsp;:&nbsp;{{energyBill.firstName}} {{ " " + energyBill.lastName}}</b></h4>
+                        <h4><b>Date&nbsp; : &nbsp;{{energyBill.date}}</b></h4>
+                    </div>
+                </div>
+                <div>
+                    <div style="border: 2px solid black; margin: 20px 0px 0px;">
 
-                        <h3><b><center>INITIAL VISIT DISCOUNT<br>
+
+                        <div class="row">
+                            <div class="col-lg-6" style="border-right: 2px solid black;  ">
+
+                                <h3><b><center>COMPETITIVE ESTIMATE<br>
+GOOD FOR 6 MONTHS</center></b></h3>
+                            </div>
+                            <div class="col-lg-6">
+
+                                <h3><b><center>INITIAL VISIT DISCOUNT<br>
 GOOD ON FIRST VISIT
 </center></b></h3>
+                            </div>
                         </div>
-                         </div>
-                  </div>   <br>
+                    </div>
+                    <br>
 
-                    <div class="row" style="background:transparent;">
-                    <div class="col-lg-6" style="border-right: 1px solid black; padding-top:20px;">
-                        <p style="padding-left: 80px;">
-                        <b>
+                    <div class="row">
+                        <div class="col-lg-6" style="border-right: 1px solid black;">
+                            <p style="padding-left: 80px;">
+                                <b>
                         <br>
                         <br>
                         Total Investment: {{ "$" + energyBill.solarCostDisplay}}
                             </b>
-                        </p>
-                    <br><br>
-                        <p style="padding-left: 80px;">
-                              <b>
+                            </p>
+                            <br>
+                            <br>
+                            <p style="padding-left: 80px;">
+                                <b>
                         Out of Pocket: {{"$" + energyBill.outOfPocket}}
                             </b>
-                        </p><br><br>
-                        <div class="row" style="border: 1px solid black; margin-left:0px;">
-                        <div class="col-lg-6" style="border-right: 1px solid black;">
-                            <p >
-                            <center><b>CASH</b></center>
                             </p>
-
-                            </div>
-                            <div class="col-lg-6">
-                            <p>
-                            <center><b>EZ PAY</b></center>
-                            </p>
-
-                            </div>
-                        </div> <div class="row" style="margin-left:0px;">
-                    <div class="col-lg-6" style="border-right: 1px solid black;">
-                        <p style="padding-left: 80px;"><br>
-                        {{"$" + energyBill.cashDisplay}}<br><br>
-                        Balance Due<br><br>
-                        Upon Completion<br><br>
-
-                        </p>
-
-
-                        </div>
-                        <div class="col-lg-6">
-                        <p style="padding-left: 80px;">
                             <br>
-                            $_______________<br><br>
-                            Monthly Investment<br><br>
-                            @ 15.9% APR for <br> <br>144 months (12 yrs.)<br><br>
+                            <br>
+                            <div class="row" style="border: 1px solid black; margin-left:0px;">
+                                <div class="col-lg-6" style="border-right: 1px solid black;">
+                                    <p>
+                                        <center><b>CASH</b></center>
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <p>
+                                        <center><b>EZ PAY</b></center>
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="row" style="margin-left:0px; height:300px;">
+                                <div class="col-lg-6" style="border-right: 1px solid black; height:280px">
+                                    <p style="padding-left: 80px;">
+                                        <br> {{"$" + energyBill.cashDisplay}}
+                                        <br>
+                                        <br> Balance Due
+                                        <br>
+                                        <br> Upon Completion
+                                        <br>
+                                        <br>
+
+                                    </p>
+
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <p style="padding-left: 80px;">
+                                        <br> $_______________
+                                        <br>
+                                        <br> Monthly Investment
+                                        <br>
+                                        <br> @ 15.9% APR for
+                                        <br>
+                                        <br>144 months (12 yrs.)
+                                        <br>
+                                        <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            
+                            <p><b>Total investment</b></p>
+                            <br>
+                            <p><b>Initial Visit Discount</b></p>
+                            <br>
+                            <p><b>Net of Total Inv and IVD</b></p>
+                            <br>
+                            <p> <b>0 out of pocket</b>
+                                <center ng-hide="showOptionA">
+                                    <a href="" class="btn btn-primary" ng-click="showNextOptionA()" >Show Option A</a>
+                                </center>
                             </p>
-                        </div>
-                    </div>
-                        </div>
-                        <div class="col-sm-6" style="background:transparent;">
-                        
-                        
+                            <br>
+                            
+                            <p ng-show="showOptionA"> <b> Option A- 0 out of pocket </b><br>
+                               
+                                <b style="padding-left:70px;">   0 interest</b>
+                                <br>
+                                <b style="padding-left:70px;"> 0 payments for 12 months</b>
+                                <br>
+                                <center ng-show="OptionB">
+                                    <a href="" class="btn btn-primary" ng-click="showNextOptionB()" >Show Option B</a>
+                                </center>
+                            </p>
+                               
+                            <p ng-show="showOptionB"> <b> Option B- 0 out of pocket</b>
+                                <br>
+                                <b style="padding-left:70px;">   6.99% interest</b>
+                                <br>
+                                <b style="padding-left:70px;"> "payments" monthly installment</b>
+                                <br>
+                                <b style="padding-left:70px;">              144 months</b>
+                                <br>
+                                <center ng-show="OptionC">
+                                    <a href="" class="btn btn-primary" ng-click="showNextOptionC()" >Show Option C</a>
+                                </center>
+                            </p>
+                            <div ng-show="showOptionC">
+                            <p> <b>Option C- Split Program</b>
+                                <br>
+                                <b style="padding-left:70px;"> 0 out of pocket</b>
+                                <br>
+
+                            </p>
+                            <b style="padding-left:10px;">"Tax Credit" Split</b><b style="padding-left:183px;">Net investment split</b>
+                            <br>
+                            <b style="padding-left:10px;">30% net IVD cost</b><b style="padding-left:187px;">70% of the IVD tota</b>
+                            <br>
+                            <b style="padding-left:10px;">0 interest </b><b style="padding-left:235px;">6.99% interest</b>
+                            <br>
+                            <b style="padding-left:10px;">0 payments for 12 months</b><b style="padding-left:124px;">"payment" monthly installment</b>
+                            <br>
+                            <b style="padding-left:314px;">                     144 months</b>
+                            <br>
+                                </div>
                         </div>
 
                     </div>
+                </div>
 
+                <!--competative and INITIAL end here-->
             </div>
+
+        </div>
+
+
+
+
+
+        <div id="proposal-page-nav">
+            <a href="#/solarSystemSummary/id1" style="text-decoration:none">
+                <div class="nav-button prev">
+                    <span class="glyphicon glyphicon-arrow-left" style="position:relative; top:8px"></span> <span style="font-size:20px; margin-top:3px">BACK</span>
+                </div>
+            </a>
+            <a href="#/summary/id1" style="text-decoration:none">
+                <div class="nav-button next">
+
+                    <span style="font-size:20px; margin-top:3px">NEXT</span>
+                    <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+                </div>
+            </a>
         </div>
     </div>
-
-
-
-
-
-    <div id="proposal-page-nav">
-        <a href="#/solarSystemSummary/id1" style="text-decoration:none">
-          <div class="nav-button prev">
-                <span class="glyphicon glyphicon-arrow-left" style="position:relative; top:8px"></span> <span style="font-size:20px; margin-top:3px">BACK</span>
-        </div>
-        </a>
-        <a href="#/summary/id1"  style="text-decoration:none">
-      	<div class="nav-button next">
-				
-			<span style="font-size:20px; margin-top:3px">NEXT</span> 
-			<span class="glyphicon glyphicon-arrow-right"style="position:relative;top:8px"></span> 
-        </div>	
-        </a>
-    </div>
-</div>
