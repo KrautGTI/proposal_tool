@@ -178,14 +178,15 @@
                                 </div>
                                 <div class="solar-array-content">
 
-                                    <div class="box col-xs-3">
-                                        <div ng-if="item == itemList[itemList.length-1]">
-                                            <div class="icon-container system-size">
+                                    <div class="box col-xs-6">
+                                         <div ng-if="item == itemList[itemList.length-1]">
+                                            <div class="icon-container type-roof" ng-hide="showme">
                                                 <img src="css/images/solar-array-box-1.PNG">
                                             </div>
                                         </div>
-                                        <h3>Panel Count</h3>
-                                        <p>Enter the number of solar Panels</p>
+
+                                        <h3>Number of Solar Panels</h3>
+                                  <p>Select how many panels will be installed</p>   
                                         <div class="input-container">
                                             <input class="ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                    name="array-0-system-size" numeric-min=".5" numeric-max="500000"
@@ -195,20 +196,22 @@
                                     </div>
 
 
-                                    <div class="box col-xs-3">
-
-                                        <div ng-if="item == itemList[itemList.length-1]">
-                                            <div class="icon-container type-roof" ng-hide="showme">
+                                    <div class="box col-xs-6">
+										 <div ng-if="item == itemList[itemList.length-1]">
+                                            <div class="icon-container system-size">
                                                 <img src="css/images/solar-array-box-2a.PNG">
                                             </div>
                                         </div>
+
+
+                                      
                                         <div ng-if="item == itemList[itemList.length-1]">
                                             <div class="icon-container type-ground" ng-show="showme">
-                                                <img src="css/images/solar-array-box-2b.PNG ">
+                                               <!-- <img src="css/images/solar-array-box-2b.PNG ">-->
                                             </div>
                                         </div>
-                                        <h3>Mounting Panel Type</h3>
-                                        <p>What is the type of your panels that will be mounted.</p>
+                                        <h3>Panel Wattage</h3>
+                                        <p>Select the wattage of the panels to be installed.</p>
 
 
 
@@ -224,10 +227,10 @@
 
 
                                     </div>
-                                    <div class="box col-xs-3 ">
+                                   <!-- <div class="box col-xs-3 ">
                                         <div ng-if="item == itemList[itemList.length-1]">
                                             <div class="icon-container  ">
-<!--												<img src="css/images/solar-array-box-2.PNG ">-->
+												<img src="css/images/solar-array-box-2.PNG "
                                             </div>
                                         </div>
                                         <h3>Inverter Efficiency</h3>
@@ -238,11 +241,11 @@
                                                    name="array-0-tilt" placeholder="96%" type="text ">
                                             <span class="description ">Percent </span>
                                         </div>
-                                    </div>
-                                    <div class="box col-xs-3 ">
+                                    </div>-->
+                                    <!--<div class="box col-xs-3 ">
                                         <div ng-if="item == itemList[itemList.length-1]">
                                             <div class="icon-container  ">
-<!--												<img src="css/images/solar-array-box-3.PNG ">-->
+												<img src="css/images/solar-array-box-3.PNG ">
                                             </div>
                                         </div>
                                         <h3>System Degradation</h3>
@@ -254,7 +257,7 @@
                                                    ng-model="energyBill.solarSystem[$index].sysDegrade">
                                             <span class="description ">Percent</span>
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                 </div>
                             </div>
