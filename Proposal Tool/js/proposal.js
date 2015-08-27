@@ -21,13 +21,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 var mmmm = months[today.getMonth()]; //January is 0!
                                 var yyyy = today.getFullYear();
 
-                                if(dd<10) {
-                                    dd='0'+dd
-                                }
-
-                                if(mmmm<10) {
-                                    mmmm='0'+mmmm
-                                }
+                                
 
                                 today = dd+' '+mmmm+', '+yyyy;
                                 energyBill.date =today;
@@ -897,7 +891,7 @@ proposalControllers.controller('heroSummaryController',['$scope','dataService', 
         $scope.showHideDetail = function() {
             $scope.showHide = $scope.showHide === false ? true: false;
         };
-
+           
 }]);
 proposalControllers.controller('paymentOptionsController',['$scope','dataService', function($scope,dataService){
         $scope.energyBill = dataService.dataObj;
@@ -906,19 +900,30 @@ proposalControllers.controller('paymentOptionsController',['$scope','dataService
         $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
 
 
-        $scope.firstCol = true;
-        $scope.secondCol = true;
-        $scope.thirdCol = true;
+        $scope.showHide = true;
+        $scope.showHideDetail = function() {
+            $scope.showHide = $scope.showHide === false ? true: false;
+        };
+           $scope.showOptionA =  false;
+           $scope.showOptionB =  false;
+           $scope.showOptionC =  false;           
+           $scope.OptionB = false;
+           $scope.OptionC = false;   
+        
+        $scope.showNextOptionA = function () {
+                $scope.showOptionA =  true;
+                $scope.OptionB = true;
+        }
+        $scope.showNextOptionB = function () {
 
-            $scope.showHideFirstColumn = function() {
-                    $scope.firstCol = $scope.firstCol === false ? true: false;
-        };
-            $scope.showHideSecondColumn = function() {
-                     $scope.secondCol = $scope.secondCol === false ? true: false;
-        };
-            $scope.showHideThirdColumn = function() {
-                     $scope.thirdCol = $scope.thirdCol === false ? true: false;
-        };
+                $scope.showOptionB = true;
+                $scope.OptionC = true; 
+                $scope.OptionB = false; 
+        }
+        $scope.showNextOptionC = function () {
+                $scope.showOptionC =  true;
+               $scope.OptionC = false;
+        }
 
 }]);
 proposalControllers.controller('buildSolarSystemController',['$scope', 'dataService', function($scope, dataService){
