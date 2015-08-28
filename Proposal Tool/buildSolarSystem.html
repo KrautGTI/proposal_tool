@@ -114,11 +114,11 @@
                             <div class="solar-array ng-scope current">
 
                                 <div class="solar-array-header col-xs-12">
-                                    <div class="array-number pull-left ng-binding">Panel {{$index+1}}
+                               <!--     <div class="array-number pull-left ng-binding">Panel {{$index+1}}
 
                                         <span ng-if="item != itemList[itemList.length-1]" class="link" ng-click="removeArray(this)">remove</span>
 
-                                    </div>
+                                    </div>-->
                                     <div class="advanced-options link pull-right" data-toggle="modal" data-target="#advancedOption">Advanced Options <span class="glyphicon glyphicon-cog"></span> </div>
 
 
@@ -188,9 +188,13 @@
                                         <h3>Number of Solar Panels</h3>
                                   <p>Select how many panels will be installed</p>   
                                         <div class="input-container">
-                                            <input class="ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                            <!--<input  class="ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                    name="array-0-system-size" numeric-min=".5" numeric-max="500000"
-                                                   placeholder="5" required="" ng-model="energyBill.solarSystem[$index].systemSize" type="text">
+                                                   placeholder="5" required="" ng-model="energyBill.solarSystem[$index].systemSize" type="text">-->
+											<select>
+												  <option ng-repeat="value in dropDownValue">{{value}}</option>
+												  
+                                             </select>
                                             <span class="description">Number</span>
                                         </div>
                                     </div>
@@ -201,30 +205,30 @@
                                             <div class="icon-container system-size">
                                                 <img src="css/images/solar-array-box-2a.PNG">
                                             </div>
-                                        </div>
-
-
                                       
+
+
+                                      <!--
                                         <div ng-if="item == itemList[itemList.length-1]">
                                             <div class="icon-container type-ground" ng-show="showme">
-                                               <!-- <img src="css/images/solar-array-box-2b.PNG ">-->
+                                                <img src="css/images/solar-array-box-2b.PNG ">
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <h3>Panel Wattage</h3>
                                         <p>Select the wattage of the panels to be installed.</p>
 
 
 
                                                 <div ng-click="showme=false" class="mounting-type col-xs-4 col-xs-offset-1 "
-                                                     ng-class="{ 'selected': showme==false }">
+                                                     ng-class="{ 'selected': showme==false}">
                                                 <div ng-click="mounting($index, 1)">260 W</div>
                                                 </div>
 
-                                                <div ng-click="showme=true" class="mounting-type col-xs-4 col-xs-offset-1 "
+                                                <div ng-click="showme=true" class="mounting-type col-xs-4 col-xs-offset-1"
                                                      ng-class="{ 'selected': showme==true }">
                                                     <div ng-click="mounting($index, 0)">280 W</div>
                                                 </div>
-
+  </div>
 
                                     </div>
                                    <!-- <div class="box col-xs-3 ">

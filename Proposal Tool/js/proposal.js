@@ -952,7 +952,16 @@ proposalControllers.controller('buildSolarSystemController',['$scope', 'dataServ
     $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu;
     $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup;
     $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
-    $scope.numArray = $scope.energyBill.numArray;
+    $scope.numArray = $scope.energyBill.numArray;	
+	$scope.dropDownValue = [];
+	
+	for(var i = 8; i <= 60; i = i + 2)
+	{
+				
+	   $scope.dropDownValue.push(i);
+		
+	}
+	
     $scope.mounting = function(index, type){
       $scope.energyBill.solarSystem[index].type260 = type;
     }
