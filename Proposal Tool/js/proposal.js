@@ -924,7 +924,9 @@ proposalControllers.controller('paymentOptionsController',['$scope','dataService
            $scope.showOptionB =  false;
            $scope.showOptionC =  false;
            $scope.OptionB = false;
-           $scope.OptionC = false;
+
+           $scope.OptionC = false;   
+           $scope.visitDiscount = false;
 
         $scope.showNextOptionA = function () {
                 $scope.showOptionA =  true;
@@ -939,6 +941,9 @@ proposalControllers.controller('paymentOptionsController',['$scope','dataService
         $scope.showNextOptionC = function () {
                 $scope.showOptionC =  true;
                $scope.OptionC = false;
+        }
+        $scope.ShowVisitDiscount = function () {
+                $scope.visitDiscount = true;
         }
 
 }]);

@@ -7599,4 +7599,23 @@ margin-left: 100px;
 
 
 }
+        /******* dot glyphicon for solarSystemSummary ********/
 
+#proposal-tool-container .solarSystemSummaryPage_glyphicon .glyphicon-one-fine-dot h3{    
+    color: #666;
+    font-size: 14px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+#proposal-tool-container .solarSystemSummaryPage_glyphicon .glyphicon-one-fine-dot h3:before{
+    content: "\25cf";
+    font-size: 1.5em;
+    margin-right: 5px;
+     color: #333;
+    
+}
+/*.glyphicon-one-fine-dot:before {
+    content: "\25cf";
+    font-size: 1.5em;
+    margin-right: 5px;
+}*/
