@@ -715,6 +715,63 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
 
                       }
                     };
+            }).directive('phFormatter', function(dataService) {
+                    return {
+                      require:'ngModel',
+
+                      link: function(scope, element, attrs, ctrl) {
+
+                            ctrl.$formatters.unshift(function(value) {
+                                // test and set the validity after update.
+                                                                // if it's valid, return the value to the model,
+                                // otherwise return undefined.
+                                return true;
+                            });
+
+                            // add a formatter that will process each time the value
+                            // is updated on the DOM element.
+                            ctrl.$parsers.unshift(function(value) {
+                                var inputVal = element.val();
+                                // validate.
+
+                                var strPhone ;
+                                var country, city, number;
+
+
+                                 switch (inputVal.length) {
+                                            case 10: // +1PPP####### -> C (PPP) ###-####
+                                                country = 1;
+                                                city = inputVal.slice(0, 3);
+                                                number = inputVal.slice(3);
+                                                break;
+
+                                            case 11: // +CPPP####### -> CCC (PP) ###-####
+                                                country = inputVal[0];
+                                                city = inputVal.slice(1, 4);
+                                                number = inputVal.slice(4);
+                                                break;
+
+                                            case 12: // +CCCPP####### -> CCC (PP) ###-####
+                                                country = inputVal.slice(0, 3);
+                                                city = inputVal.slice(3, 5);
+                                                number = inputVal.slice(5);
+                                                break;
+
+                                            default:
+                                                return inputVal;
+                                        }
+
+                                     number = '( ' + city + ') '+ number.slice(0, 3) + '-' + number.slice(3);
+
+                                     ctrl.$setViewValue(number);
+                                     ctrl.$render();
+
+                                // return the value or nothing will be written to the DOM.
+                                return number;
+                            });
+
+                      }
+                    };
             });
 
 proposalControllers.controller('startProposalController', ['$scope', 'dataService', function($scope, dataService){
