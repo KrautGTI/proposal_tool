@@ -186,10 +186,18 @@
     };
 
     Highcharts.seriesTypes.column.prototype.dragHandlePath = function (shapeArgs, strokeW) {
-        var x1 = shapeArgs.x,
+        var x1 = shapeArgs.x-3* strokeW,
             y = shapeArgs.y,
-            x2 = shapeArgs.x + shapeArgs.width;
+            x2 = shapeArgs.x + shapeArgs.width+3* strokeW;
 
+        return [
+            'M', x1, y + 35 * strokeW,
+            'L', x1, y,
+
+            'L', x2, y,
+            'L', x2, y + 35 * strokeW
+        ];
+        /*
         return [
             'M', x1, y + 6 * strokeW,
             'L', x1, y,
@@ -202,6 +210,7 @@
             'L', x2, y + 4 * strokeW,
             'L', x2, y + 6 * strokeW
         ];
+        */
     };
 
     Highcharts.wrap(Highcharts.seriesTypes.column.prototype, 'drawTracker', function (proceed) {

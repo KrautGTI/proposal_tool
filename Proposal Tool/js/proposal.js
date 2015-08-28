@@ -21,7 +21,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 var mmmm = months[today.getMonth()]; //January is 0!
                                 var yyyy = today.getFullYear();
 
-                                
+
 
                                 today = dd+' '+mmmm+', '+yyyy;
                                 energyBill.date =today;
@@ -503,12 +503,28 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                     energyMultiplier =  variation[i] * 1 * numDays[i]*solarRadiationFactor[i]/1000;
                                     for(var j = 0; j < energyBill.solarSystem.length; j++) {
-                                        if(energyBill.solarSystem[j].type260 == 1)
-                                            energyProduction += 260 *  energyMultiplier * parseInt(energyBill.solarSystem[j].systemSize)
-                                                                    *parseInt(energyBill.solarSystem[j].convEfficiency)/100;
-                                        else
-                                            energyProduction += 280 * energyMultiplier * parseInt(energyBill.solarSystem[j].systemSize)
-                                                                        *parseInt(energyBill.solarSystem[j].convEfficiency)/100;
+                                        if(energyBill.solarSystem[j].type260 == 1) {
+                                            if(energyBill.solarSystem[j].convEfficiency != undefined) {
+                                                energyProduction += 260 *  energyMultiplier *
+                                                                            parseInt(energyBill.solarSystem[j].systemSize) *
+                                                                        parseInt(energyBill.solarSystem[j].convEfficiency)/100;
+                                            } else {
+                                                energyProduction += 260 *  energyMultiplier *
+                                                                            parseInt(energyBill.solarSystem[j].systemSize);
+                                            }
+
+                                        }
+                                        else {
+                                              if(energyBill.solarSystem[j].convEfficiency != undefined) {
+                                                    energyProduction += 280 *  energyMultiplier *
+                                                                                parseInt(energyBill.solarSystem[j].systemSize) *
+                                                                            parseInt(energyBill.solarSystem[j].convEfficiency)/100;
+                                            } else {
+                                                    energyProduction += 280 *  energyMultiplier *
+                                                                                parseInt(energyBill.solarSystem[j].systemSize);
+                                            }
+
+                                        }
 
 
 
@@ -891,7 +907,7 @@ proposalControllers.controller('heroSummaryController',['$scope','dataService', 
         $scope.showHideDetail = function() {
             $scope.showHide = $scope.showHide === false ? true: false;
         };
-           
+
 }]);
 proposalControllers.controller('paymentOptionsController',['$scope','dataService', function($scope,dataService){
         $scope.energyBill = dataService.dataObj;
@@ -906,10 +922,10 @@ proposalControllers.controller('paymentOptionsController',['$scope','dataService
         };
            $scope.showOptionA =  false;
            $scope.showOptionB =  false;
-           $scope.showOptionC =  false;           
+           $scope.showOptionC =  false;
            $scope.OptionB = false;
-           $scope.OptionC = false;   
-        
+           $scope.OptionC = false;
+
         $scope.showNextOptionA = function () {
                 $scope.showOptionA =  true;
                 $scope.OptionB = true;
@@ -917,8 +933,8 @@ proposalControllers.controller('paymentOptionsController',['$scope','dataService
         $scope.showNextOptionB = function () {
 
                 $scope.showOptionB = true;
-                $scope.OptionC = true; 
-                $scope.OptionB = false; 
+                $scope.OptionC = true;
+                $scope.OptionB = false;
         }
         $scope.showNextOptionC = function () {
                 $scope.showOptionC =  true;
@@ -1096,7 +1112,16 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
     },
     plotOptions: {
         series: {
+            dataLabels: {
+                    enabled: true,
+                    verticalAlign: 'top',
+                    y:85,
+                    useHTML:true,
 
+                formatter: function() {
+                    return '<span class="glyphicon glyphicon-resize-vertical" style="font-size:20px; color:white;"> </span>';
+                }
+            },
             point: {
                 events: {
 
