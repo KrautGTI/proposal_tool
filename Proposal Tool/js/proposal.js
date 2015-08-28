@@ -576,7 +576,8 @@ var proposalControllers = angular.module('proposalControllers', [])
                                                                                Math.ceil(energyBill.solarEstimatedProduction));
 
                                 energyBill.solarEstimated30YearProductionDisplay = energyBill.convertToComma("" +
-                                                                                    Math.ceil( energyBill.solarEstimatedProduction*30));
+                                                                                    Math.ceil( energyBill.solarEstimatedProduction *
+                                                                                              energyBill.yearChange));
                                 energyBill.solarSystemOffset =  energyBill.annualCost *
                                                                 energyBill.solarEstimatedProduction/energyBill.annualUsage ;
                                 energyBill.solarSystemOffset +=  miscCost;
