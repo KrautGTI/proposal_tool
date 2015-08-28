@@ -1133,7 +1133,7 @@ proposalControllers.controller('multipleBillBarGraphController',['$scope', 'data
                     useHTML:true,
 
                 formatter: function() {
-                    return '<span class="glyphicon glyphicon-resize-vertical" style="position:absolute;font-size:20px; color:white;"> </span>';
+                    return '<span class="glyphicon glyphicon-resize-vertical" style="position:absolute;font-size:15px; color:white;right:-10px"> </span>';
                 }
             },
             point: {
