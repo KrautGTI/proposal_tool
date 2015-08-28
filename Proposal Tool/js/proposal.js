@@ -209,7 +209,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 }
 
                                 energyBill.percentChange = 7.0;
-                                energyBill.yearChange = 30;
+                                energyBill.yearChange = 25;
                                 energyBill.cumulative30YearsExpenseDisplay = 1;
                                 energyBill.dollar = true;
                                 energyBill.convert = true;
