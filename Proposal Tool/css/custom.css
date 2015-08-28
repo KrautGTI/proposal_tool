@@ -7614,8 +7614,9 @@ margin-left: 100px;
      color: #333;
     
 }
-/*.glyphicon-one-fine-dot:before {
-    content: "\25cf";
-    font-size: 1.5em;
-    margin-right: 5px;
-}*/
+.paymentOption_text {
+color: #666;
+    font-size: 14px;
+    font-weight: normal;
+    white-space: nowrap;
+}
