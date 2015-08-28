@@ -186,14 +186,14 @@
                                         </div>
 
                                         <h3>Number of Solar Panels</h3>
-                                  <p>Select how many panels will be installed</p>   
+                                  <p>Select how many panels will be installed</p>
                                         <div class="input-container">
                                             <!--<input  class="ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                    name="array-0-system-size" numeric-min=".5" numeric-max="500000"
                                                    placeholder="5" required="" ng-model="energyBill.solarSystem[$index].systemSize" type="text">-->
-											<select>
-												  <option ng-repeat="value in dropDownValue">{{value}}</option>
-												  
+                                            <select ng-model="energyBill.solarSystem[$index].systemSize">
+                                                  <option ng-repeat="value in dropDownValue">{{value}}</option>
+
                                              </select>
                                             <span class="description">Number</span>
                                         </div>
@@ -201,11 +201,11 @@
 
 
                                     <div class="box col-xs-6">
-										 <div ng-if="item == itemList[itemList.length-1]">
+                                         <div ng-if="item == itemList[itemList.length-1]">
                                             <div class="icon-container system-size">
                                                 <img src="css/images/solar-array-box-2a.PNG">
                                             </div>
-                                      
+
 
 
                                       <!--
@@ -234,7 +234,7 @@
                                    <!-- <div class="box col-xs-3 ">
                                         <div ng-if="item == itemList[itemList.length-1]">
                                             <div class="icon-container  ">
-												<img src="css/images/solar-array-box-2.PNG "
+                                                <img src="css/images/solar-array-box-2.PNG "
                                             </div>
                                         </div>
                                         <h3>Inverter Efficiency</h3>
@@ -249,7 +249,7 @@
                                     <!--<div class="box col-xs-3 ">
                                         <div ng-if="item == itemList[itemList.length-1]">
                                             <div class="icon-container  ">
-												<img src="css/images/solar-array-box-3.PNG ">
+                                                <img src="css/images/solar-array-box-3.PNG ">
                                             </div>
                                         </div>
                                         <h3>System Degradation</h3>
@@ -290,9 +290,9 @@
         </a>
         <a href="#/estimatedSolarSystemProduction/id1" style="text-decoration:none">
            <div class="nav-button next">
-				
-			<span style="font-size:20px; margin-top:3px">NEXT</span> 
-			<span class="glyphicon glyphicon-arrow-right"style="position:relative;top:8px"></span> 
+
+            <span style="font-size:20px; margin-top:3px">NEXT</span>
+            <span class="glyphicon glyphicon-arrow-right"style="position:relative;top:8px"></span>
         </div>
         </a>
     </div>
