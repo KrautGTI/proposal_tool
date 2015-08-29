@@ -115,21 +115,23 @@
                 <div class="col-xs-6 col1 column">
 
                     <h2>Do Nothing and Continue to Pay</h2>
-
-                    <div class="row" style="margin-top:15px;">
-                        <span class="title">Total Electric Costs Over {{energyBill.yearChange}} Years</span>
-                        <span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span>{{"$" + energyBill.cumulative30YearsExpenseDisplay}}</span>
-                    </div>
-                    <div class="row">
-                        <span class="title">Your Annual Bill</span>
-                        <span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span>{{"$" + energyBill.annualCostDisplay}}</span>
-                    </div>
-                    <div class="row">
+                        <div class="row">
                         <span class="title">Your Average Monthly Bill</span>
                         <span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span>{{"$" + energyBill.annualCost/12}}</span>
                     </div>
+                   
+                        <div class="row">
+                        <span class="title">Your Annual Bill</span>
+                        <span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span>{{"$" + energyBill.annualCostDisplay}}</span>
+                    </div>
+					
+					<div class="row" style="margin-top:15px;">
+                        <span class="title">Total Electric Costs Over {{energyBill.yearChange}} Years</span>
+                        <span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span>{{"$" + energyBill.cumulative30YearsExpenseDisplay}}</span>
+                    </div>
+                  
                     <div class="row">
-                        <span class="title">Your Average Electric Price</span>
+                        <span class="title">Your Average</span>
                         <span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span> {{(energyBill.cumulative30YearsExpense/(energyBill.yearChange * energyBill.annualUsage)).toFixed(2) + " / kWh"}}</span>
                     </div>
 
