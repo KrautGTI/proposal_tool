@@ -950,6 +950,12 @@ address {
     font-style: normal;
     line-height: 1.42857143;
 }
+city {
+    margin-bottom: 20px;
+    font-style: normal;
+    line-height: 1.42857143;
+}
+
 code, kbd, pre, samp {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }

@@ -37,15 +37,7 @@
                         <form class="form-horizontal ng-pristine ng-valid ng-submitted" role="form" id="myform">
 
 
-                            <div class="form-group required">
-                                   <!--<div style="position: relative; left: 117px; font-size: 50px; color: #1975A3" class="glyphicon glyphicon-check col-sm-2"></div>-->
-                                <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Zip Code</label>
-                                <div class="col-sm-7">
-                                    <input type="text" style="width:300px;" ng-model="energyBill.zipcode" class="smarty-target form-control col-xs-10" placeholder="Enter the zip code of your address" zip-validator>
-                                    <!--<div class="glyphicon glyphicon-calendar" style="font-size: 50px; color: rgb(25, 117, 163); margin-top: -73px; margin-left: 406px; margin-bottom: 23px;"></div>-->
-
-                                </div>
-                            </div>
+                           
 
 
 
@@ -69,6 +61,20 @@
                                 </div>
 
                             </div>
+							
+							     <div class="form-group required">
+                                <!--<div style="position: relative; left: 117px; font-size: 50px; color: #1975A3" class="glyphicon glyphicon-list-alt col-sm-2"></div>-->
+
+                                <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Email</label>
+
+                                <div class="col-sm-7">
+                                    <input id="email" type="email" name="email" class="form-control" placeholder="Enter email" style="font-size:1em; width:300px;" required />
+                                    <!--<div style="font-size: 50px; color: #1975A3; margin-top: -63px; margin-left: 406px;" class="glyphicon glyphicon-adjust"></div>-->
+                                </div>
+                            </div>
+							
+							
+							
                             <div class="form-group required">
                                 <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Phone No</label>
                                 <div class="col-sm-7">
@@ -81,21 +87,33 @@
                                 <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Address</label>
 
                                 <div class="col-sm-7">
-                                    <input id="address" name="address" type="text" class="form-control" placeholder="Enter address" style="font-size:1em; width:300px;" required />
+                                    <input id="address" name="address" type="text" class="form-control" placeholder="Enter address" style="font-size:1em; width:300px;" address-validator />
 
                                 </div>
                             </div>
-                            <div class="form-group required">
-                                <!--<div style="position: relative; left: 117px; font-size: 50px; color: #1975A3" class="glyphicon glyphicon-list-alt col-sm-2"></div>-->
+							<div class="form-group required">
 
-                                <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Email</label>
+                                <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">City</label>
 
+                               <div class="col-sm-7">
+                                    <input id="city" name="city" type="text" class="form-control" placeholder="Enter city" style="font-size:1em; width:300px;" city-validator/>
+
+                                </div>
+                            </div>
+							
+							 <div class="form-group required">
+                                   <!--<div style="position: relative; left: 117px; font-size: 50px; color: #1975A3" class="glyphicon glyphicon-check col-sm-2"></div>-->
+                                <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Zip Code</label>
                                 <div class="col-sm-7">
-                                    <input id="email" type="email" name="email" class="form-control" placeholder="Enter email" style="font-size:1em; width:300px;" required />
-                                    <!--<div style="font-size: 50px; color: #1975A3; margin-top: -63px; margin-left: 406px;" class="glyphicon glyphicon-adjust"></div>-->
+                                    <input type="text" style="width:300px;" ng-model="energyBill.zipcode" class="smarty-target form-control col-xs-10" placeholder="Enter the zip code of your address" zip-validator>
+                                    <!--<div class="glyphicon glyphicon-calendar" style="font-size: 50px; color: rgb(25, 117, 163); margin-top: -73px; margin-left: 406px; margin-bottom: 23px;"></div>-->
+
                                 </div>
                             </div>
-                            <div class="form-group required">
+                       
+							
+							
+ <div class="form-group required">
                                 <!--<div style="padding-left: 113px; padding-top: 0px; margin-top: -6px; font-size:16px; color:#6C6C6C" class="col-sm-6">Tax Benefits</div>-->
 <!--
                                 <div style="padding-left: 313px; padding-top: 6px; margin-top: -15px; margin-left: 0px; font-size:16px; color:#6C6C6C" class="col-sm-6">Affordable Payment
