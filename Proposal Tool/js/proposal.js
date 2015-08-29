@@ -725,7 +725,7 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
                                 // test and set the validity after update.
                                                                 // if it's valid, return the value to the model,
                                 // otherwise return undefined.
-                                return true;
+                                return value;
                             });
 
                             // add a formatter that will process each time the value
@@ -767,7 +767,7 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService', functio
                                      ctrl.$render();
 
                                 // return the value or nothing will be written to the DOM.
-                                return number;
+                                return value;
                             });
 
                       }
