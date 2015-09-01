@@ -404,6 +404,8 @@ var proposalControllers = angular.module('proposalControllers', [])
                                         }
                                     energyBill.annualUsageDisplay =  energyBill.convertToComma("" +
                                                                                             Math.ceil(energyBill.annualUsage));
+                                
+                                    energyBill.avgMonthlyBill = Math.ceil(energyBill.annualUsage/12);
 
                                     return dataMonths;
 
@@ -1078,6 +1080,7 @@ proposalControllers.controller('yourOptionsController', ['$scope', 'dataService'
             $scope.navMenuPageArrayEnerUses  = $scope.energyBill.menuPageArrayeu;
             $scope.navMenuPageArrayUpgrad    = $scope.energyBill.menuPageArrayup;
             $scope.navMenuPageArrayPayment   = $scope.energyBill.menuPageArraypay;
+            
 
 }]);
 
