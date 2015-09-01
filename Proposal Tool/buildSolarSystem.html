@@ -191,11 +191,11 @@
                                             <!--<input  class="ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                    name="array-0-system-size" numeric-min=".5" numeric-max="500000"
                                                    placeholder="5" required="" ng-model="energyBill.solarSystem[$index].systemSize" type="text">-->
-                                            <select ng-model="energyBill.solarSystem[$index].systemSize">
-                                                  <option ng-repeat="value in dropDownValue">{{value}}</option>
+                                            <select ng-model="energyBill.solarSystem[$index].systemSize" style="width:180px; height:35px; padding-left:45px; margin-left:-58px; border:3px solid #55636a">
+                                                  <option  ng-repeat="value in dropDownValue">{{value}} &nbsp;{{"Panel"}}</option>
 
                                              </select>
-                                            <span class="description">Number</span>
+                                            <!--<span class="description">Number</span>-->
                                         </div>
                                     </div>
 
