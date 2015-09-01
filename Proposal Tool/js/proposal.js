@@ -385,6 +385,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                             energyBill.annualCost += num;
                                         }
                                         energyBill.annualCostDisplay = energyBill.convertToComma("" + Math.ceil(energyBill.annualCost));
+                                        energyBill.avgMonthlyBill = Math.ceil(energyBill.annualCost/12);
 
                                         return dataMonths;
 
@@ -405,7 +406,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                     energyBill.annualUsageDisplay =  energyBill.convertToComma("" +
                                                                                             Math.ceil(energyBill.annualUsage));
                                 
-                                    energyBill.avgMonthlyBill = Math.ceil(energyBill.annualUsage/12);
+                                    
 
                                     return dataMonths;
 
