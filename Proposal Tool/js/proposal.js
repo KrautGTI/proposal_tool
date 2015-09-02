@@ -15,7 +15,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.lineGraphShowNotice = true;
                              
 
-
+                                energyBill.zipcodes = [];
                                 var today = new Date();
                                 var dd = today.getDate();
                                 var mmmm = months[today.getMonth()]; //January is 0!
@@ -39,6 +39,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                             //    energyBill.category[94591] = 'x';
                                 assignCategoryX = function (element, index, array) {
                                         energyBill.category[element] = 'x';
+                                        energyBill.zipcodes.push(element);
                                 };
 
 
@@ -68,6 +69,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 assignCategoryP = function (element, index, array) {
                                         energyBill.category[element] = 'p';
+                                        energyBill.zipcodes.push(element);
                                 };
 
 
@@ -83,6 +85,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 assignCategoryQ = function (element, index, array) {
                                         energyBill.category[element] = 'q';
+                                        energyBill.zipcodes.push(element);
                                 };
 
                                 var qArray = [94020, 94062, 95030, 95033, 95060, 95076];
@@ -90,6 +93,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 assignCategoryQ = function (element, index, array) {
                                         energyBill.category[element] = 'r';
+                                        energyBill.zipcodes.push(element);
                                 };
 
                                 var rArray =
@@ -110,6 +114,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 assignCategoryR = function (element, index, array) {
                                         energyBill.category[element] = 'r';
+                                        energyBill.zipcodes.push(element);
                                 };
 
 
@@ -117,6 +122,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 assignCategoryS = function (element, index, array) {
                                         energyBill.category[element] = 's';
+                                        energyBill.zipcodes.push(element);
                                 };
                                 var sArray =
 
@@ -145,6 +151,9 @@ var proposalControllers = angular.module('proposalControllers', [])
 [93401,93402,93405,93406,93420,93421,93424,93427,93428,93429,93430,93433,93434,93435,93436,93440,93442,93443,93444,93445,93449,93452,93454,93455,93456,93458,93901,93905,93906,93907,93908,93915,93920,93921,93922,93923,93924,93933,93940,93943,93950,93953,93955,93962,94005,94014,94015,94018,94019,94020,94021,94037,94038,94044,94060,94066,94074,94080,94101,94102,94103,94104,94105,94107,94108,94109,94110,94111,94112,94113,94114,94115,94116,94117,94118,94121,94122,94123,94124,94127,94129,94130,94131,94132,94133,94134,94141,94143,94158,94159,94501,94502,94530,94547,94564,94601,94602,94603,94604,94605,94606,94607,94608,94609,94610,94611,94612,94613,94618,94619,94621,94701,94702,94703,94704,94705,94706,94707,94708,94709,94710,94720,94801,94803,94804,94805,94806,94920,94922,94923,94924,94929,94937,94938,94940,94941,94950,94956,94965,94966,94970,94971,94972,95001,95003,95004,95005,95006,95007,95010,95012,95017,95018,95019,95021,95033,95039,95041,95045,95060,95062,95063,95064,95065,95066,95067,95073,95076,95078,95101,95410,95412,95420,95421,95430,95432,95437,95445,95450,95456,95459,95460,95465,95468,95480,95488,95497];
                                 assignCategoryT = function (element, index, array) {
                                         energyBill.category[element] = 't';
+                                  
+                                        energyBill.zipcodes.push(element);
+    
                                 };
                                 tArray.forEach(assignCategoryT);
 
@@ -153,6 +162,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 assignCategoryV = function (element, index, array) {
                                         energyBill.category[element] = 'v';
+                                        energyBill.zipcodes.push(element);
                                 };
                                 vArray.forEach(assignCategoryV);
 
@@ -161,6 +171,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 assignCategoryW = function (element, index, array) {
                                         energyBill.category[element] = 'w';
+                                        energyBill.zipcodes.push(element);
                                 };
                                 wArray.forEach(assignCategoryW);
 
@@ -170,6 +181,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                               assignCategoryY = function (element, index, array) {
                                         energyBill.category[element] = 'y';
+                                        energyBill.zipcodes.push(element);
                                 };
                                 yArray.forEach(assignCategoryY);
 
@@ -178,6 +190,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                               assignCategoryZ = function (element, index, array) {
                                         energyBill.category[element] = 'z';
+                                         energyBill.zipcodes.push(element);
                                 };
                                 zArray.forEach(assignCategoryZ);
 
@@ -269,9 +282,6 @@ var proposalControllers = angular.module('proposalControllers', [])
 
                                 }
 
-
-
-
                                 //Default values of energyBill.Monthly Bill
 
                                  energyBill.convertToComma = function (yourNumber) {
@@ -288,7 +298,6 @@ var proposalControllers = angular.module('proposalControllers', [])
                                         else
                                             return false;
 
-
                                 };
 
                                 energyBill.propagateEnergyBillFromDollar = function (i) {
@@ -300,8 +309,6 @@ var proposalControllers = angular.module('proposalControllers', [])
                                                             if(month > 3 && month < 10)
                                                                 return true;
                                                             return false;
-
-
                                                     };
 
                                         findkWhFromDollars = function (dollar, k) {
@@ -403,11 +410,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                             dataMonths.push(num);
                                             energyBill.annualUsage += num;
                                         }
-                                    energyBill.annualUsageDisplay =  energyBill.convertToComma("" +
-                                                                                            Math.ceil(energyBill.annualUsage));
-                                
-                                    
-
+                            energyBill.annualUsageDisplay =  energyBill.convertToComma("" +                                                                                 Math.ceil(energyBill.annualUsage));
                                     return dataMonths;
 
                             };
@@ -592,9 +595,9 @@ var proposalControllers = angular.module('proposalControllers', [])
                                                                         energyBill.annualCost - energyBill.solarSystemOffset ));
                                  energyBill.annualTrueUpDisplay = "$" + energyBill.annualTrueUpDisplay;
                                 } else {
-                                    energyBill.annualTrueUpDisplay = energyBill.convertToComma("" + Math.ceil(
-                                                                (energyBill.annualCost - energyBill.solarSystemOffset )));
-                                    energyBill.annualTrueUpDisplay = "-$" + energyBill.annualTrueUpDisplay;
+
+                                    energyBill.annualTrueUpDisplay = "-$" + energyBill.convertToComma("" + Math.ceil(
+                                                          ( energyBill.solarSystemOffset - energyBill.annualCost )));
                                 }
                                 return estimates;
 
@@ -667,7 +670,7 @@ var proposalControllers = angular.module('proposalControllers', [])
             });
 
 
-proposalControllers.controller("proposalTool" , ['$scope','dataService', function($scope,dataService){
+proposalControllers.controller("proposalTool" , ['$scope','dataService',function($scope,dataService){
     $scope.energyBill = dataService.dataObj;
     $scope.address1 = "115 Cordova St";
     $scope.address2 = "Vallejo, 94591";

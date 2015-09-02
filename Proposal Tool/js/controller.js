@@ -1,4 +1,4 @@
-var propTool = angular.module('propTool', ['ngRoute', 'proposalControllers']);
+var propTool = angular.module('propTool', ['ngRoute', 'ngAnimate', 'ui.bootstrap','proposalControllers']);
 
 
 propTool.config(['$routeProvider',
