@@ -466,7 +466,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                             };
 
                             energyBill.setEstimatedValues = function () {
-                                var zip = energyBill.address.zipcode;
+                                var zip = energyBill.zipcode;
                              //   zip = 94591;//hardcoded value do away with it once updated from user
                             //    var estimateSampleUsage = energyBill.RegionkWh[zip];
                                     var estimateSampleUsage = energyBill.RegionkWh;
