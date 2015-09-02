@@ -17281,11 +17281,12 @@ Series.prototype.justifyDataLabel = function (dataLabel, options, alignAttr, bBo
 		}
 		justified = true;
 	}
-
+/*
 	if (justified) {
 		dataLabel.placed = !isNew;
 		dataLabel.align(options, null, alignTo);
 	}
+    */
   
 };
 
