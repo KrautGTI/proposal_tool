@@ -13,7 +13,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.showHide = true;
                                 energyBill.showHideLineGraph = true;
                                 energyBill.lineGraphShowNotice = true;
-                                energyBill.address = {};
+                             
 
 
                                 var today = new Date();
@@ -586,10 +586,10 @@ var proposalControllers = angular.module('proposalControllers', [])
                                 energyBill.solarSystemOffset +=  miscCost;
                                 energyBill.solarSystemOffsetDisplay = energyBill.convertToComma("" +
                                                                                 Math.ceil(energyBill.solarSystemOffset));
-                                if((energyBill.solarSystemOffset - energyBill.annualCost )> 0) {
+                                if((energyBill.annualCost - energyBill.solarSystemOffset )> 0) {
 
                                     energyBill.annualTrueUpDisplay = energyBill.convertToComma("" + Math.ceil(
-                                                                        energyBill.solarSystemOffset - energyBill.annualCost ));
+                                                                        energyBill.annualCost - energyBill.solarSystemOffset ));
                                  energyBill.annualTrueUpDisplay = "$" + energyBill.annualTrueUpDisplay;
                                 } else {
                                     energyBill.annualTrueUpDisplay = energyBill.convertToComma("" + Math.ceil(

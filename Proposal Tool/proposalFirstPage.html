@@ -1,4 +1,4 @@
-<div class="container-fluid" id="proposal-tool-container" style="margin-bottom:50px ">
+<div class="container-fluid" id="proposal-tool-container" style="margin-bottom:50px " > 
     <div class="container pages-container" >
         <div class="proposal-page proposal-page-KBYG-1 col-xs-10 col-xs-offset-1  column anim-fade ng-scope" style="border-radius: 25px;">
 
@@ -34,7 +34,7 @@
                     <!--****************** User Information start *****************-->
 
                     <div class="row" id="userInfo" >
-                        <form class="form-horizontal ng-pristine ng-valid ng-submitted" role="form" id="myform">
+                        <form class="form-horizontal ng-pristine ng-valid ng-submitted" role="form" id="myform" action="#/startProposal/id1">
 
 
                            
@@ -62,13 +62,13 @@
 
                             </div>
 							
-							     <div class="form-group required">
+							 <div class="form-group required">
                                 <!--<div style="position: relative; left: 117px; font-size: 50px; color: #1975A3" class="glyphicon glyphicon-list-alt col-sm-2"></div>-->
 
                                 <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Email</label>
 
                                 <div class="col-sm-7">
-                                    <input id="email" type="email" name="email" class="form-control" placeholder="Enter email" style="font-size:1em; width:300px;" required />
+                                    <input id="email" type="email" ng-model="energyBill.email"  name="email" class="form-control" placeholder="Enter email" style="font-size:1em; width:300px;" required />
                                     <!--<div style="font-size: 50px; color: #1975A3; margin-top: -63px; margin-left: 406px;" class="glyphicon glyphicon-adjust"></div>-->
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                             <div class="form-group required">
                                 <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Phone No</label>
                                 <div class="col-sm-7">
-                                    <input id="phoneNo" name="phoneNo" type="text" class="form-control" placeholder="Enter number" style="font-size:1em; width:300px;" ng-model="energyBill.phoneNumber" ph-formatter>
+                                    <input id="phoneNo" name="phoneNo" type="text" ng-model="energyBill.phoneNo"  class="form-control" placeholder="Enter number" style="font-size:1em; width:300px;" ph-formatter required/>
 
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                 <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Address</label>
 
                                 <div class="col-sm-7">
-                                    <input id="address" name="address" type="text" class="form-control" placeholder="Enter address" style="font-size:1em; width:300px;" address-validator />
+                                    <input id="address" name="address" type="text" ng-model="energyBill.address"  class="form-control" placeholder="Enter address" style="font-size:1em; width:300px;"  required/>
 
                                 </div>
                             </div>
@@ -96,11 +96,21 @@
                                 <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">City</label>
 
                                <div class="col-sm-7">
-                                    <input id="city" name="city" type="text" class="form-control" placeholder="Enter city" style="font-size:1em; width:300px;" city-validator/>
+                                    <input id="city" name="city" type="text" ng-model="energyBill.city" class="form-control" placeholder="Enter city" style="font-size:1em; width:300px;"  required/>
 
                                 </div>
                             </div>
 							
+                            
+                            <div class="form-group required">
+
+                                <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">State</label>
+
+                               <div class="col-sm-7">
+                                    <input id="state" name="state" type="text" ng-model="energyBill.state" class="form-control" placeholder="Enter state" style="font-size:1em; width:300px;"  required/>
+
+                                </div>
+                            </div>
 							 <div class="form-group required">
                                    <!--<div style="position: relative; left: 117px; font-size: 50px; color: #1975A3" class="glyphicon glyphicon-check col-sm-2"></div>-->
                                 <label class="control-label col-sm-5" style="font-size:17px; color:#6C6C6C">Zip Code</label>
@@ -119,7 +129,19 @@
                                 <div style="padding-left: 313px; padding-top: 6px; margin-top: -15px; margin-left: 0px; font-size:16px; color:#6C6C6C" class="col-sm-6">Affordable Payment
                                     <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Options</div>-->
                             </div>
+                        <div class="col-xs-4 icons">
+                    <!--<img src="css/images/kbyg-graphic.png" alt="">-->
+                        <!--<a class="btn-proposal btn-large icon-left" style="text-decoration: none; height: 50px; margin-left: 315px;                             margin-bottom: 50px; border-bottom-width: 46px;" href="#/startProposal/id1">
 
+                        <div class="btn-text">Start A Proposal</div>
+                        <div class="btn-graphic">
+                            <div style="margin-top: 14px; width:40px" class="glyphicon glyphicon-list-alt"></div>
+                        </div>
+
+                        </a>--><center>
+                            <input class="btn-proposal btn-large icon-left" type="submit"  style="margin-left: 350px; width:40px ;" value="Start A Proposal" ></center>
+                            
+                </div>
                         </form>
                     </div>
 
@@ -130,17 +152,7 @@
 
                 </div>
 
-                <div class="col-xs-4 icons">
-                    <!--<img src="css/images/kbyg-graphic.png" alt="">-->
-                    <a class="btn-proposal btn-large icon-left" style="text-decoration: none; height: 50px; margin-left: 315px; margin-bottom: 50px; border-bottom-width: 46px;" href="#/startProposal/id1">
-
-                        <div class="btn-text">Start A Proposal</div>
-                        <div class="btn-graphic">
-                            <div style="margin-top: 14px; width:40px" class="glyphicon glyphicon-list-alt"></div>
-                        </div>
-
-                    </a>
-                </div>
+               
                 <!--<div class="kbyg-footer col-xs-12" style="positionn:relative; top:25px">
                     <div class="col-xs-4 clickable size-450">
                         <img src="css/images/What_is_Hero_640.png">
