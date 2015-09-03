@@ -794,7 +794,9 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
                 if (re.test(ele)) {
                     tmp.valid = true;
                 } else {
-                    tmp.valid = false;
+                        tmp.valid = false;
+                        tmp.valid = true;
+                    
                 }  
             } if(tmp.name == "#address") {
                 var re = new RegExp("[A-Za-z0-9'\.\-\s\,]");
