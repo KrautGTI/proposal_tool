@@ -743,7 +743,7 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService',function
                                 var strPhone ;
                                 var country, city, number;
 
-
+                                 inputVal = inputVal.replace( /\D+/g, '');
                                  switch (inputVal.length) {
                                             case 10: // +1PPP####### -> C (PPP) ###-####
                                                 country = 1;
@@ -764,6 +764,10 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService',function
                                                 break;
 
                                             default:
+                                                 ctrl.$setValidity('regexValidate', false);
+                                                 ctrl.$setViewValue(inputVal);
+                                                 ctrl.$render();
+                                                
                                                 return inputVal;
                                         }
 
@@ -771,6 +775,7 @@ proposalControllers.controller("proposalTool" , ['$scope','dataService',function
 
                                      ctrl.$setViewValue(number);
                                      ctrl.$render();
+                                     ctrl.$setValidity('regexValidate', true);
 
                                 // return the value or nothing will be written to the DOM.
                                 return value;
