@@ -833,7 +833,7 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
         else {
         var href = $("#nextPageId").attr("href")
         
-        $("#nextPageId").attr("href", "#/review/id1");
+        $("#nextPageId").attr("href", "#/startProposal/id1");
         }
         
         
