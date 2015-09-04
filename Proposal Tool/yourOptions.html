@@ -132,7 +132,7 @@
                   
                     <div class="row">
                         <span class="title">Your Average</span>
-                        <span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span> {{(energyBill.cumulative30YearsExpense/(energyBill.yearChange * energyBill.annualUsage)).toFixed(2) + " / kWh"}}</span>
+                        <span class="value ng-binding"><span class="glyphicon glyphicon-arrow-up"></span> {{(energyBill.annualCost/( energyBill.annualUsage)).toFixed(2) + " / kWh"}}</span>
                     </div>
 
                 </div>
