@@ -788,14 +788,14 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
                 } 
           
             }
-            if(tmp.name == "#phoneNo" || tmp.name == "#zipcode") {
+            if(tmp.name == "#phoneNo" ) {
                
-                var re = new RegExp('^\(\d{3}\) ?\d{3}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}');
+                var re = new RegExp('\([0-9]\)*');
                 if (re.test(ele)) {
                     tmp.valid = true;
                 } else {
                         tmp.valid = false;
-                        tmp.valid = true;
+                        //tmp.valid = true;
                     
                 }  
             } if(tmp.name == "#address") {
@@ -805,7 +805,9 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
                 } else {
                     tmp.valid = false;
                 }  
-            }             
+            } if( tmp.name == "#zipcode")  {
+                tmp.valid = true;
+            }
         }
         
         
