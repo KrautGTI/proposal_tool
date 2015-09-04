@@ -790,7 +790,7 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
             }
             if(tmp.name == "#phoneNo" ) {
                
-                var re = new RegExp('\([0-9]\)*');
+                var re = new RegExp('\([0-9]\)+');
                 if (re.test(ele)) {
                     tmp.valid = true;
                 } else {
@@ -829,6 +829,11 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
                     $(tmp.name).click(function() {
                     $(tmp.name).css('border', '');});
             
+        }
+        else {
+        var href = $("#nextPageId").attr("href")
+        
+        $("#nextPageId").attr("href", "#/review/id1");
         }
         
         

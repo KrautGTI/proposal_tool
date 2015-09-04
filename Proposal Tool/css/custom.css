@@ -7600,7 +7600,7 @@ a.btn-proposal:active {
 }
    
 /*********   payment option css **********/
-#proposal-tool-container .payment_option .row .col-sm-6 p{
+#proposal-tool-container .payment_option .row .payOptions p{
 margin-left: 100px;
 
 

@@ -127,10 +127,10 @@
                 <!--*******     heading close     **********-->
 
 
-                <div class="row paymentOption_text" style="margin: 20px 0px 0px; border-top:1px solid #dadad8">
+                <div class="row paymentOption_text" style="margin: 20px 0px 0px; border-top:1px solid #dadad8" ng-hide="visitDiscount">
 
-                    <div class="col-lg-6" style="border-right: 1px solid #dadad8;">
-                        <div style="border-bottom: 1px solid #dadad8;">
+                    <div class="payOptions">
+                        <div>
                             <h3><b><center>COMPETITIVE ESTIMATE<br>
 GOOD FOR 6 MONTHS</center></b></h3></div>
                         <div style="margin-top:15px;margin-right:-15px ">
@@ -149,7 +149,7 @@ GOOD FOR 6 MONTHS</center></b></h3></div>
                             </p>
                             <br>
                             <br>
-                            <div class="row" style="border: 1px solid #dadad8; margin-left:0px;margin-right:0px;">
+                            <div class="row" style="border: 1px solid #dadad8;">
                                 <div class="col-lg-6" style="border-right: 1px solid #dadad8;">
                                     <p>
                                         <center><b>CASH</b></center>
@@ -192,17 +192,17 @@ GOOD FOR 6 MONTHS</center></b></h3></div>
                                     </p>
                                 </div>
                             </div>
-                            <center ng-hide="visitDiscount">
+                            <center>
                                 <a href="" class="btn btn-primary" ng-click="ShowVisitDiscount()" style="font-size:20px;">Your Options</a>
                             </center>
                             <br>
                         </div>
                     </div>
-
+                </div>
                     <!--***** INITIAL VISIT DISCOUNT  START HERE ****-->
-
-                    <div class="col-lg-6" ng-show="visitDiscount">
-
+<div class="row paymentOption_text" style="margin: 20px 0px 0px; border-top:1px solid #dadad8">
+                    <div class="payOptions" ng-show="visitDiscount">
+                    <center>      
                         <div style="border-bottom: 1px solid #dadad8">
                             <h3><b><center>INITIAL VISIT DISCOUNT<br>
 GOOD ON FIRST VISIT
@@ -267,6 +267,7 @@ GOOD ON FIRST VISIT
                             <br>
 
                         </div>
+                        </center>
                     </div>
 
 
