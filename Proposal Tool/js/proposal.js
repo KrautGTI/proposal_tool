@@ -1571,6 +1571,9 @@ proposalControllers.controller('lineGraphController', ['$scope', 'dataService', 
             /*text: 'Electric Price History',*/
             x: -20 //center
         },
+        credits: {
+            enabled: false
+        },
 
 
         xAxis: {

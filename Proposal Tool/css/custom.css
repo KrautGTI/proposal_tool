@@ -7583,7 +7583,8 @@ a.btn-proposal:active {
     height:300px;
  /* border-radius: 50%;*/
   border: 10px solid #d3dfe1;
-  background: #33AD5C; 	
+  background: #33AD5C;
+     color: #fff;
 }
 .logo-display {
 	display: inline-block;
