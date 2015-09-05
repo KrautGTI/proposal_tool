@@ -614,7 +614,11 @@ var proposalControllers = angular.module('proposalControllers', [])
             }
 
             energyBill.cash = energyBill.solarCost - energyBill.outOfPocket;
-            energyBill.ezPay = Math.ceil(energyBill.cash * 0.016);
+            //E7*(E6/12)*((1+(E6/12))^E5)/((1+(E6/12))^E5-1) divyank
+            energyBill.emi = energyBill.cash*(energyBill.interest/(12*100))*((1 +                                                                               (energyBill.interest/(100*12)),energyBill.yearChange) /
+                                     (pow(1+((energyBill.interest/(100*12)))),energyBill.yearChange)-1);
+            
+            console.log(energyBill.emi);
 
             energyBill.solarCostDisplay = energyBill.convertToComma("" + energyBill.solarCost);
             energyBill.cashDisplay = energyBill.convertToComma("" + energyBill.cash);
@@ -790,7 +794,11 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
             }
             if(tmp.name == "#phoneNo" ) {
                
+<<<<<<< HEAD
                 var re = new RegExp('\([0-9]\)+');
+=======
+                var re = new RegExp('\([0-9]\){3}');
+>>>>>>> EMI calculation
                 if (re.test(ele)) {
                     tmp.valid = true;
                 } else {
@@ -835,8 +843,6 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
         
         $("#nextPageId").attr("href", "#/startProposal/id1");
         }
-        
-        
         
     };
 
