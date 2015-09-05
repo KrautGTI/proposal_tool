@@ -794,11 +794,8 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
             }
             if(tmp.name == "#phoneNo" ) {
                
-<<<<<<< HEAD
-                var re = new RegExp('\([0-9]\)+');
-=======
                 var re = new RegExp('\([0-9]\){3}');
->>>>>>> EMI calculation
+
                 if (re.test(ele)) {
                     tmp.valid = true;
                 } else {
