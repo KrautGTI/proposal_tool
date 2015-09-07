@@ -545,7 +545,7 @@ var proposalControllers = angular.module('proposalControllers', [])
             var numDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
             var energyMultiplier;
             energyBill.solarEstimatedProduction = 0;
-            var type = 260;
+            var type = 280;
             var energyProduction = 0;
             var miscCost = 0;
             var variation = [2.77, 3.13, 3.78, 4.21, 4.48, 4.61, 4.14, 4.12, 3.75, 2.94, 2.85, 2.39];
@@ -620,6 +620,7 @@ var proposalControllers = angular.module('proposalControllers', [])
             var E5 = 12 * 12;
             //var E5 = 6;
             energyBill.emi = E7 * (E6 / 12) * (Math.pow(1 + (E6 / 12), E5)) / (Math.pow((1 + (E6 / 12)), E5) - 1);
+            energyBill.emi = Math.ceil(energyBill.emi);
             /*
             energyBill.emi = energyBill.cash*(energyBill.interest)*( Math.pow(1 +                                                                               energyBill.interest,energyBill.yearChange)) /
                                      (Math.pow(1+energyBill.interest,energyBill.yearChange)-1);
