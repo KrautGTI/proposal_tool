@@ -579,9 +579,6 @@ var proposalControllers = angular.module('proposalControllers', [])
                         }
 
                     }
-
-
-
                 }
                 energyBill.numPanels = 0;
                 for (var j = 0; j < energyBill.solarSystem.length; j++) {
@@ -633,12 +630,17 @@ var proposalControllers = angular.module('proposalControllers', [])
             energyBill.ezPayDisplay = energyBill.convertToComma("" + energyBill.ezPay);
 
 
-
-
-
             energyBill.solarEstimatedProductionDisplay = energyBill.convertToComma("" +
                 Math.ceil(energyBill.solarEstimatedProduction));
 
+            energyBill.solarEstimated30YearProduction = energyBill.solarEstimatedProduction;
+            energyProd = energyBill.solarEstimatedProduction;
+            for(var i = 0; i < energyBill.yearChange; i++) {
+                 energyProd = energyProd * (1 - energyBill.solarDepreciation );
+            
+            }
+            
+            
             energyBill.solarEstimated30YearProductionDisplay = energyBill.convertToComma("" +
                 Math.ceil(energyBill.solarEstimatedProduction *
                     energyBill.yearChange));
