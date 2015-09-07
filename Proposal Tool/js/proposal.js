@@ -223,7 +223,7 @@ var proposalControllers = angular.module('proposalControllers', [])
         //The kWhRates used to show in when drawing lineCharts
         energyBill.kWhRates = [0.08, 0.07, 0.08, 0.08, 0.09, 0.09, 0.09, 0.1, 0.11, 0.12, 0.12, 0.12, 0.12,
                                                       0.13, 0.13, 0.13, 0.11, 0.11, 0.12, 0.19, 0.19, 0.21, 0.18, 0.20, 0.28, 0.27,
-                                                      0.28, 0.30, 0.28, 0.27, 0.26, 0.28, 0.29, 0.29];
+                                                      0.28, 0.30, 0.28, 0.27];//, 0.26, 0.28, 0.29, 0.29];
 
         energyBill.numArray = [1];
 
@@ -563,6 +563,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                             energyProduction += 260 * energyMultiplier *
                                 parseInt(energyBill.solarSystem[j].systemSize) *
                                 parseInt(energyBill.solarSystem[j].convEfficiency) / 100;
+                            console.log(energyBill.solarSystem[j].convEfficiency);
                         } else {
                             energyProduction += 260 * energyMultiplier *
                                 parseInt(energyBill.solarSystem[j].systemSize);
@@ -573,6 +574,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                             energyProduction += 280 * energyMultiplier *
                                 parseInt(energyBill.solarSystem[j].systemSize) *
                                 parseInt(energyBill.solarSystem[j].convEfficiency) / 100;
+                            console.log(energyBill.solarSystem[j].convEfficiency);
                         } else {
                             energyProduction += 280 * energyMultiplier *
                                 parseInt(energyBill.solarSystem[j].systemSize);
@@ -640,10 +642,9 @@ var proposalControllers = angular.module('proposalControllers', [])
             
             }
             
-            
             energyBill.solarEstimated30YearProductionDisplay = energyBill.convertToComma("" +
-                Math.ceil(energyBill.solarEstimatedProduction *
-                    energyBill.yearChange));
+                Math.ceil(energyBill.solarEstimatedProduction * energyBill.yearChange));
+            
             energyBill.solarSystemOffset = energyBill.annualCost *
                 energyBill.solarEstimatedProduction / energyBill.annualUsage;
             energyBill.solarSystemOffset += miscCost;
@@ -1324,6 +1325,9 @@ proposalControllers.controller('multipleBillBarGraphController', ['$scope', 'dat
 
 
     $('#bars').highcharts({
+        credits: {
+                enabled: false
+        },
         chart: {
             animation: false
         },
@@ -1582,7 +1586,7 @@ proposalControllers.controller('lineGraphController', ['$scope', 'dataService', 
     $('#lineGraph').highcharts({
         title: {
             /*text: 'Electric Price History',*/
-            x: -20 //center
+            x: 0 //center
         },
         credits: {
             enabled: false
@@ -1780,6 +1784,9 @@ proposalControllers.controller('areaChartController', ['$scope', 'dataService', 
     $scope.energyBill.lastIteration = false;
     $scope.energyBill.lastIteration2 = false;
     $('#areaChart').highcharts({
+        credits: {
+                enabled: false
+        },
         chart: {
             type: 'area',
             animation: false,
@@ -1798,7 +1805,8 @@ proposalControllers.controller('areaChartController', ['$scope', 'dataService', 
 
                 }
 
-            }
+            },
+            
         },
         title: {
             //  text: 'Your Future Electric Costs'
@@ -1898,6 +1906,9 @@ proposalControllers.controller('estimatedSolarSystemController', ['$scope', 'dat
 
 
     $('#lineAreaChart').highcharts({
+        credits: {
+                enabled: false
+        },
         title: {
             /*text: 'Combination chart'*/
         },

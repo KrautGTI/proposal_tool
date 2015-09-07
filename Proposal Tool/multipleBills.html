@@ -118,16 +118,16 @@
                 </div>
 
                 <div class="col-xs-12" style="margin:20px auto 0px; " ng-init="months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']">
-                    <div class="row" class="animate-repeat" ng-repeat="i in [0, 1, 2, 3, 4, 5]">
+                    <div class="row" class="animate-repeat" ng-repeat="i in [0, 2, 4, 6, 8, 10]">
                         <div class="col-xs-6">
-                            <span>{{months[$index]}}</span>
+                            <span>{{months[i]}}</span>
                             <input ng-show="energyBill.dollar"  class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill.Month[i].dollars " ng-change=energyBill.propagateEnergyBillFromDollar(i) currency-input >
                             <input ng-hide="energyBill.dollar"  class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill.Month[i].kWh" ng-change=energyBill.propagateEnergyBillFromkWh(i) kwh-input>
                         </div>
                         <div class="col-xs-6">
-                            <span>{{months[$index+6]}}</span>
-                            <input ng-show="energyBill.dollar"  class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill.Month[i+6].dollars" ng-change=energyBill.propagateEnergyBillFromDollar(i+6) currency-input>
-                            <input ng-hide="energyBill.dollar"  class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill.Month[i+6].kWh" placeholder="0 kWh" ng-change=energyBill.propagateEnergyBillFromkWh(i+6) kwh-input>
+                            <span>{{months[i+1]}}</span>
+                            <input ng-show="energyBill.dollar"  class="form-control disable-animations ng-pristine ng-untouched ng-valid" type="text" ng-model="energyBill.Month[i+1].dollars" ng-change=energyBill.propagateEnergyBillFromDollar(i+1) currency-input>
+                            <input ng-hide="energyBill.dollar"  class="form-control disable-animations ng-pristine ng-untouched ng-valid ng-hide" type="text" ng-model="energyBill.Month[i+1].kWh" placeholder="0 kWh" ng-change=energyBill.propagateEnergyBillFromkWh(i+1) kwh-input>
                         </div>
                     </div>
                 </div>
