@@ -104,174 +104,152 @@
     </div>
 
     <div class="container pages-container">
-        <div class="pages row" style="border-radius: 25px;">
-
-
+        <div class="pages row" style="margin-left: -100px; margin-right: -85px;">
             <!--competative and INITIAL start here-->
-            <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column" style="height:810px ; width:100%; border-radius: 25px;">
+            <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column" style="border-radius: 25px;" ng-hide="visitDiscount">
 
                 <!--*******     heading   start   **********-->
-
-                <div class="row paymentOption_text" style="border-radius: 25px;">
+                <div class="row paymentOption_text">
                     <div class="col-sm-12" style="margin-top: 20px;">
                         <center>
-                            <h3 style=" color: #55636a;; font-size: 42px;">Investment Review
-                                </h3></center>
+                            <h3 style=" color: #55636a;; font-size: 42px; border-bottom:1px solid #dadad8; padding-bottom:20px">Investment Review</h3>
+                        </center>
                     </div>
-                   <!-- <div class="col-sm-4 " style="margin-top: 20px; ">
-                        <h4><b>Name&nbsp;:&nbsp;{{energyBill.firstName}} {{ " " + energyBill.lastName}}</b></h4>
-                        <h4><b>Date&nbsp; : &nbsp;{{energyBill.date}}</b></h4>
-                    </div>-->
                 </div>
-
                 <!--*******     heading close     **********-->
 
 
-                <div class="row paymentOption_text" style="margin: 20px 0px 0px; border-top:1px solid #dadad8" ng-hide="visitDiscount">
+                <div class="row paymentOption_text">
 
                     <div class="payOptions">
-                        <div>
-                            <h3><b><center>COMPETITIVE ESTIMATE<br>
-GOOD FOR 6 MONTHS</center></b></h3></div>
-                        <div style="margin-top:15px;margin-right:-15px ">
-                            <p style="padding-left: 80px;">
+                        <h3 style="text-align:center; font-weight:bold">COMPETITIVE ESTIMATE GOOD FOR 6 MONTHS</h3>
 
-                                <br>
-                                <br> Total Investment: {{ "$" + energyBill.solarCostDisplay}}
 
-                            </p>
-                            <br>
-                            <br>
-                            <p style="padding-left: 80px;">
+                        <br>
+                        <p style="padding-left: 80px; font-size:20px">
+                            Total Investment: {{ "$" + energyBill.solarCostDisplay}}
+                        </p>
+                        <p style="padding-left: 80px; font-size:20px">
+                            Out of Pocket: {{"$" + energyBill.outOfPocket}}
+                        </p>
+                        <div class="row" style="border: 1px solid #dadad8; margin-left:15px; margin-right:15px">
+                            <div class="col-lg-6" style="border-right: 1px solid #dadad8;">
+                                <p>
+                                    <center style="font-weight:bold; font-size:20px">CASH</center>
+                                </p>
 
-                                Out of Pocket: {{"$" + energyBill.outOfPocket}}
-
-                            </p>
-                            <br>
-                            <br>
-                            <div class="row" style="border: 1px solid #dadad8;">
-                                <div class="col-lg-6" style="border-right: 1px solid #dadad8;">
-                                    <p>
-                                        <center><b>CASH</b></center>
-                                    </p>
-
-                                </div>
-                                <div class="col-lg-6">
-                                    <p>
-                                        <center><b>EZ PAY</b></center>
-                                    </p>
-
-                                </div>
                             </div>
-                            <div class="row" style="margin-left:0px; height:300px;">
-                                <div class="col-lg-6" style="border-right: 1px solid #dadad8; height:240px; margin-top:15px;  margin-left: -9px;">
-                                    <p style="padding-left: 80px;">
-                                        <br> {{"$" + energyBill.cashDisplay}}
-                                        <br>
-                                        <br> Balance Due
-                                        <br>
-                                        <br> Upon Completion
-                                        <br>
-                                        <br>
-
-                                    </p>
-
-
-                                </div>
-                                <div class="col-lg-6">
-                                    <p style="padding-left: 80px;">
-                                        <br> $_______________
-                                        <br>
-                                        <br> Monthly Investment
-                                        <br>
-                                        <br> @ 15.9% APR for
-                                        <br>
-                                        <br>144 months (12 yrs.)
-                                        <br>
-                                        <br>
-                                    </p>
-                                </div>
+                            <div class="col-lg-6">
+                                <p>
+                                    <center style="font-weight:bold; font-size:20px">EZ PAY</center>
+                                </p>
                             </div>
-                            <center>
-                                <a href="" class="btn btn-primary" ng-click="ShowVisitDiscount()" style="font-size:20px;">Your Options</a>
-                            </center>
-                            <br>
                         </div>
-                    </div>
-                </div>
-                    <!--***** INITIAL VISIT DISCOUNT  START HERE ****-->
-<div class="row paymentOption_text" style="margin: 20px 0px 0px; border-top:1px solid #dadad8">
-                    <div class="payOptions" ng-show="visitDiscount">
-                    <center>      
-                        <div style="border-bottom: 1px solid #dadad8">
-                            <h3><b><center>INITIAL VISIT DISCOUNT<br>
-GOOD ON FIRST VISIT
-</center></b></h3></div>
+                        <div class="row">
+                            <div class="col-lg-6" style="border-right: 1px solid #dadad8; margin-top:10px; margin-bottom:10px">
+                                <p style="padding-left: 120px; font-size:15px">
+                                    <br> {{"$" + energyBill.cashDisplay}}
+                                    <br>
+                                    <br> Balance Due
+                                    <br>
+                                    <br> Upon Completion
+                                    <br>
+                                    <br>
 
-                        <br>
-                        <br>
-                        <p>Total investment</p>
-                        <br>
-                        <p>Initial Visit Discount</p>
-                        <br>
-                        <p>Net of Total Inv and IVD</p>
-                        <br>
-                        <p>0 out of pocket
-                            <center ng-hide="showOptionA">
-                                <a href="" class="btn btn-primary" ng-click="showNextOptionA()">Show Option A</a>
-                            </center>
-                        </p>
-                        <br>
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p style="padding-left: 80px; font-size:15px">
+                                    <br> $_______________
+                                    <br>
+                                    <br> Monthly Investment
+                                    <br>
+                                    <br> @ 15.9% APR for 144 months (12 yrs.)
 
-                        <p ng-show="showOptionA"> <b> Option A- 0 out of pocket </b>
-                            <br>
-
-                            <b style="padding-left:70px;">   0 interest</b>
-                            <br>
-                            <b style="padding-left:70px;"> 0 payments for 12 months</b>
-                            <br>
-                            <center ng-show="OptionB">
-                                <a href="" class="btn btn-primary" ng-click="showNextOptionB()">Show Option B</a>
-                            </center>
-                        </p>
-
-                        <p ng-show="showOptionB"> <b> Option B- 0 out of pocket</b>
-                            <br>
-                            <b style="padding-left:70px;">   6.99% interest</b>
-                            <br>
-                            <b style="padding-left:70px;"> "payments" monthly installment</b>
-                            <br>
-                            <b style="padding-left:70px;">              144 months</b>
-                            <br>
-                            <center ng-show="OptionC">
-                                <a href="" class="btn btn-primary" ng-click="showNextOptionC()">Show Option C</a>
-                            </center>
-                        </p>
-                        <div ng-show="showOptionC">
-                            <p> <b>Option C- Split Program</b>
-                                <br>
-                                <b style="padding-left:70px;"> 0 out of pocket</b>
-                                <br>
-
-                            </p>
-
-                            <span style="padding-left:10px;">"Tax Credit" Split</span><span style="padding-left:183px;">Net investment split</span>
-                            <br>
-                            <span style="padding-left:10px;">30% net IVD cost</span><span style="padding-left:179px;">70% of the IVD tota</span>
-                            <br>
-                            <span style="padding-left:10px;">0 interest </span><span style="padding-left:229px;">6.99% interest</span>
-                            <br>
-                            <span style="padding-left:10px;">0 payments for 12 months</span><span style="padding-left:124px;">"payment" monthly installment</span>
-                            <br>
-                            <span style="padding-left:302px;">144 months</span>
-                            <br>
-
+                                    <br>
+                                    <br>
+                                </p>
+                            </div>
                         </div>
+                        <center>
+                            <a href="" class="btn btn-primary" ng-click="ShowVisitDiscount()" style="font-size:20px;">Your Options</a>
                         </center>
-                    </div>
+                        <br>
 
+                    </div>
+                </div>
+            </div>
+            <!--***** INITIAL VISIT DISCOUNT  START HERE ****-->
+
+
+            <div class="row" ng-show="visitDiscount" style="position:relative; margin-top:150px;">
+                <div class="col-sm-2" style="background-color:white; height:350px; border-top-left-radius: 25px;border-bottom-left-radius: 25px; padding-top:70px; border-right: 1px solid #dadad8;">
+                    <p style="font-size: 18px; padding-top:30px">Total investment</p>
+
+                    <p style="font-size: 18px;">Initial Visit Discount</p>
+
+                    <p style="font-size: 18px;">Net of Total Inv and IVD</p>
+
+                    <p style="font-size: 18px;">0 out of pocket</p>
+
+                    <center ng-hide="showOptionA" style="margin-top: -90px; margin-left: 191px;">
+                        <a href="" class="btn btn-primary" ng-click="showNextOptionA()">Show Option A</a>
+                    </center>
 
                 </div>
+                <div class="col-sm-3" ng-show="showOptionA" style="background-color:white; height:350px; border-right: 1px solid #dadad8;">
+                    <div style="font-size: 18px; font-weight: bold; padding-top: 30px; border-bottom: 1px solid #dadad8;margin-right: -15px; margin-left: -15px; padding-left: 125px; padding-bottom:20px">Option A</div>
+                     <p style="font-size: 18px; padding-top:15px">0 out of pocket</p>
+                    <p style="font-size: 18px;"> 0 interest</p>
+
+                    <p style="font-size: 18px;"> 0 payments for 12 months</p>
+
+                    <center ng-show="OptionB" style="margin-left: 295px;">
+                        <a href="" class="btn btn-primary" ng-click="showNextOptionB()">Show Option B</a>
+                    </center>
+
+                </div>
+                <div class="col-sm-3" ng-show="showOptionB" style="background-color:white; height:350px;border-right: 1px solid #dadad8;">
+
+                    <div style="font-size: 18px; font-weight:bold; padding-top: 30px; border-bottom: 1px solid #dadad8;margin-right: -15px; margin-left: -15px; padding-left: 125px; padding-bottom:20px">Option B</div>
+                    <p style="font-size: 18px; padding-top:15px">0 out of pocket</p>
+                    <p style="font-size: 18px;">6.99% interest</p>
+
+                    <p style="font-size: 18px;">"payments" monthly installment</p>
+
+                    <p style="font-size: 18px;">144 months</p>
+
+                    <center ng-show="OptionC" style="margin-left: 296px; margin-top: -35px;">
+                        <a href="" class="btn btn-primary" ng-click="showNextOptionC()">Show Option C</a>
+                    </center>
+
+                </div>
+                <div class="col-sm-4" ng-show="showOptionC" style="font-size: 18px; background-color:white;  height:350px;border-right: 1px solid #dadad8; border-top-right-radius: 25px;border-bottom-right-radius: 25px;">
+                    <div style="font-size: 18px; font-weight:bold; padding-top: 30px; border-bottom: 1px solid #dadad8;margin-right: -15px; margin-left: -15px; padding-left: 125px; padding-bottom:20px">Option C- Split Program </div>                       
+                    <p style="font-size: 18px; padding-left: 158px; padding-top:15px"> 0 out of pocket </p>
+                        
+
+                   
+                    <div class="row" style="font-size: 18px;border-top: 1px solid #dadad8;">
+
+                        <div class="col-sm-6" style="border-right: 1px solid #dadad8; height: 221px;">
+                            <p>"Tax Credit" Split</p>
+                            <p>30% net IVD cost</p>
+                            <p>0 interest</p>
+                            <p>0 payments for 12 months</p>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <p>Net investment split</p>
+                            <p>70% of the IVD tota</p>
+                            <p>6.99% interest</p>
+                            <p>"payment" monthly installment</p>
+                            <p>144 months</p>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
             <!--competative and INITIAL end here-->
