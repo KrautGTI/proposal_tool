@@ -104,81 +104,45 @@
     </div>
 
     <div class="container pages-container">
-        <div class="pages row" style="margin-left: -100px; margin-right: -85px;">
-            <!--competative and INITIAL start here-->
-            <div ng-hide="finish">
-                <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column" style="border-radius: 25px;" ng-hide="visitDiscount">
+        <div class="option pages row">           
+          
+            <div class="row finish">
+                <h1>RETURN ON INVESTMENT</h1>
+                <form class="form-horizontal" role="form" id="myform" style="padding-top: 50px;">
 
-                    <!--*******     heading   start   **********-->
-                    <div class="row paymentOption_text">
-                        <div class="col-sm-12" style="margin-top: 20px;">
-                            <center>
-                                <h3 style=" color: #55636a;; font-size: 42px; border-bottom:1px solid #dadad8; padding-bottom:20px">Investment Review</h3>
-                            </center>
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">ELECTRICAL SAVINGS</label>
+                        <div class="col-sm-7">
+                            <p></p>
                         </div>
                     </div>
-                    <!--*******     heading close     **********-->
+                    <div class="form-group">
 
+                        <label class="control-label col-sm-5">EQUITY INCREASE</label>
 
-                    <div class="row paymentOption_text">
-
-                        <div class="payOptions">
-                            <h3 style="text-align:center; font-weight:bold">COMPETITIVE ESTIMATE GOOD FOR 6 MONTHS</h3>
-
-
-                            <br>
-                            <p style="padding-left: 80px; font-size:20px">
-                                Total Investment: {{ "$" + energyBill.solarCostDisplay}}
-                            </p>
-                            <p style="padding-left: 80px; font-size:20px">
-                                Out of Pocket: {{"$" + energyBill.outOfPocket}}
-                            </p>
-                            <div class="row" style="border: 1px solid #dadad8; margin-left:15px; margin-right:15px">
-                                <div class="col-lg-6" style="border-right: 1px solid #dadad8;">
-                                    <p>
-                                        <center style="font-weight:bold; font-size:20px">CASH</center>
-                                    </p>
-
-                                </div>
-                                <div class="col-lg-6">
-                                    <p>
-                                        <center style="font-weight:bold; font-size:20px">EZ PAY</center>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6" style="border-right: 1px solid #dadad8; margin-top:10px; margin-bottom:10px">
-                                    <p style="padding-left: 120px; font-size:15px">
-                                        <br> {{"$" + energyBill.cashDisplay}}
-                                        <br>
-                                        <br> Balance Due
-                                        <br>
-                                        <br> Upon Completion
-                                        <br>
-                                        <br>
-
-                                    </p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <p style="padding-left: 80px; font-size:15px">
-                                        <br> $_______________
-                                        <br>
-                                        <br> Monthly Investment
-                                        <br>
-                                        <br> @ 15.9% APR for 144 months (12 yrs.)
-
-                                        <br>
-                                        <br>
-                                    </p>
-                                </div>
-                            </div>
-
+                        <div class="col-sm-7">
+                            <p></p>
                         </div>
                     </div>
-                </div>
 
+                    <div class="form-group required">
+
+                        <label class="control-label col-sm-5">TAX CREDIT</label>
+
+                        <div class="col-sm-7">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">TOTAL</label>
+                        <div class="col-sm-7">
+                            <p></p>
+                        </div>
+                    </div>
+
+                </form>
+                <!-- RETURN ON INVESTMENT END-->
             </div>
-            <!--competative and INITIAL end here-->
 
         </div>
 
@@ -187,12 +151,12 @@
 
 
         <div id="proposal-page-nav">
-            <a href="#/solarSystemSummary/id1" style="text-decoration:none">
+            <a href="#/options/id1" style="text-decoration:none">
                 <div class="nav-button prev">
                     <span class="glyphicon glyphicon-arrow-left" style="position:relative; top:8px"></span> <span style="font-size:20px; margin-top:3px">BACK</span>
                 </div>
             </a>
-            <a href="#/options/id1" style="text-decoration:none">
+            <a href="#/heroSummary/id1" style="text-decoration:none">
                 <div class="nav-button next">
 
                     <span style="font-size:20px; margin-top:3px">NEXT</span>

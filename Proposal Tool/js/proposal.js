@@ -612,19 +612,19 @@ var proposalControllers = angular.module('proposalControllers', [])
             if (energyBill.outOfPocket > 1000) {
                 energyBill.outOfPocket = 1000;
             }
-            energyBill.interest = 15.9/(12*100);
+            energyBill.interest = 15.9 / (12 * 100);
             energyBill.cash = energyBill.solarCost - energyBill.outOfPocket;
             //E7*(E6/12)*((1+(E6/12))^E5)/((1+(E6/12))^E5-1) divyank
             var E7 = energyBill.cash;
-            var E6 = 15.9/100; //Interest
+            var E6 = 15.9 / 100; //Interest
             var E5 = 12 * 12;
             //var E5 = 6;
-            energyBill.emi = E7*(E6/12)*(Math.pow(1+(E6/12),E5))/(Math.pow((1+(E6/12)),E5)-1);
+            energyBill.emi = E7 * (E6 / 12) * (Math.pow(1 + (E6 / 12), E5)) / (Math.pow((1 + (E6 / 12)), E5) - 1);
             /*
             energyBill.emi = energyBill.cash*(energyBill.interest)*( Math.pow(1 +                                                                               energyBill.interest,energyBill.yearChange)) /
                                      (Math.pow(1+energyBill.interest,energyBill.yearChange)-1);
                                      */
-            
+
             console.log(energyBill.emi);
 
             energyBill.solarCostDisplay = energyBill.convertToComma("" + energyBill.solarCost);
@@ -637,11 +637,13 @@ var proposalControllers = angular.module('proposalControllers', [])
 
             energyBill.solarEstimated30YearProduction = energyBill.solarEstimatedProduction;
             energyProd = energyBill.solarEstimatedProduction;
-            for(var i = 0; i < energyBill.yearChange; i++) {
-                 energyProd = energyProd * (1 - energyBill.solarDepreciation );
-            
+            for (var i = 0; i < energyBill.yearChange; i++) {
+                energyProd = energyProd * (1 - energyBill.solarDepreciation);
+
             }
+
             
+
             energyBill.solarEstimated30YearProductionDisplay = energyBill.convertToComma("" +
                 Math.ceil(energyBill.solarEstimatedProduction * energyBill.yearChange));
             
@@ -755,103 +757,105 @@ proposalControllers.controller("proposalTool", ['$scope', 'dataService', functio
 
     $scope.nextPageValidation = function () {
         var fname = $('#firstName').val();
-        var lname = $('#lastName').val();        
-        var email = $('#email').val();            
+        var lname = $('#lastName').val();
+        var email = $('#email').val();
         var phoneNo = $('#phoneNo').val();
         var address = $('#address').val();
         var city = $('#city').val();
         var state = $('#state').val();
-        var zipcode = $('#zipcode').val(); 
-        
-        var names = ["#firstName", "#lastName", "#email", "#phoneNo", "#address",  "#city", "#state", "#zipcode" ];
+        var zipcode = $('#zipcode').val();
+
+        var names = ["#firstName", "#lastName", "#email", "#phoneNo", "#address", "#city", "#state", "#zipcode"];
         var doms = [];
         var i = 0;
         //Initializing doms
-        for(i = 0; i < names.length; i++) {
+        for (i = 0; i < names.length; i++) {
             var tmp = {};
             tmp.name = names[i];
             tmp.valid = false;
-            
+
             doms.push(tmp);
-            
+
         }
         //After doms must contain 8 names and 8 false
-        
-        
-        
+
+
+
         //Validation
-        for(i = 0; i < names.length; i++) {
+        for (i = 0; i < names.length; i++) {
             //Get this dom object
             var tmp = doms[i];
-            
+
             var ele = $(tmp.name).val();
-            
-            
-            if(tmp.name == "#firstName" || tmp.name == "#lastName" || tmp.name == "#city" || tmp.name == "#state") {
+
+
+            if (tmp.name == "#firstName" || tmp.name == "#lastName" || tmp.name == "#city" || tmp.name == "#state") {
                 var re = new RegExp("[a-zA-Z][a-zA-Z ]+");
                 if (re.test(ele)) {
                     tmp.valid = true;
                 } else {
                     tmp.valid = false;
-                }  
-            } if(tmp.name == "#email") {
+                }
+            }
+            if (tmp.name == "#email") {
                 var re = new RegExp("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$");
                 if (re.test(ele)) {
                     tmp.valid = true;
                 } else {
                     tmp.valid = false;
-                } 
-          
+                }
+
             }
-            if(tmp.name == "#phoneNo" ) {
-               
+            if (tmp.name == "#phoneNo") {
+
                 var re = new RegExp('\([0-9]\){3}');
 
                 if (re.test(ele)) {
                     tmp.valid = true;
                 } else {
-                        tmp.valid = false;
-                        //tmp.valid = true;
-                    
-                }  
-            } if(tmp.name == "#address") {
+                    tmp.valid = false;
+                    //tmp.valid = true;
+
+                }
+            }
+            if (tmp.name == "#address") {
                 var re = new RegExp("[A-Za-z0-9'\.\-\s\,]");
                 if (re.test(ele)) {
                     tmp.valid = true;
                 } else {
                     tmp.valid = false;
-                }  
-            } if( tmp.name == "#zipcode")  {
+                }
+            }
+            if (tmp.name == "#zipcode") {
                 tmp.valid = true;
             }
         }
-        
-        
+
+
         //Verification
-        for(i = 0; i < names.length; i++) {
+        for (i = 0; i < names.length; i++) {
             var tmp = doms[i];
-            
-            if(tmp.valid == false) {
+
+            if (tmp.valid == false) {
                 break;
             }
         }
-        if(i < names.length)
-        {
+        if (i < names.length) {
             var tmp = doms[i];
             //do red
             console.log(tmp);
-                    $(tmp.name).css('border', '');
-                    $(tmp.name).css('border', '1px solid red');
-                    $(tmp.name).click(function() {
-                    $(tmp.name).css('border', '');});
-            
+            $(tmp.name).css('border', '');
+            $(tmp.name).css('border', '1px solid red');
+            $(tmp.name).click(function () {
+                $(tmp.name).css('border', '');
+            });
+
+        } else {
+            var href = $("#nextPageId").attr("href")
+
+            $("#nextPageId").attr("href", "#/startProposal/id1");
         }
-        else {
-        var href = $("#nextPageId").attr("href")
-        
-        $("#nextPageId").attr("href", "#/startProposal/id1");
-        }
-        
+
     };
 
 
@@ -1158,17 +1162,7 @@ proposalControllers.controller('heroSummaryController', ['$scope', 'dataService'
     };
 
 }]);
-proposalControllers.controller('paymentOptionsController', ['$scope', 'dataService', function ($scope, dataService) {
-    $scope.energyBill = dataService.dataObj;
-    $scope.navMenuPageArrayEnerUses = $scope.energyBill.menuPageArrayeu;
-    $scope.navMenuPageArrayUpgrad = $scope.energyBill.menuPageArrayup;
-    $scope.navMenuPageArrayPayment = $scope.energyBill.menuPageArraypay;
-
-
-    $scope.showHide = true;
-    $scope.showHideDetail = function () {
-        $scope.showHide = $scope.showHide === false ? true : false;
-    };
+proposalControllers.controller('optionController', ['$scope', 'dataService', function ($scope, dataService) {
     $scope.showOptionA = false;
     $scope.showOptionB = false;
     $scope.showOptionC = false;
@@ -1180,20 +1174,35 @@ proposalControllers.controller('paymentOptionsController', ['$scope', 'dataServi
     $scope.showNextOptionA = function () {
         $scope.showOptionA = true;
         $scope.OptionB = true;
-    }
+        
+    };
     $scope.showNextOptionB = function () {
 
         $scope.showOptionB = true;
         $scope.OptionC = true;
         $scope.OptionB = false;
-    }
+    };
     $scope.showNextOptionC = function () {
         $scope.showOptionC = true;
         $scope.OptionC = false;
-    }
+    };
     $scope.ShowVisitDiscount = function () {
         $scope.visitDiscount = true;
-    }
+    };
+
+}]);
+proposalControllers.controller('paymentOptionsController', ['$scope', 'dataService', function ($scope, dataService) {
+    $scope.energyBill = dataService.dataObj;
+    $scope.navMenuPageArrayEnerUses = $scope.energyBill.menuPageArrayeu;
+    $scope.navMenuPageArrayUpgrad = $scope.energyBill.menuPageArrayup;
+    $scope.navMenuPageArrayPayment = $scope.energyBill.menuPageArraypay;
+
+
+    $scope.showHide = true;
+    $scope.showHideDetail = function () {
+        $scope.showHide = $scope.showHide === false ? true : false;
+    };
+
 
 }]);
 proposalControllers.controller('buildSolarSystemController', ['$scope', 'dataService', function ($scope, dataService) {

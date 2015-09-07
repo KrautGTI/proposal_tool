@@ -93,6 +93,14 @@ propTool.config(['$routeProvider',
 					 when('/finishApplication/id1', {
 					templateUrl: 'finishApplication.html',
 					controller:'finishApplicationController'		
+				    }).
+                    when('/options/id1', {
+					templateUrl: 'options.html',
+                    controller:'optionController'	    
+				    }).
+                    when('/finish/id1', {
+					templateUrl: 'finish.html'
+							
 				    });				 
 				 }]);	
 				
