@@ -601,6 +601,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                 energyProduction = 0;
 
             }
+            energyBill.solarCost = 0;
             for (var j = 0; j < energyBill.solarSystem.length; j++) {
                 if (energyBill.solarSystem[j].type260 == 1)
                     energyBill.solarCost += 1000 * parseInt(energyBill.solarSystem[j].systemSize);
@@ -612,11 +613,18 @@ var proposalControllers = angular.module('proposalControllers', [])
             if (energyBill.outOfPocket > 1000) {
                 energyBill.outOfPocket = 1000;
             }
-
+            energyBill.interest = 15.9/(12*100);
             energyBill.cash = energyBill.solarCost - energyBill.outOfPocket;
             //E7*(E6/12)*((1+(E6/12))^E5)/((1+(E6/12))^E5-1) divyank
-            energyBill.emi = energyBill.cash*(energyBill.interest/(12*100))*((1 +                                                                               (energyBill.interest/(100*12)),energyBill.yearChange) /
-                                     (pow(1+((energyBill.interest/(100*12)))),energyBill.yearChange)-1);
+            var E7 = energyBill.cash;
+            var E6 = 15.9/100; //Interest
+            var E5 = 12 * 12;
+            //var E5 = 6;
+            energyBill.emi = E7*(E6/12)*(Math.pow(1+(E6/12),E5))/(Math.pow((1+(E6/12)),E5)-1);
+            /*
+            energyBill.emi = energyBill.cash*(energyBill.interest)*( Math.pow(1 +                                                                               energyBill.interest,energyBill.yearChange)) /
+                                     (Math.pow(1+energyBill.interest,energyBill.yearChange)-1);
+                                     */
             
             console.log(energyBill.emi);
 
