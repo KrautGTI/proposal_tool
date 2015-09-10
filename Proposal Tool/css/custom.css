@@ -10909,7 +10909,7 @@ a.btn-proposal:active {
 
 .container .option .optionBorderRadius {
     background-color: white;
-    height: 350px;
+    height: 450px;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     padding-top: 70px;
@@ -10919,7 +10919,7 @@ a.btn-proposal:active {
 .container .option .optionBorderRadiusRight {
     font-size: 18px;
     background-color: white;
-    height: 350px;
+    height: 450px;
     border-right: 1px solid #dadad8;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -10927,7 +10927,7 @@ a.btn-proposal:active {
 
 .container .option .optionAB {
     background-color: white;
-    height: 350px;
+    height: 450px;
     border-right: 1px solid #dadad8;
 }
 
@@ -10950,7 +10950,7 @@ a.btn-proposal:active {
     position: relative;
     margin-top: 60px;
     background-color: white;
-    height: 400px;
+    height: 450px;
     border-radius: 25px;    
 }
 
@@ -10968,6 +10968,6 @@ font-family: gotham narrow;
 .container .option .finish .form-group p:after{
     padding-left: 200px;
     padding-top: 10px;
-    content:"________________________________";
+    content:{{energyBill.OptionBemi}};
 
 }

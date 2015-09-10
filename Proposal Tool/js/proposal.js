@@ -621,12 +621,15 @@ var proposalControllers = angular.module('proposalControllers', [])
             //var E5 = 6;
             energyBill.emi = E7 * (E6 / 12) * (Math.pow(1 + (E6 / 12), E5)) / (Math.pow((1 + (E6 / 12)), E5) - 1);
             energyBill.emi = Math.ceil(energyBill.emi);
+            energyBill.emi = Math.ceil(energyBill.cash * 0.016);
+            energyBill.OptionBemi = Math.ceil(energyBill.cash * 0.0105);
             /*
             energyBill.emi = energyBill.cash*(energyBill.interest)*( Math.pow(1 +                                                                               energyBill.interest,energyBill.yearChange)) /
                                      (Math.pow(1+energyBill.interest,energyBill.yearChange)-1);
                                      */
 
             console.log(energyBill.emi);
+            console.log(energyBill.OptionBemi);
 
             energyBill.solarCostDisplay = energyBill.convertToComma("" + energyBill.solarCost);
             energyBill.cashDisplay = energyBill.convertToComma("" + energyBill.cash);
@@ -1164,6 +1167,7 @@ proposalControllers.controller('heroSummaryController', ['$scope', 'dataService'
 
 }]);
 proposalControllers.controller('optionController', ['$scope', 'dataService', function ($scope, dataService) {
+    $scope.energyBill = dataService.dataObj;
     $scope.showOptionA = false;
     $scope.showOptionB = false;
     $scope.showOptionC = false;
