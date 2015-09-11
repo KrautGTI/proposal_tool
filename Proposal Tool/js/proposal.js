@@ -555,6 +555,10 @@ var proposalControllers = angular.module('proposalControllers', [])
                  * Small issue: systemSize is representing number of panels
                  * ToDo: panel type to be fixed when the type is clicked while creating scenario
                  */
+                if(energyBill.solarSystem.length == 0) {
+                    energyBill.solarSystem.push({});
+                    energyBill.solarSystem[0].systemSize = "20";
+                }
 
                 energyMultiplier = variation[i] * 1 * numDays[i] * solarRadiationFactor[i] / 1000;
                 for (var j = 0; j < energyBill.solarSystem.length; j++) {
