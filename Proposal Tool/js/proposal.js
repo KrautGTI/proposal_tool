@@ -1590,11 +1590,7 @@ proposalControllers.controller('solarSystemSummaryController', ['$scope', 'dataS
             y += 40;
         
             setItems(x,y);
-        
 
-        
-        
-        
             doc.save('Test.pdf');
     
     }
