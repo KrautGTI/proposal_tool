@@ -601,6 +601,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                 }
                 estimates.push(Math.ceil(energyProduction));
                 energyBill.solarEstimatedProduction += energyProduction;
+                
                 energyProduction = 0;
 
             }
@@ -654,7 +655,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
             energyBill.solarEstimated30YearProductionDisplay = energyBill.convertToComma("" +
                 Math.ceil(energyBill.solarEstimatedProduction * energyBill.yearChange));
-            
+            energyBill.solarProduction = Math.ceil(energyBill.solarEstimatedProduction);
             energyBill.solarSystemOffset = energyBill.annualCost *
                 energyBill.solarEstimatedProduction / energyBill.annualUsage;
             energyBill.solarSystemOffset += miscCost;
@@ -1161,6 +1162,7 @@ proposalControllers.controller('multipleBillController', ['$scope', 'dataService
 
 proposalControllers.controller('heroSummaryController', ['$scope', 'dataService', function ($scope, dataService) {
     $scope.energyBill = dataService.dataObj;
+    
     $scope.navMenuPageArrayEnerUses = $scope.energyBill.menuPageArrayeu;
     $scope.navMenuPageArrayUpgrad = $scope.energyBill.menuPageArrayup;
     $scope.navMenuPageArrayPayment = $scope.energyBill.menuPageArraypay;
