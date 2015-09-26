@@ -244,53 +244,53 @@ var proposalControllers = angular.module('proposalControllers', [])
         var categories = [];
         categories.push({
             region: 'p',
-            perSummerDayLimit: 16.4,
-            perWinterDay: 29.6
+            perSummerDayLimit: 13.8,
+            perWinterDay: 12.3
         });
         categories.push({
             region: 'q',
-            perSummerDayLimit: 29.6,
-            perWinterDay: 8.3
+            perSummerDayLimit: 7.0,
+            perWinterDay: 12.3
         });
         categories.push({
             region: 'r',
-            perSummerDayLimit: 29.8,
-            perWinterDay: 18.8
+            perSummerDayLimit: 15.6,
+            perWinterDay: 11.0
         });
         categories.push({
             region: 's',
-            perSummerDayLimit: 27.1,
-            perWinterDay: 16.4
+            perSummerDayLimit: 13.8,
+            perWinterDay: 11.2
         });
         categories.push({
             region: 't',
-            perSummerDayLimit: 14.9,
-            perWinterDay: 8.3
+            perSummerDayLimit: 7.0,
+            perWinterDay: 8.5
         });
         categories.push({
             region: 'v',
-            perSummerDayLimit: 26.6,
-            perWinterDay: 13.6
+            perSummerDayLimit: 8.7,
+            perWinterDay: 10.6
         });
         categories.push({
             region: 'w',
-            perSummerDayLimit: 20.6,
-            perWinterDay: 20.8
+            perSummerDayLimit: 16.8,
+            perWinterDay: 10.1
         });
         categories.push({
             region: 'x',
-            perSummerDayLimit: 9.3,
-            perWinterDay: 16.7
+            perSummerDayLimit: 10.1,
+            perWinterDay: 10.9
         });
         categories.push({
             region: 'y',
-            perSummerDayLimit: 13.0,
-            perWinterDay: 27.1
+            perSummerDayLimit: 10.6,
+            perWinterDay: 12.6
         });
         categories.push({
             region: 'z',
-            perSummerDayLimit: 7.7,
-            perWinterDay: 18.7
+            perSummerDayLimit: 6.2,
+            perWinterDay: 9.0
         });
 
 
