@@ -1363,14 +1363,18 @@ proposalControllers.controller('multipleBillBarGraphController', ['$scope', 'dat
                     var index = this.axis.categories.indexOf(this.value);
                     if ($scope.energyBill.dollar === true) {
                         if ($scope.dataMonths[index].y !== undefined)
-                            return ' <a> <strong>' + this.value + ' </strong><br>' + '$' + Math.ceil($scope.dataMonths[index].y) + '</a>';
+                            return ' <a> <strong>' + this.value + ' </strong><br>' + '$' +
+                                        Math.ceil($scope.dataMonths[index].y) + '</a>';
                         else
-                            return ' <a><strong>' + this.value + '</strong><br>' + '$' + Math.ceil($scope.dataMonths[index]) + '</a>';
+                            return ' <a><strong>' + this.value + '</strong><br>' + '$' +
+                                        Math.ceil($scope.dataMonths[index]) + '</a>';
                     } else {
                         if ($scope.dataMonths[index].y !== undefined)
-                            return ' <a><strong>' + this.value + '</strong><br>' + Math.ceil($scope.dataMonths[index].y) + ' kWh' + '</a>';
+                            return ' <a><strong>' + this.value + '</strong><br>' +
+                                    Math.ceil($scope.dataMonths[index].y) + ' kWh' + '</a>';
                         else
-                            return ' <a><strong>' + this.value + '</strong><br>' + Math.ceil($scope.dataMonths[index]) + ' kWh' + '</a>';
+                            return ' <a><strong>' + this.value + '</strong><br>' +
+                                    Math.ceil($scope.dataMonths[index]) + ' kWh' + '</a>';
 
                     }
 
@@ -1403,7 +1407,8 @@ proposalControllers.controller('multipleBillBarGraphController', ['$scope', 'dat
                     useHTML: true,
 
                     formatter: function () {
-                        return '<span class="glyphicon glyphicon-resize-vertical" style="position:absolute;font-size:15px; color:white;right:-10px; top:5px;"> </span>';
+                        return '<span class="glyphicon glyphicon-resize-vertical" style="position:absolute;font \
+                                    -size:15px; color:white;right:-7px; top:5px;"> </span>';
                     }
                 },
                 point: {
@@ -1469,18 +1474,19 @@ proposalControllers.controller('multipleBillBarGraphController', ['$scope', 'dat
         },
 
         series: [{
-            data: $scope.dataMonths,
-            //draggableX: true,
-            draggableY: true,
-            dragMinY: 0,
-            type: 'column',
-            minPointLength: 2
-    }]
+                    data: $scope.dataMonths,
+                    //draggableX: true,
+                    draggableY: true,
+                    dragMinY: 0,
+                    type: 'column',
+                    minPointLength: 2
+            }]
 
     });
 
 
-    }]);
+}]);
+
 proposalControllers.controller('oneBillBarGraphController', ['$scope', 'dataService', function ($scope, dataService) {
     $scope.energyBill = dataService.dataObj;
     $scope.navMenuPageArrayEnerUses = $scope.energyBill.menuPageArrayeu;
