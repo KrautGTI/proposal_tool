@@ -1038,8 +1038,6 @@ proposalControllers.controller('justOneBillController', ['$scope', 'dataService'
 
 proposalControllers.controller('multipleBillController', ['$scope', 'dataService', function ($scope, dataService) {
 
-
-
     $scope.energyBill = dataService.dataObj;
     $scope.navMenuPageArrayEnerUses = $scope.energyBill.menuPageArrayeu;
     $scope.navMenuPageArrayUpgrad = $scope.energyBill.menuPageArrayup;
@@ -1057,7 +1055,7 @@ proposalControllers.controller('multipleBillController', ['$scope', 'dataService
         $scope.energyBill.annualUsage = Math.ceil($scope.energyBill.annualUsage);
     };
 
-    }]).directive('currencyInput', function () {
+}]).directive('currencyInput', function () {
     return {
         restrict: 'A',
         require: 'ngModel',
