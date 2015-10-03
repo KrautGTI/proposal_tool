@@ -298,20 +298,21 @@ var proposalControllers = angular.module('proposalControllers', [])
         for (var i = 0; i < categories.length; i++) {
             var tmp = categories[i];
             var cat = tmp.region;
-            var tiers = [0.16352, 0.18673, 0.27504, 0.33504, 0.33504];
+            var summerTiers = [0.17411, 0.20461, 0.40364, 0.42364];
+            var winterTiers = [0.17411, 0.20461, 0.36839, 0.38839];
             var multipliers = [1, 1.3, 2, 3, 100];
 
             energyBill.region[cat] = new Object();
             energyBill.region[cat].slabs = {};
             energyBill.region[cat].slabs.summer = []; //May-Oct index 4-9
             energyBill.region[cat].slabs.winter = [];
-            for (var j = 0; j < tiers.length; j++) {
+            for (var j = 0; j < summerTiers.length; j++) {
                 energyBill.region[cat].slabs.summer.push({
-                    ratePerkWh: tiers[j],
+                    ratePerkWh: summerTiers[j],
                     perDay: tmp.perSummerDayLimit * multipliers[j]
                 });
                 energyBill.region[cat].slabs.winter.push({
-                    ratePerkWh: tiers[j],
+                    ratePerkWh: winterTiers[j],
                     perDay: tmp.perWinterDay * multipliers[j]
                 });
 
@@ -491,8 +492,7 @@ var proposalControllers = angular.module('proposalControllers', [])
 
         };
         energyBill.anyInputMissed = function () {
-            var i = 0,
-                num = 0;
+            var i = 0, num = 0;
             for (i = 0; i < energyBill.Month.length; i++) {
                 var tmp = energyBill.Month[i];
                 if (tmp.dollars != 0)
@@ -522,20 +522,18 @@ var proposalControllers = angular.module('proposalControllers', [])
             var zip = energyBill.zipcode;
             //   zip = 94591;//hardcoded value do away with it once updated from user
             //    var estimateSampleUsage = energyBill.RegionkWh[zip];
+            var ratio = [];
             var estimateSampleUsage = energyBill.RegionkWh;
             var sampleMonthIndex = energyBill.firstFilledMonth(); //Month Index starts with zero as Jan
             for (i = 0; i < energyBill.Month.length; i++) {
                 if (i == sampleMonthIndex)
                     continue;
                 if (energyBill.Month[i].dollars == 0 || energyBill.Month[i].kWh == 0) {
-                    energyBill.Month[i].kWh = energyBill.Month[sampleMonthIndex].kWh *
-                        estimateSampleUsage[i] /
-                        estimateSampleUsage[sampleMonthIndex];
+                    energyBill.Month[i].kWh = energyBill.Month[sampleMonthIndex].kWh * ratio[i];
                     //Propagate the dollar for kWh estimated
                     energyBill.propagateEnergyBillFromkWh(i);
                 }
             }
-
 
         };
 
@@ -1710,13 +1708,16 @@ proposalControllers.controller('lineGraphController', ['$scope', 'dataService', 
 
         xAxis: {
             categories: ['1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'],
-            minTickInterval: 5
+            minTickInterval: 5,
+            min: 0,
+            max: 30,
+            showLastLabel: true,
+            endOnTick: true   
         },
         yAxis: {
             title: {
                 text: 'Electricity Rate ($/kWh)'
             },
-
 
             plotLines: [{
                 value: 0,
@@ -1763,7 +1764,7 @@ proposalControllers.controller('lineGraphController', ['$scope', 'dataService', 
 
 
 
-    }]);
+}]);
 
 
 proposalControllers.controller('areaChartController', ['$scope', 'dataService', function ($scope, dataService) {
