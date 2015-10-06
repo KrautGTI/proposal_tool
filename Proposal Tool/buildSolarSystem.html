@@ -103,7 +103,8 @@
         <div class="pages row">
 
 
-            <div class="proposal-page proposal-page-Upgrade-1 col-xs-12 column anim-fade ng-scope" style="border-radius: 25px;">
+            <div class="proposal-page proposal-page-Upgrade-1 col-xs-12 column anim-fade ng-scope" 
+                 style="border-radius: 25px;">
 
                 <h1  style="border-radius-top: 25px;">Build Your Solar System</h1>
 
@@ -119,15 +120,21 @@
                                         <span ng-if="item != itemList[itemList.length-1]" class="link" ng-click="removeArray(this)">remove</span>
 
                                     </div>-->
-                                    <div class="advanced-options link pull-right" data-toggle="modal" data-target="#advancedOption">Advanced Options <span class="glyphicon glyphicon-cog"></span> </div>
+                                    <div class="advanced-options link pull-right" data-toggle="modal" 
+                                         data-target="#advancedOption">Advanced Options
+                                        <span class="glyphicon glyphicon-cog"></span>
+                                    </div>
 
 
                                     <!--********Model On Setting***********-->
                                     <div id="advancedOption" class="modal fade" role="dialog">
-                                        <div class="modal-content" style="max-height: 700px; max-width: 900px; margin-left:17%; margin-top:30px">
+                                        <div class="modal-content" style="max-height: 700px; max-width: 900px;\
+                                                                          margin-left:17%; margin-top:30px">
                                             <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h3 class="modal-title">Advanced Options - Panel {{$index+1}}</h3>
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    &times;
+                                                </button>
+                                                <h3 class="modal-title">Advanced Options </h3>
                                             </div>
 
                                             <div class="modal-body solar-system-designer-advanced-options">
@@ -137,15 +144,19 @@
                                                         <h3 class="pull-left left">Module Type</h3>
                                                         <select class="form-control pull-right"></select>
                                                         <p class="col-xs-12">
-                                                            The module type describes the photovoltaic modules in the array. Default is standard panels.
+                                                            The module type describes the photovoltaic modules in the
+                                                            array. Default is standard panels.
                                                         </p>
                                                     </div>-->
 
                                                     <div class="row">
                                                         <h3 class="pull-left left">Inverter Efficiency</h3>
-                                                        <input class="form-control pull-right" type="text" ng-model="energyBill.solarSystem[$index].convEfficiency" />
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].convEfficiency"
+                                                               />
                                                         <p class="col-xs-12">
-                                                            The inverter's nominal rated DC-to-AC conversion efficiency. The default value is 96%.
+                                                            The inverter's nominal rated DC-to-AC conversion
+                                                            efficiency. The default value is 96%.
                                                         </p>
                                                     </div>
 
@@ -153,15 +164,23 @@
                                                         <h3 class="pull-left left">Shading Losses</h3>
                                                         <input class="form-control pull-right" type="text" />
                                                         <p class="col-xs-12">
-                                                            Reduction in the incident solar radiation from shadows caused by objects near the array such as buildings or trees. Default is 3%.
+                                                            Reduction in the incident solar radiation from shadows
+                                                            caused by objects near the array such as buildings or
+                                                            trees. Default is 3%.
                                                         </p>
                                                     </div>-->
 
                                                     <div class="row">
-                                                        <h3 class="pull-left left">Annual Solar System Production Degradation</h3>
-                                                        <input class="form-control pull-right" type="text" ng-model="energyBill.solarDepreciation"/>
+                                                        <h3 class="pull-left left">Annual Solar System Production
+                                                            Degradation</h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarDepreciation"/>
                                                         <p class="col-xs-12">
-                                                            Solar panels degrade overtime depending on surrounding weather conditions, dust, etc. Typically this is covered in a manufacturer&rsquo;s warranty to be less than 20% degradation over 30 years. The degradation set in the first array will be applied to all arrays. Default is 0.65%.
+                                                            Solar panels degrade overtime depending on surrounding
+                                                            weather conditions, dust, etc. Typically this is covered in
+                                                            a manufacturer&rsquo;s warranty to be less than 20%
+                                                            degradation over 30 years. The degradation set in the first
+                                                            array will be applied to all arrays. Default is 0.65%.
                                                         </p>
                                                     </div>
 
@@ -186,13 +205,18 @@
                                         </div>
 
                                         <h3>Number of Solar Panels</h3>
-                                  <p>Select how many panels will be installed</p>
+                                        <p>Select how many panels will be installed</p>
                                         <div class="input-container">
                                             <!--<input  class="ng-pristine ng-untouched ng-invalid ng-invalid-required"
                                                    name="array-0-system-size" numeric-min=".5" numeric-max="500000"
-                                                   placeholder="5" required="" ng-model="energyBill.solarSystem[$index].systemSize" type="text">-->
-                                            <select ng-model="energyBill.solarSystem[$index].systemSize" style="width:180px; height:35px; padding-left:45px; margin-left:-58px; border:3px solid #55636a">
-                                                  <option  ng-repeat="value in dropDownValue">{{value}} &nbsp;{{"Panel"}}</option>
+                                                   placeholder="5" required="" 
+                                                   ng-model="energyBill.solarSystem[$index].systemSize" type="text">-->
+                                            <select ng-model="energyBill.solarSystem[$index].systemSize"
+                                                    style="width:180px; height:35px; padding-left:45px;\
+                                                           margin-left:-58px; border:3px solid #55636a">
+                                                <option  ng-repeat="value in dropDownValue">{{value}}
+                                                      &nbsp;{{"Panel"}}
+                                                </option>
 
                                              </select>
                                             <!--<span class="description">Number</span>-->
@@ -208,27 +232,28 @@
 
 
 
-                                      <!--
-                                        <div ng-if="item == itemList[itemList.length-1]">
-                                            <div class="icon-container type-ground" ng-show="showme">
-                                                <img src="css/images/solar-array-box-2b.PNG ">
-                                            </div>
-                                        </div>-->
-                                        <h3>Panel Wattage</h3>
-                                        <p>Select the wattage of the panels to be installed.</p>
+                                          <!--
+                                            <div ng-if="item == itemList[itemList.length-1]">
+                                                <div class="icon-container type-ground" ng-show="showme">
+                                                    <img src="css/images/solar-array-box-2b.PNG ">
+                                                </div>
+                                            </div>-->
+                                            <h3>Panel Wattage</h3>
+                                            <p>Select the wattage of the panels to be installed.</p>
 
 
 
-                                                <div ng-click="showme=false" class="mounting-type col-xs-4 col-xs-offset-1 "
-                                                     ng-class="{ 'selected': showme==false}">
+                                            <div ng-click="showme=false" class="mounting-type col-xs-4 col-xs-offset-1"
+                                                 ng-class="{ 'selected': showme==false}">
                                                 <div ng-click="mounting($index, 0)">280 W</div>
-                                                </div>
+                                            </div>
 
-                                                <div ng-click="showme=true" class="mounting-type col-xs-4 col-xs-offset-1"
-                                                     ng-class="{ 'selected': showme==true }">
-                                                    <div ng-click="mounting($index, 1)">260 W</div>
-                                                </div>
-  </div>
+                                            <div ng-click="showme=true" class="mounting-type col-xs-4 col-xs-offset-1"
+                                                 ng-class="{ 'selected': showme==true }">
+                                                <div ng-click="mounting($index, 1)">260 W</div>
+                                            </div>
+
+                                        </div>
 
                                     </div>
                                    <!-- <div class="box col-xs-3 ">

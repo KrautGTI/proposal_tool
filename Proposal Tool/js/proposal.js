@@ -517,21 +517,35 @@ var proposalControllers = angular.module('proposalControllers', [])
             return -1; //No such month exists
 
         };
-
+        energyBill.ratio = [];
+        energyBill.ratio[0] = [1,0.86, 0.74, 0.75, 0.83, 1.14, 1.37, 1.55, 1.19, 0.85, 0.83, 1.03 ];
+        energyBill.ratio[1] = [1.14, 1, 0.87, 0.88, 0.97, 1.28, 1.54, 1.72, 1.34, 0.99, 0.97, 1.16 ];
+        energyBill.ratio[2] = [1.27, 1.13, 1,  1.01, 1.1, 1.44, 1.70, 1.88, 1.5, 1.12, 1.1, 1.3];
+        energyBill.ratio[3] = [1.26, 1.12, 0.99, 1, 1.08, 1.42, 1.68, 1.86, 1.49, 1.11, 1.09, 1.28];
+        energyBill.ratio[4] = [1.17, 1.03, 0.91, 0.92, 1, 1.32, 1.58, 1.76, 1.39, 1.02, 1, 1.2];
+        energyBill.ratio[5] = [0.86, 0.73, 0.64, 0.64, 0.69, 1, 1.22, 1.39, 1.05, 0.71, 0.70, 0.89];
+        energyBill.ratio[6] = [0.67, 0.56, 0.50, 0.50, 0.54, 0.78, 1, 1.15, 0.83, 0.55, 0.55, 0.69];
+        energyBill.ratio[7] = [0.58, 0.46, 0.41, 0.41, 0.45, 0.64, 0.86, 1, 0.68, 0.46, 0.46, 0.59];
+        energyBill.ratio[8] = [0.81, 0.67, 0.61, 0.61, 0.66, 0.95, 1.17, 1.32, 1, 0.67, 0.67, 0.84];
+        energyBill.ratio[9] = [1.15, 1.01, 0.88, 0.90, 0.98, 1.30, 1.56, 1.74, 1.36, 1, 0.98, 1.18];
+        energyBill.ratio[10] = [1.17, 1.03, 0.90, 0.92, 1, 1.32, 1.58, 1.76, 1.38, 1.02, 1, 1.2];
+        energyBill.ratio[11] = [0.97, 0.83, 0.72, 0.72, 0.80, 1.11, 1.34, 1.52, 1.16, 0.82, 0.80, 1];
         energyBill.setEstimatedValues = function () {
             var zip = energyBill.zipcode;
             //   zip = 94591;//hardcoded value do away with it once updated from user
             //    var estimateSampleUsage = energyBill.RegionkWh[zip];
-            var ratio = [];
+            var ratioMonth = [];
+            
             var estimateSampleUsage = energyBill.RegionkWh;
             var sampleMonthIndex = energyBill.firstFilledMonth(); //Month Index starts with zero as Jan
+            ratioMonth = energyBill.ratio[sampleMonthIndex];
             for (i = 0; i < energyBill.Month.length; i++) {
                 if (i == sampleMonthIndex)
                     continue;
                 if (energyBill.Month[i].dollars == 0 || energyBill.Month[i].kWh == 0) {
-                    energyBill.Month[i].kWh = energyBill.Month[sampleMonthIndex].kWh * ratio[i];
+                    energyBill.Month[i].dollars = energyBill.Month[sampleMonthIndex].dollars * ratioMonth[i];
                     //Propagate the dollar for kWh estimated
-                    energyBill.propagateEnergyBillFromkWh(i);
+                    energyBill.propagateEnergyBillFromDollar(i);
                 }
             }
 
