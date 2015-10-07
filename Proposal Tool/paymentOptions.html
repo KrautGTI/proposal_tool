@@ -103,102 +103,371 @@
         </div>
     </div>
 
-    <div class="container pages-container">
+    <div id="firstPage" class="container pages-container" style="font-family:gothamnarrow-light">
         <div class="pages row" style="margin-left: -100px; margin-right: -85px;">
             <!--competative and INITIAL start here-->
-            <div ng-hide="finish">
-                <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column" style="border-radius: 25px;" ng-hide="visitDiscount">
+            <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column" style="border-radius: 25px; margin-left: 10px" ng-hide="visitDiscount">
 
-                    <!--*******     heading   start   **********-->
-                    <div class="row paymentOption_text">
-                        <div class="col-sm-12" style="margin-top: 20px;">
-                            <center>
-                                <h3 style=" color: #55636a;; font-size: 42px; border-bottom:1px solid #dadad8; padding-bottom:20px">Investment Review</h3>
-                            </center>
-                        </div>
+                <!--*******     heading   start   **********-->
+                <div class="row paymentOption_text">
+                    <div class="col-sm-12" style="margin-top: 20px;">
+                        <center>
+                            <h3 style=" color: #55636a;; font-size: 42px; padding-bottom:20px">Investment Review</h3>
+                        </center>
                     </div>
-                    <!--*******     heading close     **********-->
+                </div>
+                <!--*******     heading close     **********-->
 
 
-                    <div class="row paymentOption_text">
+                <div class="row paymentOption_text">
 
-                        <div class="payOptions">
-                            <h3 style="text-align:center; font-weight:bold; margin-top:0px">COMPETITIVE ESTIMATE GOOD FOR 6 MONTHS</h3>
+                    <div>
+                        <center>
+                            <p style="text-align:center; margin-top:0px ;font-size:20px; line-height: 20px">COMPETITIVE ESTIMATE GOOD FOR 6 MONTHS</p>
 
 
                             <br>
-                            <p style="text-align: center; font-size:40px; margin-left: 0px; margin-right: 18px;">
-                                Total Investment: {{ "$" + energyBill.solarCostDisplay}}
+                            <p style="text-align: center; font-size:25px; margin-left: 0px; margin-right: 18px;">
+                                Total Investment
                             </p>
-                            <p style="text-align: center; font-size:40px; margin-left: 0px; margin-right: 18px;">
-                                Out of Pocket: {{"$" + energyBill.outOfPocket}}
+                            <p style="text-align: center; font-size:42px; margin-left: 0px; margin-right: 18px; line-height: 20px">
+                                $25,000
                             </p>
-                            <div class="row" style="border: 1px solid #dadad8; margin-left:15px; margin-right:15px">
-                                <div class="col-lg-6" style="border-right: 1px solid #dadad8;">
-                                    <p>
-                                        <center style="font-weight:bold; font-size:20px">CASH</center>
-                                    </p>
+                            <br>
+                            <p style="text-align: center; font-size:25px; margin-right: 18px; margin-top: 15px;">
+                                Out of Pocket
+                            </p>
+                            <p style="text-align: center; font-size:42px; margin-right: 18px; line-height: 20px">
+                                $1,000
+                            </p>
+                        </center>
+                        <div class="row" style="margin-left:15px; margin-right:15px ; margin-top: 50px;">
+                            <div class="col-lg-6">
+                                <p>
+                                    <center style="font-size:42px; ">Cach</center>
+                                </p>
+                                <p>
+                                    <center style="font-size:42px;  line-height: 20px">$24,000</center>
+                                </p>
 
-                                </div>
-                                <div class="col-lg-6">
-                                    <p>
-                                        <center style="font-weight:bold; font-size:20px">EZ PAY</center>
-                                    </p>
-                                </div>
+                                <p style="text-align: center; font-size:25px;  margin-top: 31px;">
+                                    Due Upon Completion
+                                </p>
+
                             </div>
-                            <div class="row">
-                                <div class="col-lg-6" style="border-right: 1px solid #dadad8; margin-top:10px; margin-bottom:10px">
-                                    <p style="text-align: center; font-size:20px; margin-left:43px">
-                                        <br> <span style="font-size: 30px">{{"$" + energyBill.cashDisplay}}</span>
-                                        <br>
-                                        <br> Balance Due
-                                        <br>
-                                        <br> Upon Completion
-                                        <br>
-                                        <br>
+                            <div class="col-lg-6">
+                                <p>
+                                    <center style="font-family:gothamnarrow-light; font-size:42px">EZ Pay</center>
+                                </p>
+                                <p>
+                                    <center style="font-size:42px;  line-height: 20px">$400/mo</center>
+                                </p>
 
-                                    </p>
-                                </div>
-                                <div class="col-lg-6">
-                                    <p style="text-align: center; font-size:20px; margin-left: 0px">
-                                        <br><span style="font-size: 30px"> ${{energyBill.emi}}</span>
-                                        <br>
-                                        <br> Monthly Investment
-                                        <br>
-                                        <br><span style="font-weight:bold"> @ 15.9% <br>For 144 months (12 yrs.)</span>
+                                <p style="text-align: center; font-size:25px;  margin-top: 31px;">
+                                    @15.9%
+                                </p>
 
-                                        <br>
-                                        <br>
-                                    </p>
-                                </div>
+                                <p style="text-align: center; font-size:25px; line-height: 20px">
+                                    144 months
+                                </p>
+
                             </div>
-
                         </div>
+                        <br>
+                        <br>
                     </div>
                 </div>
 
             </div>
-            <!--competative and INITIAL end here-->
-
         </div>
-
-
-
-
-
-        <div id="proposal-page-nav">
-            <a href="#/solarSystemSummary/id1" style="text-decoration:none">
-                <div class="nav-button prev">
-                    <span class="glyphicon glyphicon-arrow-left" style="position:relative; top:8px"></span> <span style="font-size:20px; margin-top:3px">BACK</span>
-                </div>
-            </a>
-            <a href="#/options/id1" style="text-decoration:none">
-                <div class="nav-button next">
-
-                    <span style="font-size:20px; margin-top:3px">NEXT</span>
-                    <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
-                </div>
-            </a>
-        </div>
-
     </div>
+    <!--payment second page-->
+
+    <div id="secondPage" class="container pages-container" style="font-family:gothamnarrow-light">
+        <div class="pages row" style="margin-left: -100px; margin-right: -85px;">
+
+            <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column" style="border-radius: 25px; margin-left: 16px">
+                <div id="secondPageInitialA" class="row paymentOption_text">
+                    <div class="col-sm-12" style="margin-top: 20px;">
+                        <center>
+                            <h3 style=" color: #55636a; font-size: 42px; padding-bottom:20px">Initial Visit Discount</h3>
+                            <p style="text-align:center; margin-bottom:20px ;font-size:20px;  ">GOOD ON FIRST VISIT</p>
+                        </center>
+                        <div class="row">
+                            <div class="col-lg-4" style="text-align: center;">
+                                <p style="font-size:25px;">Initial Offer</p>
+                                <p style="font-size:42px;">$25,000</p>
+                            </div>
+                            <div class="col-lg-4" style="text-align: center;">
+                                <p style="font-size:25px;">Initial Visit Discount</p>
+                                <p style="font-size:42px;">-$15,00</p>
+                            </div>
+                            <div class="col-lg-4" style="text-align: center;">
+                                <p style="font-size:25px;">IVD Offer</p>
+                                <p style="font-size:42px;">$23,500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="secondPageInitialB" style="text-align: center; font-size:25px; color: #666; margin-top: 15px;">
+                    <p><u>Initial</u> <u>Visit</u> <u>Discount</u> <u>Finance</u> <u>Options</u> </p>
+                </div>
+                <div style="text-align: center; font-size:30px; color: #666;">
+                    <p id="secondPageInitialC">ZERO OUT OF POCKET</p>
+                    <div id="secondPageOptionAB" class="row">
+                        <div class="col-sm-4">
+                            <p style="text-align: center; font-size:25px; color: #666;">Option A</p>
+                        </div>
+                        <div class="col-sm-4">
+                        <p style="text-align: center; font-size:25px; color: #666;">Option B</p>
+                        </div>
+                        <div class="col-sm-4">
+                        <p style="text-align: center; font-size:25px; color: #666;">Combo</p>
+                        </div>
+                    </div>
+                    <div  class="row">
+                        <div id="secondPageOptionContentA" class="col-lg-4">
+
+                            <div style="text-align: center; font-size:42px;">
+                                <p> 12 Months</p>
+                                <p> No Interest</p>
+                                <p> No Payments</p>
+                            </div>
+                        </div>
+                        <div id="secondPageOptionContentB" class="col-lg-4">
+                            
+                            <div>
+                                <p style="text-align: center; font-size:42px;">$247/mo</p>
+                                <p style="font-size:20px;">@6.99%</p>
+                                <p style="font-size:20px;">144 months</p>
+                            </div>
+                        </div>
+                        <div id="secondPageOptionContentC" class="col-lg-4">
+                            
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <p style="text-align: center; font-size:42px;">$70,50</p>
+                                    <p style="font-size:20px;">(tex credit)</p>
+                                    <p style="font-size:20px;">12 Months</p>
+                                    <p style="font-size:20px;"> No Interest</p>
+                                    <p style="font-size:20px;"> No Payments</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <p style="text-align: center; font-size:42px;">$172/mo</p>
+                                    <br>
+                                    <p style="font-size:20px;">@6.99%</p>
+                                    <p style="font-size:20px;">144 months</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--payment option third page-->
+
+    <div id="thirdPage" class="container pages-container" style="font-family:gothamnarrow-light">
+        <div class="pages row" style="margin-left: -100px; margin-right: -85px;">
+            <div ng-hide="finish">
+                <div class="payment_option proposal-page  proposal-page-YEU-6  col-xs-12  column" style="border-radius: 25px;" ng-hide="visitDiscount">
+                    <div class="row paymentOption_text">
+                        <div class="col-sm-12" style="margin-top: 20px;">
+                            <center>
+                                <h3 style=" color: #55636a;; font-size: 42px; padding-bottom:20px">Investment Review</h3>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row paymentOption_text">
+
+                        <div>
+                            <center>
+                                <p style="text-align:center; margin-top:0px ;font-size:20px; line-height: 20px">COMPETITIVE ESTIMATE GOOD FOR 6 MONTHS</p>
+
+
+                                <br>
+                                <p style="text-align: center; font-size:25px; margin-left: 0px; margin-right: 18px;">
+                                    Total Investment
+                                </p>
+                                <p style="text-align: center; font-size:42px; margin-left: 0px; margin-right: 18px; line-height: 20px">
+                                    $25,000
+                                </p>
+                                <br>
+                                <p style="text-align: center; font-size:25px; margin-right: 18px; margin-top: 15px;">
+                                    Out of Pocket
+                                </p>
+                                <p style="text-align: center; font-size:42px; margin-right: 18px; line-height: 20px">
+                                    $1,000
+                                </p>
+                            </center>
+                            <div class="row" style="margin-left:15px; margin-right:15px ; margin-top: 50px; border-bottom:1px solid #55636a;">
+                                <div class="col-lg-6">
+                                    <p>
+                                        <center style="font-size:42px; ">Cach</center>
+                                    </p>
+                                    <p>
+                                        <center style="font-size:42px;  line-height: 20px">$24,000</center>
+                                    </p>
+
+                                    <p style="text-align: center; font-size:25px;  margin-top: 31px;">
+                                        Due Upon Completion
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <p>
+                                        <center style="font-family:gothamnarrow-light; font-size:42px">EZ Pay</center>
+                                    </p>
+                                    <p>
+                                        <center style="font-size:42px;  line-height: 20px">$400/mo</center>
+                                    </p>
+
+                                    <p style="text-align: center; font-size:25px;  margin-top: 31px;">
+                                        @15.9%
+                                    </p>
+
+                                    <p style="text-align: center; font-size:25px; line-height: 20px">
+                                        144 months
+                                    </p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row paymentOption_text">
+                        <div class="col-sm-12" style="margin-top: 20px;">
+                            <center>
+                                <h3 style=" color: #55636a; font-size: 42px; padding-bottom:20px">Initial Visit Discount</h3>
+                                <p style="text-align:center; margin-bottom:20px ;font-size:20px;  ">GOOD ON FIRST VISIT</p>
+                            </center>
+                            <div class="row">
+                                <div class="col-lg-4" style="text-align: center;">
+                                    <p style="font-size:25px;">Initial Offer</p>
+                                    <p style="font-size:42px;">$25,000</p>
+                                </div>
+                                <div class="col-lg-4" style="text-align: center;">
+                                    <p style="font-size:25px;">Initial Visit Discount</p>
+                                    <p style="font-size:42px;">-$15,00</p>
+                                </div>
+                                <div class="col-lg-4" style="text-align: center;">
+                                    <p style="font-size:25px;">IVD Offer</p>
+                                    <p style="font-size:42px;">$23,500</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; font-size:25px; color: #666; margin-top: 15px;">
+                        <p><u>Initial</u> <u>Visit</u> <u>Discount</u> <u>Finance</u> <u>Options</u> </p>
+                    </div>
+                    <div style="text-align: center; font-size:30px; color: #666;">
+                        <p>ZERO OUT OF POCKET</p>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p style="text-align: center; font-size:25px; color: #666;">Option A</p>
+                                <div style="text-align: center; font-size:42px;">
+                                    <p> 12 Months</p>
+                                    <p> No Interest</p>
+                                    <p> No Payments</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <p style="text-align: center; font-size:25px; color: #666;">Option B</p>
+                                <div>
+                                    <p style="text-align: center; font-size:42px;">$247/mo</p>
+                                    <p style="font-size:20px;">@6.99%</p>
+                                    <p style="font-size:20px;">144 months</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <p style="text-align: center; font-size:25px; color: #666;">Combo</p>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <p style="text-align: center; font-size:42px;">$70,50</p>
+                                        <p style="font-size:20px;">(tex credit)</p>
+                                        <p style="font-size:20px;">12 Months</p>
+                                        <p style="font-size:20px;"> No Interest</p>
+                                        <p style="font-size:20px;"> No Payments</p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p style="text-align: center; font-size:42px;">$172/mo</p>
+                                        <br>
+                                        <p style="font-size:20px;">@6.99%</p>
+                                        <p style="font-size:20px;">144 months</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="proposal-page-nav">
+        <a href="#/solarSystemSummary/id1" style="text-decoration:none">
+            <div class="nav-button prev">
+                <span class="glyphicon glyphicon-arrow-left" style="position:relative; top:8px"></span> <span style="font-size:20px; margin-top:3px">BACK</span>
+            </div>
+        </a>
+        <!--<a  href="#/options/id1" style="text-decoration:none">-->
+        <a id="next" style="text-decoration:none">
+            <div class="nav-button next">
+                <span style="font-size:20px; margin-top:3px">NEXT</span>
+                <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+            </div>
+        </a>
+        <a id="nextA" style="text-decoration:none">
+            <div class="nav-button next">
+                <span style="font-size:20px; margin-top:3px">NEXT</span>
+                <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+            </div>
+        </a>
+        <a id="nextB" style="text-decoration:none">
+            <div class="nav-button next">
+                <span style="font-size:20px; margin-top:3px">NEXT</span>
+                <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+            </div>
+        </a>
+        <a id="nextC" style="text-decoration:none">
+            <div class="nav-button next">
+                <span style="font-size:20px; margin-top:3px">NEXT</span>
+                <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+            </div>
+        </a>
+        <a id="nextD" style="text-decoration:none">
+            <div class="nav-button next">
+                <span style="font-size:20px; margin-top:3px">NEXT</span>
+                <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+            </div>
+        </a> 
+        <a id="nextE" style="text-decoration:none">
+            <div class="nav-button next">
+                <span style="font-size:20px; margin-top:3px">NEXT</span>
+                <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+            </div>
+        </a>
+        <a id="nextF" style="text-decoration:none">
+            <div class="nav-button next">
+                <span style="font-size:20px; margin-top:3px">NEXT</span>
+                <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+            </div>
+        </a>
+        <a id="nextG" style="text-decoration:none">
+            <div class="nav-button next">
+                <span style="font-size:20px; margin-top:3px">NEXT</span>
+                <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+            </div>
+        </a>
+        <a id="link" href="#/options/id1" style="text-decoration:none">
+            <div class="nav-button next">
+                <span style="font-size:20px; margin-top:3px">NEXT</span>
+                <span class="glyphicon glyphicon-arrow-right" style="position:relative;top:8px"></span>
+            </div>
+        </a>
+        
+    </div>
+
+</div>
