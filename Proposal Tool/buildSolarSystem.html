@@ -128,7 +128,7 @@
 
                                     <!--********Model On Setting***********-->
                                     <div id="advancedOption" class="modal fade" role="dialog">
-                                        <div class="modal-content" style="max-height: 700px; max-width: 900px;\
+                                        <div class="modal-content" style="max-height: 1200px; max-width: 900px;\
                                                                           margin-left:17%; margin-top:30px">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">
@@ -150,15 +150,119 @@
                                                     </div>-->
 
                                                     <div class="row">
-                                                        <h3 class="pull-left left">Inverter Efficiency</h3>
+                                                        <h3 class="pull-left left">New 125-200 AMP Service</h3>
                                                         <input class="form-control pull-right" type="text"
-                                                               ng-model="energyBill.solarSystem[$index].convEfficiency"
+                                                               ng-model="energyBill.solarSystem[$index].AMPService"
                                                                />
-                                                        <p class="col-xs-12">
-                                                            The inverter's nominal rated DC-to-AC conversion
-                                                            efficiency. The default value is 96%.
-                                                        </p>
+                                                  
                                                     </div>
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">New 400 AMP Double Meter Upgrade
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].AMPDMUpgrade"
+                                                               />
+                                                  
+                                                    </div>
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">Meter Relocation up to 6 ft.
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model= 
+                                                                    "energyBill.solarSystem[$index].meterRelocation"
+                                                               />
+                                                  
+                                                    </div>
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">Meter Relocation Greater than 6 ft.
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].meterRelocGt"
+                                                               />
+                                                  
+                                                    </div>
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">Sub Panel
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].subPanel"
+                                                               />
+                                                  
+                                                    </div>
+                                                    
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">String Inverter Upgrades (reloads)
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].stringInv"
+                                                               />
+                                                  
+                                                    </div>
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">Trenching for "Below Ground" wire
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].trenchWire"
+                                                               />
+                                                  
+                                                    </div>
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">Concrete Cutting for Trench 
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].cuttingTrench"
+                                                               />
+                                                  
+                                                    </div>
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">Steep Roof Pitch 30 degrees or
+                                                                                greater
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].steepRoof"
+                                                               />
+                                                  
+                                                    </div>
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">Ground Mount Installs
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].grndMount"
+                                                               />
+                                                  
+                                                    </div>
+                                                    <div class="row">
+                                                        <h3 class="pull-left left"> Panel Removal/Reinstallation 
+                                                                    for roof repair
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].panelRemove"
+                                                               />
+                                                  
+                                                    </div>
+                                                   
+                                                    
+                                                    <div class="row">
+                                                        <h3 class="pull-left left">Other
+                                                        
+                                                        </h3>
+                                                        <input class="form-control pull-right" type="text"
+                                                               ng-model="energyBill.solarSystem[$index].Other"
+                                                               />
+                                                  
+                                                    </div>
+                                                   
+
 
 <!--													<div class="row">
                                                         <h3 class="pull-left left">Shading Losses</h3>
@@ -170,7 +274,7 @@
                                                         </p>
                                                     </div>-->
 
-                                                    <div class="row">
+<!--                                                    <div class="row">
                                                         <h3 class="pull-left left">Annual Solar System Production
                                                             Degradation</h3>
                                                         <input class="form-control pull-right" type="text"
@@ -182,7 +286,7 @@
                                                             degradation over 30 years. The degradation set in the first
                                                             array will be applied to all arrays. Default is 0.65%.
                                                         </p>
-                                                    </div>
+                                                    </div>-->
 
                                                 </div>
                                             </div>
@@ -212,9 +316,11 @@
                                                    placeholder="5" required="" 
                                                    ng-model="energyBill.solarSystem[$index].systemSize" type="text">-->
                                             <select ng-model="energyBill.solarSystem[$index].systemSize"
+                                                    ng-init=
+                                                    "energyBill.solarSystem[$index].systemSize = dropDownValue[2]"
                                                     style="width:180px; height:35px; padding-left:45px;\
                                                            margin-left:-58px; border:3px solid #55636a">
-                                                <option  ng-repeat="value in dropDownValue">{{value}}
+                                                <option  ng-repeat="value in dropDownValue" >{{value}}
                                                       &nbsp;{{"Panel"}}
                                                 </option>
 

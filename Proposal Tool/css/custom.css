@@ -10687,7 +10687,7 @@ a.btn-proposal:active {
 /* menu css start*/
 
 .nav .quick-navigation {
-    width: 800px;
+    width: 1200px;
     height: 520px;
     background-color: #efefef;
 }
@@ -10742,6 +10742,7 @@ a.btn-proposal:active {
 .nav .quick-navigation .quicknav-header .icon.icon-hero-map {
     background-position: -76px -632px;
     left: 10px;
+    font-size: 80%;
 }
 
 .nav .quick-navigation .quicknav-header .icon.icon-hero-video {

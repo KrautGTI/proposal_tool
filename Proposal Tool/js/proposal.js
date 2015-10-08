@@ -610,7 +610,6 @@ var proposalControllers = angular.module('proposalControllers', [])
                         energyBill.numPanels += parseInt(energyBill.solarSystem[j].systemSize);
                         energyBill.panelType = 280;
                     }
-
                 }
                 estimates.push(Math.ceil(energyProduction));
                 energyBill.solarEstimatedProduction += energyProduction;
@@ -620,10 +619,67 @@ var proposalControllers = angular.module('proposalControllers', [])
             }
             energyBill.solarCost = 0;
             for (var j = 0; j < energyBill.solarSystem.length; j++) {
-                if (energyBill.solarSystem[j].type260 == 1)
+                if (energyBill.solarSystem[j].type260 == 1) {
                     energyBill.solarCost += 1000 * parseInt(energyBill.solarSystem[j].systemSize);
-                else
+                }
+                else {
                     energyBill.solarCost += 1200 * parseInt(energyBill.solarSystem[j].systemSize);
+                }
+                
+                
+                if (energyBill.solarSystem[j].AMPService != undefined) {
+                        energyBill.solarCost += 2250;
+                } 
+                    
+                if (energyBill.solarSystem[j].subPanel != undefined) {
+                        energyBill.solarCost += 600;
+
+                } 
+                if (energyBill.solarSystem[j].AMPDMUpgrade != undefined) {
+                        energyBill.solarCost += 4500;
+
+                } 
+                if (energyBill.solarSystem[j].meterRelocation != undefined) {
+                         energyBill.solarCost += 950;
+
+                } 
+                if (energyBill.solarSystem[j].meterRelocGt != undefined) {
+                         energyBill.solarCost += 1950;
+
+                } 
+                if (energyBill.solarSystem[j].stringInv != undefined) {
+                         energyBill.solarCost += 1600;
+
+                } 
+                if (energyBill.solarSystem[j].trenchWire != undefined) {
+                         energyBill.solarCost += 30;
+
+                } 
+                if (energyBill.solarSystem[j].cuttingTrench != undefined) {
+                         energyBill.solarCost += 60;
+
+                } 
+
+                if (energyBill.solarSystem[j].steepRoof != undefined) {
+
+                         energyBill.solarCost += 50*energyBill.numPanels;
+                } 
+
+                if (energyBill.solarSystem[j].grndMount != undefined) {
+                         energyBill.solarCost += 120*energyBill.numPanels;
+
+                } 
+                if (energyBill.solarSystem[j].panelRemove != undefined) {
+                         energyBill.solarCost += 250*energyBill.numPanels;
+
+                } 
+
+                if (energyBill.solarSystem[j].Other != undefined) {
+                         energyBill.solarCost += 4500;
+
+                } 
+                
+                
             }
 
             energyBill.outOfPocket = 0.1 * energyBill.solarCost;
@@ -1322,7 +1378,7 @@ proposalControllers.controller('buildSolarSystemController', ['$scope', 'dataSer
         if (i > -1) {
             $scope.numArray.splice(i, 1);
         }
-        console.log($scope.numArray);
+       // console.log($scope.numArray);
     }
 
 
