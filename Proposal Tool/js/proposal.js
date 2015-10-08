@@ -617,6 +617,7 @@ var proposalControllers = angular.module('proposalControllers', [])
                 energyProduction = 0;
 
             }
+            energyBill.advancedOptions = [];
             energyBill.solarCost = 0;
             for (var j = 0; j < energyBill.solarSystem.length; j++) {
                 if (energyBill.solarSystem[j].type260 == 1) {
@@ -629,53 +630,57 @@ var proposalControllers = angular.module('proposalControllers', [])
                 
                 if (energyBill.solarSystem[j].AMPService != undefined) {
                         energyBill.solarCost += 2250;
+                        energyBill.advancedOptions.push("New 125-200 AMP Service");
                 } 
                     
                 if (energyBill.solarSystem[j].subPanel != undefined) {
                         energyBill.solarCost += 600;
+                        energyBill.advancedOptions.push("Sub Panel");
 
                 } 
                 if (energyBill.solarSystem[j].AMPDMUpgrade != undefined) {
                         energyBill.solarCost += 4500;
-
+                        energyBill.advancedOptions.push("New 400 AMP Double Meter Upgrade");
                 } 
                 if (energyBill.solarSystem[j].meterRelocation != undefined) {
-                         energyBill.solarCost += 950;
-
+                        energyBill.solarCost += 950;
+                        energyBill.advancedOptions.push("Meter Relocation up to 6 ft.");
                 } 
                 if (energyBill.solarSystem[j].meterRelocGt != undefined) {
-                         energyBill.solarCost += 1950;
-
+                        energyBill.solarCost += 1950;
+                        energyBill.advancedOptions.push("Meter Relocation Greater than 6 ft.");
                 } 
                 if (energyBill.solarSystem[j].stringInv != undefined) {
-                         energyBill.solarCost += 1600;
-
+                        energyBill.solarCost += 1600;
+                        energyBill.advancedOptions.push("String Inverter Upgrades (reloads)");
                 } 
                 if (energyBill.solarSystem[j].trenchWire != undefined) {
-                         energyBill.solarCost += 30;
-
+                        energyBill.solarCost += 30;
+                        energyBill.advancedOptions.push("Trenching for 'Below Ground' wire");
                 } 
                 if (energyBill.solarSystem[j].cuttingTrench != undefined) {
-                         energyBill.solarCost += 60;
-
+                        energyBill.solarCost += 60;
+                        energyBill.advancedOptions.push("Concrete Cutting for Trench ");
                 } 
 
                 if (energyBill.solarSystem[j].steepRoof != undefined) {
 
-                         energyBill.solarCost += 50*energyBill.numPanels;
+                        energyBill.solarCost += 50*energyBill.numPanels;
+                        energyBill.advancedOptions.push("Steep Roof Pitch 30 degrees or greater ");                    
                 } 
 
                 if (energyBill.solarSystem[j].grndMount != undefined) {
-                         energyBill.solarCost += 120*energyBill.numPanels;
-
+                        energyBill.solarCost += 120*energyBill.numPanels;
+                        energyBill.advancedOptions.push("Ground Mount Installs");                    
                 } 
                 if (energyBill.solarSystem[j].panelRemove != undefined) {
-                         energyBill.solarCost += 250*energyBill.numPanels;
-
+                        energyBill.solarCost += 250*energyBill.numPanels;
+                        energyBill.advancedOptions.push("Panel Removal/Reinstallation for roof repair");                    
                 } 
 
                 if (energyBill.solarSystem[j].Other != undefined) {
-                         energyBill.solarCost += 4500;
+                        energyBill.solarCost += 4500;
+                        energyBill.advancedOptions.push("Other");                                        
 
                 } 
                 

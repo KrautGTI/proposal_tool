@@ -121,8 +121,10 @@
 
                         <div class="col-sm-6" style=" text-align:left">
                             
-                            <h3 style="margin-left:80px;"> </h3>
-                            <h3 style="margin-left:80px;"> </h3>
+                            <h3 ng-repeat="x in energyBill.advancedOptions" style="margin-left:80px;">
+                                {{x}}
+                            </h3>
+                            
                             
                             <h3 style="margin-left:80px"> {{energyBill.yearChange}} Year System Warranty</h3>
 
